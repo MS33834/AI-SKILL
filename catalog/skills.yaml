@@ -11827,7 +11827,7 @@ skills:
     title: wav2vec2
     title_zh: wav2vec2
     source: facebookresearch/fairseq
-    source_url: https://github.com/facebookresearch/fav2vec2
+    source_url: https://github.com/facebookresearch/fairseq
     category: audio-speech
     tags:
       - wav2vec2

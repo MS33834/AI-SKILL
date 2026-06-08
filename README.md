@@ -26,7 +26,7 @@ point for your own list.
 
 ## What's in the box
 
-- **`catalog/skills.yaml`** — the index. 1,551 entries across 49
+- **`catalog/skills.yaml`** — the index. 900+ entries across 49
   categories, bilingual (en + zh). One entry per upstream repo.
 - **`catalog/own_skills.yaml`** — an empty placeholder for skills
   we author and host in this repo. See `skills/` for the format.
