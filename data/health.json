@@ -1,8 +1,5577 @@
 {
-  "checked_at": "2026-06-08T00:00:00+00:00",
-  "elapsed_s": 0,
-  "total": 0,
   "broken": 0,
-  "by_group": {},
-  "results": {}
+  "by_group": {
+    "client_error": 0,
+    "error": 0,
+    "ok": 927,
+    "redirect": 0,
+    "server_error": 0
+  },
+  "checked_at": "2026-06-08T17:56:08+00:00",
+  "elapsed_s": 75.93,
+  "results": {
+    "acados": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/acados/acados"
+    },
+    "accelerate": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/accelerate"
+    },
+    "agent-starter-pack": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack"
+    },
+    "agentbench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/thudm/AgentBench"
+    },
+    "agentgpt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/reworkd/AgentGPT"
+    },
+    "agentops": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/AgentOps-AI/agentops"
+    },
+    "agents-md": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/agents.md"
+    },
+    "agentverse": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenBMB/AgentVerse"
+    },
+    "agieval": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ruixiangcui/AGIEval"
+    },
+    "agno": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/agno-agi/agno"
+    },
+    "ai-agents-for-beginners": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/ai-agents-for-beginners"
+    },
+    "ai2thor": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/allenai/ai2thor"
+    },
+    "aider": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/paul-gauthier/aider"
+    },
+    "airflow": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/apache/airflow"
+    },
+    "airoboros": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jondurbin/airoboros"
+    },
+    "alacritty": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/alacritty/alacritty"
+    },
+    "alignment-handbook": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/alignment-handbook"
+    },
+    "alpaca-eval": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tatsu-lab/alpaca_eval"
+    },
+    "alpaca-py": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/alpacahq/alpaca-py"
+    },
+    "alphafold": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-deepmind/alphafold"
+    },
+    "alphafold-3": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-deepmind/alphafold3"
+    },
+    "amazon-bedrock-agent-samples": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/awslabs/amazon-bedrock-agent-samples"
+    },
+    "amazon-bedrock-samples": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/aws-samples/amazon-bedrock-samples"
+    },
+    "amazon-neptune": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/awslabs/amazon-neptune-tools"
+    },
+    "amazon-q-developer-cli": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/aws/amazon-q-developer-cli"
+    },
+    "ampligraph": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Accenture/AmpliGraph"
+    },
+    "annoy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/spotify/annoy"
+    },
+    "anthropic-cookbook": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/anthropics/anthropic-cookbook"
+    },
+    "anthropic-cu": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/anthropics/anthropic-quickstarts"
+    },
+    "anthropic-sdk-python": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/anthropics/anthropic-sdk-python"
+    },
+    "anything-llm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Mintplex-Labs/anything-llm"
+    },
+    "apache-jena": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/apache/jena"
+    },
+    "apex": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/apex"
+    },
+    "aphrodite": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/aphrodite-engine/aphrodite-engine"
+    },
+    "apify": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/apify/apify-sdk-js"
+    },
+    "apps": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/hendrycks/apps"
+    },
+    "appsmith": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/appsmithorg/appsmith"
+    },
+    "arangodb": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/arangodb/arangodb"
+    },
+    "arc-agi": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/arcprize/ARC-AGI"
+    },
+    "assistant-ui": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Yonom/assistant-ui"
+    },
+    "astro": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/withastro/astro"
+    },
+    "atlas": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/atlas"
+    },
+    "atlas-vector-search": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mongodb/docs"
+    },
+    "aurora": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/aurora"
+    },
+    "auto-gptq": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/PanQiWei/AutoGPTQ"
+    },
+    "autoawq": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/casper-hansen/AutoAWQ"
+    },
+    "autogen": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/autogen"
+    },
+    "autogpt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Significant-Gravitas/AutoGPT"
+    },
+    "automa": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/AutomaApp/automa"
+    },
+    "autoscraper": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/alirezamika/autoscraper"
+    },
+    "avante.nvim": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/yetone/avante.nvim"
+    },
+    "awesome-ai-agents": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/e2b-dev/awesome-ai-agents"
+    },
+    "awesome-chatgpt-prompts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/f/awesome-chatgpt-prompts"
+    },
+    "awesome-langchain": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/kyrolabs/awesome-langchain"
+    },
+    "awesome-llm-chinese": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/HqWu-HITCS/Awesome-Chinese-LLM"
+    },
+    "awesome-llm-list": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Hannibal046/Awesome-LLM"
+    },
+    "awesome-llm-reasoning": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/atfortes/Awesome-LLM-Reasoning"
+    },
+    "awesome-mcp-servers": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/appcypher/awesome-mcp-servers"
+    },
+    "awesome-mcp-servers-c": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/wong2/awesome-mcp-servers"
+    },
+    "awesome-prompt-engineering-list": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/promptslab/Awesome-Prompt-Engineering"
+    },
+    "awslabs-mcp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/awslabs/mcp"
+    },
+    "axolotl": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/axolotl-ai-cloud/axolotl"
+    },
+    "azure-content-safety": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Azure/azure-sdk-for-python"
+    },
+    "azure-search-openai-demo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Azure-Samples/azure-search-openai-demo"
+    },
+    "babyagi": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/yoheinakajima/babyagi"
+    },
+    "backtrader": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mementum/backtrader"
+    },
+    "baichuan": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/baichuan-inc/Baichuan-7B"
+    },
+    "baize": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/project-baize/baize"
+    },
+    "baml": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/BoundaryML/baml"
+    },
+    "bark": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/suno-ai/bark"
+    },
+    "bat": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sharkdp/bat"
+    },
+    "bbh": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/suzgunmirac/BIG-Bench-Hard"
+    },
+    "bbq-bench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/nyu-mll/bbq"
+    },
+    "bce": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/netease-youdao/BCEmbedding"
+    },
+    "beam": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/beam-cloud/beam"
+    },
+    "beautifulsoup": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/wimglenn/johnnydep"
+    },
+    "beaver-tails": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/PKU-Alignment/BeaverTails"
+    },
+    "beir-trec-covid": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/beir-cellar/beir"
+    },
+    "bentoml": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/bentoml/BentoML"
+    },
+    "bergamot": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mozilla/bergamot-translator"
+    },
+    "bge-reranker": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/FlagOpen/FlagEmbedding"
+    },
+    "big-agi": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/enricoros/big-agi"
+    },
+    "big-bench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google/BIG-bench"
+    },
+    "bigcode-hard": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/bigcode-project/bigcodebench"
+    },
+    "biobert": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/dmis-lab/biobert"
+    },
+    "biogpt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/BioGPT"
+    },
+    "bitsandbytes": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/bitsandbytes-foundation/bitsandbytes"
+    },
+    "blazegraph": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/blazegraph/database"
+    },
+    "boltz-1": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jwohlwend/boltz"
+    },
+    "botkit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/howdyai/botkit"
+    },
+    "botpress": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/botpress/botpress"
+    },
+    "braintrust": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/braintrustdata/autoevals"
+    },
+    "brex-prompt-engineering": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/brexhq/prompt-engineering"
+    },
+    "broot": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Canop/broot"
+    },
+    "browser-use": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/browser-use/browser-use"
+    },
+    "btop": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/aristocratos/btop"
+    },
+    "budibase": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Budibase/budibase"
+    },
+    "calcom": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/calcom/cal.com"
+    },
+    "calvin": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mees/calvin"
+    },
+    "camel-ai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/camel-ai/camel"
+    },
+    "casadi": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/casadi/casadi"
+    },
+    "case-ai-engineering-summary-2025": {
+      "code": 200,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://magazine.sebastianraschka.com/p/state-of-llms-2025"
+    },
+    "case-annotated-transformer": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "http://nlp.seas.harvard.edu/annotated-transformer/"
+    },
+    "case-anthropic-context-engineering": {
+      "code": 200,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+    },
+    "case-anthropic-effective-agents": {
+      "code": 200,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://www.anthropic.com/research/building-effective-agents"
+    },
+    "case-cursor-engineering-blog": {
+      "code": 200,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://cursor.com/blog"
+    },
+    "case-deepseek-r1": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://api-docs.deepseek.com/news/news250120"
+    },
+    "case-distill-bert": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://arxiv.org/abs/1910.01108"
+    },
+    "case-google-agents-whitepaper": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://google.github.io/adk-docs/"
+    },
+    "case-huggingface-agents-course": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/agents-course"
+    },
+    "case-llamaindex-rag-whitepaper": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://docs.llamaindex.ai/en/latest/optimizing/production_rag.html"
+    },
+    "case-llm-inference-handbook": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://www.bentoml.com/llm/"
+    },
+    "case-llm-self-consistency": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://arxiv.org/abs/2203.11171"
+    },
+    "case-llm-toolformer": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://arxiv.org/abs/2302.04761"
+    },
+    "case-openai-practical-guide": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf"
+    },
+    "case-rag-survey": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://arxiv.org/abs/2312.10997"
+    },
+    "case-securing-llm-apps-owasp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+    },
+    "case-vellum-llm-cost-survey": {
+      "code": 200,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://www.vellum.ai/llm-leaderboard"
+    },
+    "case-vellum-state-of-ai": {
+      "code": 200,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://www.vellum.ai/state-of-ai-2025"
+    },
+    "casehold": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/reglab/casehold"
+    },
+    "ccxt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ccxt/ccxt"
+    },
+    "chai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/chaidiscovery/chai-lab"
+    },
+    "chainlit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Chainlit/chainlit"
+    },
+    "chat-ui": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/chat-ui"
+    },
+    "chat2db": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/chat2db/Chat2DB"
+    },
+    "chatbot-ui-docker": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mckaywrigley/chatbot-ui"
+    },
+    "chatdev": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenBMB/ChatDev"
+    },
+    "chatglm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/THUDM/ChatGLM-6B"
+    },
+    "chatgpt-next-web": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ChatGPTNextWeb/NextChat"
+    },
+    "chatgpt.nvim": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jackMort/ChatGPT.nvim"
+    },
+    "chatts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/2noise/ChatTTS"
+    },
+    "chatwoot": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/chatwoot/chatwoot"
+    },
+    "chembl": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/chembl/chembl_beaker"
+    },
+    "cherry-studio": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/CherryHQ/cherry-studio"
+    },
+    "chest-xray": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/arnoweng/CheXNet"
+    },
+    "chroma": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/chroma-core/chroma"
+    },
+    "chromedp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/chromedp/chromedp"
+    },
+    "civitai-prompts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/civitai/civitai"
+    },
+    "claude-agent-sdk-python": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/anthropics/claude-agent-sdk-python"
+    },
+    "claude-code": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/anthropics/claude-code"
+    },
+    "claude-evals": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/anthropics/evals"
+    },
+    "cline": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/cline/cline"
+    },
+    "cline-lts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/clinebot/cline"
+    },
+    "clink": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/chrisant996/clink"
+    },
+    "clue": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/CLUEbenchmark/CLUE"
+    },
+    "cmmlu": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/haonan-li/CMMLU"
+    },
+    "cockroach-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/cockroachdb/cockroach"
+    },
+    "codegeex": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/THUDM/CodeGeeX"
+    },
+    "codeium": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Exafunction/codeium"
+    },
+    "codeium.nvim": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Exafunction/codeium.vim"
+    },
+    "codellama": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/meta-llama/codellama"
+    },
+    "codeshell-sql": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/WisdomShell/codeshell"
+    },
+    "codiga": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/codiga/codiga"
+    },
+    "cognee": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/topoteretes/cognee"
+    },
+    "cogstack": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/CogStack/CogStack"
+    },
+    "cogvlm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/THUDM/CogVLM"
+    },
+    "cogvlm2": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/THUDM/CogVLM2"
+    },
+    "cohere-rerank": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/cohere-ai/cohere-python"
+    },
+    "cohere-toolkit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/cohere-ai/cohere-toolkit"
+    },
+    "colab": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/googlecolab/colabtools"
+    },
+    "colbert": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/stanford-futuredata/colbert"
+    },
+    "colly": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/gocolly/colly"
+    },
+    "colossalai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/hpcaitech/ColossalAI"
+    },
+    "colpali": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/illuin-tech/colpali"
+    },
+    "comet": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Unbabel/COMET"
+    },
+    "comet-ml": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/comet-ml/comet-examples"
+    },
+    "comfyui": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/comfyanonymous/ComfyUI"
+    },
+    "composio": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ComposioHQ/composio"
+    },
+    "continue": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/continuedev/continue"
+    },
+    "contriever": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/contriever"
+    },
+    "copilot": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/github/copilot.vim"
+    },
+    "copilotkit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/CopilotKit/CopilotKit"
+    },
+    "cortex": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/cortexlabs/cortex"
+    },
+    "cosmopedia": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/cosmopedia"
+    },
+    "cosyvoice": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/FunAudioLLM/CosyVoice"
+    },
+    "courtlistener": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/freelawproject/courtlistener"
+    },
+    "coze-studio": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/coze-dev/coze-studio"
+    },
+    "crag": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/HuskyInSalt/CRAG"
+    },
+    "crawl4ai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/unclecode/crawl4ai"
+    },
+    "crewai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/crewAIInc/crewAI"
+    },
+    "crewai-examples": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/crewAIInc/crewAI-examples"
+    },
+    "crewai-tools": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/crewAIInc/crewAI-Tools"
+    },
+    "cublas": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/CUDALibrarySamples"
+    },
+    "cuda-toolkit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/cuda-samples"
+    },
+    "cudnn": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/cudnn-frontend"
+    },
+    "cuge": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/CLUEbenchmark/CLGE"
+    },
+    "curobo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVlabs/curobo"
+    },
+    "cursor": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/getcursor/cursor"
+    },
+    "cutlass": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/cutlass"
+    },
+    "cypress": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/cypress-io/cypress"
+    },
+    "da-vinci": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ada-url/ada"
+    },
+    "daft": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Eventual-Inc/Daft"
+    },
+    "dagster": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/dagster-io/dagster"
+    },
+    "dair-ai-prompt-engineering": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/dair-ai/Prompt-Engineering-Guide"
+    },
+    "danswer": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/danswer-ai/danswer"
+    },
+    "datasets": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/datasets"
+    },
+    "datatrove": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/datatrove"
+    },
+    "datawhale-self-llm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/datawhalechina/self-llm"
+    },
+    "daytona": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/daytonaio/daytona"
+    },
+    "db-gpt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/eosphoros-ai/DB-GPT"
+    },
+    "dbt-core": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/dbt-labs/dbt-core"
+    },
+    "deepagents-langchain": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/langchain-ai/deepagents"
+    },
+    "deepchem": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/deepchem/deepchem"
+    },
+    "deepeval": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/confident-ai/deepeval"
+    },
+    "deepl": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/DeepLcom/deepl-python"
+    },
+    "deeplake": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/activeloopai/deeplake"
+    },
+    "deepseek-coder": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/deepseek-ai/DeepSeek-Coder"
+    },
+    "deepseek-coder-v2": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/deepseek-ai/DeepSeek-Coder-V2"
+    },
+    "deepseek-r1": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/deepseek-ai/DeepSeek-R1"
+    },
+    "deepseek-v3": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/deepseek-ai/DeepSeek-V3"
+    },
+    "deepseek-vl": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/deepseek-ai/DeepSeek-VL"
+    },
+    "deepseek-vl2": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/deepseek-ai/DeepSeek-VL2"
+    },
+    "deepspeed": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/DeepSpeed"
+    },
+    "deepteam": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/confident-ai/deepteam"
+    },
+    "deer-flow": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/bytedance/deer-flow"
+    },
+    "determined-ai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/determined-ai/determined"
+    },
+    "detoxify": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/unitaryai/detoxify"
+    },
+    "devika": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/stitionai/devika"
+    },
+    "dgl": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/dmlc/dgl"
+    },
+    "dgl-ke": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/awslabs/dgl-ke"
+    },
+    "dia": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/nari-labs/dia"
+    },
+    "diff-privacy-toolkit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/IBM/differential-privacy-library"
+    },
+    "diffbot": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/diffbot/diffbot-python-client"
+    },
+    "diffusers": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/diffusers"
+    },
+    "dify": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/langgenius/dify"
+    },
+    "diskann": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/DiskANN"
+    },
+    "distil-whisper": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/distil-whisper"
+    },
+    "dl-course": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/m2dsupsdlclass/lectures-labs"
+    },
+    "docarray": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/docarray/docarray"
+    },
+    "doccano": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/doccano/doccano"
+    },
+    "docling": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/DS4SD/docling"
+    },
+    "docling-core": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/DS4SD/docling-core"
+    },
+    "docling-parse": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/DS4SD/docling-parse"
+    },
+    "docmost": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/docmost/docmost"
+    },
+    "docsify": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/docsifyjs/docsify"
+    },
+    "docusaurus": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebook/docusaurus"
+    },
+    "dolly": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/databrickslabs/dolly"
+    },
+    "dolma": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/allenai/dolma"
+    },
+    "doris-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/apache/doris"
+    },
+    "dpo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/eric-mitchell/direct-preference-optimization"
+    },
+    "dpr": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/DPR"
+    },
+    "drake": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/RobotLocomotion/drake"
+    },
+    "dspy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/stanfordnlp/dspy"
+    },
+    "duckdb-ui": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/duckdb/duckdb-ui"
+    },
+    "duckdb-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/duckdb/duckdb"
+    },
+    "duckdb-vss": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/duckdb/duckdb-vss"
+    },
+    "dureader": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/baidu/DuReader"
+    },
+    "e2b": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/e2b-dev/e2b"
+    },
+    "e2b-desktop": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/e2b-dev/desktop"
+    },
+    "easyocr": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/JaidedAI/EasyOCR"
+    },
+    "edgar": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sec-edgar/sec-edgar"
+    },
+    "elasticsearch": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/elastic/elasticsearch"
+    },
+    "elasticsearch-py": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/elastic/elasticsearch-py"
+    },
+    "element": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/element-hq/element-web"
+    },
+    "eleventy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/11ty/eleventy"
+    },
+    "emu3": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/baaivision/Emu3"
+    },
+    "esm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/esm"
+    },
+    "evalplus": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/evalplus/evalplus"
+    },
+    "exa-py": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/exa-labs/exa-py"
+    },
+    "exllamav2": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/turboderp/exllamav2"
+    },
+    "eza": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/eza-community/eza"
+    },
+    "f5-tts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/SWivid/F5-TTS"
+    },
+    "fairchem": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/FAIR-Chem/fairchem"
+    },
+    "fairscale": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/fairscale"
+    },
+    "fairseq-moe": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/fairseq"
+    },
+    "faiss": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/faiss"
+    },
+    "fal": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/fal-ai/fal"
+    },
+    "fast-graphrag": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/circlemind-ai/fast-graphrag"
+    },
+    "fastai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/fastai/fastai"
+    },
+    "fastchat": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/lm-sys/FastChat"
+    },
+    "faster-whisper": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/SYSTRAN/faster-whisper"
+    },
+    "fastgpt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/labring/FastGPT"
+    },
+    "fastmoe": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/laekov/fastmoe"
+    },
+    "fd": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sharkdp/fd"
+    },
+    "federated-learning": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tensorflow/federated"
+    },
+    "fedml": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/FedML-AI/FedML"
+    },
+    "fern": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/fern-api/fern"
+    },
+    "ferret": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/MontFerret/ferret"
+    },
+    "fig": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/withfig/autocomplete"
+    },
+    "finetuner": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jina-ai/finetuner"
+    },
+    "fingpt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/AI4Finance-Foundation/FinGPT"
+    },
+    "finqa": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/czyssrs/FinQA"
+    },
+    "firecrawl": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/firecrawl/firecrawl"
+    },
+    "firecrawl-py": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mendableai/firecrawl-py"
+    },
+    "firecrawl-rag": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mendableai/firecrawl"
+    },
+    "fish": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/fish-shell/fish-shell"
+    },
+    "flan": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-research/flan"
+    },
+    "flash-attention": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Dao-AILab/flash-attention"
+    },
+    "flashinfer": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/flashinfer-ai/flashinfer"
+    },
+    "flashrag": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/RUC-NLPIR/FlashRAG"
+    },
+    "flores": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/flores"
+    },
+    "flower": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/adap/flower"
+    },
+    "flowise": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/FlowiseAI/Flowise"
+    },
+    "fmeval": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/aws/fmeval"
+    },
+    "fooocus": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/lllyasviel/Fooocus"
+    },
+    "formbricks": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/formbricks/formbricks"
+    },
+    "fourcastnet": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVlabs/FourCastNet"
+    },
+    "fsdp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pytorch/pytorch"
+    },
+    "funasr": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/alibaba-damo-academy/FunASR"
+    },
+    "fzf": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/junegunn/fzf"
+    },
+    "garak": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/leondz/garak"
+    },
+    "gaussdb-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/opengauss/opengauss"
+    },
+    "gemini-cookbook": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-gemini/cookbook"
+    },
+    "generative-ai-examples-nvidia": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/GenerativeAIExamples"
+    },
+    "generative-ai-python": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-gemini/generative-ai-python"
+    },
+    "generative-models": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Stability-AI/generative-models"
+    },
+    "ghostty": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ghostty-org/ghostty"
+    },
+    "gitbook": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/GitbookIO/gitbook"
+    },
+    "glm-4": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/THUDM/GLM-4"
+    },
+    "google-adk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google/adk-python"
+    },
+    "google-adk-go": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google/adk-go"
+    },
+    "google-adk-samples": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google/adk-samples"
+    },
+    "google-palm-cookbook": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/GoogleCloudPlatform/generative-ai"
+    },
+    "gorilla-llm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/gorilla-llm/gorilla"
+    },
+    "gospider": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jaeles-project/gospider"
+    },
+    "gpqa": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/idavidrein/gpqa"
+    },
+    "gpt-engineer": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/gpt-engineer-org/gpt-engineer"
+    },
+    "gpt-pilot": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Pythagora-io/gpt-pilot"
+    },
+    "gpt-prompt-engineer": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mshumer/gpt-prompt-engineer"
+    },
+    "gpt-researcher": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/assafelovic/gpt-researcher"
+    },
+    "gpt4all": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/nomic-ai/gpt4all"
+    },
+    "gpteacher": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/teknium1/GPTeacher"
+    },
+    "gptq": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/IST-DASLab/gptq"
+    },
+    "gradio": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/gradio-app/gradio"
+    },
+    "graph-of-thoughts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/spcl/graph-of-thoughts"
+    },
+    "graphcast": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-deepmind/graphcast"
+    },
+    "graphlit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/graphlit/graphlit"
+    },
+    "graphrag": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/graphrag"
+    },
+    "gsm8k": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/grade-school-math"
+    },
+    "guacamole": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/apache/guacamole-client"
+    },
+    "guardrails-ai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/guardrails-ai/guardrails"
+    },
+    "guidance": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/guidance-ai/guidance"
+    },
+    "guildai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/guildai/guildai"
+    },
+    "gymnasium": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Farama-Foundation/Gymnasium"
+    },
+    "habitat": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/habitat-lab"
+    },
+    "hands-on-llm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/HandsOnLLM/Hands-On-Large-Language-Models"
+    },
+    "harm-bench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/centerforaisafety/HarmBench"
+    },
+    "haystack": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/deepset-ai/haystack"
+    },
+    "helicone": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Helicone/helicone"
+    },
+    "hip": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ROCm/HIP"
+    },
+    "hle": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/centerforaisafety/HLE"
+    },
+    "hnswlib": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/nmslib/hnswlib"
+    },
+    "horovod": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/horovod/horovod"
+    },
+    "htop": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/htop-dev/htop"
+    },
+    "huggingface-evaluate": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/evaluate"
+    },
+    "hugo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/gohugoio/hugo"
+    },
+    "humaneval": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/human-eval"
+    },
+    "hunyuan-dit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Tencent-Hunyuan/HunyuanDiT"
+    },
+    "hunyuan-video": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Tencent-Hunyuan/HunyuanVideo"
+    },
+    "iglu": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/iglu-contest/iglu"
+    },
+    "insanely-fast-whisper": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Vaibhavs10/insanely-fast-whisper"
+    },
+    "inspect-ai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/UKGovernmentBEIS/inspect_ai"
+    },
+    "instructor": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jxnl/instructor"
+    },
+    "instructor-js": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/instructor-ai/instructor-js"
+    },
+    "instructor-obs": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/567-labs/instructor"
+    },
+    "intercode": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/princeton-nlp/intercode"
+    },
+    "internlm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/InternLM/InternLM"
+    },
+    "internvl": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenGVLab/InternVL"
+    },
+    "invokeai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/invoke-ai/InvokeAI"
+    },
+    "isaac-gym": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA-Omniverse/IsaacGymEnvs"
+    },
+    "isaac-lab": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA-Omniverse/IsaacLab"
+    },
+    "iterm2": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/gnachman/iTerm2"
+    },
+    "jailbreak-eval": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Princeton-SysML/Jailbreak_LLM"
+    },
+    "jan": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/menloresearch/jan"
+    },
+    "janusgraph": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/JanusGraph/janusgraph"
+    },
+    "jekyll": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jekyll/jekyll"
+    },
+    "jina-ai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jina-ai/jina"
+    },
+    "jina-reader": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jina-ai/reader"
+    },
+    "jsonformer": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/1rgs/jsonformer"
+    },
+    "jupyter": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jupyter/notebook"
+    },
+    "kafka": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/apache/kafka"
+    },
+    "kaggle": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Kaggle/kaggle-api"
+    },
+    "kandinsky": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ai-forever/Kandinsky-3"
+    },
+    "kasmvnc": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/kasmtech/KasmVNC"
+    },
+    "kdb-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/KxSystems/kdb"
+    },
+    "keywordsai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Keywords-AI/keywordsai"
+    },
+    "khoj": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/khoj-ai/khoj"
+    },
+    "kiara-translate": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/JuliaRegistries/General"
+    },
+    "kilt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/KILT"
+    },
+    "kimi-k2": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/MoonshotAI/Kimi-K2"
+    },
+    "kitty": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/kovidgoyal/kitty"
+    },
+    "koboldcpp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/LostRuins/koboldcpp"
+    },
+    "kokoro": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/hexgrad/kokoro"
+    },
+    "kor": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/eyurtsev/kor"
+    },
+    "kosmos": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/unilm"
+    },
+    "kotaemon": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Cinnamon/kotaemon"
+    },
+    "kserve": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/kserve/kserve"
+    },
+    "kuzu": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/kuzudb/kuzu"
+    },
+    "label-studio": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/heartexlabs/label-studio"
+    },
+    "lancedb": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/lancedb/lancedb"
+    },
+    "langchain": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/langchain-ai/langchain"
+    },
+    "langflow": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/logspace-ai/langflow"
+    },
+    "langfuse": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/langfuse/langfuse"
+    },
+    "langgpt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/langgptai/LangGPT"
+    },
+    "langgraph": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/langchain-ai/langgraph"
+    },
+    "langkit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/whylabs/langkit"
+    },
+    "langsmith": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/langchain-ai/langsmith-sdk"
+    },
+    "lantern": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/lanterndata/lantern"
+    },
+    "latentsync": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/bytedance/LatentSync"
+    },
+    "law-llm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/open-compass/LawBench"
+    },
+    "layoutparser": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Layout-Parser/layout-parser"
+    },
+    "lazydocker": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jesseduffield/lazydocker"
+    },
+    "lazygit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jesseduffield/lazygit"
+    },
+    "leantime": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Leantime/leantime"
+    },
+    "learn-prompting": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/trigaten/Learn_Prompting"
+    },
+    "legalbench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/HazyResearch/legalbench"
+    },
+    "leptonai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/leptonai/leptonai"
+    },
+    "letta": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/letta-ai/letta"
+    },
+    "librechat": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/danny-avila/LibreChat"
+    },
+    "libsql": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tursodatabase/libsql"
+    },
+    "liger-kernel": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/linkedin/Liger-Kernel"
+    },
+    "light-r1": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/qihoo360/Light-R1"
+    },
+    "lighteval": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/lighteval"
+    },
+    "lightning": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Lightning-AI/pytorch-lightning"
+    },
+    "lightrag": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/HKUDS/LightRAG"
+    },
+    "lingvo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tensorflow/lingvo"
+    },
+    "lit-gpt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Lightning-AI/lit-gpt"
+    },
+    "lit-llama": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Lightning-AI/lit-llama"
+    },
+    "litellm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/BerriAI/litellm"
+    },
+    "livebench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/livebench/livebench"
+    },
+    "livecodebench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/livecodebench/livecodebench"
+    },
+    "llama-3": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/meta-llama/llama3"
+    },
+    "llama-3.1": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/meta-llama/llama"
+    },
+    "llama-cookbook-meta": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/meta-llama/llama-cookbook"
+    },
+    "llama-cpp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ggml-org/llama.cpp"
+    },
+    "llama-cpp-python": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/abetlen/llama-cpp-python"
+    },
+    "llama-factory": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/hiyouga/LLaMA-Factory"
+    },
+    "llama-index": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/run-llama/llama_index"
+    },
+    "llama-recipes": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/meta-llama/llama-recipes"
+    },
+    "llamacpp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ggerganov/llama.cpp"
+    },
+    "llamaparse": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/run-llama/llama_parse"
+    },
+    "llava": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/haotian-liu/LLaVA"
+    },
+    "llava-next": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/LLaVA-VL/LLaVA-NeXT"
+    },
+    "llm-compressor": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/vllm-project/llm-compressor"
+    },
+    "llm-course": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mlabonne/llm-course"
+    },
+    "llm-foundry": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mosaicml/llm-foundry"
+    },
+    "llm-from-scratch": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/rasbt/LLMs-from-scratch"
+    },
+    "llm-guard": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/protectai/llm-guard"
+    },
+    "llm-int8": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/timdettmers/bitsandbytes"
+    },
+    "llm-qat": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/llm-qat"
+    },
+    "llm-zoomcamp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/DataTalksClub/llm-zoomcamp"
+    },
+    "llmlingua": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/LLMlingua"
+    },
+    "llmware": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/llmware-ai/llmware"
+    },
+    "lm-eval-harness": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/EleutherAI/lm-evaluation-harness"
+    },
+    "lm-format-enforcer": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/noamgat/lm-format-enforcer"
+    },
+    "lm-studio": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/lmstudio-ai/lms"
+    },
+    "lmdeploy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/InternLM/lmdeploy"
+    },
+    "lobe-chat": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/lobehub/lobe-chat"
+    },
+    "logfire": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pydantic/logfire"
+    },
+    "longllmlingua": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/LLMLingua"
+    },
+    "longmemeval": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/xiaowu0162/longmemeval"
+    },
+    "m3exam": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/DAMO-NLP-SG/M3Exam"
+    },
+    "mace": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ACEsuit/mace"
+    },
+    "magicoder": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ise-uiuc/Magicoder"
+    },
+    "marian-nmt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Helsinki-NLP/Opus-MT"
+    },
+    "marimo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/marimo-team/marimo"
+    },
+    "marker": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/datalab-to/marker"
+    },
+    "markitdown": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/markitdown"
+    },
+    "marqo-rag": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/marqo-ai/marqo"
+    },
+    "marscode": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/marscode/marscode"
+    },
+    "marvin": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/PrefectHQ/marvin"
+    },
+    "mat2vec": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/materialsintelligence/mat2vec"
+    },
+    "math-bench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/hendrycks/math"
+    },
+    "mathvista": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/lupantech/MathVista"
+    },
+    "matrix-synapse": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/element-hq/synapse"
+    },
+    "mattermost": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mattermost/mattermost"
+    },
+    "maxtext": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google/maxtext"
+    },
+    "mcp-auth": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/specification"
+    },
+    "mcp-cli": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/wong2/mcp-cli"
+    },
+    "mcp-csharp-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/csharp-sdk"
+    },
+    "mcp-go-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mark3labs/mcp-go"
+    },
+    "mcp-inspector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/inspector"
+    },
+    "mcp-java-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/java-sdk"
+    },
+    "mcp-kotlin-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/kotlin-sdk"
+    },
+    "mcp-php-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/php-sdk"
+    },
+    "mcp-proxy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/TBXark/mcp-proxy"
+    },
+    "mcp-python": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jlowin/fastmcp"
+    },
+    "mcp-python-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/python-sdk"
+    },
+    "mcp-router": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/registry"
+    },
+    "mcp-ruby-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/ruby-sdk"
+    },
+    "mcp-rust-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/rust-sdk"
+    },
+    "mcp-servers": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/servers"
+    },
+    "mcp-swift-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/swift-sdk"
+    },
+    "mcp-typescript": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/anaisbetts/mcp-installer"
+    },
+    "mcp-typescript-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk"
+    },
+    "mdx": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mdx-js/mdx"
+    },
+    "medcat": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/CogStack/MedCAT"
+    },
+    "medqa": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jind11/MedQA"
+    },
+    "megablocks": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/databricks/megablocks"
+    },
+    "megatron-deepspeed": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/Megatron-DeepSpeed"
+    },
+    "megatron-lm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/Megatron-LM"
+    },
+    "meilisearch": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/meilisearch/meilisearch"
+    },
+    "meilisearch-js": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/meilisearch/meilisearch-js"
+    },
+    "meilisearch-py": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/meilisearch/meilisearch-python"
+    },
+    "meld": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/declare-lab/MELD"
+    },
+    "melo-tts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/myshell-ai/MeloTTS"
+    },
+    "melty": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/meltylabs/melty"
+    },
+    "mem0": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mem0ai/mem0"
+    },
+    "memgraph": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/memgraph/memgraph"
+    },
+    "mergekit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/arcee-ai/mergekit"
+    },
+    "metagpt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/geekan/MetaGPT"
+    },
+    "metamath": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/meta-math/MetaMath"
+    },
+    "metavoice": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/metavoiceio/metavoice-src"
+    },
+    "metaworld": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Farama-Foundation/Metaworld"
+    },
+    "milvus": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/milvus-io/milvus"
+    },
+    "milvus-docs": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/milvus-io/milvus-docs"
+    },
+    "milvus-lite": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/milvus-io/milvus-lite"
+    },
+    "milvus-sdk-go": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/milvus-io/milvus-sdk-go"
+    },
+    "milvus-sdk-java": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/milvus-io/milvus-sdk-java"
+    },
+    "milvus-sdk-node": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/milvus-io/milvus-sdk-node"
+    },
+    "mimic-iii": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/MIT-LCP/mimic-code"
+    },
+    "minbpe": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/karpathy/minbpe"
+    },
+    "mineru": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/opendatalab/MinerU"
+    },
+    "minicpm-v": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenBMB/MiniCPM-V"
+    },
+    "mintlify": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mintlify/writer"
+    },
+    "miopen": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ROCm/MIOpen"
+    },
+    "mirascope": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Mirascope/mirascope"
+    },
+    "mistral-cookbook": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mistralai/cookbook"
+    },
+    "mistral-finetune": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mistralai/mistral-finetune"
+    },
+    "mistral-inference": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mistralai/mistral-inference"
+    },
+    "mkdocs": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mkdocs/mkdocs"
+    },
+    "ml-course": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/dibgerge/ml-coursera-python-assignments"
+    },
+    "mlc-llm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mlc-ai/mlc-llm"
+    },
+    "mlflow": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mlflow/mlflow"
+    },
+    "mlx": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ml-explore/mlx"
+    },
+    "mlx-examples": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ml-explore/mlx-examples"
+    },
+    "modal": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modal-labs/modal-client"
+    },
+    "model-soups": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mlfoundations/model-soups"
+    },
+    "modelScopeT2V": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelscope/modelscope"
+    },
+    "modelcontextprotocol": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol"
+    },
+    "moe-deepseek": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/deepseek-ai/DeepSeek-MoE"
+    },
+    "molmo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/allenai/Molmo"
+    },
+    "mongo-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mongodb/mongo"
+    },
+    "mongodb-rag": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mongodb-developer/GenAI-Showcase"
+    },
+    "moonlight": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/MoonshotAI/Moonlight"
+    },
+    "mosec": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mosecorg/mosec"
+    },
+    "moses": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/moses-smt/mosesdecoder"
+    },
+    "moveit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/moveit/moveit"
+    },
+    "mpc-framework": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/data61/MP-SPDZ"
+    },
+    "ms-ai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/AI-For-Beginners"
+    },
+    "ms-swift": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/modelscope/ms-swift"
+    },
+    "mteb": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/embeddings-benchmark/mteb"
+    },
+    "mujoco": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-deepmind/mujoco"
+    },
+    "mujoco-mpc": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-deepmind/mujoco_mpc"
+    },
+    "mujoco-py": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/mujoco-py"
+    },
+    "multi-agent-orchestrator": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/awslabs/multi-agent-orchestrator"
+    },
+    "mwoz": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/budzianowski/multiwoz"
+    },
+    "n8n": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/n8n-io/n8n"
+    },
+    "nanoGPT": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/karpathy/nanoGPT"
+    },
+    "natural-instructions": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/allenai/natural-instructions"
+    },
+    "nebula-graph": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/vesoft-inc/nebula"
+    },
+    "nemo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/NeMo"
+    },
+    "nemo-guardrails": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/NeMo-Guardrails"
+    },
+    "neo4j-rag-demo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/neo4j-labs/llm-graph-builder"
+    },
+    "neo4j-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/neo4j/neo4j"
+    },
+    "networkx": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/networkx/networkx"
+    },
+    "neuronx": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/aws-neuron/neuronx-nemo-megatron"
+    },
+    "next-chat": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Yidadaa/ChatGPT-Next-Web"
+    },
+    "nextjs-chatbot": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/vercel-labs/ai-chatbot"
+    },
+    "nextra": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/shuding/nextra"
+    },
+    "nlux": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/nlkitai/nlux"
+    },
+    "nni": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/nni"
+    },
+    "noco": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/nocodb/nocodb"
+    },
+    "notion-ai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/makenotion/notion-sdk-js"
+    },
+    "nougat": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/nougat"
+    },
+    "nu": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/nushell/nushell"
+    },
+    "numpy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/numpy/numpy"
+    },
+    "nvflare": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/NVFlare"
+    },
+    "nvidia-nim": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/k8s-nim-operator"
+    },
+    "o1-journey": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/GAIR-NLP/O1-Journey"
+    },
+    "oceanbase-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/oceanbase/oceanbase"
+    },
+    "octo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/octo-models/octo"
+    },
+    "ohmyzsh": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ohmyzsh/ohmyzsh"
+    },
+    "ollama": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ollama/ollama"
+    },
+    "omniquant": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenGVLab/OmniQuant"
+    },
+    "oobabooga": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/oobabooga/text-generation-webui"
+    },
+    "opacus": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/opacus"
+    },
+    "open-instruct": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/allenai/open-instruct"
+    },
+    "open-interpreter": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenInterpreter/open-interpreter"
+    },
+    "open-webui": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/open-webui/open-webui"
+    },
+    "openai-agents-js": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/openai-agents-js"
+    },
+    "openai-agents-python": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/openai-agents-python"
+    },
+    "openai-baselines": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/baselines"
+    },
+    "openai-caption": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/CLIP"
+    },
+    "openai-cookbook": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/openai-cookbook"
+    },
+    "openai-cpp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/olrea/openai-cpp"
+    },
+    "openai-dalle": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/DALL-E"
+    },
+    "openai-embed": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/openai-python"
+    },
+    "openai-evaluators": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/evals"
+    },
+    "openai-glow": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/glow"
+    },
+    "openai-improved-gan": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/improved-gan"
+    },
+    "openai-infoGAN": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/InfoGAN"
+    },
+    "openai-jukebox": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/jukebox"
+    },
+    "openai-mle-bench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/mle-bench"
+    },
+    "openai-pixel-cnn": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/pixel-cnn"
+    },
+    "openai-point-e": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/point-e"
+    },
+    "openai-prm800k": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/prm800k"
+    },
+    "openai-shap-e": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/shap-e"
+    },
+    "openai-spinning": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/spinningup"
+    },
+    "openai-swarm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/swarm"
+    },
+    "openai-tiktoken-py": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/tiktoken"
+    },
+    "openai-triton": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/triton"
+    },
+    "openai-triton-3": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/triton-lang/triton"
+    },
+    "openai-weak-to-strong": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/weak-to-strong"
+    },
+    "openapi-tools": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenAPITools/openapi-generator"
+    },
+    "openbb-browser": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenBB-finance/OpenBBTerminal"
+    },
+    "openbb-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenBB-finance/OpenBB"
+    },
+    "openclip": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mlfoundations/open_clip"
+    },
+    "openff": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openforcefield/openff-toolkit"
+    },
+    "openhands": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/All-Hands-AI/OpenHands"
+    },
+    "openinference": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Arize-ai/openinference"
+    },
+    "openlink-virtuoso": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openlink/virtuoso-opensource"
+    },
+    "openlit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openlit/openlit"
+    },
+    "openllm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/bentoml/OpenLLM"
+    },
+    "openllmetry": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/traceloop/openllmetry"
+    },
+    "opennmt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenNMT/OpenNMT-py"
+    },
+    "opennmt-tf": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenNMT/OpenNMT-tf"
+    },
+    "openrouter": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenRouterTeam/openrouter-runner"
+    },
+    "opensearch-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/opensearch-project/OpenSearch"
+    },
+    "opensora": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/hpcaitech/Open-Sora"
+    },
+    "openvla": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openvla/openvla"
+    },
+    "openvoice": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/myshell-ai/OpenVoice"
+    },
+    "orca": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/orca"
+    },
+    "orca-prompts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/Orca"
+    },
+    "orientdb": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/orientechnologies/orientdb"
+    },
+    "outerbase": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/outerbase/studio"
+    },
+    "outlines": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/outlines-dev/outlines"
+    },
+    "paddle-ernie": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/PaddlePaddle/PaddleNLP"
+    },
+    "paddle-fl": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/PaddlePaddle/PaddleFL"
+    },
+    "paddleocr": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/PaddlePaddle/PaddleOCR"
+    },
+    "pal": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/reasoning-machines/pal"
+    },
+    "pandas": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pandas-dev/pandas"
+    },
+    "pandas-ai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/gventuri/pandas-ai"
+    },
+    "paper-qa": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Future-House/paper-qa"
+    },
+    "papercups": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/papercups-io/papercups"
+    },
+    "papermill": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/nteract/papermill"
+    },
+    "path-foundation": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-health/path-foundation"
+    },
+    "paws": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-research-datasets/paws"
+    },
+    "paxml": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google/paxml"
+    },
+    "peft": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/peft"
+    },
+    "perplexica": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ItzCrazyKns/Perplexica"
+    },
+    "pezzo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pezzolabs/pezzo"
+    },
+    "pgvector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pgvector/pgvector"
+    },
+    "pgvector-go": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pgvector/pgvector-go"
+    },
+    "pgvector-node": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pgvector/pgvector-node"
+    },
+    "pgvector-python": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pgvector/pgvector-python"
+    },
+    "pgvector-rust": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pgvector/pgvector-rust"
+    },
+    "pgvectorscale": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/timescale/pgvectorscale"
+    },
+    "phidata": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/phidatahq/phidata"
+    },
+    "phoenix-arize": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Arize-ai/phoenix"
+    },
+    "pii-detector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Nvidia/NeMo-Curator"
+    },
+    "pinecone": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pinecone-io/pinecone-python-client"
+    },
+    "pinecone-examples": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pinecone-io/examples"
+    },
+    "pinocchio": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/stack-of-tasks/pinocchio"
+    },
+    "piper": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/rhasspy/piper"
+    },
+    "plandex": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/plandex-ai/plandex"
+    },
+    "plane": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/makeplane/plane"
+    },
+    "platypus": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/arielnlee/Platypus"
+    },
+    "playwright-crawler": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/playwright"
+    },
+    "plivo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/plivo/plivo-python"
+    },
+    "polars": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pola-rs/polars"
+    },
+    "pollinations": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pollinations/pollinations"
+    },
+    "polyaxon": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/polyaxon/polyaxon"
+    },
+    "polygon": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/polygon-io/client-python"
+    },
+    "portkey": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Portkey-AI/portkey-python-sdk"
+    },
+    "powerlevel10k": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/romkatv/powerlevel10k"
+    },
+    "prefect": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/PrefectHQ/prefect"
+    },
+    "presidio": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/presidio"
+    },
+    "prism": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/PrismJS/prism"
+    },
+    "private-gpt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/zylon-ai/private-gpt"
+    },
+    "prodia": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/prodia/prodia"
+    },
+    "progen": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/salesforce/progen"
+    },
+    "prompt-eng-llm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NirDiamant/Prompt_Engineering"
+    },
+    "prompt-layer": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/MagnivOrg/prompt-layer-library"
+    },
+    "promptable": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/cfortuner/promptable"
+    },
+    "promptfoo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/promptfoo/promptfoo"
+    },
+    "promptic": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/knowsuchagency/promptic"
+    },
+    "promptmap": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/utkusen/promptmap"
+    },
+    "prompttools": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/hegelai/prompttools"
+    },
+    "protenix": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/bytedance/Protenix"
+    },
+    "prql": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/PRQL/prql"
+    },
+    "psi4": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/psi4/psi4"
+    },
+    "pubmedqa": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pubmedqa/pubmedqa"
+    },
+    "puppeteer": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/puppeteer/puppeteer"
+    },
+    "purple-llama": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/meta-llama/PurpleLlama"
+    },
+    "pyautogui": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/asweigart/pyautogui"
+    },
+    "pybullet": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/bulletphysics/bullet3"
+    },
+    "pydantic-ai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pydantic/pydantic-ai"
+    },
+    "pyhealth": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sunlabuiuc/PyHealth"
+    },
+    "pykeen": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pykeen/pykeen"
+    },
+    "pynput": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/moses-palmer/pynput"
+    },
+    "pyportfolioopt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/robertmartin8/PyPortfolioOpt"
+    },
+    "pyrit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Azure/PyRIT"
+    },
+    "pyscf": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pyscf/pyscf"
+    },
+    "pyspark": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/apache/spark"
+    },
+    "pysyft": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenMined/PySyft"
+    },
+    "qdrant": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/qdrant/qdrant"
+    },
+    "qdrant-client": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/qdrant/qdrant-client"
+    },
+    "qdrant-js": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/qdrant/qdrant-js"
+    },
+    "qlora": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/artidoro/qlora"
+    },
+    "quantconnect": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/QuantConnect/Lean"
+    },
+    "quippy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/libAtoms/quip"
+    },
+    "quivr": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/QuivrHQ/quivr"
+    },
+    "qwen": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/QwenLM/Qwen"
+    },
+    "qwen-agent": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/QwenLM/Qwen-Agent"
+    },
+    "qwen-vl": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/QwenLM/Qwen-VL"
+    },
+    "qwen2": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/QwenLM/Qwen2"
+    },
+    "qwen2-5": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/QwenLM/Qwen2.5"
+    },
+    "qwen2-vl": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/QwenLM/Qwen2-VL"
+    },
+    "qwen2.5-coder": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/QwenLM/Qwen2.5-Coder"
+    },
+    "qwen3": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/QwenLM/Qwen3"
+    },
+    "qwen3-embed": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/QwenLM/Qwen3-Embedding"
+    },
+    "qwq": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/QwenLM/QwQ"
+    },
+    "radfm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/chaoyi-wu/radfm"
+    },
+    "rag-best-practices": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ray-project/llm-applications"
+    },
+    "rag-papers": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/awesome-rag/awesome-rag"
+    },
+    "ragas": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/explodinggradients/ragas"
+    },
+    "ragchecker": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/amazon-science/RAGChecker"
+    },
+    "ragflow": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/infiniflow/ragflow"
+    },
+    "raisim": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/leggedrobotics/raisimLib"
+    },
+    "rasa": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/rasahq/rasa"
+    },
+    "ray": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ray-project/ray"
+    },
+    "rdkit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/rdkit/rdkit"
+    },
+    "rdt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/thu-ml/RoboticsDiffusionTransformer"
+    },
+    "react": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ysymyth/ReAct"
+    },
+    "react-chatbotify": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/react-chatbotify/react-chatbotify"
+    },
+    "readmeio": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/readmeio/api"
+    },
+    "readthedocs": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/readthedocs/readthedocs.org"
+    },
+    "realm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-research/language"
+    },
+    "realtoxicity": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/allenai/real-toxicity-prompts"
+    },
+    "rebuff": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/protectai/rebuff"
+    },
+    "redis-py": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/redis/redis-py"
+    },
+    "redis-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/redis/redis"
+    },
+    "redoc": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Redocly/redoc"
+    },
+    "redpajama": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/togethercomputer/RedPajama-Data"
+    },
+    "reflexion": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/noahshinn/reflexion"
+    },
+    "relevanceai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/RelevanceAI/relevanceai"
+    },
+    "remark": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/remarkjs/remark"
+    },
+    "replicate-agent": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/replicate/replicate-python"
+    },
+    "replicate-api": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/replicate/cog"
+    },
+    "reward-bench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/allenai/reward-bench"
+    },
+    "rewardmodeling": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/lm-human-preferences"
+    },
+    "rfdiffusion": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/RosettaCommons/RFdiffusion"
+    },
+    "ripgrep": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/BurntSushi/ripgrep"
+    },
+    "rlbench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/stepjam/rlbench"
+    },
+    "rlhf": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenLLMAI/OpenRLHF"
+    },
+    "robocorp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/robocorp/robocorp"
+    },
+    "rocblas": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ROCm/rocBLAS"
+    },
+    "rocketchat": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/RocketChat/Rocket.Chat"
+    },
+    "roo-code": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/RooCodeInc/Roo-Code"
+    },
+    "ros": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ros/ros"
+    },
+    "ros2": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ros2/ros2"
+    },
+    "rpa-python": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tebelorg/RPA-Python"
+    },
+    "ruler": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/RULER"
+    },
+    "runway": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/runwayml/runway"
+    },
+    "sacrebleu": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mjpost/sacrebleu"
+    },
+    "safe-rlhf": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/PKU-Alignment/safe-rlhf"
+    },
+    "sage": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sagemath/sage"
+    },
+    "scalar": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/scalar/scalar"
+    },
+    "scale-ai-prompts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/scaleapi/llm-engine"
+    },
+    "scann": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-research/google-research"
+    },
+    "scipy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/scipy/scipy"
+    },
+    "sciriff": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/allenai/sciriff"
+    },
+    "scispacy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/allenai/scispacy"
+    },
+    "scrapling": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/D4Vinci/Scrapling"
+    },
+    "scrapy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/scrapy/scrapy"
+    },
+    "scrapy-redis": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/rmax/scrapy-redis"
+    },
+    "sdxl-controlnet": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/lllyasviel/ControlNet"
+    },
+    "secretflow": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/secretflow/secretflow"
+    },
+    "seeclick": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/njucckevin/SeeClick"
+    },
+    "seedbench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/AILab-CVC/SEED-Bench"
+    },
+    "seldon-core": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/SeldonIO/seldon-core"
+    },
+    "selenium": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/SeleniumHQ/selenium"
+    },
+    "self-rag": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/AkariAsai/self-rag"
+    },
+    "semantic-kernel": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/semantic-kernel"
+    },
+    "sentence-transformers": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/UKPLab/sentence-transformers"
+    },
+    "serpapi": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/serpapi/serpapi-python"
+    },
+    "sglang": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sgl-project/sglang"
+    },
+    "shieldgemma": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-deepmind/gemma"
+    },
+    "shiki": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/shikijs/shiki"
+    },
+    "shioaji": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sinotrade/shioaji"
+    },
+    "show-1": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/showlab/Show-1"
+    },
+    "showui": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/showlab/ShowUI"
+    },
+    "siglip": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/google-research/big_transfer"
+    },
+    "sillytavern": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/SillyTavern/SillyTavern"
+    },
+    "simple-evals": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/simple-evals"
+    },
+    "simple-r1": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/hkust-nlp/simpleRL-reason"
+    },
+    "simpo": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/princeton-nlp/SimPO"
+    },
+    "singlestore-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/singlestore-labs/singlestore"
+    },
+    "skyvern": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Skyvern-AI/skyvern"
+    },
+    "smol-developer": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/smol-ai/developer"
+    },
+    "smol-lm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/smollm"
+    },
+    "smolagents": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/smol-course"
+    },
+    "smolagents-examples": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/smolagents"
+    },
+    "smoothquant": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/mit-han-lab/smoothquant"
+    },
+    "snowflake-arctic": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Snowflake-Labs/snowflake-arctic"
+    },
+    "sockeye": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/awslabs/sockeye"
+    },
+    "sourcery": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sourcery-ai/sourcery"
+    },
+    "speakeasy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/speakeasy-api/speakeasy"
+    },
+    "sphinx": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sphinx-doc/sphinx"
+    },
+    "spider-rs": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/spider-rs/spider"
+    },
+    "splade": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/naver/splade"
+    },
+    "sql-coder": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/defog-ai/sqlcoder"
+    },
+    "sqlfluff": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sqlfluff/sqlfluff"
+    },
+    "sqlite-vec": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/asg017/sqlite-vec"
+    },
+    "sqlite-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/asg017/sqlite-vss"
+    },
+    "stability-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Stability-AI/stability-sdk"
+    },
+    "stable-diffusion": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/CompVis/stable-diffusion"
+    },
+    "stable-diffusion-webui": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui"
+    },
+    "stagehand": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/browserbase/stagehand"
+    },
+    "starrocks-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/StarRocks/starrocks"
+    },
+    "starship": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/starship/starship"
+    },
+    "steel": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/steel-dev/steel-cookbook"
+    },
+    "steel-browser": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/steel-dev/steel-browser"
+    },
+    "stoplight": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/stoplightio/elements"
+    },
+    "storm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/stanford-oval/storm"
+    },
+    "strands-tools": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/strands-agents/tools"
+    },
+    "streamlit": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/streamlit/streamlit"
+    },
+    "styletts2": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/yl4579/StyleTTS2"
+    },
+    "surreal-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/surrealdb/surrealdb"
+    },
+    "surya": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/VikParuchuri/surya"
+    },
+    "swagger": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/swagger-api/swagger-ui"
+    },
+    "swe-agent": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/SWE-agent/SWE-agent"
+    },
+    "swe-bench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/SWE-bench/SWE-bench"
+    },
+    "sweep": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sweepai/sweep"
+    },
+    "sympy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sympy/sympy"
+    },
+    "system-prompts-leaks": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/asgeirtj/system_prompts_leaks"
+    },
+    "tabby": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/TabbyML/tabby"
+    },
+    "tabnine": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/codota/tabnine"
+    },
+    "tagui": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/kelaberetiv/TagUI"
+    },
+    "tau-bench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sierra-research/tau-bench"
+    },
+    "tavily": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tavily-ai/tavily-python"
+    },
+    "tavily-mcp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tavily-ai/tavily-mcp"
+    },
+    "tencent-hunyuan-large": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Tencent-Hunyuan/Tencent-Hunyuan-Large"
+    },
+    "tensor2tensor": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tensorflow/tensor2tensor"
+    },
+    "tensorboard": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tensorflow/tensorboard"
+    },
+    "tensorflow-privacy": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tensorflow/privacy"
+    },
+    "tensorrt-llm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/TensorRT-LLM"
+    },
+    "tesseract": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tesseract-ocr/tesseract"
+    },
+    "text-embeddings-inference": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/text-embeddings-inference"
+    },
+    "text-generation-inference": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/text-generation-inference"
+    },
+    "text2vec": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/shibing624/text2vec"
+    },
+    "thrust": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/NVIDIA/cccl"
+    },
+    "tidb-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pingcap/tidb"
+    },
+    "tig": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jonas/tig"
+    },
+    "tigris-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tigrisdata/tigris"
+    },
+    "tmux": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/tmux/tmux"
+    },
+    "together": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/togethercomputer/together-python"
+    },
+    "toolbench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/OpenBMB/ToolBench"
+    },
+    "tooljet": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ToolJet/ToolJet"
+    },
+    "torchtitan": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pytorch/torchtitan"
+    },
+    "torchtune": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/pytorch/torchtune"
+    },
+    "tortoise-tts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/neonbjb/tortoise-tts"
+    },
+    "tower": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Unbabel/Tower"
+    },
+    "trafilatura": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/adbar/trafilatura"
+    },
+    "transformers": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/transformers"
+    },
+    "tree-of-thoughts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/princeton-nlp/tree-of-thought-llm"
+    },
+    "triton-inference-server": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/triton-inference-server/server"
+    },
+    "trl": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/huggingface/trl"
+    },
+    "trulens": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/truera/trulens"
+    },
+    "tts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/coqui-ai/TTS"
+    },
+    "turbopuffer-py": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/turbopuffer/turbopuffer-python"
+    },
+    "tutel": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/tutel"
+    },
+    "tvm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/apache/tvm"
+    },
+    "txtai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/neuml/txtai"
+    },
+    "typechat": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/microsoft/TypeChat"
+    },
+    "typesense": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/typesense/typesense"
+    },
+    "typesense-js": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/typesense/typesense-js"
+    },
+    "typingmind": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/TypingMind/typingmind"
+    },
+    "ui-tars": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/bytedance/UI-TARS"
+    },
+    "uipath": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/UiPath/corewf"
+    },
+    "ultrachat": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/thunlp/UltraChat"
+    },
+    "unsloth": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/unslothai/unsloth"
+    },
+    "unstructured": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Unstructured-IO/unstructured"
+    },
+    "unstructured-inference": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Unstructured-IO/unstructured-inference"
+    },
+    "upstash-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/upstash/vector-py"
+    },
+    "vald-rag": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/vdaas/vald"
+    },
+    "vanna": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/vanna-ai/vanna"
+    },
+    "verba": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/weaviate/Verba"
+    },
+    "vercel-ai-sdk": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/vercel/ai"
+    },
+    "vespa-docs": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/vespa-engine/documentation"
+    },
+    "vespa-rag": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/vespa-engine/vespa"
+    },
+    "video-crafter": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/VideoCrafter/VideoCrafter"
+    },
+    "vllm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/vllm-project/vllm"
+    },
+    "vnc": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/TigerVNC/tigervnc"
+    },
+    "vocode": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/vocodedev/vocode-python"
+    },
+    "void": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/voideditor/void"
+    },
+    "vonage": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Vonage/vonage-python-sdk"
+    },
+    "voyage-embed": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/voyage-ai/voyageai-python"
+    },
+    "vuepress": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/vuejs/vuepress"
+    },
+    "wandb-agents": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/wandb/wandb"
+    },
+    "warp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/warpdotdev/Warp"
+    },
+    "wav2vec2": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/fairseq"
+    },
+    "weaviate": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/weaviate/weaviate"
+    },
+    "weaviate-ts": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/weaviate/typescript-client"
+    },
+    "webarena": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/web-arena-x/webarena"
+    },
+    "webdriverio": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/webdriverio/webdriverio"
+    },
+    "wezterm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/wez/wezterm"
+    },
+    "whisper": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/openai/whisper"
+    },
+    "whisper-cpp": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ggerganov/whisper.cpp"
+    },
+    "whisperx": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/m-bain/whisperX"
+    },
+    "whyhow": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/whyhow-ai/whyhow"
+    },
+    "whylogs": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/whylabs/whylogs"
+    },
+    "wildbench": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/allenai/WildBench"
+    },
+    "wizardlm": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/nlpxucan/WizardLM"
+    },
+    "wrenai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/Canner/WrenAI"
+    },
+    "x11": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/XQuartz/XQuartz"
+    },
+    "xai-grok": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/xai-org/grok-1"
+    },
+    "xcopa": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/cambridgeltl/xcopa"
+    },
+    "xdotool": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/jordansissel/xdotool"
+    },
+    "xformers": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/xformers"
+    },
+    "xinference": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/xorbitsai/inference"
+    },
+    "xnli": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/facebookresearch/XNLI"
+    },
+    "xonsh": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/xonsh/xonsh"
+    },
+    "yazi": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/sxyazi/yazi"
+    },
+    "yfinance": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ranaroussi/yfinance"
+    },
+    "yi-01-ai": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/01-ai/Yi"
+    },
+    "yi-coder": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/01-ai/Yi-Coder"
+    },
+    "yugabyte-vector": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/yugabyte/yugabyte-db"
+    },
+    "zapier": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/zapier/zapier-platform"
+    },
+    "zed": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/zed-industries/zed"
+    },
+    "zep": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/getzep/zep"
+    },
+    "zero-shot-prompt": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/bigscience/bigscience"
+    },
+    "zipline": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/quantopian/zipline"
+    },
+    "zoxide": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/ajeetdsouza/zoxide"
+    },
+    "zsh": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/zsh-users/zsh"
+    },
+    "zulip": {
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
+      "url": "https://github.com/zulip/zulip"
+    }
+  },
+  "total": 927
 }
