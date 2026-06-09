@@ -9198,8 +9198,8 @@ skills:
   - slug: pii-detector
     title: PII Detector
     title_zh: PII 检测器
-    source: nvidia/NeMo-Curator
-    source_url: https://github.com/Nvidia/NeMo-Curator
+    source: NVIDIA-NeMo/Curator
+    source_url: https://github.com/NVIDIA-NeMo/Curator
     category: guardrails
     tags:
       - pii
