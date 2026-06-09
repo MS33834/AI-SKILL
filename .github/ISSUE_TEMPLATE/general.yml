@@ -1,0 +1,10 @@
+name: General
+description: Anything else — questions, category proposals, feedback
+labels: []
+body:
+  - type: textarea
+    id: message
+    attributes:
+      label: What's on your mind?
+    validations:
+      required: true

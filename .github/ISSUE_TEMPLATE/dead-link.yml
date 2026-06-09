@@ -1,0 +1,27 @@
+name: Dead link
+description: Report a source_url that no longer works
+labels: ["dead-link"]
+body:
+  - type: input
+    id: slug
+    attributes:
+      label: Slug
+      description: The entry's slug in catalog/skills.yaml
+      placeholder: e.g. langchain
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Broken URL
+      description: The source_url that returns 404 or similar
+      placeholder: e.g. https://github.com/example/repo
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Any context — did the repo move? Get renamed? Go private?
+    validations:
+      required: false

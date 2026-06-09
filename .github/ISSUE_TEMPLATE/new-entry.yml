@@ -1,0 +1,27 @@
+name: New entry suggestion
+description: Suggest a skill to add to the catalog
+labels: ["new-entry"]
+body:
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      description: GitHub repo or page URL
+      placeholder: e.g. https://github.com/example/repo
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      description: One of the 49 categories (see catalog/skills.yaml)
+      placeholder: e.g. agent-frameworks
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Why this entry?
+      description: Brief reason — what does it do, why is it useful for agent builders?
+    validations:
+      required: true
