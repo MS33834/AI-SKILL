@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software in academic work, please cite it using the
+  metadata below.
+title: AI-SKILL
+authors:
+  - family-names: badhope
+    given-names: badhope
+    alias: badhope
+identifiers:
+  - type: url
+    value: https://github.com/badhope/AI-SKILL
+license: MIT
+type: software
+url: https://github.com/badhope/AI-SKILL
+repository-code: https://github.com/badhope/AI-SKILL
+keywords:
+  - agent
+  - llm
+  - prompt-engineering
+  - ai-skills
+  - catalog
+  - index
+  - awesome-list
+  - mcp
+  - rag
+  - ai
+abstract: >-
+  Hand-curated index of 900+ agent skills (repos, cookbooks, MCP servers, case studies) across 49 categories. One YAML file, bilingual, no library, no tutorial site — just a list you can grep and vendor.
