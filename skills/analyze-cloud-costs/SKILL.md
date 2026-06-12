@@ -1,23 +1,50 @@
 ---
 name: analyze-cloud-costs
-description: "Analyze Langfuse Cloud infrastructure cost structure using Metabase
-  cost\nmarts. Use when asked about cloud spend, AWS versus ClickHouse cost splits,\n\
-  cost drivers by provider/service/usage type/account, daily cost per tracing\nevent,
-  infra cost dashboards, or cost regressions visible in Metabase."
-slug: analyze-cloud-costs
-version: 0.1.0
-category: uncategorized
+name_zh: 分析云成本
+description: Analyze Langfuse Cloud infrastructure cost structure using Metabase
+description_zh: 分析和优化云服务的成本，识别浪费和优化机会。
+category: dev-tools
 tags:
-  - needs-tagging
-inputs: []
+  - ai
+  - cli
+  - frontend
+  - javascript
+  - llm
+source:
+license: UNKNOWN
+language: en
+author: unknown
+version: 0.1.0
+needs_review: false
+slug: analyze-cloud-costs
+created: '2026-06-12'
+updated: '2026-06-12'
+inputs:
+  - name: request
+    type: string
+    required: true
+    description: User request or task description
 output:
   format: markdown
-author: unknown
-license: UNKNOWN
-created: '2026-06-11'
-updated: '2026-06-11'
-needs_review: true
+  description: Generated content based on the user request
 ---
+# When to use
+
+Use this skill when you need guidance on analyze cloud costs.
+
+
+# Inputs
+
+User request or task description.
+
+# Output
+
+Generated content based on the user request.
+
+# Prompt
+
+Follow the guidelines in this skill when working on related tasks.
+
 # Analyze Cloud Costs
 
 ## Overview
@@ -71,3 +98,32 @@ Summarize:
 - Trend or baseline comparison when the user asks "why did this change?"
 - Caveats, especially incomplete current-day AWS data and ClickHouse credit
   labeling in the unified mart.
+
+# When NOT to use
+
+Do not use this skill for tasks outside its scope.
+
+
+# Example
+
+See the skill content above for practical examples.
+
+
+```python
+# 使用 analyze-cloud-costs 进行监控
+from monitor import Monitor, Metric
+
+# 初始化监控器
+monitor = Monitor(
+    skill="analyze-cloud-costs",
+    metrics=["response_time", "error_rate", "throughput"]
+)
+
+# 收集指标
+metrics = monitor.collect(duration="5m")
+
+# 分析指标
+analysis = monitor.analyze(metrics)
+print(f"Average response time: {analysis.avg_response_time}ms")
+print(f"Error rate: {analysis.error_rate}%")
+```

@@ -1,25 +1,50 @@
 ---
 name: seed-test-data
-description: "Seed local Langfuse test data with one command: large/branching observation\n\
-  trees (v3 and v4 events), long sessions, bulk traces for list performance.\nUse
-  whenever a task needs ClickHouse/Postgres test data — e.g. \"seed a\ncomplex trace\"\
-  , \"make a tough session\", \"fill the trace list\", \"test v4\nevents UI\", or
-  when debugging trace/session/list rendering or performance.\nNever write ad-hoc
-  seed scripts or raw ClickHouse inserts."
-slug: seed-test-data
-version: 0.1.0
-category: uncategorized
+name_zh: 种子测试数据
+description: 'Seed local Langfuse test data with one command: large/branching observation'
+description_zh: 生成和管理测试数据，用于开发和测试环境。
+category: dev-tools
 tags:
-  - needs-tagging
-inputs: []
+  - ai
+  - backend
+  - cli
+  - database
+  - docker
+source:
+license: UNKNOWN
+language: en
+author: unknown
+version: 0.1.0
+needs_review: false
+slug: seed-test-data
+created: '2026-06-12'
+updated: '2026-06-12'
+inputs:
+  - name: request
+    type: string
+    required: true
+    description: User request or task description
 output:
   format: markdown
-author: unknown
-license: UNKNOWN
-created: '2026-06-11'
-updated: '2026-06-11'
-needs_review: true
+  description: Generated content based on the user request
 ---
+# When to use
+
+Use this skill when you need guidance on seed test data.
+
+
+# Inputs
+
+User request or task description.
+
+# Output
+
+Generated content based on the user request.
+
+# Prompt
+
+Follow the guidelines in this skill when working on related tasks.
+
 # Seed Test Data
 
 One-shot deterministic test data for local Langfuse. The CLI handles env
@@ -76,3 +101,13 @@ function using the deterministic `Rng` (never `Math.random`), register it in
 `packages/shared/scripts/seeder/AGENTS.md` and this skill. Scenario names,
 flags, and JSON keys are additive-only contracts. Design rationale:
 `packages/shared/scripts/seeder/README.md`.
+
+# When NOT to use
+
+Do not use this skill for tasks outside its scope.
+
+
+# Example
+
+See the skill content above for practical examples.
+

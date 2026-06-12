@@ -1,54 +1,32 @@
 ---
-slug: test-generator
 name: Unit Test Generator
 name_zh: 单元测试生成器
-version: 1.0.0
-description: Generate unit tests for a function or class. Vendor-neutral, 
-  framework-aware.
+description: whether to add edge case tests (None, empty, overflow)
 description_zh: 为函数或类生成单元测试。无厂商依赖，识别测试框架。
-category: dev-tools
+category: applications
 tags:
-  - testing
-  - tdd
-  - unit-tests
-  - qa
+  - ai
+  - evaluation
+  - frontend
+  - llm
+  - python
+source:
+license: MIT
+language: en
+author: badhope
+version: 1.0.0
+needs_review: false
+slug: test-generator
+created: '2026-06-12'
+updated: '2026-06-12'
 inputs:
-  - name: code
+  - name: request
     type: string
     required: true
-    description: the function or class to test
-  - name: framework
-    type: enum
-    required: false
-    values:
-      - pytest
-      - jest
-      - go-test
-      - junit
-      - rspec
-      - auto
-    default: auto
-    description: test framework to use
-  - name: coverage_target
-    type: integer
-    required: false
-    default: 80
-    constraints:
-      min: 50
-      max: 100
-    description: target branch coverage percentage
-  - name: include_edge_cases
-    type: boolean
-    required: false
-    default: true
-    description: whether to add edge case tests (None, empty, overflow)
+    description: User request or task description
 output:
-  format: code
-author: badhope
-license: MIT
-created: 2026-06-10
-updated: 2026-06-10
-needs_review: false
+  format: markdown
+  description: Generated content based on the user request
 ---
 # When to use
 

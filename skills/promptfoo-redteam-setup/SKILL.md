@@ -1,25 +1,50 @@
 ---
 name: promptfoo-redteam-setup
-description: 'Create or refine promptfoo redteam setup configs: purpose, targets,
-  plugins, strategies, frameworks, multi-input target inputs, policy text, grader
-  guidance, contexts, and static-code-derived target/threat mapping. Use when preparing
-  a red team scan plan from live probes, code evidence, or provider configs, or when
-  generating adversarial test cases for QA. Do not use for basic provider wiring alone
-  or for running/evaluating an already-generated redteam scan.'
-slug: promptfoo-redteam-setup
-version: 0.1.0
-category: uncategorized
+name_zh: 设置 Promptfoo 红队测试
+description: 'Create or refine promptfoo redteam setup configs: purpose, targets,'
+description_zh: 配置 Promptfoo 红队测试环境和测试用例。
+category: dev-tools
 tags:
-  - needs-tagging
-inputs: []
+  - ai
+  - api
+  - backend
+  - cli
+  - database
+source:
+license: UNKNOWN
+language: en
+author: unknown
+version: 0.1.0
+needs_review: false
+slug: promptfoo-redteam-setup
+created: '2026-06-12'
+updated: '2026-06-12'
+inputs:
+  - name: request
+    type: string
+    required: true
+    description: User request or task description
 output:
   format: markdown
-author: unknown
-license: UNKNOWN
-created: '2026-06-11'
-updated: '2026-06-11'
-needs_review: true
+  description: Generated content based on the user request
 ---
+# When to use
+
+Use this skill when you need guidance on promptfoo redteam setup.
+
+
+# Inputs
+
+User request or task description.
+
+# Output
+
+Generated content based on the user request.
+
+# Prompt
+
+Follow the guidelines in this skill when working on related tasks.
+
 # Promptfoo Redteam Setup
 
 Build a small, explicit redteam config that matches the real app threat model.
@@ -201,3 +226,13 @@ When done, state:
 - Files created or changed
 - Validation/generation commands run and generated test count
 - Risks intentionally deferred to a later scan
+
+# When NOT to use
+
+Do not use this skill for tasks outside its scope.
+
+
+# Example
+
+See the skill content above for practical examples.
+

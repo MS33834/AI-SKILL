@@ -1,23 +1,33 @@
 ---
 name: skill-lookup
-description: "Search, retrieve, and install Agent Skills from the prompts.chat registry
-  using MCP tools. Use when the user asks to find skills, browse skill catalogs, install
-  a skill for Claude, or extend Claude's capabilities with reusable AI agent components.\n"
-license: MIT
-platforms:
-  - claude
-slug: skill-lookup
-version: 0.1.0
-category: uncategorized
+name_zh: 技能查找
+description: Search, retrieve, and install Agent Skills from the prompts.chat 
+  registry
+description_zh: 在技能库中查找和检索相关技能。
+category: applications
 tags:
-  - needs-tagging
-inputs: []
+  - ai
+  - documentation
+  - frontend
+  - llm
+  - security
+source:
+license: MIT
+language: en
+author: unknown
+version: 0.1.0
+needs_review: false
+slug: skill-lookup
+created: '2026-06-12'
+updated: '2026-06-12'
+inputs:
+  - name: request
+    type: string
+    required: true
+    description: User request or task description
 output:
   format: markdown
-author: unknown
-created: '2026-06-11'
-updated: '2026-06-11'
-needs_review: true
+  description: Generated content based on the user request
 ---
 ## Workflow
 
@@ -86,3 +96,30 @@ When the user asks to install a skill:
 - Present search results in a readable format with file counts
 - When installing, confirm the skill was saved successfully
 - Explain what the skill does and when it activates
+
+# When to use
+
+Use this skill when you need guidance on skill lookup.
+
+
+# Inputs
+
+User request or task description.
+
+# Output
+
+Generated content based on the user request.
+
+# Prompt
+
+Follow the guidelines in this skill when working on related tasks.
+
+# When NOT to use
+
+Do not use this skill for tasks outside its scope.
+
+
+# Example
+
+See the skill content above for practical examples.
+

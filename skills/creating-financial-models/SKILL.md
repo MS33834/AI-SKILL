@@ -1,22 +1,51 @@
 ---
 name: creating-financial-models
+name_zh: 创建财务模型
 description: This skill provides an advanced financial modeling suite with DCF 
-  analysis, sensitivity testing, Monte Carlo simulations, and scenario planning 
-  for investment decisions
-slug: creating-financial-models
-version: 0.1.0
-category: uncategorized
+  analysis,
+description_zh: 构建财务模型用于预测、估值和决策分析。
+category: dev-tools
 tags:
-  - needs-tagging
-inputs: []
+  - ai
+  - api
+  - backend
+  - cli
+  - documentation
+source:
+license: UNKNOWN
+language: en
+author: unknown
+version: 0.1.0
+needs_review: false
+slug: creating-financial-models
+created: '2026-06-12'
+updated: '2026-06-12'
+inputs:
+  - name: request
+    type: string
+    required: true
+    description: User request or task description
 output:
   format: markdown
-author: unknown
-license: UNKNOWN
-created: '2026-06-11'
-updated: '2026-06-11'
-needs_review: true
+  description: Generated content based on the user request
 ---
+# When to use
+
+Use this skill when you need guidance on creating financial models.
+
+
+# Inputs
+
+User request or task description.
+
+# Output
+
+Generated content based on the user request.
+
+# Prompt
+
+Follow the guidelines in this skill when working on related tasks.
+
 # Financial Modeling Suite
 
 A comprehensive financial modeling toolkit for investment analysis, valuation, and risk assessment using industry-standard methodologies.
@@ -185,3 +214,40 @@ The model automatically performs:
 - Regular updates for market parameter defaults
 - Incorporation of regulatory changes
 - Continuous improvement based on usage patterns
+
+# When NOT to use
+
+Do not use this skill for tasks outside its scope.
+
+
+# Example
+
+```python
+# DCF估值示例
+from financial_models import DCFModel
+
+# 构建DCF模型
+model = DCFModel(
+    historical_financials={
+        2021: {"revenue": 100, "fcf": 20},
+        2022: {"revenue": 120, "fcf": 25},
+        2023: {"revenue": 150, "fcf": 32},
+    },
+    growth_rate=0.15,
+    wacc=0.10,
+    terminal_growth=0.03
+)
+
+# 计算估值
+valuation = model.calculate()
+print(f"企业价值: ${valuation.enterprise_value:.2f}M")
+print(f"股权价值: ${valuation.equity_value:.2f}M")
+
+# 敏感性分析
+sensitivity = model.sensitivity_analysis(
+    variables=["growth_rate", "wacc"],
+    ranges=[(0.10, 0.20), (0.08, 0.12)]
+)
+sensitivity.plot_tornado()
+```
+

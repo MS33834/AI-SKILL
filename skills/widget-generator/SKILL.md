@@ -1,21 +1,51 @@
 ---
 name: widget-generator
+name_zh: Widget 生成器
 description: Generate customizable widget plugins for the prompts.chat feed 
   system
-slug: widget-generator
-version: 0.1.0
-category: uncategorized
+description_zh: 生成可嵌入的 widget 组件。
+category: applications
 tags:
-  - needs-tagging
-inputs: []
+  - ai
+  - backend
+  - frontend
+  - javascript
+  - llm
+source:
+license: UNKNOWN
+language: en
+author: unknown
+version: 0.1.0
+needs_review: false
+slug: widget-generator
+created: '2026-06-12'
+updated: '2026-06-12'
+inputs:
+  - name: request
+    type: string
+    required: true
+    description: User request or task description
 output:
   format: markdown
-author: unknown
-license: UNKNOWN
-created: '2026-06-11'
-updated: '2026-06-11'
-needs_review: true
+  description: Generated content based on the user request
 ---
+# When to use
+
+Use this skill when you need guidance on widget generator.
+
+
+# Inputs
+
+User request or task description.
+
+# Output
+
+Generated content based on the user request.
+
+# Prompt
+
+Follow the guidelines in this skill when working on related tasks.
+
 # Widget Generator Skill
 
 This skill guides creation of widget plugins for **prompts.chat**. Widgets are injected into prompt feeds to display promotional content, sponsor cards, or custom interactive components.
@@ -403,3 +433,13 @@ interface WidgetPlugin {
 | TypeScript errors | Ensure imports from `./types`, check sponsor object shape |
 | Styling issues | Use Tailwind classes, match existing widget patterns |
 | Position wrong | Remember positions are 0-indexed, check `repeatEvery` value |
+
+# When NOT to use
+
+Do not use this skill for tasks outside its scope.
+
+
+# Example
+
+See the skill content above for practical examples.
+

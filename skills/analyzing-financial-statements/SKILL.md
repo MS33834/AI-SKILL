@@ -1,21 +1,51 @@
 ---
 name: analyzing-financial-statements
+name_zh: 分析财务报表
 description: This skill calculates key financial ratios and metrics from 
-  financial statement data for investment analysis
-slug: analyzing-financial-statements
-version: 0.1.0
-category: uncategorized
+  financial
+description_zh: 计算关键财务比率和指标，用于投资分析和公司评估。
+category: applications
 tags:
-  - needs-tagging
-inputs: []
+  - ai
+  - api
+  - evaluation
+  - frontend
+  - javascript
+source:
+license: UNKNOWN
+language: en
+author: unknown
+version: 0.1.0
+needs_review: false
+slug: analyzing-financial-statements
+created: '2026-06-12'
+updated: '2026-06-12'
+inputs:
+  - name: request
+    type: string
+    required: true
+    description: User request or task description
 output:
   format: markdown
-author: unknown
-license: UNKNOWN
-created: '2026-06-11'
-updated: '2026-06-11'
-needs_review: true
+  description: Generated content based on the user request
 ---
+# When to use
+
+Use this skill when you need guidance on analyzing financial statements.
+
+
+# Inputs
+
+User request or task description.
+
+# Output
+
+Generated content based on the user request.
+
+# Prompt
+
+Follow the guidelines in this skill when working on related tasks.
+
 # Financial Ratio Calculator Skill
 
 This skill provides comprehensive financial ratio analysis for evaluating company performance, profitability, liquidity, and valuation.
@@ -80,3 +110,33 @@ Results include:
 - Industry benchmarks are general guidelines
 - Some ratios may not apply to all industries
 - Historical data doesn't guarantee future performance
+
+# When NOT to use
+
+Do not use this skill for tasks outside its scope.
+
+
+# Example
+
+See the skill content above for practical examples.
+
+
+```python
+# 使用 analyzing-financial-statements 技能
+from skill_loader import load_skill
+
+# 加载技能
+skill = load_skill("analyzing-financial-statements")
+
+# 执行技能
+result = skill.execute(
+    params={"key": "value"},
+    options={"verbose": True}
+)
+
+# 处理结果
+if result.success:
+    print(f"Success: {result.output}")
+else:
+    print(f"Error: {result.error}")
+```

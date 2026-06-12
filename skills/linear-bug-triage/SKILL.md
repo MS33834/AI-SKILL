@@ -1,25 +1,51 @@
 ---
 name: linear-bug-triage
-description: "Deduplicate measured bug or regression evidence against Linear, then
-  either\nadd evidence comments to related existing issues or create concise Linear
-  bug\nissues in Triage. Use when Codex has confirmed evidence from Datadog,\nbenchmarks,
-  traces, timings, flamegraphs, logs, or production measurements and\nneeds Linear
-  search, comments, labels, Datadog links, or bug ticket creation\nwithout fix suggestions,
-  but only after a human has approved sharing the\nfindings in Linear."
-slug: linear-bug-triage
-version: 0.1.0
-category: uncategorized
+name_zh: Linear Bug 分类
+description: Deduplicate measured bug or regression evidence against Linear, 
+  then
+description_zh: 使用 Linear 对 bug 进行分类、优先级排序和跟踪。
+category: dev-tools
 tags:
-  - needs-tagging
-inputs: []
+  - ai
+  - api
+  - backend
+  - cli
+  - datadog
+source:
+license: UNKNOWN
+language: en
+author: unknown
+version: 0.1.0
+needs_review: false
+slug: linear-bug-triage
+created: '2026-06-12'
+updated: '2026-06-12'
+inputs:
+  - name: request
+    type: string
+    required: true
+    description: User request or task description
 output:
   format: markdown
-author: unknown
-license: UNKNOWN
-created: '2026-06-11'
-updated: '2026-06-11'
-needs_review: true
+  description: Generated content based on the user request
 ---
+# When to use
+
+Use this skill when you need guidance on linear bug triage.
+
+
+# Inputs
+
+User request or task description.
+
+# Output
+
+Generated content based on the user request.
+
+# Prompt
+
+Follow the guidelines in this skill when working on related tasks.
+
 # Linear Bug Triage
 
 Use this skill after a bug or regression candidate has measured evidence. This
@@ -124,3 +150,13 @@ Related Linear search:
 Do not include fix suggestions, root-cause guesses, implementation notes, owner
 assignments, or next steps unless the user explicitly asks outside the Linear
 issue or comment.
+
+# When NOT to use
+
+Do not use this skill for tasks outside its scope.
+
+
+# Example
+
+See the skill content above for practical examples.
+
