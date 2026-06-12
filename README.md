@@ -1,197 +1,128 @@
 # AI-SKILL
 
-A working index of agent skills — repos, cookbooks, MCP servers,
-production case studies. The stuff you'd actually want when building
-with LLMs.
+> A vault of agent skills, ready to copy into Claude / Codex / Cursor /
+> Continue / whatever comes next. Vendor-neutral, fully local, hand-picked.
 
-Not a library. Not a tutorial site. Just a single YAML file with
-900+ curated `source_url` pointers, sorted into 49 categories.
-You read it, you click through, you use the upstream project. That
-is the whole loop.
+## 这是什么
 
-[English](./README.md) · [简体中文](./README.zh.md)
+一个**技能保险柜**。`skills/` 下面放真东西 —— 每个技能是一份
+`SKILL.md`，frontmatter + body，clone 下来就能用。
 
-## Why this exists
+不是 awesome-list。awesome-list 给你一个 GitHub 链接，你点
+进去还得自己找文件。这个仓库的每个技能**已经把文件落盘到
+本地**，不依赖任何外部仓库。
 
-The agent ecosystem has thousands of good repos scattered across
-GitHub, arXiv, and the corporate research blogs. Searching GitHub
-directly returns noise. The existing awesome-lists are usually
-abandoned or vendor-driven.
+不是 vendor-bound skill pack。Claude skills 只能在 Claude 用，
+Codex skills 只能在 Codex 用。这里默认所有技能**平台中立**，
+在能读 Markdown 的 agent 上都能跑。少数平台相关的技能会在
+`platforms:` 字段标 `claude` 之类的限定词，并在文档里写清
+`**Claude-only**` disclaimer。
 
-This repo is one hand-curated YAML file. The value is in the
-picking: every entry has a `source_url` that resolves, a one-line
-`summary` / `summary_zh`, and a `category` from a closed set of 49.
-You can grep it, vendor it, render it, or clone it as a starting
-point for your own list.
+## Vault 里现在有什么
 
-## What's in the box
+`35 / 0 / 0` —— 35 条技能，全部通过 `validate-skill.py --strict` 验证。
 
-- **`catalog/skills.yaml`** — the index. 900+ entries across 49
-  categories, bilingual (en + zh). One entry per upstream repo.
-- **`catalog/own_skills.yaml`** — an empty placeholder for skills
-  we author and host in this repo. See `skills/` for the format.
-- **`skills/`** — drop-in folder for our own skills (frontmatter +
-  Markdown). Empty by design; fill it when you have something.
+| 类别 | 数量 | 例子 |
+|---|---|---|
+| 手写 vendor-neutral | 5 | `pdf-summarizer`, `code-reviewer`, `test-generator`, `sql-query-helper`, `commit-message-writer` |
+| Claude-only 平台示例 | 1 | `pdf-vision-extractor` |
+| 抓取自大厂 + 通用化 | 29 | `mcp-builder`, `webapp-testing`, `skill-creator`, `doc-coauthoring`, `internal-comms`, `clickhouse-best-practices`, `turborepo`, `security-review`, `storybook`, `pnpm-upgrade-package`, `frontend-large-feature-architecture`, `code-review`, `deepeval-*`, `promptfoo-*`, `llm-pricing-file-update`, `realtime-eval-bootstrap`, `react-router-search-params`, `goal-definition`, `cli-builder`, `threat-modeling`, `secure-code-by-language`, `ownership-bus-factor`, `pr-yeet`, `frontend-visual-design`, `browser-ml-in-js`, `embedding-model-training` |
 
-We don't host, mirror, or repackage anyone else's work. The catalog
-points; the upstream delivers.
+抓取来源的 8 个仓库：`confident-ai/deepeval` (3) /
+`promptfoo/promptfoo` (3) / `langfuse/langfuse` (8) /
+`openai/openai-cookbook` (1) / `openai/skills` (6) /
+`letta-ai/skills` (1) / `huggingface/skills` (2) /
+`anthropics/skills` (5)。
+每条抓来的技能 frontmatter 都标了 `source:` 字段，
+`author` 写成 `"<Vendor> (downstream pack: badhope)"`。
+详见 `SOURCE.md`。
 
-## The 49 categories
+## 怎么用
 
-The full list lives in `catalog/skills.yaml` under `categories:`.
-A sample so you know the shape:
+### 浏览
 
-| # | Category | What goes here |
-|---:|---|---|
-| 01 | Official Cookbooks | Vendor pattern books (Anthropic, OpenAI, Google, …) |
-| 03 | Agent Frameworks | LangChain, AutoGen, CrewAI, smolagents, … |
-| 04 | RAG & Retrieval | Vector stores, retrievers, chunkers, embedding pipelines |
-| 10 | MCP Protocol | Model Context Protocol servers, clients, gateways |
-| 22 | Synthetic Data | Self-instruct, evol-instruct, distillation |
-| 35 | Reasoning Models | Chain-of-thought, o1-style, self-consistency |
-| 49 | Case Studies | Production post-mortems, industry reports |
+打开 [AI-SKILL Pages](https://badhope.github.io/AI-SKILL)，看
+列表、点详情、点下载。站点是 hash 路由，**深链可直接分享**：
 
-New entries fit into an existing category. New categories need a
-reason — open an issue first if you think one is missing.
-
-## Entry schema
-
-Each record under the top-level `skills:` list in
-`catalog/skills.yaml`:
-
-```yaml
-- slug: anthropic-cookbook            # unique id, kebab-case
-  title: Claude Cookbook              # display name (en)
-  title_zh: Claude Cookbook           # display name (zh)
-  source: anthropics/anthropic-cookbook         # owner/repo on GitHub
-  source_url: https://github.com/anthropics/anthropic-cookbook
-  category: official-cookbooks        # one of the 49 slugs above
-  subgroup: us-frontier-labs          # optional, for finer grouping
-  tags:                               # 2-5 lowercase tags
-    - claude
-    - anthropic
-    - official
-    - notebook
-  summary: Anthropic's official notebook collection for Claude — tool use, PDF, structured output.
-  summary_zh: Anthropic 官方 notebook 合集：工具调用、PDF 理解、结构化输出。
-  stars: 22000                        # refreshed daily by sync-github
-  license: MIT                        # SPDX id, refreshed daily
-  pushed_at: 2026-06-04               # last commit on upstream
-  added: 2026-06-04                   # when we added it to the index
-  archived: false                     # true if upstream went read-only
+```
+https://badhope.github.io/AI-SKILL/#/skill/pdf-summarizer
+https://badhope.github.io/AI-SKILL/#/bundle
 ```
 
-`source` and `source_url` are the pointers; the rest is metadata.
-The `added` date is when the entry landed in the index — don't
-conflate it with file modification time.
+或者直接看 `skills/` 目录 —— 它就是站点渲染的数据源。
 
-For non-GitHub sources (e.g. arXiv papers, blog postmortems in the
-case-studies category), the `source` field can be a domain like
-`arxiv.org` and the `source_url` the actual paper URL. The
-sync-github script skips those entries automatically.
+**顶栏右上角可以切 EN / 中文**。除了 `SKILL.md` 正文本身
+不动之外，所有辅助 / 介绍文案都会换。语言选择存在
+`localStorage` 里，刷新也保留；URL 加 `?lang=zh` 也能强切。
 
-## Using the catalog
-
-The repository is the catalog. There is no docs site, no Pages
-build, no API. The data is the product.
-
-Programmatic read:
-
-```python
-import yaml
-with open("catalog/skills.yaml") as f:
-    data = yaml.safe_load(f)
-entry = next(s for s in data["skills"] if s["slug"] == "langchain")
-print(entry["source_url"])
-```
-
-Grep-style read with [`yq`](https://github.com/mikefarah/yq):
+### 装一个技能
 
 ```bash
-# All RAG-related entries, slug + url
-yq '.skills[] | select(.category == "rag-retrieval")
-    | [.slug, .source_url] | @tsv' catalog/skills.yaml
+# 装到 Claude (默认 ~/.claude/skills)
+python scripts/install-skill.py pdf-summarizer --target claude
 
-# All entries from a single org
-yq '.skills[] | select(.source | startswith("openai/"))
-    | .slug' catalog/skills.yaml
+# 装到 Codex
+python scripts/install-skill.py pdf-summarizer --target codex
 
-# Categories with their entry counts
-yq '.skills | group_by(.category) | .[]
-    | {cat: .[0].category, n: length}' catalog/skills.yaml
+# 装到任意目录
+python scripts/install-skill.py pdf-summarizer --target /opt/my-agent/skills
 ```
 
-## Extending the catalog
-
-**Adding an external skill** is one PR, one file edit:
-
-1. Fork the repo.
-2. Append a new entry under `skills:` in `catalog/skills.yaml`
-   using the schema above.
-3. Constraints: `slug` unique, `source_url` resolves (2xx, not 404),
-   `summary` and `summary_zh` each one line, `category` from the
-   closed set of 49.
-4. Open a PR. The link-check workflow pings your `source_url`.
-   After merge, the sync workflow will backfill `stars` / `license`
-   / `pushed_at` within a day.
-
-**Publishing your own skill** on the in-repo shelf:
-
-1. Copy `skills/_TEMPLATE.md` to `skills/<your-slug>.md`.
-2. Add a row to `catalog/own_skills.yaml` with at least a `path`
-   field pointing back to your file.
-3. Open a PR.
-
-No review queue, no formal process. If the entry is right and the
-link works, it lands.
-
-## The two helper scripts
-
-Both are in `scripts/`. Stdlib-only except for `pyyaml` and
-`ruamel.yaml`. Both work locally and in CI.
-
-### `scripts/sync-github.py`
-
-Refreshes `stars`, `license`, `pushed_at`, and `archived` for every
-GitHub-hosted entry via the GitHub API. Runs daily at 06:00 UTC,
-opens a PR with the diff.
+### 打个包
 
 ```bash
-pip install ruamel.yaml
-GITHUB_TOKEN=ghp_xxx python scripts/sync-github.py --dry-run   # preview
-GITHUB_TOKEN=ghp_xxx python scripts/sync-github.py             # apply
+# 单条
+python scripts/bundle-skill.py pdf-summarizer -o pdf.zip
+
+# 全部
+python scripts/bundle-skill.py --all -o skills-v1.zip
 ```
 
-Without a token you get 60 req/h (sequential, ~15 h for 900
-entries). With a token you get 5,000/h and 12 concurrent workers
-(~3 minutes).
+ZIP 结构跟 `skills/` 一致，解压即用。
 
-### `scripts/check-links.py`
+## 目录结构
 
-Pings every `source_url`, classifies the result, and writes the
-summary to `data/health.json`. Runs weekly on Mondays at 04:00 UTC.
-Fails the workflow on any 4xx/5xx/timeout, so dead links are loud.
-
-```bash
-pip install pyyaml
-python scripts/check-links.py            # prints summary
-python scripts/check-links.py --fail     # exit 1 on any broken link
+```
+skills/                  主体：本地技能
+external-index/          外部项目链接（旧功能，保留作发现入口）
+frontend/                静态站点源码
+scripts/                 工具脚本
+docs/                    设计文档
+bundles/                 bundle-skill.py 输出（gitignore）
 ```
 
-If a link breaks (repo moved, went private, the URL is malformed),
-the script says so and the workflow fails. You fix the URL in the
-next PR and the next Monday's run goes green again.
+详细看 `docs/plan.md`。
 
-## When this isn't the right tool
+## 添加新技能
 
-- You want a deep technical comparison of two frameworks. We don't
-  benchmark; we point you to the upstream.
-- You need real-time star counts. We refresh daily; for live
-  numbers go to GitHub.
-- You're looking for tutorials. We link to the repos that contain
-  them.
+1. 复制 `skills/_TEMPLATE.md` 到 `skills/<your-slug>/SKILL.md`
+2. 写 frontmatter（看 `docs/schema.md`）
+3. 写 `# Prompt` 段
+4. `python scripts/validate-skill.py` 跑一遍
+5. 开 PR
+
+## 仓库里的工具脚本
+
+| 脚本 | 干啥 |
+|---|---|
+| `fetch-skill.py` | 从 GitHub 抓技能落到本地（v1 18 候选源全 skip，详见 `SOURCE.md`） |
+| `convert-skill.py` | 原始 .md → 标准 SKILL.md |
+| `extend-skill.py` | 把烂技能按 4 条规则改到能跑（看 `docs/extension-rules.md`） |
+| `validate-skill.py` | CI 必跑，校验 frontmatter + body + 写 frontend 用的 JSON |
+| `install-skill.py` | 装到 `~/.claude/skills` 等本地目录 |
+| `bundle-skill.py` | 打包 ZIP（命令行版本；网页版走 `frontend/#/bundle`） |
+| `sync-github.py` | 刷 `external-index/` 元数据（stars / license / pushed_at） |
+| `check-links.py` | 检查 `external-index/` 死链 |
+
+## 贡献
+
+看 `CONTRIBUTING.md`。简短版：
+
+- 单条 PR
+- 不手动改 `stars` / `license` / `pushed_at`，sync 脚本会自动刷
+- prompt 改了才升 version 号
 
 ## License
 
-MIT — see [LICENSE](LICENSE). The catalog *index* is MIT-licensed.
-Each linked skill keeps its upstream license.
+MIT. 收录的技能版权看各自 `source` 字段 —— 我们不动 prompt
+的文字。
