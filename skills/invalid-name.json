@@ -1,0 +1,35 @@
+{
+  "name": "Invalid Name Handler",
+  "name_zh": "无效名称处理",
+  "description": "Validates and repairs identifier naming conventions in codebases.",
+  "description_zh": "校验并修复代码库中的标识符命名规范。",
+  "category": "dev-tools",
+  "tags": [
+    "linting",
+    "code-quality",
+    "naming"
+  ],
+  "source": null,
+  "needs_review": false,
+  "slug": "invalid-name",
+  "version": "1.0.0",
+  "created": "2026-06-12",
+  "updated": "2026-06-17",
+  "inputs": [
+    {
+      "name": "request",
+      "type": "string",
+      "required": true,
+      "description": "User request or task description"
+    }
+  ],
+  "output": {
+    "format": "markdown",
+    "description": "Generated content based on the user request"
+  },
+  "author": "AI-SKILL",
+  "license": "MIT",
+  "platforms": [],
+  "body": "# When to use\n\nUse this skill when you need to detect and fix invalid or inconsistent\nnaming conventions in a codebase — double dashes, camelCase/snake_case\nmixing, reserved keyword collisions, or non-ASCII identifiers.\n\n# Inputs\n\nUser request or task description specifying the naming rules to enforce\nand the scope of files to check.\n\n# Output\n\nMarkdown report listing each violation with file path, line number,\nthe offending identifier, and the suggested replacement.\n\n# Prompt\n\n```prompt\nYou are a code quality auditor focused on naming conventions.\n\nProcess:\n1. Scan the requested scope for identifier definitions\n2. Check each against the stated naming rules (snake_case, camelCase,\n   kebab-case, PascalCase — whichever applies)\n3. Flag double dashes, reserved keywords, non-ASCII chars, and\n   inconsistent casing\n4. Suggest a fix for each violation\n\nOutput format:\n\n## Violations\n1. `path/to/file.ts:42` — `Invalid--Name` → `InvalidName` (double dash)\n2. …\n\n## Summary\nN violations found across M files.\n```\n\n# When NOT to use\n\n- The project already enforces naming via a linter (ESLint, ruff, etc.)\n- The codebase is auto-generated and identifiers are not human-authored\n- You only need to rename a single known symbol — do it manually\n\n# Example\n\n**Input:**\n\n```\nrequest: Check all TypeScript files in src/ for invalid identifiers\n```\n\n**Output:**\n\n```markdown\n## Violations\n1. `src/utils.ts:15` — `Invalid--Name` → `InvalidName` (double dash)\n2. `src/types.ts:8` — `class` → `klass` (reserved keyword)\n\n## Summary\n2 violations found across 2 files.\n```\n",
+  "rawMarkdown": "---\nname: Invalid Name Handler\nname_zh: 无效名称处理\ndescription: Validates and repairs identifier naming conventions in codebases.\ndescription_zh: 校验并修复代码库中的标识符命名规范。\ncategory: dev-tools\ntags:\n  - linting\n  - code-quality\n  - naming\nsource: null\nneeds_review: false\nslug: invalid-name\nversion: '1.0.0'\ncreated: '2026-06-12'\nupdated: '2026-06-17'\ninputs:\n  - name: request\n    type: string\n    required: true\n    description: User request or task description\noutput:\n  format: markdown\n  description: Generated content based on the user request\nauthor: AI-SKILL\nlicense: MIT\n---\n# When to use\n\nUse this skill when you need to detect and fix invalid or inconsistent\nnaming conventions in a codebase — double dashes, camelCase/snake_case\nmixing, reserved keyword collisions, or non-ASCII identifiers.\n\n# Inputs\n\nUser request or task description specifying the naming rules to enforce\nand the scope of files to check.\n\n# Output\n\nMarkdown report listing each violation with file path, line number,\nthe offending identifier, and the suggested replacement.\n\n# Prompt\n\n```prompt\nYou are a code quality auditor focused on naming conventions.\n\nProcess:\n1. Scan the requested scope for identifier definitions\n2. Check each against the stated naming rules (snake_case, camelCase,\n   kebab-case, PascalCase — whichever applies)\n3. Flag double dashes, reserved keywords, non-ASCII chars, and\n   inconsistent casing\n4. Suggest a fix for each violation\n\nOutput format:\n\n## Violations\n1. `path/to/file.ts:42` — `Invalid--Name` → `InvalidName` (double dash)\n2. …\n\n## Summary\nN violations found across M files.\n```\n\n# When NOT to use\n\n- The project already enforces naming via a linter (ESLint, ruff, etc.)\n- The codebase is auto-generated and identifiers are not human-authored\n- You only need to rename a single known symbol — do it manually\n\n# Example\n\n**Input:**\n\n```\nrequest: Check all TypeScript files in src/ for invalid identifiers\n```\n\n**Output:**\n\n```markdown\n## Violations\n1. `src/utils.ts:15` — `Invalid--Name` → `InvalidName` (double dash)\n2. `src/types.ts:8` — `class` → `klass` (reserved keyword)\n\n## Summary\n2 violations found across 2 files.\n```\n"
+}

@@ -1,0 +1,39 @@
+{
+  "name": "PDF Vision Extractor",
+  "name_zh": null,
+  "description": "从扫描版 PDF 抽取发票号、日期、金额等字段，靠 Claude vision。",
+  "description_zh": "从扫描版 PDF 抽取发票号、日期、金额等字段，靠 Claude vision。",
+  "category": "multimodal",
+  "tags": [
+    "ai",
+    "documentation",
+    "javascript",
+    "llm",
+    "typescript"
+  ],
+  "source": null,
+  "license": "MIT",
+  "author": "badhope",
+  "version": "0.1.0",
+  "platforms": [
+    "claude"
+  ],
+  "needs_review": false,
+  "slug": "pdf-vision-extractor",
+  "created": "2026-06-12",
+  "updated": "2026-06-12",
+  "inputs": [
+    {
+      "name": "request",
+      "type": "string",
+      "required": true,
+      "description": "User request or task description"
+    }
+  ],
+  "output": {
+    "format": "markdown",
+    "description": "Generated content based on the user request"
+  },
+  "body": "# When to use\n\n> **Claude-only** — 这个技能假设模型有 vision 能力读 PDF 里的图像。\n> Codex / GPT-4o vision 也能跑，但 prompt 是按 Claude 调的；\n> Cursor / Continue 走纯文本路径时直接挂。\n\n文档是**扫描版或图像版**（不是带文本层的 PDF），你需要从里面\n抽几个结构化字段。典型场景：发票号 + 日期 + 金额、合同里的甲乙\n双方 + 金额、收据的商户名 + 流水号。\n\nschema 由调用方指定，所以同一份 prompt 适配不同表单 —— 发票、\n合同、收据、HSE 报告都能套。\n\n**不**用于：\n\n- 文本 PDF（用 `pdf-summarizer` 或者直接抽文本）\n- 不规则手写（识别率低，超出 v1 范围）\n- 多语种混排小语种（>10 个不同字体时，vision 容易串）\n\n# Inputs\n\n| 字段 | 说明 |\n|---|---|\n| `pdf_path` | 扫描版 PDF 的本地路径 |\n| `schema` | 你要抽什么字段。**必填** —— 不传 schema 这个技能不知道该抽什么 |\n| `pages` | 只看哪几页，省略 = 通读 |\n\n`schema` 的形状：\n\n```yaml\nschema:\n  invoice_no: { type: string, description: 发票号 }\n  total:      { type: number, description: 含税总额 }\n  currency:   { enum: [CNY, USD, EUR] }\n  issued_at:  { type: string, description: YYYY-MM-DD }\n```\n\n模型不严格按 schema 类型返回 —— 数字字段可能返回字符串，\n需要上游 `float()` 转换。这是已知边界，不在 v1 处理。\n\n# Output\n\nJSON，shape：\n\n```json\n{\n  \"extracted\": { /* 按 schema 填，没找到的字段省略 */ },\n  \"confidence\": 0.85,\n  \"missing\": [\"currency\"]\n}\n```\n\n`confidence` 是模型自评的 0-1 数，**不可信**。仅供排序 / 筛选用。\n真要校验请用 schema 校验 + 业务规则（金额 > 0、日期合法等）。\n\n# Prompt\n\n```prompt\nYou have vision. The user will give you a PDF (scanned / image-based)\nand a JSON schema. Look at every page they allow you to see, then\nextract the requested fields.\n\nRules:\n\n- Read top-to-bottom, left-to-right. Tables come in row order.\n- Numbers: drop thousand separators, keep decimal point.\n  \"$1,234.50\" → 1234.50, \"￥1.234,50\" → 1234.50.\n- Dates: always emit YYYY-MM-DD. \"March 5, 2024\" → 2024-03-05.\n- Enum fields: pick the closest enum value, even if the doc says\n  it slightly differently. \"RMB\" → CNY.\n- Missing fields: don't guess. If the doc doesn't show the field,\n  omit it from `extracted` and add it to `missing`.\n- Multi-page: aggregate across all allowed pages, prefer the\n  canonical / summary line over individual line items.\n\nOutput JSON only, no prose. Schema:\n\n{\n  \"extracted\": <object with extracted fields, matching input schema>,\n  \"confidence\": <number 0-1, your self-assessed certainty>,\n  \"missing\": [<field names you couldn't find>]\n}\n\nBe terse in confidence — 0.9+ only when the field is clearly\nprinted; 0.5-0.8 when partially obscured; <0.5 when you're guessing.\n```\n\n# When NOT to use\n\n- **PDF 有文本层** —— 直接 `pdftotext` 抽出来更准，跑 vision 是浪费钱\n- **表格横跨多页且每页重复表头** —— vision 可能重复抽取，需要预处理裁切\n- **手写笔记 / 医生处方** —— 字符识别率 60-70%，不是这个技能的目标场景\n- **要 100% 准确** —— vision 永远不是 100% 准，要这种保证就上 OCR + 人工复核\n- **要原图坐标 / bounding box** —— 这个技能不返回坐标，要用专门的文档理解模型\n\n# Example\n\n**Input:**\n\n```yaml\npdf_path: ./invoices/2024-03-acme.pdf\nschema:\n  invoice_no: { type: string, description: 发票号 }\n  issued_at:  { type: string, description: 开票日期 YYYY-MM-DD }\n  total:      { type: number, description: 含税总额 }\n  currency:   { enum: [CNY, USD, EUR] }\n  vendor:     { type: string, description: 销方名称 }\n```\n\n**Output:**\n\n```json\n{\n  \"extracted\": {\n    \"invoice_no\": \"INV-2024-03381\",\n    \"issued_at\":  \"2024-03-15\",\n    \"total\":      12750.00,\n    \"currency\":   \"CNY\",\n    \"vendor\":     \"上海某某科技有限公司\"\n  },\n  \"confidence\": 0.88,\n  \"missing\": []\n}\n```\n",
+  "rawMarkdown": "---\nname: PDF Vision Extractor\nname_zh:\ndescription: 从扫描版 PDF 抽取发票号、日期、金额等字段，靠 Claude vision。\ndescription_zh: 从扫描版 PDF 抽取发票号、日期、金额等字段，靠 Claude vision。\ncategory: multimodal\ntags:\n  - ai\n  - documentation\n  - javascript\n  - llm\n  - typescript\nsource:\nlicense: MIT\nauthor: badhope\nversion: '0.1.0'\nplatforms:\n  - claude\nneeds_review: false\nslug: pdf-vision-extractor\ncreated: '2026-06-12'\nupdated: '2026-06-12'\ninputs:\n  - name: request\n    type: string\n    required: true\n    description: User request or task description\noutput:\n  format: markdown\n  description: Generated content based on the user request\n---\n# When to use\n\n> **Claude-only** — 这个技能假设模型有 vision 能力读 PDF 里的图像。\n> Codex / GPT-4o vision 也能跑，但 prompt 是按 Claude 调的；\n> Cursor / Continue 走纯文本路径时直接挂。\n\n文档是**扫描版或图像版**（不是带文本层的 PDF），你需要从里面\n抽几个结构化字段。典型场景：发票号 + 日期 + 金额、合同里的甲乙\n双方 + 金额、收据的商户名 + 流水号。\n\nschema 由调用方指定，所以同一份 prompt 适配不同表单 —— 发票、\n合同、收据、HSE 报告都能套。\n\n**不**用于：\n\n- 文本 PDF（用 `pdf-summarizer` 或者直接抽文本）\n- 不规则手写（识别率低，超出 v1 范围）\n- 多语种混排小语种（>10 个不同字体时，vision 容易串）\n\n# Inputs\n\n| 字段 | 说明 |\n|---|---|\n| `pdf_path` | 扫描版 PDF 的本地路径 |\n| `schema` | 你要抽什么字段。**必填** —— 不传 schema 这个技能不知道该抽什么 |\n| `pages` | 只看哪几页，省略 = 通读 |\n\n`schema` 的形状：\n\n```yaml\nschema:\n  invoice_no: { type: string, description: 发票号 }\n  total:      { type: number, description: 含税总额 }\n  currency:   { enum: [CNY, USD, EUR] }\n  issued_at:  { type: string, description: YYYY-MM-DD }\n```\n\n模型不严格按 schema 类型返回 —— 数字字段可能返回字符串，\n需要上游 `float()` 转换。这是已知边界，不在 v1 处理。\n\n# Output\n\nJSON，shape：\n\n```json\n{\n  \"extracted\": { /* 按 schema 填，没找到的字段省略 */ },\n  \"confidence\": 0.85,\n  \"missing\": [\"currency\"]\n}\n```\n\n`confidence` 是模型自评的 0-1 数，**不可信**。仅供排序 / 筛选用。\n真要校验请用 schema 校验 + 业务规则（金额 > 0、日期合法等）。\n\n# Prompt\n\n```prompt\nYou have vision. The user will give you a PDF (scanned / image-based)\nand a JSON schema. Look at every page they allow you to see, then\nextract the requested fields.\n\nRules:\n\n- Read top-to-bottom, left-to-right. Tables come in row order.\n- Numbers: drop thousand separators, keep decimal point.\n  \"$1,234.50\" → 1234.50, \"￥1.234,50\" → 1234.50.\n- Dates: always emit YYYY-MM-DD. \"March 5, 2024\" → 2024-03-05.\n- Enum fields: pick the closest enum value, even if the doc says\n  it slightly differently. \"RMB\" → CNY.\n- Missing fields: don't guess. If the doc doesn't show the field,\n  omit it from `extracted` and add it to `missing`.\n- Multi-page: aggregate across all allowed pages, prefer the\n  canonical / summary line over individual line items.\n\nOutput JSON only, no prose. Schema:\n\n{\n  \"extracted\": <object with extracted fields, matching input schema>,\n  \"confidence\": <number 0-1, your self-assessed certainty>,\n  \"missing\": [<field names you couldn't find>]\n}\n\nBe terse in confidence — 0.9+ only when the field is clearly\nprinted; 0.5-0.8 when partially obscured; <0.5 when you're guessing.\n```\n\n# When NOT to use\n\n- **PDF 有文本层** —— 直接 `pdftotext` 抽出来更准，跑 vision 是浪费钱\n- **表格横跨多页且每页重复表头** —— vision 可能重复抽取，需要预处理裁切\n- **手写笔记 / 医生处方** —— 字符识别率 60-70%，不是这个技能的目标场景\n- **要 100% 准确** —— vision 永远不是 100% 准，要这种保证就上 OCR + 人工复核\n- **要原图坐标 / bounding box** —— 这个技能不返回坐标，要用专门的文档理解模型\n\n# Example\n\n**Input:**\n\n```yaml\npdf_path: ./invoices/2024-03-acme.pdf\nschema:\n  invoice_no: { type: string, description: 发票号 }\n  issued_at:  { type: string, description: 开票日期 YYYY-MM-DD }\n  total:      { type: number, description: 含税总额 }\n  currency:   { enum: [CNY, USD, EUR] }\n  vendor:     { type: string, description: 销方名称 }\n```\n\n**Output:**\n\n```json\n{\n  \"extracted\": {\n    \"invoice_no\": \"INV-2024-03381\",\n    \"issued_at\":  \"2024-03-15\",\n    \"total\":      12750.00,\n    \"currency\":   \"CNY\",\n    \"vendor\":     \"上海某某科技有限公司\"\n  },\n  \"confidence\": 0.88,\n  \"missing\": []\n}\n```\n"
+}

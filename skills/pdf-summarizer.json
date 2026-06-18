@@ -1,0 +1,37 @@
+{
+  "name": "PDF Summarizer",
+  "name_zh": null,
+  "description": "number of bullets in the summary",
+  "description_zh": null,
+  "category": "multimodal",
+  "tags": [
+    "ai",
+    "api",
+    "documentation",
+    "frontend",
+    "llm"
+  ],
+  "source": null,
+  "license": "MIT",
+  "author": "badhope",
+  "version": "1.0.0",
+  "needs_review": false,
+  "slug": "pdf-summarizer",
+  "created": "2026-06-12",
+  "updated": "2026-06-12",
+  "inputs": [
+    {
+      "name": "request",
+      "type": "string",
+      "required": true,
+      "description": "User request or task description"
+    }
+  ],
+  "output": {
+    "format": "markdown",
+    "description": "Generated content based on the user request"
+  },
+  "platforms": [],
+  "body": "# When to use\n\nThe user has handed you a PDF (paper, report, contract, README-as-PDF) and wants the gist without reading 50 pages. You have access to a PDF reader.\n\n# Inputs\n\nA `pdf_path` is mandatory. `audience` and `length` are optional with sensible defaults (PM, 5 bullets).\n\n# Output\n\nMarkdown with:\n\n1. A one-line TL;DR\n2. N bullets (3-10) covering the main points\n3. A \"What's missing\" line — be honest about what you couldn't tell from the PDF\n\n# Prompt\n\n```prompt\nYou are a careful reader, not a bullshitter. The user has handed you a PDF.\n\nStep 1: Read the first 2 pages and the headings of the rest. If the PDF\n        is purely a scanned image (no extractable text), say so and stop.\n\nStep 2: Write a one-line TL;DR. No more than 20 words. If you can't,\n        the user needs to know.\n\nStep 3: Write N bullets. Each bullet = one claim, ≤ 25 words. Order\n        by importance, not by appearance in the text. The first\n        bullet is the most important thing in the document.\n\nStep 4: Add a \"What's missing\" line. What would a careful reader\n        still want to know that you didn't cover? Examples:\n        methodology, sample size, counter-arguments, code, screenshots.\n\nRules:\n- Never invent numbers, authors, dates, or citations.\n- If the PDF is in a language you don't read, say so.\n- If a section is irrelevant to the audience, drop it.\n- Do not include \"In conclusion\" or \"In this document\".\n```\n\n# When NOT to use\n\n- The user wants a literal extract, not a summary. Use a different skill.\n- The PDF is a fillable form, code, or a presentation slide deck — those need a different tool.\n- The user asked \"is this real?\" or \"is this legal?\" — that's fact-checking, not summarising. Out of scope.\n- The PDF is over 200 pages. Split it first, or warn the user you'll take a long time.\n\n# Example\n\n**Input:**\n\n```yaml\npdf_path: /tmp/q3-earnings.pdf\naudience: exec\nlength: 4\n```\n\n**Output:**\n\n```markdown\n**TL;DR:** Q3 revenue beat consensus by 4%, driven by enterprise; full-year guidance unchanged.\n\n- Enterprise ARR grew 28% YoY, the strongest segment this quarter\n- Gross margin compressed 1.2 pp due to a one-time cloud cost\n- Cash burn slowed to $8M/month; runway extended to 22 months\n- Hiring freeze remains in place; 2 open reqs in engineering\n\n**What's missing:** cohort retention numbers, customer concentration, full P&L\n```\n",
+  "rawMarkdown": "---\nname: PDF Summarizer\nname_zh:\ndescription: number of bullets in the summary\ndescription_zh:\ncategory: multimodal\ntags:\n  - ai\n  - api\n  - documentation\n  - frontend\n  - llm\nsource:\nlicense: MIT\nauthor: badhope\nversion: '1.0.0'\nneeds_review: false\nslug: pdf-summarizer\ncreated: '2026-06-12'\nupdated: '2026-06-12'\ninputs:\n  - name: request\n    type: string\n    required: true\n    description: User request or task description\noutput:\n  format: markdown\n  description: Generated content based on the user request\n---\n# When to use\n\nThe user has handed you a PDF (paper, report, contract, README-as-PDF) and wants the gist without reading 50 pages. You have access to a PDF reader.\n\n# Inputs\n\nA `pdf_path` is mandatory. `audience` and `length` are optional with sensible defaults (PM, 5 bullets).\n\n# Output\n\nMarkdown with:\n\n1. A one-line TL;DR\n2. N bullets (3-10) covering the main points\n3. A \"What's missing\" line — be honest about what you couldn't tell from the PDF\n\n# Prompt\n\n```prompt\nYou are a careful reader, not a bullshitter. The user has handed you a PDF.\n\nStep 1: Read the first 2 pages and the headings of the rest. If the PDF\n        is purely a scanned image (no extractable text), say so and stop.\n\nStep 2: Write a one-line TL;DR. No more than 20 words. If you can't,\n        the user needs to know.\n\nStep 3: Write N bullets. Each bullet = one claim, ≤ 25 words. Order\n        by importance, not by appearance in the text. The first\n        bullet is the most important thing in the document.\n\nStep 4: Add a \"What's missing\" line. What would a careful reader\n        still want to know that you didn't cover? Examples:\n        methodology, sample size, counter-arguments, code, screenshots.\n\nRules:\n- Never invent numbers, authors, dates, or citations.\n- If the PDF is in a language you don't read, say so.\n- If a section is irrelevant to the audience, drop it.\n- Do not include \"In conclusion\" or \"In this document\".\n```\n\n# When NOT to use\n\n- The user wants a literal extract, not a summary. Use a different skill.\n- The PDF is a fillable form, code, or a presentation slide deck — those need a different tool.\n- The user asked \"is this real?\" or \"is this legal?\" — that's fact-checking, not summarising. Out of scope.\n- The PDF is over 200 pages. Split it first, or warn the user you'll take a long time.\n\n# Example\n\n**Input:**\n\n```yaml\npdf_path: /tmp/q3-earnings.pdf\naudience: exec\nlength: 4\n```\n\n**Output:**\n\n```markdown\n**TL;DR:** Q3 revenue beat consensus by 4%, driven by enterprise; full-year guidance unchanged.\n\n- Enterprise ARR grew 28% YoY, the strongest segment this quarter\n- Gross margin compressed 1.2 pp due to a one-time cloud cost\n- Cash burn slowed to $8M/month; runway extended to 22 months\n- Hiring freeze remains in place; 2 open reqs in engineering\n\n**What's missing:** cohort retention numbers, customer concentration, full P&L\n```\n"
+}
