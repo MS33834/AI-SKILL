@@ -13,9 +13,9 @@ Two modes:
 
   2. Batch from a JSON list:
 
-       python scripts/fetch-skill.py \\
-           --all \\
-           --sources scripts/sources.json
+       python scripts/fetch-skill.py \
+           --all \
+           --sources my-sources.json
 
      The JSON file is a list of objects with the same fields as the
      single CLI mode (plus an optional `slug` for the output path).
@@ -132,10 +132,9 @@ def load_sources(path: Path) -> list[dict]:
 
       1. A top-level list of spec dicts.
       2. A dict with an `items` key (preferred) — the rest of the
-         keys are treated as metadata and ignored. This is what
-         scripts/sources.json uses, so we can keep `_meta` /
-         `_status` / etc. alongside the data without confusing
-         the fetcher.
+         keys are treated as metadata and ignored. This lets you
+         keep `_meta` / `_status` / etc. alongside the data without
+         confusing the fetcher.
 
     Specs with `skip: true` are filtered out. The skip + reason
     stay in the JSON for audit purposes.

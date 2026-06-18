@@ -5,13 +5,13 @@
 
 ## 这是什么
 
-AI-SKILL 是一个**开源社区驱动的 AI 技能仓库索引**。我们的目标不是
-做又一个 awesome-list，而是做一个**可搜索、多维度分类、技能级细化**
-的索引，让用户能快速找到最适合自己需求的技能仓库。
+AI-SKILL 是一个开源社区驱动的 AI 技能仓库索引。目标不是做又一个
+awesome-list，而是做一个可搜索、多维度分类、技能级细化的索引，让
+用户快速找到需要的技能仓库。
 
 - **928+ 个外部仓库**已索引，覆盖 OpenAI、Anthropic、Hugging Face、
   LangChain、LlamaIndex 等大厂与社区项目
-- **38 个本地精选 SKILL.md**，可直接 drop 进 Claude / Codex / Cursor /
+- **38 个本地精选 SKILL.md**，可直接丢进 Claude / Codex / Cursor /
   Continue 或任何读 Markdown 的 agent
 - **多维度分类**：按功能领域（9 大类）、按厂商类型（大厂 / 热门社区 /
   社区 / 个人）、按子分类（49 类）、按星标分层
@@ -21,14 +21,14 @@ AI-SKILL 是一个**开源社区驱动的 AI 技能仓库索引**。我们的目
 
 ## License
 
-**MIT**。我们不做商业化，做社区化、开源化。所有本地技能均为 MIT
+**MIT**。不做商业化，只做社区化、开源化。所有本地技能均为 MIT
 协议；外部仓库的协议看各自卡片上的 `license` 字段。
 
 ## 怎么用
 
 ### 浏览仓库索引（主要功能）
 
-打开 [AI-SKILL Pages](https://badhope.github.io/AI-SKILL/#/external)，
+打开 [AI-SKILL Pages](https://badhope.gitcode.host/AI-SKILL/#/external)，
 按以下方式查找：
 
 1. **搜索**：在搜索框输入关键词（如 `RAG`、`agent`、`fine-tuning`），
@@ -41,17 +41,17 @@ AI-SKILL 是一个**开源社区驱动的 AI 技能仓库索引**。我们的目
 3. **厂商筛选**：下拉框筛选特定厂商类型
 4. **查看技能**：每张卡片列出该仓库提供的具体技能（如 `tool use`、
    `structured output`、`RAG`），帮你判断是否需要
-5. **直达源头**：点 "Visit on GitHub ↗" 跳转到上游仓库
+5. **直达源头**：点 "Visit source ↗" 跳转到上游仓库
 
 ### 浏览本地精选技能
 
-打开 [首页](https://badhope.github.io/AI-SKILL)，看 38 个本地
-`SKILL.md` 文件。这些是我们自己制作或从大厂抓取并通用化的技能，
+打开 [首页](https://badhope.gitcode.host/AI-SKILL)，看 38 个本地
+`SKILL.md` 文件。这些是自己制作或从大厂抓取并通用化的技能，
 clone 下来就能用。
 
 ```
-https://badhope.github.io/AI-SKILL/#/skill/pdf-summarizer
-https://badhope.github.io/AI-SKILL/#/bundle
+https://badhope.gitcode.host/AI-SKILL/#/skill/pdf-summarizer
+https://badhope.gitcode.host/AI-SKILL/#/bundle
 ```
 
 **顶栏右上角可以切 EN / 中文**。语言选择存在 `localStorage` 里，
@@ -132,13 +132,13 @@ frontend/                静态站点源码（TypeScript + Vite）
   ├─ src/pages/external.ts   仓库索引页（搜索 + 4 视角 + 技能级展示）
   └─ public/external-repos.json  运行时数据（由 sync 脚本生成）
 scripts/                 工具脚本
-  ├─ sync-external-index.py   skills.yaml → external-repos.json
-  ├─ enrich-skills-field.py   为每个仓库派生 skills 字段
-  ├─ validate-skill.py        校验本地技能 + 自动触发 sync
-  ├─ install-skill.py         装到 ~/.claude/skills 等
-  ├─ bundle-skill.py          打包 ZIP
-  ├─ sync-github.py           刷 external-index 元数据
-  └─ check-links.py           检查死链
+  ├─ sync-external-index.py   skills.yaml → frontend/public/external-repos.json
+  ├─ validate-skill.py        校验本地技能 + 写 frontend JSON + 触发 sync
+  ├─ install-skill.py         装到 ~/.claude/skills 等本地目录
+  ├─ bundle-skill.py          打包 ZIP（命令行版本；网页版走 frontend/#/bundle）
+  ├─ fetch-skill.py           从上游仓库拉取 SKILL.md
+  ├─ sync-github.py           刷 external-index 元数据（stars / license / pushed_at）
+  └─ check-links.py           检查 external-index 死链
 docs/                    设计文档
 ```
 
@@ -188,10 +188,10 @@ python scripts/sync-external-index.py   # 重新生成 JSON
 | 脚本 | 干啥 |
 |---|---|
 | `sync-external-index.py` | skills.yaml → frontend/public/external-repos.json |
-| `enrich-skills-field.py` | 为每个仓库派生 skills 字段（基于 category + tags + summary） |
-| `validate-skill.py` | CI 必跑，校验 frontmatter + body + 写 frontend JSON + 触发 sync |
+| `validate-skill.py` | 校验 frontmatter + body + 写 frontend JSON + 触发 sync，提交前跑一遍 |
 | `install-skill.py` | 装到 `~/.claude/skills` 等本地目录 |
 | `bundle-skill.py` | 打包 ZIP（命令行版本；网页版走 `frontend/#/bundle`） |
+| `fetch-skill.py` | 从上游仓库拉取 SKILL.md |
 | `sync-github.py` | 刷 `external-index/` 元数据（stars / license / pushed_at） |
 | `check-links.py` | 检查 `external-index/` 死链 |
 

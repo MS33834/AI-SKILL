@@ -9,7 +9,7 @@
 // external-index/skills.yaml by scripts/sync-external-index.py.
 
 import { t, getLocale } from "../i18n";
-import { escHtml, escAttr, stableHue, debounce } from "../shared";
+import { escHtml, escAttr, stableHue, debounce, categoryLabel } from "../shared";
 
 interface ExternalRepo {
   slug: string;
@@ -52,9 +52,33 @@ async function loadRepos(): Promise<IndexData> {
   return cache;
 }
 
+function getHashParams(): URLSearchParams {
+  const hash = window.location.hash;
+  const qIdx = hash.indexOf("?");
+  return qIdx > -1 ? new URLSearchParams(hash.slice(qIdx + 1)) : new URLSearchParams();
+}
+
+function updateHashParams(params: URLSearchParams): void {
+  const baseHash = "#/external";
+  const qs = params.toString();
+  const u = new URL(window.location.href);
+  u.hash = qs ? `${baseHash}?${qs}` : baseHash;
+  history.replaceState(null, "", u.toString());
+}
+
 export async function renderExternal(root: HTMLElement): Promise<void> {
   document.title = `${t("external.title")} — AI-SKILL`;
   const zh = getLocale() === "zh";
+
+  // Read persisted filter state from the *hash* query string so a
+  // reload or a language switch keeps the user's context. We keep
+  // external state in the hash (e.g. #/external?q=rag&view=stars)
+  // so it stays with the external route instead of colliding with
+  // the list page's search-param filters.
+  const hashParams = getHashParams();
+  const initialQ = hashParams.get("q") ?? "";
+  const initialVt = hashParams.get("vendor") ?? "";
+  const initialView = (hashParams.get("view") ?? "domain") as ViewMode;
 
   root.innerHTML = `
     <div class="container-wide">
@@ -62,21 +86,21 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
       <p class="external__subtitle">${escHtml(t("external.subtitle", { n: "928" }))}</p>
 
       <div class="ext-toolbar">
-        <input type="search" id="ext-search" placeholder="${escAttr(t("external.search.ph"))}" aria-label="${escAttr(t("external.search.ph"))}" />
+        <input type="search" id="ext-search" value="${escAttr(initialQ)}" placeholder="${escAttr(t("external.search.ph"))}" aria-label="${escAttr(t("external.search.ph"))}" />
         <div class="ext-views" role="tablist">
           <button class="ext-view-btn" data-view="domain" role="tab" aria-selected="true">${escHtml(t("external.view.domain"))}</button>
           <button class="ext-view-btn" data-view="vendor" role="tab">${escHtml(t("external.view.vendor"))}</button>
           <button class="ext-view-btn" data-view="category" role="tab">${escHtml(t("external.view.category"))}</button>
           <button class="ext-view-btn" data-view="stars" role="tab">${escHtml(t("external.view.stars"))}</button>
         </div>
-        <select id="ext-vendor-filter" aria-label="${escAttr(t("external.view.vendor"))}">
+        <select id="ext-vendor-filter" aria-label="${escAttr(t("external.filter.vendor"))}">
           <option value="">${escHtml(t("external.filter.all"))}</option>
         </select>
       </div>
 
       <div id="ext-stats" class="ext-stats"></div>
       <div id="ext-list" class="external-list" aria-busy="true">
-        <div class="empty" role="status" aria-live="polite">${escHtml(t("loading"))}</div>
+        <div class="ext-loading" role="status" aria-live="polite">${escHtml(t("loading"))}</div>
       </div>
       <p class="external__hint">${escHtml(t("external.hint"))}</p>
     </div>
@@ -88,7 +112,12 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
   const vendorFilter = root.querySelector<HTMLSelectElement>("#ext-vendor-filter")!;
   const viewBtns = root.querySelectorAll<HTMLButtonElement>(".ext-view-btn");
 
-  let currentView: ViewMode = "domain";
+  let currentView: ViewMode = initialView;
+  // Sync the active tab with the URL state
+  viewBtns.forEach(btn => {
+    const active = btn.dataset.view === currentView;
+    btn.setAttribute("aria-selected", active ? "true" : "false");
+  });
 
   try {
     const data = await loadRepos();
@@ -100,10 +129,11 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
       const o = document.createElement("option");
       o.value = key;
       o.textContent = zh ? label.zh : label.en;
+      if (key === initialVt) o.selected = true;
       vendorFilter.appendChild(o);
     }
 
-    function paint() {
+    function paint(pushUrl = true) {
       const q = searchInput.value.trim().toLowerCase();
       const vt = vendorFilter.value;
       let filtered = data.repos;
@@ -123,6 +153,15 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
         });
       }
 
+      if (pushUrl) {
+        const p = new URLSearchParams();
+        const rawQ = searchInput.value.trim();
+        if (rawQ) p.set("q", rawQ);
+        if (vt) p.set("vendor", vt);
+        if (currentView !== "domain") p.set("view", currentView);
+        updateHashParams(p);
+      }
+
       statsEl.innerHTML = `<span>${escHtml(t("external.results", { n: filtered.length }))}</span>`;
       if (filtered.length === 0) {
         list.innerHTML = `<div class="empty">${escHtml(t("external.empty"))}</div>`;
@@ -131,8 +170,8 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
       list.innerHTML = groupAndRender(filtered, currentView, data, zh);
     }
 
-    searchInput.addEventListener("input", debounce(paint, 120));
-    vendorFilter.addEventListener("change", paint);
+    searchInput.addEventListener("input", debounce(() => paint(), 120));
+    vendorFilter.addEventListener("change", () => paint());
     viewBtns.forEach(btn => {
       btn.addEventListener("click", () => {
         viewBtns.forEach(b => { b.setAttribute("aria-selected", "false"); });
@@ -142,7 +181,7 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
       });
     });
 
-    paint();
+    paint(false);
   } catch (e) {
     list.removeAttribute("aria-busy");
     list.innerHTML = `<div class="empty" role="alert">${escHtml(t("external.errorLoad"))} <code>${escHtml(String(e))}</code></div>`;
@@ -190,6 +229,10 @@ function groupAndRender(
       label = v ? (zh ? v.zh : v.en) : key;
     } else if (view === "stars") {
       label = `★ ${key}`;
+    } else if (view === "category") {
+      // Use the localized category label from shared.ts instead of
+      // raw slug formatting, so Chinese users see 中文分类名.
+      label = categoryLabel(key);
     } else {
       label = key.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
     }
@@ -241,7 +284,7 @@ function cardHtml(r: ExternalRepo, zh: boolean): string {
       <dl class="external-card__meta">
         <div><dt>${escHtml(t("external.stars.label"))}</dt><dd>★ ${escHtml(starsFmt)}</dd></div>
         <div><dt>${escHtml(t("external.license"))}</dt><dd>${escHtml(r.license || "—")}</dd></div>
-        <div><dt>${escHtml(t("external.category"))}</dt><dd>${escHtml(r.category)}</dd></div>
+        <div><dt>${escHtml(t("external.category"))}</dt><dd>${escHtml(categoryLabel(r.category))}</dd></div>
         ${r.archived ? `<div><dt></dt><dd><span class="ext-archived">${escHtml(t("external.archived"))}</span></dd></div>` : ""}
       </dl>
       <div class="external-card__tags">${tags}</div>

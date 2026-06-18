@@ -7,4 +7,4 @@ Allow: /
 # Pointing crawlers at the sitemap and the index is enough for a
 # vault this size; we don't have per-skill canonical URLs.
 
-Sitemap: https://badhope.github.io/AI-SKILL/sitemap.xml
+Sitemap: https://badhope.gitcode.host/AI-SKILL/sitemap.xml

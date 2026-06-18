@@ -25,7 +25,7 @@ Thumbs.db
 
 # Build output
 node_modules/
-dist/
+/dist/
 *.tsbuildinfo
 vite.log
 
@@ -35,14 +35,7 @@ vite.log
 bundles/*.zip
 !bundles/.gitkeep
 
-# Frontend (暂不上传)
-frontend/
-
 # Temporary files
-scripts/conversion-results.json
-scripts/skill-audit.json
-scripts/retry-rate-limited.py
-CONVERSION-COMPLETE.md
 *.log
 
 # Git temporary

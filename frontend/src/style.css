@@ -833,6 +833,7 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: var(--lh-snug); }
   font-size: var(--t-2xl);
   letter-spacing: -0.02em;
   margin: 0 0 var(--s-3);
+  padding-top: var(--s-6);
 }
 
 /* ---- external index: toolbar / views / groups ---- */
@@ -843,8 +844,8 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: var(--lh-snug); }
   gap: var(--s-3);
   margin: 0 0 var(--s-4);
   position: sticky;
-  top: 0;
-  z-index: 10;
+  top: 48px;
+  z-index: 9;
   background: var(--bg);
   padding: var(--s-2) 0;
 }
@@ -853,13 +854,14 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: var(--lh-snug); }
   min-width: 200px;
   padding: var(--s-2) var(--s-3);
   border: 1px solid var(--border);
-  border-radius: var(--r-2);
+  border-radius: var(--radius-2);
   background: var(--bg-elev);
   color: var(--ink);
   font: inherit;
 }
 .ext-toolbar #ext-search:focus {
-  outline: 2px solid hsl(var(--accent-h) 60% 50%);
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
   border-color: transparent;
 }
 .ext-views {
@@ -867,7 +869,7 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: var(--lh-snug); }
   gap: 2px;
   background: var(--bg-elev);
   border: 1px solid var(--border);
-  border-radius: var(--r-2);
+  border-radius: var(--radius-2);
   padding: 2px;
 }
 .ext-view-btn {
@@ -877,7 +879,7 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: var(--lh-snug); }
   color: var(--ink-soft);
   font: inherit;
   font-size: var(--t-sm);
-  border-radius: var(--r-1);
+  border-radius: var(--radius-1);
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
 }
@@ -892,7 +894,7 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: var(--lh-snug); }
 .ext-toolbar #ext-vendor-filter {
   padding: var(--s-2) var(--s-3);
   border: 1px solid var(--border);
-  border-radius: var(--r-2);
+  border-radius: var(--radius-2);
   background: var(--bg-elev);
   color: var(--ink);
   font: inherit;
@@ -958,9 +960,18 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: var(--lh-snug); }
   border-radius: var(--radius-2);
 }
 .external-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--s-4);
+  /* The list is a stack of .ext-group sections, each containing its
+     own .ext-cards grid. We don't want a grid here — that would try
+     to lay out the sections as grid items side-by-side. */
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.ext-loading {
+  padding: var(--s-8) var(--s-4);
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: var(--t-md);
 }
 .external-card {
   position: relative;
@@ -1045,6 +1056,10 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: var(--lh-snug); }
   font-size: var(--t-sm);
   line-height: 1.55;
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .external-card__meta {
   display: grid;
@@ -1088,30 +1103,31 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: var(--lh-snug); }
   padding: 2px 8px;
   border-radius: var(--radius-1);
 }
-/* Skill-level index: a compact list of concrete capabilities
-   the repo provides. Helps users find a specific skill and
-   know which repo to open. */
+/* Skill-level index: a compact set of capability pills so users
+   can quickly scan what a repo provides and search by skill. */
 .external-card__skills {
   list-style: none;
   margin: 0 0 var(--s-2);
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 10px;
+  gap: 6px;
 }
 .external-card__skill {
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.4;
-  color: var(--ink-soft);
-  padding-left: 12px;
-  position: relative;
+  color: hsl(var(--vendor-hue, 220) 50% 30%);
+  background: hsl(var(--vendor-hue, 220) 35% 95%);
+  border: 1px solid hsl(var(--vendor-hue, 220) 30% 88%);
+  padding: 3px 9px;
+  border-radius: 999px;
 }
-.external-card__skill::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: hsl(var(--vendor-hue, 220) 60% 55%);
-  font-size: 10px;
+@media (prefers-color-scheme: dark) {
+  .external-card__skill {
+    color: hsl(var(--vendor-hue, 220) 60% 85%);
+    background: hsl(var(--vendor-hue, 220) 28% 18%);
+    border-color: hsl(var(--vendor-hue, 220) 30% 30%);
+  }
 }
 
 .codeblock { position: relative; }
@@ -1390,7 +1406,14 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: var(--lh-snug); }
   .filter-bar { gap: var(--s-2); }
   .filter-bar input[type="search"] { flex: 1 1 100%; }
   .related__grid { grid-template-columns: 1fr; }
-  
+
+  /* Mobile: external index toolbar wraps cleanly */
+  .ext-toolbar { gap: var(--s-2); }
+  .ext-toolbar #ext-search { flex: 1 1 100%; min-width: auto; }
+  .ext-views { flex: 1 1 100%; justify-content: stretch; }
+  .ext-views .ext-view-btn { flex: 1 1 auto; text-align: center; }
+  .ext-toolbar #ext-vendor-filter { flex: 1 1 100%; }
+
   /* Mobile: larger touch targets */
   .btn { min-height: 44px; padding: var(--s-3) var(--s-4); }
   .topbar__nav { gap: var(--s-4); }
@@ -1398,8 +1421,8 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: var(--lh-snug); }
   
   /* Mobile: single column cards */
   .cards { grid-template-columns: 1fr; }
-  .external-list { grid-template-columns: 1fr; }
-  
+  .ext-cards { grid-template-columns: 1fr; }
+
   /* Mobile: compact external card */
   .external-card__head { flex-direction: column; }
   .external-card__meta { grid-template-columns: 1fr; }

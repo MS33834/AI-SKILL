@@ -33,7 +33,7 @@ export async function renderList(
 
   const totalSkills = index.skills.length;
   const totalCategories = new Set(index.skills.map(s => s.category)).size;
-  const vendorNeutral = 928; // indexed repos count
+  const indexedRepos = 928; // external indexed repos count
   const domains = 9; // functional domain count
 
   root.innerHTML = `
@@ -49,14 +49,14 @@ export async function renderList(
       </h1>
       <p class="hero__sub">${escHtml(t("hero.sub", { skills: String(totalSkills), repos: "928" }))}</p>
       <div class="hero__cta">
-        <a class="btn btn--primary" href="#/external" data-link>${escHtml(t("hero.cta.bundle"))}</a>
+        <a class="btn btn--primary" href="#/external" data-link>${escHtml(t("hero.cta.index"))}</a>
         <a class="btn" href="#/bundle" data-link>${escHtml(t("nav.bundle"))}</a>
         <a class="btn" href="https://github.com/badhope/AI-SKILL" rel="noopener noreferrer" target="_blank">${escHtml(t("hero.cta.gh"))}</a>
       </div>
       <div class="hero__mark-glyph" aria-hidden="true">▮ AI-SKILL</div>
     </section>
 
-    <div class="stats" aria-label="${escAttr(t("aria.vaultStats"))}">
+    <div class="stats" aria-label="${escAttr(t("aria.siteStats"))}">
       <div class="stat" aria-label="${escAttr(t("stat.total.label"))}">
         <span class="stat__num">${totalSkills}<em>${escHtml(t("stat.total.suffix"))}</em></span>
         <span class="stat__label">${escHtml(t("stat.total.label"))}</span>
@@ -66,12 +66,12 @@ export async function renderList(
         <span class="stat__label">${escHtml(t("stat.categories.label"))}</span>
       </div>
       <div class="stat" aria-label="${escAttr(t("stat.neutral.label"))}">
-        <span class="stat__num">${vendorNeutral}<em>${escHtml(t("stat.neutral.suffix", { n: totalSkills }))}</em></span>
+        <span class="stat__num">${indexedRepos}<em>${escHtml(t("stat.neutral.suffix"))}</em></span>
         <span class="stat__label">${escHtml(t("stat.neutral.label"))}</span>
       </div>
-      <div class="stat" aria-label="${escAttr(t("stat.review.label"))}">
-        <span class="stat__num">${domains}<em>${escHtml(t("stat.review.suffix"))}</em></span>
-        <span class="stat__label">${escHtml(t("stat.review.label"))}</span>
+      <div class="stat" aria-label="${escAttr(t("stat.domains.label"))}">
+        <span class="stat__num">${domains}<em>${escHtml(t("stat.domains.suffix"))}</em></span>
+        <span class="stat__label">${escHtml(t("stat.domains.label"))}</span>
       </div>
     </div>
 

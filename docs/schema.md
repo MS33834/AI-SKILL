@@ -19,7 +19,7 @@
 | `inputs` | ✅ | object[] | I/O 契约，下面有例子 |
 | `output` | ✅ | object | 输出形状 |
 | `source` |  | object | 抓来的技能要标来源 |
-| `needs_review` |  | bool | 标了说明是 `extend-skill.py` 猜的，要人看一眼 |
+| `needs_review` |  | bool | 标了说明字段是猜的，要人看一眼 |
 | `author` | ✅ | string | GitHub handle，或 `Name <email>` |
 | `license` | ✅ | string | SPDX id |
 | `created` | ✅ | date | `YYYY-MM-DD` |

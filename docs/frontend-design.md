@@ -7,7 +7,7 @@
 
 ## 一句话
 
-GitHub Pages 静态站，浏览本地技能。**没有营销腔**，
+GitCode Pages 静态站，浏览本地技能。**没有营销腔**，
 没有 "Sign up"，没有 carousel，没有 stats counter，
 没有 hero section 配一张抽象的 3D 图。
 
@@ -99,7 +99,7 @@ Vercel 营销页那种 hero + 数字 + 大图。
 
 ```
 ┌──────────────────────────────────────────┐
-│  AI-SKILL                      [GitHub]  │  ← top bar, 56px
+│  AI-SKILL                     [GitCode]  │  ← top bar, 56px
 ├──────────────────────────────────────────┤
 │  N skills · 49 categories · 0 to review │  ← meta line
 ├──────────────────────────────────────────┤
@@ -259,7 +259,7 @@ Vercel 营销页那种 hero + 数字 + 大图。
 - ❌ 任何 "AI" 字样出现在 UI 上 —— 仓库是 AI-SKILL，
   不代表网页要写"AI-powered" 那种废话
 - ❌ "Subscribe to newsletter" 弹窗
-- ❌ cookie consent banner（GitHub Pages 静态站，不放第三方脚本）
+- ❌ cookie consent banner（静态站，不放第三方脚本）
 - ❌ 视频 / gif demo（要么静态截图，要么没）
 
 ---

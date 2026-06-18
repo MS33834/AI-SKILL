@@ -91,17 +91,17 @@ const STRINGS = {
     en: "A community-driven index of AI agent skills and repositories. Browse {skills} hand-written SKILL.md files, or explore {repos}+ indexed repositories from OpenAI, Anthropic, Hugging Face, LangChain and more. MIT licensed. No tracking. No signup.",
     zh: "社区驱动的 AI 智能体技能与仓库索引。浏览 {skills} 个手写 SKILL.md，或探索 {repos}+ 个已索引仓库（来自 OpenAI、Anthropic、Hugging Face、LangChain 等）。MIT 协议。无追踪、无注册。",
   },
-  "hero.cta.bundle": { en: "Browse skill index →",                zh: "浏览仓库索引 →" },
-  "hero.cta.gh":     { en: "View on GitHub",                      zh: "在 GitHub 上看" },
+  "hero.cta.index":  { en: "Browse skill index →",                zh: "浏览仓库索引 →" },
+  "hero.cta.gh":     { en: "View on GitCode",                     zh: "在 GitCode 上看" },
 
   "stat.total.label":      { en: "SKILL.md",                zh: "SKILL.md" },
   "stat.categories.label": { en: "Categories",              zh: "分类" },
   "stat.neutral.label":    { en: "Indexed repos",           zh: "索引仓库" },
-  "stat.review.label":     { en: "Domains",                 zh: "领域" },
+  "stat.domains.label":    { en: "Domains",                 zh: "领域" },
   "stat.total.suffix":     { en: "files",                   zh: "个文件" },
   "stat.cat.suffix":       { en: "groups",                  zh: "个分组" },
   "stat.neutral.suffix":   { en: "repos",                   zh: "个仓库" },
-  "stat.review.suffix":    { en: "areas",                   zh: "个领域" },
+  "stat.domains.suffix":   { en: "areas",                   zh: "个领域" },
 
   "filter.search.ph":     { en: "Search by name, slug, tag, description…", zh: "按名称 / slug / 标签 / 描述搜索…" },
   "filter.cat.label":     { en: "Category",                       zh: "分类" },
@@ -169,10 +169,10 @@ const STRINGS = {
   "platformChip":   { en: "{p}",                                 zh: "{p}" },
   // ----- topbar / nav -----
   "nav.bundle":       { en: "Bundle",                            zh: "合集" },
-  "nav.external":     { en: "External",                          zh: "外部仓库" },
-  "nav.gh":           { en: "GitHub",                            zh: "GitHub" },
-  "footer.tagline":   { en: "MIT · vendor-neutral · no tracking · static site", zh: "MIT · 厂商中立 · 无追踪 · 静态站点" },
-  "footer.source":    { en: "Source on GitHub",                  zh: "在 GitHub 上查看" },
+  "nav.external":     { en: "Skill Index",                       zh: "技能索引" },
+  "nav.gh":           { en: "GitCode",                           zh: "GitCode" },
+  "footer.tagline":   { en: "MIT · open-source skill index · no tracking · static site", zh: "MIT · 开源技能索引 · 无追踪 · 静态站点" },
+  "footer.source":    { en: "Source on GitCode",                 zh: "在 GitCode 上查看" },
   "footer.sources":   { en: "SOURCE.md",                         zh: "SOURCE.md" },
   "footer.contrib":   { en: "Contributing",                      zh: "贡献指南" },
   "footer.changelog": { en: "Changelog",                         zh: "更新日志" },
@@ -205,10 +205,11 @@ const STRINGS = {
   "platform.tip":      { en: "platform: {p}",                zh: "平台：{p}" },
 
   // ----- aria / accessibility / misc -----
-  "aria.vaultStats":   { en: "vault statistics",             zh: "技能库统计" },
+  "aria.siteStats":    { en: "site statistics",              zh: "站点统计" },
   "aria.related":      { en: "related skills",               zh: "相关技能" },
   "aria.copyCode":     { en: "Copy code",                    zh: "复制代码" },
   "aria.langToggle":   { en: "Switch language",              zh: "切换语言" },
+  "aria.gh":           { en: "View source on GitCode",       zh: "在 GitCode 上查看源码" },
 
   // ----- version / license display -----
   "meta.version":      { en: "v{n}",                         zh: "v{n}" },
@@ -228,12 +229,13 @@ const STRINGS = {
   "external.hint":       { en: "Each card links to the upstream repo. Browse the repo's skills folder to find SKILL.md files you can drop into any agent.", zh: "每张卡片链向上游仓库。浏览仓库的 skills 目录，找到可直接放入任意 agent 的 SKILL.md 文件。" },
   "external.empty":      { en: "No repositories match your filters.", zh: "没有匹配筛选条件的仓库。" },
   "external.errorLoad":  { en: "Could not load the repo list. Try reloading the page.", zh: "加载仓库列表失败，刷新页面重试。" },
-  "external.search.ph":  { en: "Search by name, vendor, tag, description…", zh: "按名称 / 厂商 / 标签 / 描述搜索…" },
+  "external.search.ph":  { en: "Search by name, vendor, tag, skill…", zh: "按名称 / 厂商 / 标签 / 技能搜索…" },
   "external.view.domain":   { en: "By Domain",                    zh: "按领域" },
   "external.view.vendor":   { en: "By Vendor Type",               zh: "按厂商类型" },
   "external.view.category": { en: "By Category",                  zh: "按子分类" },
   "external.view.stars":    { en: "By Stars",                     zh: "按星标" },
   "external.filter.all":    { en: "All",                          zh: "全部" },
+  "external.filter.vendor": { en: "Vendor filter",                zh: "厂商筛选" },
   "external.stars.label":   { en: "Stars",                        zh: "星标" },
   "external.archived":      { en: "archived",                     zh: "已归档" },
   "external.results":       { en: "{n} repositories",             zh: "{n} 个仓库" },
@@ -255,10 +257,10 @@ const STRINGS = {
   //       when the locale flips, so link previews, browser tabs,
   //       and search-result snippets all match the user's
   //       language) -----
-  "meta.title":        { en: "AI-SKILL · vendor-neutral skill vault",         zh: "AI-SKILL · 跨平台技能库" },
-  "meta.description":  { en: "A vendor-neutral vault of agent skills. SKILL.md files sourced from deepeval, promptfoo, langfuse, openai, letta, huggingface, anthropics, and hand-written. Drop into Claude, Codex, Cursor, or any Markdown-reading agent.", zh: "一个中立的 agent 技能库，SKILL.md 收录自 deepeval / promptfoo / langfuse / openai / letta / huggingface / anthropics 以及自写。可直接放进 Claude / Codex / Cursor 或任何读 Markdown 的 agent。" },
-  "meta.ogTitle":      { en: "AI-SKILL · vendor-neutral skill vault",         zh: "AI-SKILL · 跨平台技能库" },
-  "meta.ogDescription":{ en: "SKILL.md files. No tracking. No signup. Just markdown.", zh: "SKILL.md，无追踪、无注册，就是 markdown。" },
+  "meta.title":        { en: "AI-SKILL · open-source skill index",         zh: "AI-SKILL · 开源技能索引" },
+  "meta.description":  { en: "An open-source, community-driven index of 928+ AI agent skill repositories. Search by skill, domain, vendor type, or stars and jump straight to the source. MIT licensed.", zh: "一个开源社区驱动的 AI 智能体技能仓库索引，收录 928+ 个仓库。按技能、领域、厂商类型、星标搜索，直达源头。MIT 协议。" },
+  "meta.ogTitle":      { en: "AI-SKILL · open-source skill index",         zh: "AI-SKILL · 开源技能索引" },
+  "meta.ogDescription":{ en: "Searchable index of 928+ AI agent skill repositories. MIT · no tracking · no signup.", zh: "928+ 个 AI 智能体技能仓库的可搜索索引。MIT · 无追踪 · 无注册。" },
 } as const satisfies Record<string, Record<Locale, string>>;
 
 type Key = keyof typeof STRINGS;

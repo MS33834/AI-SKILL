@@ -8,6 +8,15 @@ where it makes sense.
 
 ## [Unreleased]
 
+### Removed
+
+- Cleaned up deprecated scripts and workflows that no longer match the
+  current repository shape: `convert-skill.py`, `extend-skill.py`,
+  `enrich-skills-field.py`, `recategorize-skills.py`, `scripts/sources.json`,
+  and all GitHub Actions workflows (`validate-skills.yml`,
+  `check-links.yml`, `sync-github.yml`, `pages.yml`, `gitleaks.yml`,
+  `stale.yml`). Docs and templates updated to stop referencing them.
+
 ### Changed — Major pivot: open-source skill repository index
 
 - **Strategic pivot from "skill vault" to "open-source skill repository

@@ -224,24 +224,6 @@
   `skill-creator` / `skill-installer` —
   Codex 内部 / 跟 anthropics/skills 重叠。**跳过**。
 
-## 计划中的上游抓取（未完成）
-
-`scripts/sources.json` 里登记了 18 个 GitHub 仓库的 README.md
-作为抓取目标。这是一轮**探索性抓取**：我们想看看上游 README
-是否已经是 SKILL.md 的形态（带 frontmatter + 4 个 H1 section）。
-
-实际跑下来发现：18 个仓库的 README.md **都不是** SKILL.md
-形态 —— 它们是普通的项目 README（badge、TOC、安装步骤）。
-`convert-skill.py` 能加上 frontmatter，但 body 结构（badge、
-div、## Contents）跟 SKILL.md 的 4 段式不兼容。所以这 18 条
-目前**全部跳过**，需要先到上游仓库里人工找到真正的
-`skills/<name>/SKILL.md` 路径，再更新 sources.json。
-
-详见 `scripts/sources.json` 的 `_meta` 段。
-
-> 上面 29 条**已经**找到了真正的 `skills/<name>/SKILL.md`
-> 路径并完成抓取，是 18 个 `skip` 仓库之外的额外收获。
-
 ## 许可证兼容
 
 我们仓库本身 MIT 发布。**所有本地收录的技能**：

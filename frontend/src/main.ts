@@ -1,7 +1,8 @@
-// Tiny custom router. Three routes only:
-//   #/         → list
-//   #/skill/:slug → detail
-//   #/bundle   → bundle picker
+// Tiny custom router. Four routes:
+//   #/              → list (local skills)
+//   #/skill/:slug   → skill detail
+//   #/bundle        → bundle picker
+//   #/external      → searchable index of upstream repos
 // We use hash routing because GitHub Pages serves a static
 // site; clean URLs would need server rewrites.
 
@@ -64,7 +65,7 @@ async function route() {
       document.title = `${t("bundle.title")} — AI-SKILL`;
       const { renderBundle } = await import("./pages/bundle");
       await renderBundle(mainEl, idx);
-    } else if (hash === "#/external") {
+    } else if (hash.startsWith("#/external")) {
       document.title = `${t("external.title")} — AI-SKILL`;
       const { renderExternal } = await import("./pages/external");
       await renderExternal(mainEl);

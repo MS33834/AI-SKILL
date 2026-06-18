@@ -50,7 +50,7 @@ updated: 2026-06-10
 #   license: MIT
 #   original_path: skills/foo/SKILL.md
 
-# needs_review: true                # only if extend-skill.py guessed
+# needs_review: true                # only if you had to guess any field
 ---
 
 # When to use

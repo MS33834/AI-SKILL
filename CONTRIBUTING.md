@@ -18,8 +18,8 @@ python scripts/validate-skill.py skills/<your-slug>/SKILL.md
 If the file is from upstream, also fill in the `source` block (URL,
 commit SHA, license). See `SOURCE.md` for the rules.
 
-If `extend-skill.py` flagged your file with `needs_review: true`,
-explain in the PR body what you guessed. Don't silently ship a guess.
+If you had to guess any frontmatter field, set `needs_review: true`
+and explain in the PR body what you guessed. Don't silently ship a guess.
 
 ## Adding an external link
 
@@ -54,8 +54,8 @@ needs a reason.
 - **Squash merge.**
 - **Don't** commit secrets, tokens, generated bundles, large
   binaries, or somebody else's code without a license.
-- Wait for CI green. `validate-skills.yml` runs on every push;
-  `check-links.yml` runs on a weekly cron and on manual dispatch.
+- Wait for CI green. `validate-skill.py` should exit 0 before you
+  commit; run `check-links.py` if you changed `external-index/skills.yaml`.
 
 ## License
 

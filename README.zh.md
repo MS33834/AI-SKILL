@@ -8,7 +8,7 @@
 `skills/` 下面放真东西 —— 每个技能是一份 `SKILL.md`，有
 frontmatter + body，clone 下来就能用。
 
-**不是** awesome-list。awesome-list 给你一个 GitHub 链接，你
+**不是** awesome-list。awesome-list 给你一个源仓库链接，你
 点进去还得自己找文件。这个仓库的每个技能**已经把文件落盘到
 本地**，不依赖任何外部仓库。
 
@@ -20,7 +20,7 @@ frontmatter + body，clone 下来就能用。
 
 ### 浏览
 
-打开 [AI-SKILL Pages](https://badhope.github.io/AI-SKILL)，看
+打开 [AI-SKILL Pages](https://badhope.gitcode.host/AI-SKILL)，看
 列表、点详情、点下载。
 
 或者直接看 `skills/` 目录 —— 它就是站点渲染的数据源。
@@ -54,7 +54,7 @@ ZIP 结构跟 `skills/` 一致，解压即用。
 
 ```
 skills/                  主体：本地技能
-external-index/          外部项目链接（旧功能，保留作发现入口）
+external-index/          外部项目链接（发现入口）
 frontend/                静态站点源码
 scripts/                 工具脚本
 docs/                    设计文档
@@ -75,12 +75,11 @@ bundles/                 bundle-skill.py 输出（gitignore）
 
 | 脚本 | 干啥 |
 |---|---|
-| `fetch-skill.py` | 从 GitHub 抓技能落到本地 |
-| `convert-skill.py` | 原始 .md → 标准 SKILL.md |
-| `extend-skill.py` | 把烂技能按 4 条规则改到能跑 |
-| `validate-skill.py` | CI 必跑，校验 frontmatter + body |
+| `fetch-skill.py` | 从上游仓库抓技能落到本地 |
+| `validate-skill.py` | 校验 frontmatter + body，提交前跑一遍 |
 | `install-skill.py` | 装到 `~/.claude/skills` 等本地目录 |
 | `bundle-skill.py` | 打包 ZIP |
+| `sync-external-index.py` | skills.yaml → frontend/public/external-repos.json |
 | `sync-github.py` | 刷 `external-index/` 元数据 |
 | `check-links.py` | 检查 `external-index/` 死链 |
 
