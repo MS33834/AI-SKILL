@@ -177,6 +177,177 @@ agent 上都能跑。如果有部分内容只对 Claude 有效，
 - [x] 装一个技能 = 一条命令
 - [x] 不存在 `needs_review: true` 的技能
 - [x] 站点 UI 国际化（EN / 中文可切）
+- [x] 外部索引支持搜索 / 分组 / 分页 / 自动加载
+- [x] CI 覆盖校验、安全扫描、Lint、测试、构建
+- [ ] 社区贡献流程跑通（外部 PR 可合并）
+- [ ] 索引自动化定时刷新（stars / license / 死链）
+- [ ] 首批 `quality: stable` 技能通过复审
+
+---
+
+## 附录一：AI 索引展示架构
+
+我们把这个项目当成一个**“可读、可搜索、可落地”的技能索引**，而不是一个链接列表。架构分成两条轨道：
+
+### 1. 本地 Vault：`skills/`
+
+这是主产品。每个技能是一份独立的 `SKILL.md`，带完整 frontmatter：
+
+```
+skills/<slug>/
+├── SKILL.md       # 技能主体：prompt、输入输出、示例
+└── assets/        # 可选：示例图、模板文件
+```
+
+数据流：
+
+```
+SKILL.md
+  → validate-skill.py 校验 frontmatter / body
+  → skills/_index.yaml 机读索引
+  → frontend/public/skills.json + skills/<slug>.json
+  → 前端列表页 / 详情页 / 合集打包页
+```
+
+要点：
+
+- 所有内容落盘到 Git，clone 后断网可用。
+- 前端是静态站点，没有服务端、没有数据库、没有用户追踪。
+- 支持中英双语切换，frontmatter 里的 `name_zh` / `description_zh` 会被优先展示。
+
+### 2. 外部索引：`external-index/`
+
+这是发现入口。收录上游仓库，每张卡片告诉用户“这个仓库提供哪些具体技能”，并直达源地址：
+
+```
+external-index/skills.yaml
+  → sync-external-index.py
+  → frontend/public/external-repos.json
+  → /#/external 搜索页
+```
+
+前端能力：
+
+- 按领域 / 厂商类型 / 分类 / 星标分组
+- 按名称、厂商、标签、技能关键字搜索
+- 首屏 60 张卡片 + 滚动自动加载（IntersectionObserver），避免一次性渲染 900+ 卡片卡顿
+- 卡片展示仓库提供的具体 `skills` 列表，而不是只给一个链接
+
+### 3. 为什么用静态站点
+
+- **隐私**：不记录用户搜了什么、点了什么。
+- **离线**：构建产物可以丢到任意静态托管，甚至本地 `file://` 打开。
+- **长寿**：十年后只要 Git 仓库还在，站点就能重新 build。
+- **性能**：没有 API 延迟，所有数据是本地 JSON，搜索和过滤在浏览器里完成。
+
+---
+
+## 附录二：社区开放化策略
+
+这个仓库能不能活，不靠一个人维护，靠**足够低的贡献门槛 + 足够清晰的角色分工**。
+
+### 角色
+
+| 角色 | 职责 |
+|---|---|
+| User | 用技能、提 issue、反馈链接失效 |
+| Contributor | 提交新技能、修正文档、修 bug |
+| Reviewer | 审 PR，确认 frontmatter 和示例正确 |
+| Maintainer | 合并 PR、维护 CI、决定发布节奏 |
+| Project Lead | 定方向、处理争议、对外沟通 |
+
+具体定义见 [`GOVERNANCE.md`](file:///workspace/AI-SKILL/GOVERNANCE.md) 和 [`docs/maintainer-onboarding.md`](file:///workspace/AI-SKILL/docs/maintainer-onboarding.md)。
+
+### 贡献入口
+
+1. **加一个本地技能**：丢 `skills/<slug>/SKILL.md` → 跑 `validate-skill.py` → 开 PR。
+2. **加一个外部仓库**：在 `external-index/skills.yaml` 填 `source_url` 和分类 → 开 PR。
+3. **报 bug / 死链**：用 `.github/ISSUE_TEMPLATE/bug_report.yml` 或 `dead-link.yml`。
+4. **大改动**：先开 RFC issue，讨论清楚再写代码。
+
+### 决策方式
+
+- 日常 PR：1 个 maintainer review 通过即可合并。
+- 有争议的：RFC issue 里公开讨论，lazy consensus（7 天无反对意见视为通过）。
+- -breaking change：需要 Project Lead 拍板。
+
+### 对外姿态
+
+- **我们不是 fork 竞争者**：所有上游技能都写清楚 `source.url` 和 `source.commit`，并在 `SOURCE.md` 致谢。
+- **欢迎原仓库作者认领**：如果上游作者愿意，可以直接把他们仓库里的 SKILL.md 同步到这里，并给他们 reviewer 权限。
+- **双平台同步**：GitCode 服务国内访问，GitHub 服务国际访问，代码两边一致。
+
+---
+
+## 附录三：索引自动化与可持续
+
+人不能一直手动刷新 928 个仓库的 stars 和 license。自动化是索引“不腐烂”的关键。
+
+### 已有脚本
+
+| 脚本 | 作用 |
+|---|---|
+| `validate-skill.py --strict` | 校验所有本地技能 frontmatter / body |
+| `security-scan.py` | 扫描 SKILL.md 里的危险命令、私钥、越狱提示 |
+| `sync-external-index.py` | 把 `external-index/skills.yaml` 转成前端 JSON |
+| `sync-github.py` | 刷外部仓库的 stars / license / archived / pushed_at |
+| `check-links.py` | 检查 `external-index` 死链 |
+| `fetch-skill.py` | 从上游抓 SKILL.md 落到本地 |
+
+### CI 门禁
+
+`.github/workflows/ci.yml` 每次 push / PR 都会跑：
+
+1. Python 校验 + 安全扫描
+2. 前端 TypeCheck + ESLint + Prettier 检查 + Vitest 单元测试
+3. Vite 生产构建
+
+通过才能合并。
+
+### 未来自动化
+
+- 定时 workflow：每周跑一次 `sync-github.py` + `check-links.py`，自动生成 `external-index/health.json` 更新 PR。
+- Release workflow：打 tag 时自动发布 GitHub Release，使用 `.github/release.yml` 分类生成 release notes。
+- 安全扫描升级：把 HIGH 级别告警变成合并阻塞项。
+
+### 成本控制
+
+- 所有脚本用 Python 标准库 + `pyyaml` / `ruamel`，不需要服务器。
+- 前端纯静态，托管免费（GitHub Pages / GitCode Pages）。
+- GitHub API 调用用仓库级缓存，避免超限。
+
+---
+
+## 附录四：质量标准与分级
+
+不是所有技能都一样成熟。我们用 `quality` 字段把状态透明地告诉用户。
+
+### 五级质量标签
+
+| 标签 | 含义 | 用户预期 |
+|---|---|---|
+| `stable` | 已复审、示例可跑、无已知问题 | 放心用 |
+| `beta` | 基本可用，可能在边界场景出错 | 可用，遇到问题请反馈 |
+| `alpha` | 功能完整但未经充分测试 | 谨慎用于生产 |
+| `experimental` | 新概念或新格式，可能大改 | 看着玩，别依赖 |
+| `draft` | 刚落盘，还在整理 | 暂时别用 |
+
+### stable 准入条件
+
+- frontmatter 完整且通过 `validate-skill.py --strict`
+- `needs_review: false`
+- 包含至少一个可运行的 `example`
+- 通过 `security-scan.py`，无 HIGH/MED 级别告警
+- 最近一次人工 review 不超过 6 个月
+
+### Review 流程
+
+1. 新技能默认 `quality: draft` 或 `experimental`，可标 `needs_review: true`。
+2. PR 由 reviewer 检查 `schema.md` 合规性、示例可复现性、安全性。
+3. 合并后如果达到 stable 条件，由 maintainer 在后续 PR 里把 `quality` 改为 `stable`。
+4. 每季度批量复审一次 `stable` 技能，失效的降级为 `beta`。
+
+---
 
 ## 写在最后
 
