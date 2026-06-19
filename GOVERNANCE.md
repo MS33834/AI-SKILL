@@ -26,13 +26,15 @@ Current Project Lead: **badhope**.
 
 Maintainers review PRs, enforce standards, and can merge changes.
 
-| Area | Responsibilities | Status |
-|---|---|---|
-| **Content** | Review `skills/` PRs, enforce vendor-neutrality and schema rules | vacant |
-| **Index** | Review `external-index/skills.yaml` additions, run link checks | vacant |
-| **Frontend** | Review UI/UX changes, keep build and typecheck green | vacant |
-| **Tooling / Ops** | Maintain CI, validation scripts, and data sync workflows | vacant |
-| **Community** | Onboard contributors, manage upstream relations, publish updates | vacant |
+| Area              | Responsibilities                                                                    | Status |
+| ----------------- | ----------------------------------------------------------------------------------- | ------ |
+| **Content**       | Review `skills/` PRs, enforce vendor-neutrality and schema rules                    | vacant |
+| **Index / Data**  | Review `external-index/skills.yaml` additions, run link checks, keep metadata fresh | vacant |
+| **Frontend**      | Review UI changes, keep build and typecheck green                                   | vacant |
+| **Design / UX**   | Own the design system, responsive layout, motion, empty states, brand assets        | vacant |
+| **Tooling / Ops** | Maintain CI, validation scripts, and data sync workflows                            | vacant |
+| **Security / QA** | Maintain security scan rules, test coverage, and broken-link monitoring             | vacant |
+| **Community**     | Onboard contributors, manage upstream relations, publish updates                    | vacant |
 
 To become a maintainer, a contributor must:
 
@@ -49,14 +51,14 @@ Anyone who opens an issue or PR is a contributor. Contributors are listed in rel
 
 ## Decision flow
 
-| Topic | How it is decided | Typical timeline |
-|---|---|---|
-| New local skill | PR → CI green → area maintainer review → merge | 1–7 days |
-| New external repo | PR → link check green → index maintainer review → merge | 1–3 days |
-| New skill category | Open an RFC issue first; discuss for ≥7 days; BDFL decides | ≥7 days |
-| Schema change | Open an RFC issue; discuss for ≥14 days; BDFL decides | ≥14 days |
-| Major direction change | Written proposal + community discussion; BDFL decides | Case by case |
-| Maintainer appointment | Maintainer nomination → BDFL approval | Case by case |
+| Topic                  | How it is decided                                          | Typical timeline |
+| ---------------------- | ---------------------------------------------------------- | ---------------- |
+| New local skill        | PR → CI green → area maintainer review → merge             | 1–7 days         |
+| New external repo      | PR → link check green → index maintainer review → merge    | 1–3 days         |
+| New skill category     | Open an RFC issue first; discuss for ≥7 days; BDFL decides | ≥7 days          |
+| Schema change          | Open an RFC issue; discuss for ≥14 days; BDFL decides      | ≥14 days         |
+| Major direction change | Written proposal + community discussion; BDFL decides      | Case by case     |
+| Maintainer appointment | Maintainer nomination → BDFL approval                      | Case by case     |
 
 ## Contribution criteria
 
