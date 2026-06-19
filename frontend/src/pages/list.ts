@@ -19,6 +19,7 @@
 import type { SkillIndex, SkillIndexEntry } from "../types";
 import { t, pickZh } from "../i18n";
 import {
+  brandMarkSvg,
   categoryLabel,
   escHtml,
   escAttr,
@@ -98,7 +99,7 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
         <a class="btn btn--primary" href="#/external">${escHtml(t("hero.cta.index"))}</a>
         <a class="btn" href="#/bundle">${escHtml(t("hero.cta.bundle"))}</a>
       </div>
-      <div class="hero__mark-glyph" aria-hidden="true">▮ AI-SKILL</div>
+      <div class="hero__mark-glyph" aria-hidden="true">${brandMarkSvg()} <span>AI-SKILL</span></div>
     </section>
 
     <div class="stats" aria-label="${escAttr(t("aria.siteStats"))}">

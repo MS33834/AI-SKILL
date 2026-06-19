@@ -5,6 +5,16 @@
 import type { Skill, SkillIndexEntry } from "./types";
 import { getLocale, t, pickPlatform } from "./i18n";
 
+// ============================ brand mark ============================
+
+/**
+ * Inline SVG brand mark. Use currentColor so it inherits the parent
+ * text color in both light and dark modes.
+ */
+export function brandMarkSvg(size = 16): string {
+  return `<svg class="brand-mark" width="${size}" height="${size}" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect width="16" height="16" rx="2" fill="currentColor"/></svg>`;
+}
+
 // ============================ category labels ============================
 
 export const CATEGORY_LABELS: Record<string, { en: string; zh: string }> = {

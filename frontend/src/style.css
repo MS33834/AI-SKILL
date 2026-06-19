@@ -387,6 +387,9 @@ h6 {
   position: absolute;
   top: var(--s-4);
   right: var(--s-5);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
   font-family: var(--font-mono);
   font-size: var(--t-xs);
   color: var(--ink-mute);
@@ -395,6 +398,10 @@ h6 {
   user-select: none;
   letter-spacing: 0.06em;
   opacity: 0.6;
+}
+.hero__mark-glyph .brand-mark {
+  width: 0.9em;
+  height: 0.9em;
 }
 
 /* big background mark */
@@ -1613,13 +1620,14 @@ h6 {
      the hero mark-glyph on the index page so the 404 doesn't feel
      like a different site. */
   display: inline-block;
-  font-family: var(--font-mono);
-  font-size: var(--t-2xl);
   color: var(--accent);
   margin-bottom: var(--s-4);
-  letter-spacing: 0.1em;
   opacity: 0.8;
   animation: nfPulse 3s var(--ease-in-out) infinite;
+}
+.notfound__glyph .brand-mark {
+  width: var(--t-2xl);
+  height: var(--t-2xl);
 }
 @keyframes nfPulse {
   0%,
