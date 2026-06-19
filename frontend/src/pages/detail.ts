@@ -475,7 +475,7 @@ function relatedBlock(related: SkillIndexEntry[]): string {
     .join("");
   return `
     <section class="related" aria-label="${escAttr(t("aria.related"))}">
-      <h2 class="related__title">${escHtml(t("detail.related", { cat: related[0]!.category.replace(/-/g, " ") }))}</h2>
+      <h2 class="related__title">${escHtml(t("detail.related", { cat: categoryLabel(related[0]!.category) }))}</h2>
       <div class="related__grid">${cards}</div>
     </section>
   `;

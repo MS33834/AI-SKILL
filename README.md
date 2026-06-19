@@ -43,7 +43,7 @@ AI-SKILL 是双轨并行的 AI 技能索引：
 3. **厂商筛选**：下拉框筛选特定厂商类型
 4. **查看技能**：每张卡片列出该仓库提供的具体技能（如 `tool use`、
    `structured output`、`RAG`），帮你判断是否需要
-5. **直达源头**：点 "Visit source ↗" 跳转到上游仓库
+5. **直达源头**：点 "在 GitHub 上查看" 跳转到上游仓库
 
 ### 浏览本地精选技能
 
@@ -196,6 +196,14 @@ python scripts/sync-external-index.py   # 重新生成 JSON
 | `fetch-skill.py` | 从上游仓库拉取 SKILL.md |
 | `sync-github.py` | 刷 `external-index/` 元数据（stars / license / pushed_at） |
 | `check-links.py` | 检查 `external-index/` 死链 |
+| `security-scan.py` | 扫描 SKILL.md 危险命令、私钥、越狱提示 |
+
+## 质量与自动化
+
+- **五级质量标签**：`stable` / `beta` / `alpha` / `experimental` / `draft`，默认 `stable`。
+- **安全扫描**：`scripts/security-scan.py` 检查危险命令、私钥、越狱提示；CI 每次提交都跑。
+- **CI 门禁**：`.github/workflows/ci.yml` 跑 Python 校验、安全扫描、前端 TypeCheck / ESLint / Prettier / Vitest / 构建。
+- **死链检查**：`scripts/check-links.py` 定期检查 928 个外部仓库链接，输出 `external-index/health.json`。
 
 ## 贡献
 

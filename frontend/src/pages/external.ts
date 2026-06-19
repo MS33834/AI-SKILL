@@ -51,6 +51,10 @@ let cache: IndexData | null = null;
 // (e.g. language switch) so we don't leak observers on detached sentinels.
 let extObserver: IntersectionObserver | null = null;
 
+// Only attach the one-time scroll listener once across the whole session;
+// re-rendering the external route shouldn't queue multiple listeners.
+let extScrollListenerBound = false;
+
 async function loadRepos(): Promise<IndexData> {
   if (cache) return cache;
   const r = await fetch(`${import.meta.env.BASE_URL}external-repos.json`);
@@ -139,7 +143,10 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
   const enableAutoLoad = () => {
     autoLoadEnabled = true;
   };
-  window.addEventListener("scroll", enableAutoLoad, { once: true, passive: true });
+  if (!extScrollListenerBound) {
+    extScrollListenerBound = true;
+    window.addEventListener("scroll", enableAutoLoad, { once: true, passive: true });
+  }
 
   try {
     const data = await loadRepos();

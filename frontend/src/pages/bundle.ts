@@ -15,6 +15,8 @@ import {
   debounce,
   triggerBlobDownload,
   skillToMarkdown,
+  platformChipsHtml,
+  qualityChipHtml,
 } from "../shared";
 
 export async function renderBundle(root: HTMLElement, index: SkillIndex): Promise<void> {
@@ -66,6 +68,7 @@ export async function renderBundle(root: HTMLElement, index: SkillIndex): Promis
         <input type="checkbox" data-slug="${escAttr(s.slug)}" id="chk-${escAttr(s.slug)}"${stillChecked.has(s.slug) ? " checked" : ""} />
         <label for="chk-${escAttr(s.slug)}" class="bundle-list__slug">${escHtml(s.slug)}</label>
         <span class="bundle-list__cat">${escHtml(categoryLabel(s.category))}</span>
+        <span class="bundle-list__chips">${platformChipsHtml(s.platforms)}${qualityChipHtml(s.quality)}</span>
         ${s.needs_review ? `<span class="skill-card__review-dot" title="${escAttr(t("reviewDot.title"))}"></span>` : ""}
       </li>
     `

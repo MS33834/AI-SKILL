@@ -1647,6 +1647,12 @@ h6 {
   color: var(--ink-mute);
   font-family: var(--font-mono);
 }
+.bundle-list__chips {
+  display: flex;
+  align-items: center;
+  gap: var(--s-1);
+  flex-wrap: wrap;
+}
 .bundle-list input[type="checkbox"] {
   accent-color: var(--accent);
 }
