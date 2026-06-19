@@ -28,6 +28,7 @@ import {
   qualityChipHtml,
   buildSearchBlob,
   debounce,
+  iconSvg,
 } from "../shared";
 
 interface ExternalIndexData {
@@ -96,8 +97,8 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
       </h1>
       <p class="hero__sub">${escHtml(t("hero.sub", { skills: String(totalSkills), repos: externalStatsReady ? String(indexedRepos) : "900+" }))}</p>
       <div class="hero__cta">
-        <a class="btn btn--primary" href="#/external">${escHtml(t("hero.cta.index"))}</a>
-        <a class="btn" href="#/bundle">${escHtml(t("hero.cta.bundle"))}</a>
+        <a class="btn btn--primary" href="#/external">${escHtml(t("hero.cta.index"))} ${iconSvg("arrowRight", 16)}</a>
+        <a class="btn" href="#/bundle">${escHtml(t("hero.cta.bundle"))} ${iconSvg("arrowRight", 16)}</a>
       </div>
       <div class="hero__mark-glyph" aria-hidden="true">${brandMarkSvg()} <span>AI-SKILL</span></div>
     </section>

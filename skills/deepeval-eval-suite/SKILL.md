@@ -17,7 +17,7 @@ version: '0.1.0'
 needs_review: false
 slug: deepeval-eval-suite
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
   - name: request
     type: string
@@ -26,6 +26,7 @@ inputs:
 output:
   format: markdown
   description: Generated content based on the user request
+quality: stable
 ---
 # When to use
 

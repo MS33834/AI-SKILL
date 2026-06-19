@@ -9,6 +9,9 @@ What this checks
   - types match (version is semver, tags is non-empty list, etc.)
   - inputs are typed and `required: true` fields have no default
   - output.format is one of the allowed set
+  - output.schema is a valid JSON object and contains at least one
+    JSON Schema keyword when present; `json`/`code` outputs without
+    a schema produce a warning
   - body has the 4 required H1 sections in order
   - if platforms: [claude] (or similar) is set, the first body
     section contains a `**Claude-only**` (or platform-named)
@@ -68,6 +71,9 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n(.*)$", re.DOTALL)
 REQUIRED_SECTIONS = ["When to use", "Inputs", "Output", "Prompt"]
+JSON_SCHEMA_KEYWORDS = {
+    "type", "properties", "items", "$schema", "anyOf", "oneOf", "allOf", "enum",
+}
 
 
 def _git(cmd: list[str]) -> str | None:
@@ -170,6 +176,43 @@ def has_platform_disclaimer(body: str, platforms: list[str]) -> bool:
     return False
 
 
+def validate_output_schema(path: Path, output: dict[str, Any], report: Report) -> None:
+    """Validate the optional output.schema field.
+
+    - output.schema must be a dict/object when present.
+    - It must contain at least one JSON Schema keyword so we can be
+      reasonably sure it is intended as JSON Schema.
+    - If output.format is json or code and schema is absent, warn
+      (older skills may lack it, so this is not a hard error).
+    - Any malformed schema is a hard error.
+    """
+    fmt = output.get("format")
+    schema = output.get("schema")
+
+    if schema is None:
+        if fmt in ("json", "code"):
+            report.warn(path, f"output.format is {fmt!r} but output.schema is missing (recommended for machine-readable output)")
+        return
+
+    if not isinstance(schema, dict):
+        report.err(path, f"output.schema must be a JSON object, got {type(schema).__name__}")
+        return
+
+    if not JSON_SCHEMA_KEYWORDS.intersection(schema.keys()):
+        report.err(
+            path,
+            f"output.schema looks empty or missing a JSON Schema keyword; expected one of {sorted(JSON_SCHEMA_KEYWORDS)}",
+        )
+        return
+
+    # Sanity check: the schema must be JSON-serializable so consumers
+    # can actually load it as JSON Schema.
+    try:
+        json.dumps(schema)
+    except (TypeError, ValueError) as e:
+        report.err(path, f"output.schema is not a valid JSON object: {e}")
+
+
 def validate_one(path: Path, report: Report, *, all_categories: set[str]) -> dict[str, Any] | None:
     text = path.read_text(encoding="utf-8")
     fm, _header, body = split_frontmatter(text)
@@ -259,8 +302,7 @@ def validate_one(path: Path, report: Report, *, all_categories: set[str]) -> dic
         fmt = output.get("format")
         if fmt not in ALLOWED_OUTPUT_FORMATS:
             report.err(path, f"output.format must be one of {sorted(ALLOWED_OUTPUT_FORMATS)}, got {fmt!r}")
-        if "schema" in output and not isinstance(output.get("schema"), dict):
-            report.err(path, "output.schema must be an object when provided")
+        validate_output_schema(path, output, report)
 
     # platforms — empty list is fine: it means "all platforms" (the
     # skill is vendor-neutral). Non-empty means it's locked to those

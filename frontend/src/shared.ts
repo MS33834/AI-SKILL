@@ -15,6 +15,28 @@ export function brandMarkSvg(size = 16): string {
   return `<svg class="brand-mark" width="${size}" height="${size}" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect width="16" height="16" rx="2" fill="currentColor"/></svg>`;
 }
 
+// ============================ inline icons ============================
+
+/**
+ * Small inline SVG icons. They inherit `currentColor` so they match the
+ * surrounding text in both light and dark modes, and they are always
+ * aria-hidden because the adjacent text already carries the meaning.
+ */
+const ICONS = {
+  arrowLeft:
+    '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>',
+  arrowRight:
+    '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg>',
+  externalLink:
+    '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3H3v10h10V10M7 9l6-6M9 3h4v4"/></svg>',
+} as const;
+
+export type IconName = keyof typeof ICONS;
+
+export function iconSvg(name: IconName, size = 16): string {
+  return `<span class="icon" style="display:inline-flex;width:${size}px;height:${size}px;vertical-align:-0.15em;flex-shrink:0;" aria-hidden="true">${ICONS[name]}</span>`;
+}
+
 // ============================ category labels ============================
 
 export const CATEGORY_LABELS: Record<string, { en: string; zh: string }> = {

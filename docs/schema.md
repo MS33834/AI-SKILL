@@ -65,7 +65,7 @@ inputs:
 ```yaml
 output:
   format: markdown       # markdown | json | text | code
-  schema:                # 可选，json/code 输出最好带
+  schema:                # 可选，但 json/code 输出强烈建议带
     type: object
     required: [summary, tags]
     properties:
@@ -74,6 +74,10 @@ output:
   description: |
     `## Summary` 下面 N 条 bullet，然后一行 `## Tags:`。
 ```
+
+`output.schema` 是可选的，但当它出现时，必须是一个合法的 JSON 对象，且至少包含一个 JSON Schema 关键字，例如 `type`、`properties`、`items`、`$schema`、`anyOf`、`oneOf`、`allOf`、`enum` 之一。这样前端和调用方才能把它当作 JSON Schema 加载。
+
+`output.format` 为 `json` 或 `code` 时，最好同时给出 `output.schema`； validator 会提示警告（不阻塞），旧 skill 可以逐步补齐。
 
 纯文本输出就只写 `format: markdown`，别装。
 

@@ -27,9 +27,9 @@
 
 | #   | 任务                                      | 优先级 | 负责角色               | 状态   | 验收标准                                                           |
 | --- | ----------------------------------------- | ------ | ---------------------- | ------ | ------------------------------------------------------------------ |
-| C1  | 建立 skill 复审流程                       | 高     | Content + Project Lead | 待认领 | GOVERNANCE 里写明 stable 准入流程；首批 5 个 skill 通过复审        |
+| C1  | 建立 skill 复审流程                       | 高     | Content + Project Lead | 已完成 | GOVERNANCE 里写明 stable 准入流程；首批 5 个 skill 通过复审        |
 | C2  | 把现有 `needs_review: true` 的技能清零    | 高     | Content                | 已完成 | 38 个本地 skill 全部 `needs_review: false`（模板除外）             |
-| C3  | 首批 10 个 skill 标记为 `quality: stable` | 高     | Content + Security/QA  | 待认领 | 通过 `validate-skill.py --strict` + `security-scan.py` 无 HIGH/MED |
+| C3  | 首批 10 个 skill 标记为 `quality: stable` | 高     | Content + Security/QA  | 已完成 | 通过 `validate-skill.py --strict` + `security-scan.py` 无 HIGH/MED |
 | C4  | 从上游仓库再通用化 20 个 skill            | 中     | Content                | 待认领 | 每个都有完整 frontmatter、example、When NOT to use                 |
 | C5  | 完善中文翻译（name_zh / description_zh）  | 中     | Docs / i18n            | 待认领 | 80% 本地 skill 有中文名和中文描述                                  |
 | C6  | 撰写 skill 编写最佳实践指南               | 低     | Content + Docs         | 已完成 | docs/skill-writing-guide.md 合并                                   |
@@ -70,8 +70,8 @@
 | A2  | 安全扫描 HIGH 级别告警阻塞合并            | 高     | Security / QA + Tooling | 已完成 | CI 中 `security-scan.py --fail-on-high` 遇到 HIGH 时 exit 1 |
 | A3  | Release Notes 自动生成                    | 中     | Tooling / Ops           | 已完成 | `.github/release.yml` 分类配置                              |
 | A4  | 定时 sync + link-check workflow           | 高     | Index / Data + Tooling  | 已完成 | `.github/workflows/scheduled-sync.yml` 每周运行并自动提 PR  |
-| A5  | 前端构建产物部署到 Pages                  | 中     | Tooling / Ops           | 待认领 | push 到 main 自动部署 GitHub Pages 与 GitCode Pages         |
-| A6  | 依赖自动更新（Dependabot）                | 低     | Tooling / Ops           | 待认领 | 启用 Dependabot，自动提 minor/patch 更新 PR                 |
+| A5  | 前端构建产物部署到 Pages                  | 中     | Tooling / Ops           | 已完成 | GitHub Pages 自动部署；GitCode Pages 需平台侧单独配置       |
+| A6  | 依赖自动更新（Dependabot）                | 低     | Tooling / Ops           | 已完成 | `.github/dependabot.yml` 启用 npm/pip 每周更新              |
 
 ### 2.5 社区 / Community
 
@@ -92,7 +92,7 @@
 | Q2  | 安全扫描分级（HIGH / MED / LOW） | 高     | Security / QA         | 已完成 | `security-scan.py` 输出分级结果             |
 | Q3  | stable 准入检查清单              | 中     | Content + Security/QA | 已完成 | docs/stable-checklist.md 合并               |
 | Q4  | 季度 skill 复审机制              | 低     | Content               | 待认领 | 每季度批量检查 stable skill，失效降级       |
-| Q5  | 输入输出 schema 校验增强         | 低     | Tooling / Ops         | 待认领 | `validate-skill.py` 校验 JSON schema 可解析 |
+| Q5  | 输入输出 schema 校验增强         | 低     | Tooling / Ops         | 已完成 | `validate-skill.py` 校验 JSON schema 可解析 |
 
 ### 2.7 设计 / Design & UX
 
@@ -102,8 +102,8 @@
 | D2  | 品牌标识与 favicon                     | 中     | Design / UX            | 已完成 | 提供 SVG favicon 与 header inline brand mark               |
 | D3  | 空状态 / 错误页视觉统一                | 中     | Design / UX + Frontend | 已完成 | 404、empty、error 使用统一 `.empty-state` / `.error-state` |
 | D4  | 卡片 hover / focus 动效精调            | 中     | Design / UX + Frontend | 待认领 | 动效不卡顿、不闪烁、偏好减少动画时禁用                     |
-| D5  | 中文排版优化（行高、字重、标点）       | 中     | Design / UX + Docs     | 待认领 | 中文模式下阅读舒适，无 overly bold 标题                    |
-| D6  | 图标系统（统一使用 SVG 或 icon font）  | 低     | Design / UX + Frontend | 待认领 | 替换纯文本箭头/符号为可访问图标                            |
+| D5  | 中文排版优化（行高、字重、标点）       | 中     | Design / UX + Docs     | 已完成 | `:lang(zh)` 调整行高与标题字重，提升中文阅读舒适度         |
+| D6  | 图标系统（统一使用 SVG 或 icon font）  | 低     | Design / UX + Frontend | 已完成 | `iconSvg()` 替代纯文本箭头，currentColor 适配深浅模式      |
 
 ### 2.8 文档 / Docs & i18n
 

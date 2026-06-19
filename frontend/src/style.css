@@ -214,6 +214,13 @@ h6 {
   height: 100%;
 }
 
+/* Inline icons inherit the parent text color via currentColor. */
+.icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .topbar {
   position: sticky;
   top: 0;
@@ -1745,6 +1752,57 @@ h6 {
 }
 .bundle-list input[type="checkbox"] {
   accent-color: var(--accent);
+}
+
+/* ============================ chinese typography ============================ */
+
+/* Improve readability when the document language is Chinese. These
+   rules are intentionally scoped to :lang(zh) so they only affect
+   the Chinese locale and leave the English typography untouched. */
+
+:lang(zh) {
+  /* Slightly looser line-height for CJK characters. */
+  line-height: 1.75;
+  /* Allow punctuation to hang at line edges so justification and
+     wrapping look natural; trim excess spacing after opening marks. */
+  hanging-punctuation: allow-end last;
+  text-spacing-trim: trim-start;
+}
+
+:lang(zh) h1,
+:lang(zh) h2,
+:lang(zh) .hero__title,
+:lang(zh) .cat-group__title,
+:lang(zh) .external__title,
+:lang(zh) .ext-group__title,
+:lang(zh) .notfound__title,
+:lang(zh) .detail h1,
+:lang(zh) .detail h2,
+:lang(zh) .bundle__title,
+:lang(zh) .detail__zh summary,
+:lang(zh) .related__title {
+  /* Chinese characters look too heavy at 700; 600 keeps hierarchy
+     without the "blown-out" bold effect on CJK glyphs. */
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+:lang(zh) .hero__title {
+  /* Tight negative tracking is designed for Latin display type;
+     reset it for CJK so characters don't collide. */
+  letter-spacing: 0;
+}
+
+:lang(zh) p,
+:lang(zh) .hero__sub,
+:lang(zh) .skill-card__desc,
+:lang(zh) .external__subtitle,
+:lang(zh) .external-card__desc,
+:lang(zh) .detail__lead,
+:lang(zh) .detail p,
+:lang(zh) .detail li,
+:lang(zh) .notfound__sub {
+  line-height: 1.75;
 }
 
 /* ============================ footer ============================ */

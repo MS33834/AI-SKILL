@@ -22,6 +22,7 @@ import {
   qualityChipHtml,
   triggerBlobDownload,
   skillToMarkdown,
+  iconSvg,
 } from "../shared";
 
 export async function renderDetail(root: HTMLElement, s: Skill, index: SkillIndex): Promise<void> {
@@ -35,7 +36,7 @@ export async function renderDetail(root: HTMLElement, s: Skill, index: SkillInde
   const lead = pickZh(s, "description");
   root.innerHTML = `
     <div class="container-read detail">
-      <a class="back-link" href="#/">${escHtml(t("detail.back"))}</a>
+      <a class="back-link" href="#/">${iconSvg("arrowLeft", 14)} ${escHtml(t("detail.back"))}</a>
       <h1>${escHtml(titleName)}</h1>
       <p class="meta-row">
         <strong>${escHtml(s.slug)}</strong>
@@ -509,7 +510,7 @@ export function renderNotFound(root: HTMLElement, slug: string, index: SkillInde
       <p class="notfound__sub">${escHtml(t("nf.sub"))}</p>
       ${sugHtml}
       <div class="actions" style="justify-content: center;">
-        <a class="btn btn--primary" href="#/">${escHtml(t("nf.back"))}</a>
+        <a class="btn btn--primary" href="#/">${iconSvg("arrowLeft", 14)} ${escHtml(t("nf.back"))}</a>
         <a class="btn" href="#/bundle">${escHtml(t("nf.bundle"))}</a>
       </div>
     </div>

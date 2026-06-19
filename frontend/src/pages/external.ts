@@ -9,7 +9,7 @@
 // external-index/skills.yaml by scripts/sync-external-index.py.
 
 import { t, getLocale } from "../i18n";
-import { escHtml, escAttr, stableHue, debounce, categoryLabel } from "../shared";
+import { escHtml, escAttr, stableHue, debounce, categoryLabel, iconSvg } from "../shared";
 
 interface ExternalRepo {
   slug: string;
@@ -412,7 +412,7 @@ function cardHtml(r: ExternalRepo, zh: boolean): string {
           ${r.archived ? `<span class="ext-archived-badge">${escHtml(t("external.archived"))}</span>` : ""}
         </div>
         <a class="external-card__link" href="${escAttr(r.url)}" rel="noopener noreferrer" target="_blank">
-          ${escHtml(t("external.visit"))} ↗
+          ${escHtml(t("external.visit"))} ${iconSvg("externalLink", 14)}
         </a>
       </header>
       <h3 class="external-card__title">${escHtml(title)}</h3>

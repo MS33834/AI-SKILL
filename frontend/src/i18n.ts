@@ -105,8 +105,8 @@ const STRINGS = {
     en: "A community-driven index of AI agent skills and repositories. Browse {skills} hand-written SKILL.md files, or explore {repos}+ indexed repositories from OpenAI, Anthropic, Hugging Face, LangChain and more. MIT licensed. No tracking. No signup.",
     zh: "社区驱动的 AI 智能体技能与仓库索引。浏览 {skills} 个手写 SKILL.md，或探索 {repos}+ 个已索引仓库（来自 OpenAI、Anthropic、Hugging Face、LangChain 等）。MIT 协议。无追踪、无注册。",
   },
-  "hero.cta.index": { en: "Browse skill index →", zh: "浏览技能索引 →" },
-  "hero.cta.bundle": { en: "Build a bundle →", zh: "制作合集 →" },
+  "hero.cta.index": { en: "Browse skill index", zh: "浏览技能索引" },
+  "hero.cta.bundle": { en: "Build a bundle", zh: "制作合集" },
 
   "stat.total.label": { en: "SKILL.md", zh: "SKILL.md" },
   "stat.categories.label": { en: "Categories", zh: "分类" },
@@ -146,7 +146,7 @@ const STRINGS = {
   },
 
   // ----- detail page -----
-  "detail.back": { en: "← back to list", zh: "← 返回列表" },
+  "detail.back": { en: "back to list", zh: "返回列表" },
   "detail.bilingual": { en: "中文", zh: "中文" },
   "detail.bilingualEn": { en: "English", zh: "English" },
   "detail.source": { en: "source", zh: "来源" },
@@ -190,7 +190,7 @@ const STRINGS = {
     zh: "可能已改名，或链接来自旧版本。回列表看看，或检查下面的拼写建议。",
   },
   "nf.suggest": { en: "did you mean", zh: "你是不是想看" },
-  "nf.back": { en: "← back to the list", zh: "← 返回列表" },
+  "nf.back": { en: "back to the list", zh: "返回列表" },
   "nf.bundle": { en: "open the bundle picker", zh: "打开合集选择器" },
 
   // ----- generic -----
