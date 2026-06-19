@@ -7,12 +7,17 @@
 import JSZip from "jszip";
 import type { Skill, SkillIndex } from "../types";
 import { t } from "../i18n";
-import { categoryLabel, escHtml, escAttr, buildSearchBlob, debounce, triggerBlobDownload, skillToMarkdown } from "../shared";
+import {
+  categoryLabel,
+  escHtml,
+  escAttr,
+  buildSearchBlob,
+  debounce,
+  triggerBlobDownload,
+  skillToMarkdown,
+} from "../shared";
 
-export async function renderBundle(
-  root: HTMLElement,
-  index: SkillIndex,
-): Promise<void> {
+export async function renderBundle(root: HTMLElement, index: SkillIndex): Promise<void> {
   root.innerHTML = `
     <div class="container-wide">
       <h2 class="bundle__title">${escHtml(t("bundle.title"))}</h2>
@@ -44,7 +49,7 @@ export async function renderBundle(
   // Build a checkbox list, preserving filter + checked state
   function paint() {
     const q = qInput.value.trim().toLowerCase();
-    const filtered = index.skills.filter(s => {
+    const filtered = index.skills.filter((s) => {
       if (!q) return true;
       return buildSearchBlob(s).includes(q);
     });
@@ -52,18 +57,20 @@ export async function renderBundle(
     // filter that hides then re-shows a row doesn't drop the
     // selection. (W4 from the prosecutor review.)
     const stillChecked = new Set(
-      Array.from(
-        listEl.querySelectorAll<HTMLInputElement>("input[type=checkbox]:checked"),
-      ).map(c => c.dataset.slug!),
+      Array.from(listEl.querySelectorAll<HTMLInputElement>("input[type=checkbox]:checked")).map((c) => c.dataset.slug!)
     );
-    listEl.innerHTML = filtered.map(s => `
+    listEl.innerHTML = filtered
+      .map(
+        (s) => `
       <li>
         <input type="checkbox" data-slug="${escAttr(s.slug)}" id="chk-${escAttr(s.slug)}"${stillChecked.has(s.slug) ? " checked" : ""} />
         <label for="chk-${escAttr(s.slug)}" class="bundle-list__slug">${escHtml(s.slug)}</label>
         <span class="bundle-list__cat">${escHtml(categoryLabel(s.category))}</span>
         ${s.needs_review ? `<span class="skill-card__review-dot" title="${escAttr(t("reviewDot.title"))}"></span>` : ""}
       </li>
-    `).join("");
+    `
+      )
+      .join("");
   }
   // Bind the change listener once on listEl — re-binding inside
   // paint() was leaking a handler per keystroke. (B1)
@@ -77,16 +84,20 @@ export async function renderBundle(
 
   qInput.addEventListener("input", debounce(paint, 80));
   selAllBtn.addEventListener("click", () => {
-    listEl.querySelectorAll<HTMLInputElement>("input[type=checkbox]").forEach(c => { c.checked = true; });
+    listEl.querySelectorAll<HTMLInputElement>("input[type=checkbox]").forEach((c) => {
+      c.checked = true;
+    });
     updateCount();
   });
   clearBtn.addEventListener("click", () => {
-    listEl.querySelectorAll<HTMLInputElement>("input[type=checkbox]").forEach(c => { c.checked = false; });
+    listEl.querySelectorAll<HTMLInputElement>("input[type=checkbox]").forEach((c) => {
+      c.checked = false;
+    });
     updateCount();
   });
   dlBtn.addEventListener("click", async () => {
     const slugs = Array.from(listEl.querySelectorAll<HTMLInputElement>("input[type=checkbox]:checked"))
-      .map(c => c.dataset.slug!)
+      .map((c) => c.dataset.slug!)
       .filter(Boolean);
     if (slugs.length === 0) return;
     const buildingLabel = t("bundle.building");
@@ -96,12 +107,14 @@ export async function renderBundle(
     try {
       const zip = new JSZip();
       // Parallel fetch all selected skills
-      const results = await Promise.all(slugs.map(async slug => {
-        const r = await fetch(`${import.meta.env.BASE_URL}skills/${encodeURIComponent(slug)}.json`);
-        if (!r.ok) throw new Error(`fetch ${slug}: ${r.status}`);
-        const s = (await r.json()) as Skill;
-        return { slug, md: skillToMarkdown(s) };
-      }));
+      const results = await Promise.all(
+        slugs.map(async (slug) => {
+          const r = await fetch(`${import.meta.env.BASE_URL}skills/${encodeURIComponent(slug)}.json`);
+          if (!r.ok) throw new Error(`fetch ${slug}: ${r.status}`);
+          const s = (await r.json()) as Skill;
+          return { slug, md: skillToMarkdown(s) };
+        })
+      );
       for (const { slug, md } of results) {
         zip.file(`${slug}/SKILL.md`, md);
       }
@@ -117,7 +130,7 @@ export async function renderBundle(
       // in some embedded contexts. (W8)
       listEl.insertAdjacentHTML(
         "beforebegin",
-        `<div class="empty bundle-error" role="alert" style="color: var(--err);">${escHtml(t("bundle.failed", { msg: e instanceof Error ? e.message : String(e) }))}</div>`,
+        `<div class="empty bundle-error" role="alert" style="color: var(--err);">${escHtml(t("bundle.failed", { msg: e instanceof Error ? e.message : String(e) }))}</div>`
       );
       if (import.meta.env.DEV) {
         console.error(e);

@@ -17,6 +17,7 @@ skills:
       - frontend
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/browser-ml-in-js/SKILL.md
   - slug: cli-builder
     name: CLI Builder
@@ -31,6 +32,7 @@ skills:
       - database
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/cli-builder/SKILL.md
   - slug: clickhouse-best-practices
     name: ClickHouse Best Practices
@@ -45,6 +47,7 @@ skills:
       - evaluation
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/clickhouse-best-practices/SKILL.md
   - slug: code-review
     name: Code Review Workflow
@@ -61,6 +64,7 @@ skills:
       - database
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/code-review/SKILL.md
   - slug: code-reviewer
     name: Code Reviewer
@@ -75,6 +79,7 @@ skills:
       - llm
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/code-reviewer/SKILL.md
   - slug: commit-message-writer
     name: Commit Message Writer
@@ -89,6 +94,7 @@ skills:
       - documentation
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/commit-message-writer/SKILL.md
   - slug: deepeval-eval-suite
     name: deepeval Pytest Eval Suite
@@ -103,6 +109,7 @@ skills:
       - evaluation
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/deepeval-eval-suite/SKILL.md
   - slug: deepeval-otel
     name: deepeval OTel Trace Export
@@ -117,6 +124,7 @@ skills:
       - database
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/deepeval-otel/SKILL.md
   - slug: deepeval-tracing
     name: deepeval SDK Tracing
@@ -131,6 +139,7 @@ skills:
       - deployment
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/deepeval-tracing/SKILL.md
   - slug: doc-coauthoring
     name: Doc Co-Authoring Workflow
@@ -146,6 +155,7 @@ skills:
       - security
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/doc-coauthoring/SKILL.md
   - slug: embedding-model-training
     name: Embedding Model Training
@@ -160,6 +170,7 @@ skills:
       - frontend
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/embedding-model-training/SKILL.md
   - slug: frontend-large-feature-architecture
     name: Frontend Large-Feature Architecture
@@ -174,6 +185,7 @@ skills:
       - database
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/frontend-large-feature-architecture/SKILL.md
   - slug: frontend-visual-design
     name: Frontend Visual Design Taste
@@ -188,6 +200,7 @@ skills:
       - docker
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/frontend-visual-design/SKILL.md
   - slug: goal-definition
     name: Goal Definition
@@ -202,6 +215,7 @@ skills:
       - evaluation
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/goal-definition/SKILL.md
   - slug: internal-comms
     name: Internal Comms Authoring
@@ -216,6 +230,7 @@ skills:
       - deployment
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/internal-comms/SKILL.md
   - slug: invalid-name
     name: Invalid Name Handler
@@ -229,6 +244,7 @@ skills:
       - naming
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/invalid-name/SKILL.md
   - slug: llm-pricing-file-update
     name: LLM Model Pricing File Update
@@ -243,6 +259,7 @@ skills:
       - deployment
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/llm-pricing-file-update/SKILL.md
   - slug: maf-prs-job
     name: maf-prs-job
@@ -276,6 +293,7 @@ skills:
       - deployment
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/maf-prs-job/SKILL.md
   - slug: mcp-builder
     name: MCP Server Builder
@@ -291,6 +309,7 @@ skills:
       - database
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/mcp-builder/SKILL.md
   - slug: ownership-bus-factor
     name: Code Ownership & Bus Factor
@@ -305,6 +324,7 @@ skills:
       - javascript
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/ownership-bus-factor/SKILL.md
   - slug: pdf-summarizer
     name: PDF Summarizer
@@ -319,6 +339,7 @@ skills:
       - llm
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/pdf-summarizer/SKILL.md
   - slug: pdf-vision-extractor
     name: PDF Vision Extractor
@@ -334,6 +355,7 @@ skills:
     platforms:
       - claude
     needs_review: false
+    quality: stable
     path: skills/pdf-vision-extractor/SKILL.md
   - slug: pnpm-upgrade-package
     name: PNPM Upgrade Package
@@ -348,6 +370,7 @@ skills:
       - documentation
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/pnpm-upgrade-package/SKILL.md
   - slug: pr-yeet
     name: Single-Flow PR Yeet
@@ -362,6 +385,7 @@ skills:
       - llm
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/pr-yeet/SKILL.md
   - slug: promptflow-to-maf
     name: promptflow-to-maf
@@ -383,6 +407,7 @@ skills:
       - deployment
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/promptflow-to-maf/SKILL.md
   - slug: promptfoo-evals
     name: promptfoo Eval Suite Author
@@ -397,6 +422,7 @@ skills:
       - deployment
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/promptfoo-evals/SKILL.md
   - slug: promptfoo-redteam
     name: promptfoo Redteam Plugin Author
@@ -411,6 +437,7 @@ skills:
       - frontend
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/promptfoo-redteam/SKILL.md
   - slug: react-router-search-params
     name: React Router Search Param State
@@ -426,6 +453,7 @@ skills:
       - frontend
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/react-router-search-params/SKILL.md
   - slug: realtime-eval-bootstrap
     name: Realtime Eval Scaffold
@@ -440,6 +468,7 @@ skills:
       - javascript
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/realtime-eval-bootstrap/SKILL.md
   - slug: secure-code-by-language
     name: Secure Code by Language
@@ -454,6 +483,7 @@ skills:
       - database
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/secure-code-by-language/SKILL.md
   - slug: security-review
     name: Security Review Checklist
@@ -468,6 +498,7 @@ skills:
       - database
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/security-review/SKILL.md
   - slug: skill-creator
     name: Skill Authoring Loop
@@ -482,6 +513,7 @@ skills:
       - documentation
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/skill-creator/SKILL.md
   - slug: sql-query-helper
     name: SQL Query Helper
@@ -496,6 +528,7 @@ skills:
       - llm
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/sql-query-helper/SKILL.md
   - slug: storybook
     name: Storybook Component Stories
@@ -510,6 +543,7 @@ skills:
       - database
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/storybook/SKILL.md
   - slug: test-generator
     name: Unit Test Generator
@@ -524,6 +558,7 @@ skills:
       - python
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/test-generator/SKILL.md
   - slug: threat-modeling
     name: Repository Threat Model
@@ -538,6 +573,7 @@ skills:
       - database
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/threat-modeling/SKILL.md
   - slug: turborepo
     name: Turborepo Monorepo Authoring
@@ -552,6 +588,7 @@ skills:
       - frontend
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/turborepo/SKILL.md
   - slug: webapp-testing
     name: Webapp Testing Harness
@@ -567,4 +604,5 @@ skills:
       - database
     platforms: []
     needs_review: false
+    quality: stable
     path: skills/webapp-testing/SKILL.md

@@ -12,6 +12,18 @@ import type { Skill, SkillIndex } from "./types";
 import { applyStaticTranslations, getLocale, setLocale, subscribe, t } from "./i18n";
 import { escHtml } from "./shared";
 
+// Self-hosted fonts via @fontsource. This keeps the site private
+// (no Google Fonts CDN requests) and works offline after the first
+// npm install / build.
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+import "@fontsource/fraunces/500.css";
+import "@fontsource/fraunces/700.css";
+
 const main = () => document.querySelector<HTMLElement>("#main")!;
 let cachedIndex: SkillIndex | null = null;
 const skillCache = new Map<string, Skill>();
@@ -119,7 +131,7 @@ async function route() {
 
 function syncLangToggle() {
   const cur = getLocale();
-  document.querySelectorAll<HTMLElement>("[data-lang-opt]").forEach(el => {
+  document.querySelectorAll<HTMLElement>("[data-lang-opt]").forEach((el) => {
     const opt = el.dataset.langOpt as "en" | "zh" | undefined;
     el.setAttribute("aria-pressed", opt === cur ? "true" : "false");
   });
@@ -132,7 +144,7 @@ function bindLangToggle() {
   // one sets the locale to that language (rather than toggling
   // every time), which is what users expect from a segmented
   // control.
-  btn.querySelectorAll<HTMLElement>("[data-lang-opt]").forEach(opt => {
+  btn.querySelectorAll<HTMLElement>("[data-lang-opt]").forEach((opt) => {
     opt.addEventListener("click", (ev) => {
       ev.stopPropagation();
       const target = (opt as HTMLElement).dataset.langOpt as "en" | "zh" | undefined;

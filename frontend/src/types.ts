@@ -15,6 +15,7 @@ export interface SkillIndexEntry {
   tags: string[];
   platforms: string[];
   needs_review: boolean;
+  quality: "stable" | "beta" | "alpha" | "experimental" | "draft";
   path: string;
 }
 
@@ -55,6 +56,7 @@ export interface Skill {
   created: string;
   updated: string;
   needs_review: boolean;
+  quality: "stable" | "beta" | "alpha" | "experimental" | "draft";
   body: string; // Markdown body (everything after the `---` closer)
   // The original SKILL.md text, byte-for-byte. The download and
   // bundle export buttons hand this to the user — we don't

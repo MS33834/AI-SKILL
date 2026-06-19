@@ -28,6 +28,9 @@ jobs:
       - name: Validate local skills
         run: python scripts/validate-skill.py --strict
 
+      - name: Security scan skills
+        run: python scripts/security-scan.py
+
   frontend:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -47,6 +50,18 @@ jobs:
 
       - name: Type check
         run: npm run typecheck
+        working-directory: frontend
+
+      - name: Lint
+        run: npm run lint
+        working-directory: frontend
+
+      - name: Format check
+        run: npm run format:check
+        working-directory: frontend
+
+      - name: Test
+        run: npm run test
         working-directory: frontend
 
       - name: Build

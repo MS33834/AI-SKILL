@@ -42,7 +42,14 @@ interface IndexData {
 
 type ViewMode = "domain" | "vendor" | "category" | "stars";
 
+const PAGE_SIZE = 60;
+
 let cache: IndexData | null = null;
+
+// Shared IntersectionObserver for auto-loading more external repos.
+// Disconnect the previous instance when the external route is re-rendered
+// (e.g. language switch) so we don't leak observers on detached sentinels.
+let extObserver: IntersectionObserver | null = null;
 
 async function loadRepos(): Promise<IndexData> {
   if (cache) return cache;
@@ -102,22 +109,37 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
       <div id="ext-list" class="external-list" aria-busy="true">
         <div class="ext-loading" role="status" aria-live="polite">${escHtml(t("loading"))}</div>
       </div>
+      <div id="ext-load-more" class="ext-load-more"></div>
       <p class="external__hint">${escHtml(t("external.hint"))}</p>
     </div>
   `;
 
   const list = root.querySelector<HTMLDivElement>("#ext-list")!;
+  const loadMoreEl = root.querySelector<HTMLDivElement>("#ext-load-more")!;
   const statsEl = root.querySelector<HTMLDivElement>("#ext-stats")!;
   const searchInput = root.querySelector<HTMLInputElement>("#ext-search")!;
   const vendorFilter = root.querySelector<HTMLSelectElement>("#ext-vendor-filter")!;
   const viewBtns = root.querySelectorAll<HTMLButtonElement>(".ext-view-btn");
 
   let currentView: ViewMode = initialView;
+  let visibleCount = PAGE_SIZE;
+  let currentFiltered: ExternalRepo[] = [];
+  let autoLoadEnabled = false;
+  let sentinel: HTMLElement | null = null;
+
   // Sync the active tab with the URL state
-  viewBtns.forEach(btn => {
+  viewBtns.forEach((btn) => {
     const active = btn.dataset.view === currentView;
     btn.setAttribute("aria-selected", active ? "true" : "false");
   });
+
+  // Auto-load is only enabled after the user has scrolled once. This
+  // prevents an initial paint with a small viewport from recursively
+  // loading every page before the user has a chance to interact.
+  const enableAutoLoad = () => {
+    autoLoadEnabled = true;
+  };
+  window.addEventListener("scroll", enableAutoLoad, { once: true, passive: true });
 
   try {
     const data = await loadRepos();
@@ -135,22 +157,51 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
       vendorFilter.appendChild(o);
     }
 
+    // Clean up any observer left over from a previous render of this route.
+    if (extObserver) {
+      extObserver.disconnect();
+      extObserver = null;
+    }
+
+    if ("IntersectionObserver" in window) {
+      extObserver = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (entry?.isIntersecting && autoLoadEnabled && visibleCount < currentFiltered.length) {
+            visibleCount += PAGE_SIZE;
+            paint(false);
+          }
+        },
+        { rootMargin: "0px 0px 400px 0px" }
+      );
+    }
+
     function paint(pushUrl = true) {
       const q = searchInput.value.trim().toLowerCase();
       const vt = vendorFilter.value;
       let filtered = data.repos;
-      if (vt) filtered = filtered.filter(r => r.vendor_type === vt);
+      if (vt) filtered = filtered.filter((r) => r.vendor_type === vt);
       if (q) {
-        filtered = filtered.filter(r => {
+        filtered = filtered.filter((r) => {
           // Search across localized title/summary, tags, category,
           // and the vendor/repo/url identifiers — plus the per-repo
           // skills list so users can find a specific capability
           // and learn which repo provides it.
           const blob = [
-            r.slug, r.title, r.title_zh, r.category,
-            ...(r.tags ?? []), r.summary_en, r.summary_zh,
-            ...(r.skills ?? []), r.vendor, r.repo, r.url,
-          ].join(" ").toLowerCase();
+            r.slug,
+            r.title,
+            r.title_zh,
+            r.category,
+            ...(r.tags ?? []),
+            r.summary_en,
+            r.summary_zh,
+            ...(r.skills ?? []),
+            r.vendor,
+            r.repo,
+            r.url,
+          ]
+            .join(" ")
+            .toLowerCase();
           return blob.includes(q);
         });
       }
@@ -164,21 +215,60 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
         updateHashParams(p);
       }
 
+      currentFiltered = filtered;
       statsEl.innerHTML = `<span>${escHtml(t("external.results", { n: filtered.length }))}</span>`;
+
+      if (sentinel) {
+        extObserver?.unobserve(sentinel);
+        sentinel = null;
+      }
+
       if (filtered.length === 0) {
         list.innerHTML = `<div class="empty">${escHtml(t("external.empty"))}</div>`;
+        loadMoreEl.innerHTML = "";
         return;
       }
-      list.innerHTML = groupAndRender(filtered, currentView, data, zh);
+      const rendered = groupAndRender(filtered, currentView, data, zh, visibleCount);
+      list.innerHTML = rendered.html;
+      if (rendered.shown < filtered.length) {
+        loadMoreEl.innerHTML = `
+          <button class="btn btn--secondary" id="ext-load-btn" type="button">
+            ${escHtml(t("external.loadMore"))} (${escHtml(String(filtered.length - rendered.shown))})
+          </button>
+        `;
+        loadMoreEl.querySelector<HTMLButtonElement>("#ext-load-btn")!.addEventListener("click", () => {
+          visibleCount += PAGE_SIZE;
+          paint(false);
+        });
+        sentinel = document.createElement("div");
+        sentinel.className = "ext-load-sentinel";
+        sentinel.setAttribute("aria-hidden", "true");
+        loadMoreEl.appendChild(sentinel);
+        extObserver?.observe(sentinel);
+      } else {
+        loadMoreEl.innerHTML = "";
+      }
     }
 
-    searchInput.addEventListener("input", debounce(() => paint(), 120));
-    vendorFilter.addEventListener("change", () => paint());
-    viewBtns.forEach(btn => {
+    searchInput.addEventListener(
+      "input",
+      debounce(() => {
+        visibleCount = PAGE_SIZE;
+        paint();
+      }, 120)
+    );
+    vendorFilter.addEventListener("change", () => {
+      visibleCount = PAGE_SIZE;
+      paint();
+    });
+    viewBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        viewBtns.forEach(b => { b.setAttribute("aria-selected", "false"); });
+        viewBtns.forEach((b) => {
+          b.setAttribute("aria-selected", "false");
+        });
         btn.setAttribute("aria-selected", "true");
         currentView = btn.dataset.view as ViewMode;
+        visibleCount = PAGE_SIZE;
         paint();
       });
     });
@@ -196,7 +286,8 @@ function groupAndRender(
   view: ViewMode,
   data: IndexData,
   zh: boolean,
-): string {
+  visibleCount: number
+): { html: string; shown: number } {
   // Group repos by the selected view dimension
   const groups = new Map<string, ExternalRepo[]>();
   for (const r of repos) {
@@ -214,13 +305,20 @@ function groupAndRender(
   let sortedKeys: string[];
   if (view === "stars") {
     const tierOrder = ["100k+", "50k+", "10k+", "1k+", "<1k", "none"];
-    sortedKeys = tierOrder.filter(k => groups.has(k));
+    sortedKeys = tierOrder.filter((k) => groups.has(k));
   } else {
     sortedKeys = Array.from(groups.keys()).sort();
   }
 
-  return sortedKeys.map(key => {
+  let shown = 0;
+  let html = "";
+  for (const key of sortedKeys) {
+    if (shown >= visibleCount) break;
     const list = groups.get(key)!;
+    const take = Math.min(list.length, visibleCount - shown);
+    const visibleList = list.slice(0, take);
+    shown += take;
+
     // Resolve group label
     let label: string;
     if (view === "domain") {
@@ -236,47 +334,52 @@ function groupAndRender(
       // raw slug formatting, so Chinese users see 中文分类名.
       label = categoryLabel(key);
     } else {
-      label = key.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      label = key.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
     }
-    return `
+
+    html += `
       <section class="ext-group">
         <header class="ext-group__head">
           <h2 class="ext-group__title">${escHtml(label)}</h2>
           <span class="ext-group__count">${escHtml(t("external.results", { n: list.length }))}</span>
         </header>
         <div class="ext-cards">
-          ${list.map(r => cardHtml(r, zh)).join("")}
+          ${visibleList.map((r) => cardHtml(r, zh)).join("")}
         </div>
       </section>
     `;
-  }).join("");
+  }
+
+  return { html, shown };
 }
 
 function cardHtml(r: ExternalRepo, zh: boolean): string {
-  const desc = zh ? (r.summary_zh || r.summary_en) : r.summary_en;
-  const title = zh ? (r.title_zh || r.title) : r.title;
+  const desc = zh ? r.summary_zh || r.summary_en : r.summary_en;
+  const title = zh ? r.title_zh || r.title : r.title;
   const hue = stableHue(r.vendor);
-  const tags = r.tags.slice(0, 5).map(tg =>
-    `<span class="external-card__tag">#${escHtml(tg)}</span>`
-  ).join("");
-  const starsFmt = r.stars >= 1000
-    ? `${(r.stars / 1000).toFixed(1).replace(/\.0$/, "")}k`
-    : String(r.stars);
+  const tags = r.tags
+    .slice(0, 5)
+    .map((tg) => `<span class="external-card__tag">#${escHtml(tg)}</span>`)
+    .join("");
+  const starsFmt = r.stars >= 1000 ? `${(r.stars / 1000).toFixed(1).replace(/\.0$/, "")}k` : String(r.stars);
   // Skill-level index: list the concrete capabilities the repo
   // provides so users can find a specific skill and know which
   // repo to open. Cap at 8 to keep cards scannable.
-  const skillsList = (r.skills ?? []).slice(0, 8).map(sk =>
-    `<li class="external-card__skill">${escHtml(sk)}</li>`
-  ).join("");
+  const skillsList = (r.skills ?? [])
+    .slice(0, 8)
+    .map((sk) => `<li class="external-card__skill">${escHtml(sk)}</li>`)
+    .join("");
   const skillsBlock = skillsList
     ? `<ul class="external-card__skills" aria-label="${escAttr(t("external.skills"))}">${skillsList}</ul>`
     : "";
+  const pushedAt = r.pushed_at ? formatDate(r.pushed_at, zh ? "zh" : "en") : "";
   return `
-    <article class="external-card" style="--vendor-hue: ${hue};">
+    <article class="external-card ${r.archived ? "external-card--archived" : ""}" style="--vendor-hue: ${hue};">
       <header class="external-card__head">
         <div class="external-card__vendor-row">
           <span class="external-card__vendor">${escHtml(r.vendor)}</span>
           <span class="external-card__repo">${escHtml(r.repo)}</span>
+          ${r.archived ? `<span class="ext-archived-badge">${escHtml(t("external.archived"))}</span>` : ""}
         </div>
         <a class="external-card__link" href="${escAttr(r.url)}" rel="noopener noreferrer" target="_blank">
           ${escHtml(t("external.visit"))} ↗
@@ -289,9 +392,23 @@ function cardHtml(r: ExternalRepo, zh: boolean): string {
         <div><dt>${escHtml(t("external.stars.label"))}</dt><dd>★ ${escHtml(starsFmt)}</dd></div>
         <div><dt>${escHtml(t("external.license"))}</dt><dd>${escHtml(r.license || "—")}</dd></div>
         <div><dt>${escHtml(t("external.category"))}</dt><dd>${escHtml(categoryLabel(r.category))}</dd></div>
-        ${r.archived ? `<div><dt></dt><dd><span class="ext-archived">${escHtml(t("external.archived"))}</span></dd></div>` : ""}
+        ${pushedAt ? `<div><dt>${escHtml(t("external.pushedAt"))}</dt><dd>${escHtml(pushedAt)}</dd></div>` : ""}
       </dl>
       <div class="external-card__tags">${tags}</div>
     </article>
   `;
+}
+
+function formatDate(iso: string, locale: "en" | "zh"): string {
+  try {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString(locale === "zh" ? "zh-CN" : "en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  } catch {
+    return iso;
+  }
 }

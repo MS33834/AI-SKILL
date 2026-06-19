@@ -39,30 +39,44 @@ function detect(): Locale {
   const u = new URL(window.location.href);
   const q = u.searchParams.get(URL_PARAM);
   if (q === "zh" || q === "en") {
-    try { localStorage.setItem(STORAGE_KEY, q); } catch { /* sandboxed iframe etc. */ }
+    try {
+      localStorage.setItem(STORAGE_KEY, q);
+    } catch {
+      /* sandboxed iframe etc. */
+    }
     return q;
   }
   // Then localStorage (sticky across reloads).
   try {
     const s = localStorage.getItem(STORAGE_KEY);
     if (s === "zh" || s === "en") return s;
-  } catch { /* no storage — fine, default to en */ }
+  } catch {
+    /* no storage — fine, default to en */
+  }
   return "en";
 }
 
-export function getLocale(): Locale { return current; }
+export function getLocale(): Locale {
+  return current;
+}
 
 export function setLocale(l: Locale): void {
   if (!SUPPORTED.includes(l) || l === current) return;
   current = l;
-  try { localStorage.setItem(STORAGE_KEY, l); } catch { /* ignore */ }
+  try {
+    localStorage.setItem(STORAGE_KEY, l);
+  } catch {
+    /* ignore */
+  }
   // Reflect into the URL so a copy-paste preserves the choice.
   const u = new URL(window.location.href);
   u.searchParams.set(URL_PARAM, l);
   history.replaceState(null, "", u.toString());
   // Notify subscribers (router re-runs the current view).
   for (const fn of subs) {
-    try { fn(); } catch (e) {
+    try {
+      fn();
+    } catch (e) {
       // Production: suppress detailed error logs to prevent information leakage
       if (import.meta.env.DEV) {
         console.error("[i18n] subscriber threw", e);
@@ -84,183 +98,224 @@ export function subscribe(fn: () => void): () => void {
 
 const STRINGS = {
   // ----- list page -----
-  "eyebrow.tag":     { en: "open-source skill index",             zh: "开源 · 技能索引" },
-  "eyebrow.version": { en: "v2.0.0",                               zh: "v2.0.0" },
-  "hero.title1":     { en: "curated skills, indexed repos.",      zh: "精选技能 + 仓库索引。" },
-  "hero.sub":        {
+  "eyebrow.tag": { en: "open-source skill index", zh: "开源 · 技能索引" },
+  "eyebrow.version": { en: "v2.0.0", zh: "v2.0.0" },
+  "hero.title1": { en: "curated skills, indexed repos.", zh: "精选技能 + 仓库索引。" },
+  "hero.sub": {
     en: "A community-driven index of AI agent skills and repositories. Browse {skills} hand-written SKILL.md files, or explore {repos}+ indexed repositories from OpenAI, Anthropic, Hugging Face, LangChain and more. MIT licensed. No tracking. No signup.",
     zh: "社区驱动的 AI 智能体技能与仓库索引。浏览 {skills} 个手写 SKILL.md，或探索 {repos}+ 个已索引仓库（来自 OpenAI、Anthropic、Hugging Face、LangChain 等）。MIT 协议。无追踪、无注册。",
   },
-  "hero.cta.index":  { en: "Browse skill index →",                zh: "浏览仓库索引 →" },
-  "hero.cta.gh":     { en: "View on GitCode",                     zh: "在 GitCode 上看" },
+  "hero.cta.index": { en: "Browse skill index →", zh: "浏览技能索引 →" },
+  "hero.cta.bundle": { en: "Build a bundle →", zh: "制作合集 →" },
 
-  "stat.total.label":      { en: "SKILL.md",                zh: "SKILL.md" },
-  "stat.categories.label": { en: "Categories",              zh: "分类" },
-  "stat.neutral.label":    { en: "Indexed repos",           zh: "索引仓库" },
-  "stat.domains.label":    { en: "Domains",                 zh: "领域" },
-  "stat.total.suffix":     { en: "files",                   zh: "个文件" },
-  "stat.cat.suffix":       { en: "groups",                  zh: "个分组" },
-  "stat.neutral.suffix":   { en: "repos",                   zh: "个仓库" },
-  "stat.domains.suffix":   { en: "areas",                   zh: "个领域" },
+  "stat.total.label": { en: "SKILL.md", zh: "SKILL.md" },
+  "stat.categories.label": { en: "Categories", zh: "分类" },
+  "stat.neutral.label": { en: "Indexed repos", zh: "索引仓库" },
+  "stat.domains.label": { en: "Domains", zh: "领域" },
+  "stat.total.suffix": { en: "files", zh: "个文件" },
+  "stat.cat.suffix": { en: "groups", zh: "个分组" },
+  "stat.neutral.suffix": { en: "repos", zh: "个仓库" },
+  "stat.domains.suffix": { en: "areas", zh: "个领域" },
 
-  "filter.search.ph":     { en: "Search by name, slug, tag, description…", zh: "按名称 / slug / 标签 / 描述搜索…" },
-  "filter.cat.label":     { en: "Category",                       zh: "分类" },
-  "filter.cat.all":       { en: "All categories",                 zh: "全部分类" },
-  "filter.plat.label":    { en: "Platform",                       zh: "平台" },
-  "filter.plat.all":      { en: "All platforms",                  zh: "全部平台" },
-  "filter.plat.any":      { en: "Any (vendor-neutral)",           zh: "任意（厂商中立）" },
-  "filter.plat.claude":   { en: "Claude",                         zh: "Claude" },
-  "filter.plat.codex":    { en: "Codex",                          zh: "Codex" },
-  "filter.plat.cursor":   { en: "Cursor",                         zh: "Cursor" },
-  "filter.plat.continue": { en: "Continue",                       zh: "Continue" },
-  "filter.group":         { en: "group",                          zh: "分组" },
-  "empty.noMatch":        { en: "No skills match. Try a different search or clear filters.", zh: "没有匹配的技能。换个关键词或清空筛选条件。" },
+  "filter.search.ph": { en: "Search by name, slug, tag, description…", zh: "按名称 / slug / 标签 / 描述搜索…" },
+  "filter.cat.label": { en: "Category", zh: "分类" },
+  "filter.cat.all": { en: "All categories", zh: "全部分类" },
+  "filter.plat.label": { en: "Platform", zh: "平台" },
+  "filter.plat.all": { en: "All platforms", zh: "全部平台" },
+  "filter.plat.any": { en: "Any (vendor-neutral)", zh: "任意（厂商中立）" },
+  "filter.plat.claude": { en: "Claude", zh: "Claude" },
+  "filter.plat.codex": { en: "Codex", zh: "Codex" },
+  "filter.plat.cursor": { en: "Cursor", zh: "Cursor" },
+  "filter.plat.continue": { en: "Continue", zh: "Continue" },
+  "filter.group": { en: "group", zh: "分组" },
+  "empty.noMatch": {
+    en: "No skills match. Try a different search or clear filters.",
+    zh: "没有匹配的技能。换个关键词或清空筛选条件。",
+  },
 
   // ----- detail page -----
-  "detail.back":        { en: "← back to list",                  zh: "← 返回列表" },
-  "detail.bilingual":   { en: "中文",                            zh: "中文" },
-  "detail.bilingualEn": { en: "English",                         zh: "English" },
-  "detail.source":      { en: "source",                          zh: "来源" },
-  "detail.origin":      { en: "origin",                          zh: "来源" },
-  "detail.noCommit":    { en: "no commit",                       zh: "无 commit" },
-  "detail.fetched":     { en: "fetched {d}",                     zh: "拉取于 {d}" },
-  "detail.local":       { en: "no upstream · hand-written",      zh: "无上游 · 手工编写" },
-  "detail.wtu":         { en: "When to use",                     zh: "何时使用" },
-  "detail.wnot":        { en: "When NOT to use",                 zh: "何时不要用" },
-  "detail.example":     { en: "Example",                         zh: "示例" },
-  "detail.toc":         { en: "On this page",                    zh: "本页目录" },
-  "detail.inputs":      { en: "Inputs",                          zh: "输入" },
-  "detail.output":      { en: "Output",                          zh: "输出" },
-  "detail.prompt":      { en: "Prompt",                          zh: "Prompt" },
-  "detail.copy":        { en: "Copy prompt",                     zh: "复制 Prompt" },
-  "detail.copied":      { en: "Copied",                          zh: "已复制" },
-  "detail.download":    { en: "Download .md",                    zh: "下载 .md" },
-  "detail.copyCode":    { en: "Copy",                            zh: "复制" },
-  "detail.related":     { en: "More from {cat}",                 zh: "同分类更多" },
+  "detail.back": { en: "← back to list", zh: "← 返回列表" },
+  "detail.bilingual": { en: "中文", zh: "中文" },
+  "detail.bilingualEn": { en: "English", zh: "English" },
+  "detail.source": { en: "source", zh: "来源" },
+  "detail.origin": { en: "origin", zh: "来源" },
+  "detail.noCommit": { en: "no commit", zh: "无 commit" },
+  "detail.fetched": { en: "fetched {d}", zh: "拉取于 {d}" },
+  "detail.local": { en: "no upstream · hand-written", zh: "无上游 · 手工编写" },
+  "detail.wtu": { en: "When to use", zh: "何时使用" },
+  "detail.wnot": { en: "When NOT to use", zh: "何时不要用" },
+  "detail.example": { en: "Example", zh: "示例" },
+  "detail.toc": { en: "On this page", zh: "本页目录" },
+  "detail.inputs": { en: "Inputs", zh: "输入" },
+  "detail.output": { en: "Output", zh: "输出" },
+  "detail.schema": { en: "Output schema", zh: "输出 schema" },
+  "detail.prompt": { en: "Prompt", zh: "Prompt" },
+  "detail.copy": { en: "Copy prompt", zh: "复制 Prompt" },
+  "detail.copied": { en: "Copied", zh: "已复制" },
+  "detail.download": { en: "Download .md", zh: "下载 .md" },
+  "detail.copyCode": { en: "Copy", zh: "复制" },
+  "detail.related": { en: "More from {cat}", zh: "同分类更多" },
 
   // ----- bundle page -----
-  "bundle.title":      { en: "Bundle — pick skills, get a zip",  zh: "合集 — 勾选技能，下载 zip" },
-  "bundle.intro":      { en: "Tick the skills you want. The zip is built in your browser, nothing is uploaded.", zh: "勾选你想要的技能。zip 在浏览器内打包，没有任何上传。" },
-  "bundle.filter.ph":  { en: "Filter skills…",                   zh: "筛选技能…" },
-  "bundle.selectAll":  { en: "Select all",                       zh: "全选" },
-  "bundle.clear":      { en: "Clear",                            zh: "清空" },
-  "bundle.selected":   { en: "Selected:",                        zh: "已选：" },
-  "bundle.download":   { en: "Download .zip",                    zh: "下载 .zip" },
-  "bundle.building":   { en: "Building…",                        zh: "打包中…" },
-  "bundle.failed":     { en: "Bundle failed: {msg}",             zh: "打包失败：{msg}" },
+  "bundle.title": { en: "Bundle — pick skills, get a zip", zh: "合集 — 勾选技能，下载 zip" },
+  "bundle.intro": {
+    en: "Tick the skills you want. The zip is built in your browser, nothing is uploaded.",
+    zh: "勾选你想要的技能。zip 在浏览器内打包，没有任何上传。",
+  },
+  "bundle.filter.ph": { en: "Filter skills…", zh: "筛选技能…" },
+  "bundle.selectAll": { en: "Select all", zh: "全选" },
+  "bundle.clear": { en: "Clear", zh: "清空" },
+  "bundle.selected": { en: "Selected:", zh: "已选：" },
+  "bundle.download": { en: "Download .zip", zh: "下载 .zip" },
+  "bundle.building": { en: "Building…", zh: "打包中…" },
+  "bundle.failed": { en: "Bundle failed: {msg}", zh: "打包失败：{msg}" },
 
   // ----- 404 / not found -----
-  "nf.code":        { en: "404 · skill not found",               zh: "404 · 找不到该技能" },
-  "nf.title":       { en: "No skill called {slug}",              zh: "没有名为 {slug} 的技能" },
-  "nf.sub":         { en: "It may have been renamed, or the link could be from an older version of the vault. Try the list, or check the spelling below.", zh: "可能已改名，或链接来自旧版本。回列表看看，或检查下面的拼写建议。" },
-  "nf.suggest":     { en: "did you mean",                        zh: "你是不是想看" },
-  "nf.back":        { en: "← back to the list",                  zh: "← 返回列表" },
-  "nf.bundle":      { en: "open the bundle picker",              zh: "打开合集选择器" },
+  "nf.code": { en: "404 · skill not found", zh: "404 · 找不到该技能" },
+  "nf.title": { en: "No skill called {slug}", zh: "没有名为 {slug} 的技能" },
+  "nf.sub": {
+    en: "It may have been renamed, or the link could be from an older version of the vault. Try the list, or check the spelling below.",
+    zh: "可能已改名，或链接来自旧版本。回列表看看，或检查下面的拼写建议。",
+  },
+  "nf.suggest": { en: "did you mean", zh: "你是不是想看" },
+  "nf.back": { en: "← back to the list", zh: "← 返回列表" },
+  "nf.bundle": { en: "open the bundle picker", zh: "打开合集选择器" },
 
   // ----- generic -----
-  "loading":        { en: "Loading…",                            zh: "加载中…" },
-  "unknownRoute":   { en: "Unknown route.",                      zh: "未知路径。" },
-  "backToList":     { en: "Back to list",                        zh: "返回列表" },
-  "errorPrefix":    { en: "Failed to load:",                     zh: "加载失败：" },
-  "language.label": { en: "EN",                                  zh: "中" },
-  "language.title": { en: "Switch language",                     zh: "切换语言" },
-  "vendorNeutral":  { en: "Vendor-neutral — works on any agent", zh: "厂商中立 — 适用于任何智能体" },
-  "anyChip":        { en: "any",                                 zh: "任意" },
-  "platformChip":   { en: "{p}",                                 zh: "{p}" },
+  loading: { en: "Loading…", zh: "加载中…" },
+  unknownRoute: { en: "Unknown route.", zh: "未知路径。" },
+  backToList: { en: "Back to list", zh: "返回列表" },
+  errorPrefix: { en: "Failed to load:", zh: "加载失败：" },
+  "language.label": { en: "EN", zh: "中" },
+  "language.title": { en: "Switch language", zh: "切换语言" },
+  vendorNeutral: { en: "Vendor-neutral — works on any agent", zh: "厂商中立 — 适用于任何智能体" },
+  anyChip: { en: "any", zh: "任意" },
+  platformChip: { en: "{p}", zh: "{p}" },
   // ----- topbar / nav -----
-  "nav.bundle":       { en: "Bundle",                            zh: "合集" },
-  "nav.external":     { en: "Skill Index",                       zh: "技能索引" },
-  "nav.gh":           { en: "GitCode",                           zh: "GitCode" },
-  "footer.tagline":   { en: "MIT · open-source skill index · no tracking · static site", zh: "MIT · 开源技能索引 · 无追踪 · 静态站点" },
-  "footer.source":    { en: "Source on GitCode",                 zh: "在 GitCode 上查看" },
-  "footer.sources":   { en: "SOURCE.md",                         zh: "SOURCE.md" },
-  "footer.contrib":   { en: "Contributing",                      zh: "贡献指南" },
-  "footer.changelog": { en: "Changelog",                         zh: "更新日志" },
+  "nav.bundle": { en: "Bundle", zh: "合集" },
+  "nav.external": { en: "Index", zh: "索引" },
+  "nav.gh": { en: "GitCode", zh: "GitCode" },
+  "footer.tagline": {
+    en: "MIT · open-source skill index · no tracking · static site",
+    zh: "MIT · 开源技能索引 · 无追踪 · 静态站点",
+  },
+  "footer.source": { en: "Source on GitCode", zh: "在 GitCode 上查看" },
+  "footer.sources": { en: "SOURCE.md", zh: "SOURCE.md" },
+  "footer.contrib": { en: "Contributing", zh: "贡献指南" },
+  "footer.changelog": { en: "Changelog", zh: "更新日志" },
 
   // ----- list group counts -----
-  "categoryCount.one":   { en: "{n} skill",                       zh: "{n} 个技能" },
-  "categoryCount.other": { en: "{n} skills",                      zh: "{n} 个技能" },
+  "categoryCount.one": { en: "{n} skill", zh: "{n} 个技能" },
+  "categoryCount.other": { en: "{n} skills", zh: "{n} 个技能" },
 
   // ----- detail extras (table headers, source, related) -----
-  "table.name":        { en: "name",          zh: "名称" },
-  "table.type":        { en: "type",          zh: "类型" },
-  "table.required":    { en: "required",      zh: "必填" },
-  "table.description": { en: "description",   zh: "说明" },
-  "output.format":     { en: "format: {f}",   zh: "格式：{f}" },
-  "input.required":    { en: "required",      zh: "必填" },
-  "input.optional":    { en: "optional",      zh: "可选" },
-  "input.default":     { en: "default: {v}",  zh: "默认：{v}" },
-  "input.values":      { en: "values: {v}",   zh: "取值：{v}" },
-  "input.range":       { en: "range: {min} … {max}", zh: "范围：{min} … {max}" },
-  "reviewDot.title":   { en: "needs_review",  zh: "待复审" },
+  "table.name": { en: "name", zh: "名称" },
+  "table.type": { en: "type", zh: "类型" },
+  "table.required": { en: "required", zh: "必填" },
+  "table.description": { en: "description", zh: "说明" },
+  "output.format": { en: "format: {f}", zh: "格式：{f}" },
+  "input.required": { en: "required", zh: "必填" },
+  "input.optional": { en: "optional", zh: "可选" },
+  "input.default": { en: "default: {v}", zh: "默认：{v}" },
+  "input.values": { en: "values: {v}", zh: "取值：{v}" },
+  "input.range": { en: "range: {min} … {max}", zh: "范围：{min} … {max}" },
+  "reviewDot.title": { en: "needs_review", zh: "待复审" },
+
+  // ----- quality chips -----
+  "quality.stable": { en: "stable", zh: "稳定" },
+  "quality.beta": { en: "beta", zh: "测试" },
+  "quality.alpha": { en: "alpha", zh: "内测" },
+  "quality.experimental": { en: "experimental", zh: "实验" },
+  "quality.draft": { en: "draft", zh: "草稿" },
+  "quality.tip": { en: "quality: {q}", zh: "质量：{q}" },
 
   // ----- platform chips -----
   // We translate the *display* label but keep the slug
   // (`chip--claude` etc.) untouched so the CSS color tokens
   // still match. Tooltip is the localized name + " (vendor: …)".
-  "platform.claude":   { en: "Claude",                       zh: "Claude" },
-  "platform.codex":    { en: "Codex",                        zh: "Codex" },
-  "platform.cursor":   { en: "Cursor",                       zh: "Cursor" },
-  "platform.continue": { en: "Continue",                     zh: "Continue" },
-  "platform.tip":      { en: "platform: {p}",                zh: "平台：{p}" },
+  "platform.claude": { en: "Claude", zh: "Claude" },
+  "platform.codex": { en: "Codex", zh: "Codex" },
+  "platform.cursor": { en: "Cursor", zh: "Cursor" },
+  "platform.continue": { en: "Continue", zh: "Continue" },
+  "platform.tip": { en: "platform: {p}", zh: "平台：{p}" },
 
   // ----- aria / accessibility / misc -----
-  "aria.siteStats":    { en: "site statistics",              zh: "站点统计" },
-  "aria.related":      { en: "related skills",               zh: "相关技能" },
-  "aria.copyCode":     { en: "Copy code",                    zh: "复制代码" },
-  "aria.langToggle":   { en: "Switch language",              zh: "切换语言" },
-  "aria.gh":           { en: "View source on GitCode",       zh: "在 GitCode 上查看源码" },
+  "aria.siteStats": { en: "site statistics", zh: "站点统计" },
+  "aria.related": { en: "related skills", zh: "相关技能" },
+  "aria.copyCode": { en: "Copy code", zh: "复制代码" },
+  "aria.langToggle": { en: "Switch language", zh: "切换语言" },
+  "aria.gh": { en: "View source on GitCode", zh: "在 GitCode 上查看源码" },
 
   // ----- version / license display -----
-  "meta.version":      { en: "v{n}",                         zh: "v{n}" },
-  "meta.license":      { en: "{l}",                          zh: "{l}" },
-  "meta.slug":         { en: "{s}",                          zh: "{s}" },
-  "meta.category":     { en: "{c}",                          zh: "{c}" },
+  "meta.version": { en: "v{n}", zh: "v{n}" },
+  "meta.license": { en: "{l}", zh: "{l}" },
+  "meta.slug": { en: "{s}", zh: "{s}" },
+  "meta.category": { en: "{c}", zh: "{c}" },
 
   // ----- external repos page -----
-  "external.title":      { en: "Skill Repository Index",            zh: "技能仓库索引" },
-  "external.subtitle":   { en: "A curated, searchable index of {n}+ AI agent skill repositories. Filter by domain, vendor type, or stars — each card lists the concrete skills the repo provides, so you can find a capability and jump straight to the source.", zh: "收录 {n}+ 个 AI 智能体技能仓库的可搜索索引。按领域、厂商类型、星标筛选——每张卡片列出该仓库提供的具体技能，让你按能力查找，直达源头。" },
-  "external.vendor":     { en: "Vendor",                          zh: "厂商" },
-  "external.skills":     { en: "Skills you'll find",              zh: "包含技能" },
-  "external.category":   { en: "Category",                        zh: "分类" },
-  "external.license":    { en: "License",                         zh: "许可证" },
-  "external.ref":        { en: "ref",                             zh: "ref" },
-  "external.visit":      { en: "Visit on GitHub",                 zh: "在 GitHub 上查看" },
-  "external.hint":       { en: "Each card links to the upstream repo. Browse the repo's skills folder to find SKILL.md files you can drop into any agent.", zh: "每张卡片链向上游仓库。浏览仓库的 skills 目录，找到可直接放入任意 agent 的 SKILL.md 文件。" },
-  "external.empty":      { en: "No repositories match your filters.", zh: "没有匹配筛选条件的仓库。" },
-  "external.errorLoad":  { en: "Could not load the repo list. Try reloading the page.", zh: "加载仓库列表失败，刷新页面重试。" },
-  "external.search.ph":  { en: "Search by name, vendor, tag, skill…", zh: "按名称 / 厂商 / 标签 / 技能搜索…" },
-  "external.view.domain":   { en: "By Domain",                    zh: "按领域" },
-  "external.view.vendor":   { en: "By Vendor Type",               zh: "按厂商类型" },
-  "external.view.category": { en: "By Category",                  zh: "按子分类" },
-  "external.view.stars":    { en: "By Stars",                     zh: "按星标" },
-  "external.filter.all":    { en: "All",                          zh: "全部" },
-  "external.filter.vendor": { en: "Vendor filter",                zh: "厂商筛选" },
-  "external.stars.label":   { en: "Stars",                        zh: "星标" },
-  "external.archived":      { en: "archived",                     zh: "已归档" },
-  "external.results":       { en: "{n} repositories",             zh: "{n} 个仓库" },
+  "external.title": { en: "Skill Repository Index", zh: "技能仓库索引" },
+  "external.subtitle": {
+    en: "A curated, searchable index of {n}+ AI agent skill repositories. Filter by domain, vendor type, or stars — each card lists the concrete skills the repo provides, so you can find a capability and jump straight to the source.",
+    zh: "收录 {n}+ 个 AI 智能体技能仓库的可搜索索引。按领域、厂商类型、星标筛选——每张卡片列出该仓库提供的具体技能，让你按能力查找，直达源头。",
+  },
+  "external.vendor": { en: "Vendor", zh: "厂商" },
+  "external.skills": { en: "Skills you'll find", zh: "包含技能" },
+  "external.category": { en: "Category", zh: "分类" },
+  "external.license": { en: "License", zh: "许可证" },
+  "external.ref": { en: "ref", zh: "ref" },
+  "external.visit": { en: "Visit on GitHub", zh: "在 GitHub 上查看" },
+  "external.hint": {
+    en: "Each card links to the upstream repo. Browse the repo's skills folder to find SKILL.md files you can drop into any agent.",
+    zh: "每张卡片链向上游仓库。浏览仓库的 skills 目录，找到可直接放入任意 agent 的 SKILL.md 文件。",
+  },
+  "external.empty": { en: "No repositories match your filters.", zh: "没有匹配筛选条件的仓库。" },
+  "external.errorLoad": {
+    en: "Could not load the repo list. Try reloading the page.",
+    zh: "加载仓库列表失败，刷新页面重试。",
+  },
+  "external.search.ph": { en: "Search by name, vendor, tag, skill…", zh: "按名称 / 厂商 / 标签 / 技能搜索…" },
+  "external.view.domain": { en: "By Domain", zh: "按领域" },
+  "external.view.vendor": { en: "By Vendor Type", zh: "按厂商类型" },
+  "external.view.category": { en: "By Category", zh: "按子分类" },
+  "external.view.stars": { en: "By Stars", zh: "按星标" },
+  "external.filter.all": { en: "All", zh: "全部" },
+  "external.filter.vendor": { en: "Vendor filter", zh: "厂商筛选" },
+  "external.stars.label": { en: "Stars", zh: "星标" },
+  "external.archived": { en: "archived", zh: "已归档" },
+  "external.pushedAt": { en: "Updated", zh: "更新于" },
+  "external.results": { en: "{n} repositories", zh: "{n} 个仓库" },
+  "external.loadMore": { en: "Load more", zh: "加载更多" },
 
   // ----- footer brand / glyphs (no translation, but kept here for symmetry) -----
-  "brand.glyph":       { en: "▮ AI-SKILL",                   zh: "▮ AI-SKILL" },
-  "brand.markOnly":    { en: "▮",                            zh: "▮" },
+  "brand.glyph": { en: "▮ AI-SKILL", zh: "▮ AI-SKILL" },
+  "brand.markOnly": { en: "▮", zh: "▮" },
 
   // ----- accessibility & noscript fallback (used by index.html /
   //       404.html static shell, applied by applyStaticTranslations) -----
-  "a11y.skip":         { en: "Skip to content",              zh: "跳到正文" },
-  "noscript.line1":    { en: "This page is a small JavaScript app — without JS you only get this notice.", zh: "本站是个小 JavaScript 应用 —— 关闭 JS 只会显示这条提示。" },
-  "noscript.line2":    { en: "Enable JavaScript, or",        zh: "请打开 JavaScript，或者" },
-  "noscript.link":     { en: "browse the source on GitHub",  zh: "去 GitHub 浏览源文件" },
-  "noscript.line3":    { en: "for plain SKILL.md files.",    zh: "拿原始的 SKILL.md。" },
+  "a11y.skip": { en: "Skip to content", zh: "跳到正文" },
+  "noscript.line1": {
+    en: "This page is a small JavaScript app — without JS you only get this notice.",
+    zh: "本站是个小 JavaScript 应用 —— 关闭 JS 只会显示这条提示。",
+  },
+  "noscript.line2": { en: "Enable JavaScript, or", zh: "请打开 JavaScript，或者" },
+  "noscript.link": { en: "browse the source on GitHub", zh: "去 GitHub 浏览源文件" },
+  "noscript.line3": { en: "for plain SKILL.md files.", zh: "拿原始的 SKILL.md。" },
 
   // ----- document-level metadata (mirrored to <title>,
   //       <meta name="description">, and the og:* family
   //       when the locale flips, so link previews, browser tabs,
   //       and search-result snippets all match the user's
   //       language) -----
-  "meta.title":        { en: "AI-SKILL · open-source skill index",         zh: "AI-SKILL · 开源技能索引" },
-  "meta.description":  { en: "An open-source, community-driven index of 928+ AI agent skill repositories. Search by skill, domain, vendor type, or stars and jump straight to the source. MIT licensed.", zh: "一个开源社区驱动的 AI 智能体技能仓库索引，收录 928+ 个仓库。按技能、领域、厂商类型、星标搜索，直达源头。MIT 协议。" },
-  "meta.ogTitle":      { en: "AI-SKILL · open-source skill index",         zh: "AI-SKILL · 开源技能索引" },
-  "meta.ogDescription":{ en: "Searchable index of 928+ AI agent skill repositories. MIT · no tracking · no signup.", zh: "928+ 个 AI 智能体技能仓库的可搜索索引。MIT · 无追踪 · 无注册。" },
+  "meta.title": { en: "AI-SKILL · open-source skill index", zh: "AI-SKILL · 开源技能索引" },
+  "meta.description": {
+    en: "An open-source, community-driven index of 928+ AI agent skill repositories. Search by skill, domain, vendor type, or stars and jump straight to the source. MIT licensed.",
+    zh: "一个开源社区驱动的 AI 智能体技能仓库索引，收录 928+ 个仓库。按技能、领域、厂商类型、星标搜索，直达源头。MIT 协议。",
+  },
+  "meta.ogTitle": { en: "AI-SKILL · open-source skill index", zh: "AI-SKILL · 开源技能索引" },
+  "meta.ogDescription": {
+    en: "Searchable index of 928+ AI agent skill repositories. MIT · no tracking · no signup.",
+    zh: "928+ 个 AI 智能体技能仓库的可搜索索引。MIT · 无追踪 · 无注册。",
+  },
 } as const satisfies Record<string, Record<Locale, string>>;
 
 type Key = keyof typeof STRINGS;
@@ -298,15 +353,15 @@ export function t(key: Key, vars?: Record<string, string | number>): string {
  * for the brief moment between the toggle and the next paint.
  */
 export function applyStaticTranslations(): void {
-  document.querySelectorAll<HTMLElement>("[data-i18n]").forEach(el => {
+  document.querySelectorAll<HTMLElement>("[data-i18n]").forEach((el) => {
     const key = el.dataset.i18n as Key | undefined;
     if (key) el.textContent = t(key);
   });
-  document.querySelectorAll<HTMLElement>("[data-i18n-aria]").forEach(el => {
+  document.querySelectorAll<HTMLElement>("[data-i18n-aria]").forEach((el) => {
     const key = el.dataset.i18nAria as Key | undefined;
     if (key) el.setAttribute("aria-label", t(key));
   });
-  document.querySelectorAll<HTMLElement>("[data-i18n-title]").forEach(el => {
+  document.querySelectorAll<HTMLElement>("[data-i18n-title]").forEach((el) => {
     const key = el.dataset.i18nTitle as Key | undefined;
     if (key) el.setAttribute("title", t(key));
   });
@@ -321,18 +376,16 @@ export function applyStaticTranslations(): void {
   if (titleEl) titleEl.textContent = t(titleEl.dataset.i18n as Key);
   const descEl = document.querySelector<HTMLMetaElement>('meta[name="description"][data-i18n]');
   if (descEl) descEl.setAttribute("content", t(descEl.dataset.i18n as Key));
-  document
-    .querySelectorAll<HTMLMetaElement>('meta[property^="og:"][data-i18n]')
-    .forEach((el) => {
-      const key = el.dataset.i18n as Key | undefined;
-      if (key) el.setAttribute("content", t(key));
-    });
+  document.querySelectorAll<HTMLMetaElement>('meta[property^="og:"][data-i18n]').forEach((el) => {
+    const key = el.dataset.i18n as Key | undefined;
+    if (key) el.setAttribute("content", t(key));
+  });
 }
 
 /** Pick the localized version of a skill name/description. */
 export function pickZh<T extends { name: string; name_zh?: string; description: string; description_zh?: string }>(
   obj: T,
-  field: "name" | "description",
+  field: "name" | "description"
 ): string {
   if (current === "zh") {
     const zh = field === "name" ? obj.name_zh : obj.description_zh;

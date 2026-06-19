@@ -8,79 +8,84 @@ import { getLocale, t, pickPlatform } from "./i18n";
 // ============================ category labels ============================
 
 export const CATEGORY_LABELS: Record<string, { en: string; zh: string }> = {
-  "applications":          { en: "Applications",          zh: "应用" },
-  "agent-frameworks":      { en: "Agent frameworks",       zh: "Agent 框架" },
-  "audio-speech":          { en: "Audio & speech",         zh: "音频与语音" },
-  "awesome-lists":         { en: "Awesome lists",          zh: "精选列表" },
-  "benchmarks":            { en: "Benchmarks",             zh: "基准测试" },
-  "browser-automation":    { en: "Browser automation",     zh: "浏览器自动化" },
-  "case-studies":          { en: "Case studies",           zh: "案例研究" },
-  "chat-uikits":           { en: "Chat UI kits",           zh: "聊天 UI 套件" },
-  "code-assistants":       { en: "Code assistants",        zh: "代码助手" },
-  "code-llms":             { en: "Code LLMs",              zh: "代码大模型" },
-  "computer-use":          { en: "Computer use",           zh: "计算机操作" },
-  "customer-support":      { en: "Customer support",       zh: "客户支持" },
-  "data-pipelines":        { en: "Data pipelines",         zh: "数据流水线" },
-  "dev-tools":             { en: "Developer tools",        zh: "开发工具" },
-  "distributed-training":  { en: "Distributed training",   zh: "分布式训练" },
-  "documentation":         { en: "Documentation",          zh: "文档" },
-  "education":             { en: "Education",              zh: "教育" },
-  "embeddings":            { en: "Embeddings",             zh: "向量嵌入" },
-  "evaluation":            { en: "Evaluation",             zh: "评估" },
-  "finance":               { en: "Finance",                zh: "金融" },
-  "fine-tuning":           { en: "Fine-tuning",            zh: "微调" },
-  "gpu-kernels":           { en: "GPU kernels",            zh: "GPU 内核" },
-  "guardrails":            { en: "Guardrails & safety",    zh: "护栏与安全" },
-  "image-generation":      { en: "Image generation",       zh: "图像生成" },
-  "knowledge-graphs":      { en: "Knowledge graphs",       zh: "知识图谱" },
-  "legal":                 { en: "Legal",                  zh: "法律" },
-  "llm-serving":           { en: "LLM serving",            zh: "LLM 部署" },
-  "mcp-protocol":          { en: "MCP protocol",           zh: "MCP 协议" },
-  "medical-bio":           { en: "Medical & bio",          zh: "医疗与生物" },
-  "memory":                { en: "Memory & context",       zh: "记忆与上下文" },
-  "model-merging":         { en: "Model merging & MoE",    zh: "模型合并与 MoE" },
-  "multimodal":            { en: "Multimodal",             zh: "多模态" },
-  "observability":         { en: "Observability",          zh: "可观测性" },
-  "official-cookbooks":    { en: "Official cookbooks",     zh: "官方 Cookbook" },
-  "privacy-federated":     { en: "Privacy & federated",    zh: "隐私与联邦学习" },
-  "prompt-libraries":      { en: "Prompt libraries",       zh: "提示词库" },
-  "quantization":          { en: "Quantization",           zh: "量化与压缩" },
-  "rag-retrieval":         { en: "RAG & retrieval",        zh: "RAG 与检索" },
-  "reasoning-models":      { en: "Reasoning models",       zh: "推理模型" },
-  "robotics-embodied":     { en: "Robotics & embodied",    zh: "机器人与具身" },
-  "safety-alignment":      { en: "Safety & alignment",     zh: "安全与对齐" },
-  "scientific-ml":         { en: "Scientific ML",          zh: "科学机器学习" },
-  "synthetic-data":        { en: "Synthetic data",         zh: "合成数据" },
-  "terminal-cli":          { en: "Terminal & CLI",         zh: "终端与 CLI" },
-  "text-to-sql":           { en: "Text-to-SQL",            zh: "Text-to-SQL" },
-  "tool-use":              { en: "Tool use & function calling", zh: "工具使用与函数调用" },
-  "translation":           { en: "Translation",            zh: "翻译" },
-  "vector-databases":      { en: "Vector databases",       zh: "向量数据库" },
-  "video-generation":      { en: "Video generation",       zh: "视频生成" },
+  applications: { en: "Applications", zh: "应用" },
+  "agent-frameworks": { en: "Agent frameworks", zh: "Agent 框架" },
+  "audio-speech": { en: "Audio & speech", zh: "音频与语音" },
+  "awesome-lists": { en: "Awesome lists", zh: "精选列表" },
+  benchmarks: { en: "Benchmarks", zh: "基准测试" },
+  "browser-automation": { en: "Browser automation", zh: "浏览器自动化" },
+  "case-studies": { en: "Case studies", zh: "案例研究" },
+  "chat-uikits": { en: "Chat UI kits", zh: "聊天 UI 套件" },
+  "code-assistants": { en: "Code assistants", zh: "代码助手" },
+  "code-llms": { en: "Code LLMs", zh: "代码大模型" },
+  "computer-use": { en: "Computer use", zh: "计算机操作" },
+  "customer-support": { en: "Customer support", zh: "客户支持" },
+  "data-pipelines": { en: "Data pipelines", zh: "数据流水线" },
+  "dev-tools": { en: "Developer tools", zh: "开发工具" },
+  "distributed-training": { en: "Distributed training", zh: "分布式训练" },
+  documentation: { en: "Documentation", zh: "文档" },
+  education: { en: "Education", zh: "教育" },
+  embeddings: { en: "Embeddings", zh: "向量嵌入" },
+  evaluation: { en: "Evaluation", zh: "评估" },
+  finance: { en: "Finance", zh: "金融" },
+  "fine-tuning": { en: "Fine-tuning", zh: "微调" },
+  "gpu-kernels": { en: "GPU kernels", zh: "GPU 内核" },
+  guardrails: { en: "Guardrails & safety", zh: "护栏与安全" },
+  "image-generation": { en: "Image generation", zh: "图像生成" },
+  "knowledge-graphs": { en: "Knowledge graphs", zh: "知识图谱" },
+  legal: { en: "Legal", zh: "法律" },
+  "llm-serving": { en: "LLM serving", zh: "LLM 部署" },
+  "mcp-protocol": { en: "MCP protocol", zh: "MCP 协议" },
+  "medical-bio": { en: "Medical & bio", zh: "医疗与生物" },
+  memory: { en: "Memory & context", zh: "记忆与上下文" },
+  "model-merging": { en: "Model merging & MoE", zh: "模型合并与 MoE" },
+  multimodal: { en: "Multimodal", zh: "多模态" },
+  observability: { en: "Observability", zh: "可观测性" },
+  "official-cookbooks": { en: "Official cookbooks", zh: "官方 Cookbook" },
+  "privacy-federated": { en: "Privacy & federated", zh: "隐私与联邦学习" },
+  "prompt-libraries": { en: "Prompt libraries", zh: "提示词库" },
+  quantization: { en: "Quantization", zh: "量化与压缩" },
+  "rag-retrieval": { en: "RAG & retrieval", zh: "RAG 与检索" },
+  "reasoning-models": { en: "Reasoning models", zh: "推理模型" },
+  "robotics-embodied": { en: "Robotics & embodied", zh: "机器人与具身" },
+  "safety-alignment": { en: "Safety & alignment", zh: "安全与对齐" },
+  "scientific-ml": { en: "Scientific ML", zh: "科学机器学习" },
+  "synthetic-data": { en: "Synthetic data", zh: "合成数据" },
+  "terminal-cli": { en: "Terminal & CLI", zh: "终端与 CLI" },
+  "text-to-sql": { en: "Text-to-SQL", zh: "Text-to-SQL" },
+  "tool-use": { en: "Tool use & function calling", zh: "工具使用与函数调用" },
+  translation: { en: "Translation", zh: "翻译" },
+  "vector-databases": { en: "Vector databases", zh: "向量数据库" },
+  "video-generation": { en: "Video generation", zh: "视频生成" },
 };
 
 export function categoryLabel(cat: string): string {
   const m = CATEGORY_LABELS[cat];
   if (m) return getLocale() === "zh" ? m.zh : m.en;
-  return cat.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+  return cat.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 // ============================ HTML escaping ============================
 
 export function escHtml(s: string): string {
-  return s.replace(/[&<>"']/g, c => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;",
-    '"': "&quot;", "'": "&#39;",
-  }[c]!));
+  return s.replace(
+    /[&<>"']/g,
+    (c) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      })[c]!
+  );
 }
 
 export function escAttr(s: string): string {
   // Attribute values in this project are always quoted with double quotes.
   // We reuse HTML escapes plus normalize whitespace that can break
   // parsing when an attribute is written across multiple lines.
-  return escHtml(s)
-    .replace(/\n/g, "&#10;")
-    .replace(/\r/g, "&#13;");
+  return escHtml(s).replace(/\n/g, "&#10;").replace(/\r/g, "&#13;");
 }
 
 // ============================ YAML dumper ============================
@@ -91,7 +96,10 @@ export function dumpFrontmatter(s: Skill): string {
     const pad = " ".repeat(indent);
     if (v === undefined || v === null) return;
     if (Array.isArray(v)) {
-      if (v.length === 0) { lines.push(`${pad}${k}: []`); return; }
+      if (v.length === 0) {
+        lines.push(`${pad}${k}: []`);
+        return;
+      }
       lines.push(`${pad}${k}:`);
       for (const x of v) {
         if (x !== null && typeof x === "object" && !Array.isArray(x)) {
@@ -157,10 +165,20 @@ export function platformChipsHtml(platforms: string[] | undefined): string {
   if (!platforms || platforms.length === 0) {
     return `<span class="chip chip--all" title="${escAttr(t("vendorNeutral"))}">${escHtml(t("anyChip"))}</span>`;
   }
-  return platforms.map(p => {
-    const label = pickPlatform(p);
-    return `<span class="chip chip--${escAttr(p)}" title="${escAttr(t("platform.tip", { p }))}">${escHtml(label)}</span>`;
-  }).join(" ");
+  return platforms
+    .map((p) => {
+      const label = pickPlatform(p);
+      return `<span class="chip chip--${escAttr(p)}" title="${escAttr(t("platform.tip", { p }))}">${escHtml(label)}</span>`;
+    })
+    .join(" ");
+}
+
+/** Build a quality chip. Stable skills don't get a chip (silent default). */
+export function qualityChipHtml(quality: string | undefined): string {
+  const q = quality || "stable";
+  if (q === "stable") return "";
+  const label = t(`quality.${q}` as Parameters<typeof t>[0]);
+  return `<span class="chip chip--quality chip--quality-${escAttr(q)}" title="${escAttr(t("quality.tip", { q: label }))}">${escHtml(label)}</span>`;
 }
 
 /** Pre-compute a lowercased search blob for a skill entry. */

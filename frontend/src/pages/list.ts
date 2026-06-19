@@ -18,7 +18,16 @@
 
 import type { SkillIndex, SkillIndexEntry } from "../types";
 import { t, pickZh } from "../i18n";
-import { categoryLabel, escHtml, escAttr, categoryColor, platformChipsHtml, buildSearchBlob, debounce } from "../shared";
+import {
+  categoryLabel,
+  escHtml,
+  escAttr,
+  categoryColor,
+  platformChipsHtml,
+  qualityChipHtml,
+  buildSearchBlob,
+  debounce,
+} from "../shared";
 
 interface ExternalIndexData {
   repos: unknown[];
@@ -36,10 +45,7 @@ async function loadExternalIndex(): Promise<ExternalIndexData> {
   return externalIndexCache;
 }
 
-export async function renderList(
-  root: HTMLElement,
-  index: SkillIndex,
-): Promise<void> {
+export async function renderList(root: HTMLElement, index: SkillIndex): Promise<void> {
   // Initial filter state from URL
   const url = new URL(window.location.href);
   const initialQ = url.searchParams.get("q") ?? "";
@@ -48,7 +54,7 @@ export async function renderList(
   const initialGroup = url.searchParams.get("group") ?? "1";
 
   const totalSkills = index.skills.length;
-  const totalCategories = new Set(index.skills.map(s => s.category)).size;
+  const totalCategories = new Set(index.skills.map((s) => s.category)).size;
 
   // Load external index stats for the hero / stat bar. If it fails
   // (network, deployment mismatch), degrade gracefully instead of
@@ -62,7 +68,6 @@ export async function renderList(
     domains = Object.keys(ext.domains).length;
     externalStatsReady = true;
   } catch (e) {
-    // eslint-disable-next-line no-console
     console.warn("failed to load external index stats", e);
   }
 
@@ -80,8 +85,7 @@ export async function renderList(
       <p class="hero__sub">${escHtml(t("hero.sub", { skills: String(totalSkills), repos: externalStatsReady ? String(indexedRepos) : "900+" }))}</p>
       <div class="hero__cta">
         <a class="btn btn--primary" href="#/external">${escHtml(t("hero.cta.index"))}</a>
-        <a class="btn" href="#/bundle">${escHtml(t("nav.bundle"))}</a>
-        <a class="btn" href="https://github.com/badhope/AI-SKILL" rel="noopener noreferrer" target="_blank">${escHtml(t("hero.cta.gh"))}</a>
+        <a class="btn" href="#/bundle">${escHtml(t("hero.cta.bundle"))}</a>
       </div>
       <div class="hero__mark-glyph" aria-hidden="true">▮ AI-SKILL</div>
     </section>
@@ -130,10 +134,11 @@ export async function renderList(
 
   // Populate the category dropdown
   const catSel = root.querySelector<HTMLSelectElement>("#filter-cat")!;
-  const cats = Array.from(new Set(index.skills.map(s => s.category))).sort();
+  const cats = Array.from(new Set(index.skills.map((s) => s.category))).sort();
   for (const c of cats) {
     const o = document.createElement("option");
-    o.value = c; o.textContent = categoryLabel(c);
+    o.value = c;
+    o.textContent = categoryLabel(c);
     if (c === initialCat) o.selected = true;
     catSel.appendChild(o);
   }
@@ -144,12 +149,17 @@ export async function renderList(
   const qInput = root.querySelector<HTMLInputElement>("#filter-q")!;
   const cards = root.querySelector<HTMLDivElement>("#cards")!;
 
+  // Only play the entrance animation on the very first paint. After
+  // that, filtering/grouping should update the grid without replaying
+  // fadeUp on every keystroke.
+  let firstPaint = true;
+
   function paint() {
     const q = qInput.value.trim().toLowerCase();
     const cat = catSel.value;
     const plat = platSel.value;
     const grouped = groupCb.checked;
-    const filtered = index.skills.filter(s => match(s, q, cat, plat));
+    const filtered = index.skills.filter((s) => match(s, q, cat, plat));
     // Update URL (no reload) so links share state
     const u = new URL(window.location.href);
     u.searchParams.set("q", q);
@@ -160,6 +170,7 @@ export async function renderList(
 
     if (filtered.length === 0) {
       cards.innerHTML = `<div class="empty">${escHtml(t("empty.noMatch"))}</div>`;
+      firstPaint = false;
       return;
     }
     if (grouped && !cat) {
@@ -172,21 +183,26 @@ export async function renderList(
       }
       const order = Array.from(byCat.entries()).sort((a, b) => b[1].length - a[1].length);
       let i = 0;
-      cards.innerHTML = order.map(([c, list]) => `
+      cards.innerHTML = order
+        .map(
+          ([c, list]) => `
         <section class="cat-group">
           <header class="cat-group__head">
             <h2 class="cat-group__title">${escHtml(categoryLabel(c))}</h2>
             <span class="cat-group__count">${escHtml(t(list.length === 1 ? "categoryCount.one" : "categoryCount.other", { n: list.length }))}</span>
           </header>
           <div class="cards">
-            ${list.map(s => cardHtml(s, i++)).join("")}
+            ${list.map((s) => cardHtml(s, i++, firstPaint)).join("")}
           </div>
         </section>
-      `).join("");
+      `
+        )
+        .join("");
     } else {
       let i = 0;
-      cards.innerHTML = `<div class="cards">${filtered.map(s => cardHtml(s, i++)).join("")}</div>`;
+      cards.innerHTML = `<div class="cards">${filtered.map((s) => cardHtml(s, i++, firstPaint)).join("")}</div>`;
     }
+    firstPaint = false;
   }
 
   qInput.addEventListener("input", debounce(paint, 80));
@@ -216,15 +232,17 @@ function match(s: SkillIndexEntry, q: string, cat: string, plat: string): boolea
   return true;
 }
 
-function cardHtml(s: SkillIndexEntry, i: number): string {
+function cardHtml(s: SkillIndexEntry, i: number, animate: boolean): string {
   const platChips = platformChipsHtml(s.platforms);
+  const qualityChip = qualityChipHtml(s.quality);
   // The --i custom property drives the stagger animation defined
   // in style.css. Inline style is the only way to set a custom
   // property from a string template without a CSS per-card rule.
   const name = pickZh(s, "name");
   const desc = pickZh(s, "description");
+  const enterClass = animate ? " skill-card--enter" : "";
   return `
-    <a class="skill-card" style="--cat-color: ${escAttr(categoryColor(s.category))}; --i: ${i % 16};" href="#/skill/${escAttr(s.slug)}">
+    <a class="skill-card${enterClass}" style="--cat-color: ${escAttr(categoryColor(s.category))}; --i: ${Math.min(i, 15)};" href="#/skill/${escAttr(s.slug)}">
       <div class="skill-card__head">
         <span class="skill-card__slug">${escHtml(s.slug)}${s.needs_review ? ` <span class="skill-card__review-dot" title="${escAttr(t("reviewDot.title"))}" aria-label="${escAttr(t("reviewDot.title"))}"></span>` : ""}</span>
         <span class="skill-card__name">${escHtml(name)}</span>
@@ -233,6 +251,7 @@ function cardHtml(s: SkillIndexEntry, i: number): string {
       <div class="skill-card__meta">
         <span>${escHtml(categoryLabel(s.category))}</span>
         ${platChips}
+        ${qualityChip}
         <span>${(s.tags ?? []).slice(0, 4).map(escHtml).join(" · ")}</span>
       </div>
     </a>

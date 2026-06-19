@@ -33,6 +33,7 @@ import argparse
 import datetime as dt
 import json
 import re
+import subprocess
 import sys
 from io import StringIO
 from pathlib import Path
@@ -58,14 +59,57 @@ REQUIRED_FIELDS = (
 )
 OPTIONAL_FIELDS = (
     "name_zh", "description_zh", "platforms", "source",
-    "needs_review", "tags_zh",
+    "needs_review", "tags_zh", "quality",
 )
 ALLOWED_OUTPUT_FORMATS = {"markdown", "json", "text", "code"}
+ALLOWED_QUALITY = {"stable", "beta", "alpha", "experimental", "draft"}
 SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+([\-+][0-9A-Za-z.\-]+)?$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n(.*)$", re.DOTALL)
 REQUIRED_SECTIONS = ["When to use", "Inputs", "Output", "Prompt"]
+
+
+def _git(cmd: list[str]) -> str | None:
+    """Run a git command in the repo root and return stripped stdout."""
+    try:
+        result = subprocess.run(
+            ["git", *cmd],
+            cwd=REPO,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=10,
+        )
+        if result.returncode == 0:
+            return result.stdout.strip() or None
+    except Exception:
+        pass
+    return None
+
+
+def _clean_remote_url(raw: str) -> str:
+    """Strip credentials from a git remote URL so it can be published."""
+    # https://user:pass@host/path.git -> https://host/path.git
+    m = re.match(r"^(https?://)[^@]+@(.+)$", raw)
+    if m:
+        return f"{m.group(1)}{m.group(2)}"
+    return raw
+
+
+def _infer_source() -> dict[str, str] | None:
+    """Infer source.url and source.commit from the repository we are building in.
+
+    Falls back to None if git is unavailable or the repo has no origin/HEAD.
+    """
+    raw_url = _git(["remote", "get-url", "origin"]) or _git(["remote", "get-url", "github"])
+    commit = _git(["rev-parse", "HEAD"])
+    if not raw_url:
+        return None
+    return {"url": _clean_remote_url(raw_url), "commit": commit or "unknown"}
+
+
+INFERRED_SOURCE = _infer_source()
 
 
 def _rel(p: Path) -> str:
@@ -215,6 +259,8 @@ def validate_one(path: Path, report: Report, *, all_categories: set[str]) -> dic
         fmt = output.get("format")
         if fmt not in ALLOWED_OUTPUT_FORMATS:
             report.err(path, f"output.format must be one of {sorted(ALLOWED_OUTPUT_FORMATS)}, got {fmt!r}")
+        if "schema" in output and not isinstance(output.get("schema"), dict):
+            report.err(path, "output.schema must be an object when provided")
 
     # platforms — empty list is fine: it means "all platforms" (the
     # skill is vendor-neutral). Non-empty means it's locked to those
@@ -243,7 +289,14 @@ def validate_one(path: Path, report: Report, *, all_categories: set[str]) -> dic
     if isinstance(src, dict):
         for k in ("url", "commit"):
             if not src.get(k):
-                report.warn(path, f"source.{k} missing — provenance incomplete")
+                report.warn(path, f"source.{k} missing — provenance incomplete (will be inferred at build time if git origin is available)")
+    elif src is None and INFERRED_SOURCE is None:
+        report.warn(path, "source missing and git origin unavailable — provenance incomplete")
+
+    # quality
+    quality = fm.get("quality")
+    if quality is not None and quality not in ALLOWED_QUALITY:
+        report.err(path, f"quality must be one of {sorted(ALLOWED_QUALITY)}, got {quality!r}")
 
     # sections
     secs = section_names(body)
@@ -322,6 +375,7 @@ def write_index(entries: list[dict[str, Any]]) -> None:
             "tags": fm.get("tags", []),
             "platforms": fm.get("platforms", []),
             "needs_review": bool(fm.get("needs_review")),
+            "quality": fm.get("quality") or "stable",
             "path": f"skills/{fm.get('slug')}/SKILL.md",
         })
     data = {"skills": skills_out}
@@ -370,6 +424,7 @@ def write_frontend_bundle(targets: list[Path], passed: list[dict[str, Any]]) -> 
             "tags": fm.get("tags", []),
             "platforms": fm.get("platforms", []),
             "needs_review": bool(fm.get("needs_review")),
+            "quality": fm.get("quality") or "stable",
             "path": f"skills/{fm.get('slug')}/SKILL.md",
         })
     FRONTEND_SKILLS_JSON.write_text(
@@ -398,6 +453,18 @@ def write_frontend_bundle(targets: list[Path], passed: list[dict[str, Any]]) -> 
                 skill["platforms"] = []
             skill["body"] = body
             skill["needs_review"] = bool(skill.get("needs_review"))
+            # Infer source.url / source.commit for skills whose frontmatter
+            # omits them. The SKILL.md stays clean (so authors can still
+            # override with an explicit upstream source), but the published
+            # JSON always has a provenance pointer back to this repo.
+            if INFERRED_SOURCE:
+                src = skill.get("source") or {}
+                if not isinstance(src, dict):
+                    src = {}
+                inferred = dict(INFERRED_SOURCE)
+                inferred.setdefault("license", skill.get("license"))
+                inferred["original_path"] = f"skills/{slug}/SKILL.md"
+                skill["source"] = {**inferred, **{k: v for k, v in src.items() if v}}
             # Preserve the original SKILL.md text so the detail /
             # bundle pages can hand the user the *exact* file we
             # vendored, byte-for-byte (no re-emitted YAML, no

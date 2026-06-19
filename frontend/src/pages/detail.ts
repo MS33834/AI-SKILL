@@ -13,13 +13,17 @@
 
 import type { Skill, SkillIndex, SkillIndexEntry, SkillSource } from "../types";
 import { t, getLocale, pickZh } from "../i18n";
-import { categoryLabel, escHtml, escAttr, platformChipsHtml, triggerBlobDownload, skillToMarkdown } from "../shared";
+import {
+  categoryLabel,
+  escHtml,
+  escAttr,
+  platformChipsHtml,
+  qualityChipHtml,
+  triggerBlobDownload,
+  skillToMarkdown,
+} from "../shared";
 
-export async function renderDetail(
-  root: HTMLElement,
-  s: Skill,
-  index: SkillIndex,
-): Promise<void> {
+export async function renderDetail(root: HTMLElement, s: Skill, index: SkillIndex): Promise<void> {
   // Compute once, used both in the template (to disable the
   // button when the prompt section is missing) and in the click
   // handler below.
@@ -41,6 +45,7 @@ export async function renderDetail(
         <span>·</span>
         <span>${escHtml(categoryLabel(s.category))}</span>
         ${platformChipsHtml(s.platforms)}
+        ${qualityChipHtml(s.quality)}
       </p>
       <p class="detail__lead">${escHtml(lead)}</p>
       ${sourceBlock(s)}
@@ -103,23 +108,23 @@ function tocBlock(s: Skill, bodyLines: string[], promptText: string): string {
     example: hasH1Section(bodyLines, "Example"),
   };
   const items: { id: string; label: string }[] = [];
-  if (has.wtu)      items.push({ id: "when-to-use",      label: t("detail.wtu") });
-  if (has.inputs)   items.push({ id: "inputs",           label: t("detail.inputs") });
-  if (has.output)   items.push({ id: "output",           label: t("detail.output") });
-  if (has.prompt)   items.push({ id: "prompt",           label: t("detail.prompt") });
-  if (has.wnot)     items.push({ id: "when-not-to-use",  label: t("detail.wnot") });
-  if (has.example)  items.push({ id: "example",          label: t("detail.example") });
-  if (items.length <= 3) return "";  // not useful for very short pages
+  if (has.wtu) items.push({ id: "when-to-use", label: t("detail.wtu") });
+  if (has.inputs) items.push({ id: "inputs", label: t("detail.inputs") });
+  if (has.output) items.push({ id: "output", label: t("detail.output") });
+  if (has.prompt) items.push({ id: "prompt", label: t("detail.prompt") });
+  if (has.wnot) items.push({ id: "when-not-to-use", label: t("detail.wnot") });
+  if (has.example) items.push({ id: "example", label: t("detail.example") });
+  if (items.length <= 3) return ""; // not useful for very short pages
   return `
     <nav class="toc" aria-label="${escAttr(t("detail.toc"))}">
       <strong>${escHtml(t("detail.toc"))}</strong>
-      <ol>${items.map(i => `<li><a href="#${i.id}">${escHtml(i.label)}</a></li>`).join("")}</ol>
+      <ol>${items.map((i) => `<li><a href="#${i.id}">${escHtml(i.label)}</a></li>`).join("")}</ol>
     </nav>
   `;
 }
 
 function hasH1Section(lines: string[], h1: string): boolean {
-  return lines.some(l => l.trim() === `# ${h1}`);
+  return lines.some((l) => l.trim() === `# ${h1}`);
 }
 
 // Bilingual block. We always render this when the skill has
@@ -141,11 +146,14 @@ function zhBlock(s: Skill): string {
 
 function inputsTable(s: Skill): string {
   if ((s.inputs?.length ?? 0) === 0) return "";
-  const rows = (s.inputs ?? []).map(i => {
-    const reqText = i.required
-      ? t("input.required")
-      : (i.default !== undefined ? t("input.default", { v: String(i.default) }) : t("input.optional"));
-    return `
+  const rows = (s.inputs ?? [])
+    .map((i) => {
+      const reqText = i.required
+        ? t("input.required")
+        : i.default !== undefined
+          ? t("input.default", { v: String(i.default) })
+          : t("input.optional");
+      return `
     <tr>
       <td><code>${escHtml(i.name)}</code></td>
       <td><code>${escHtml(i.type)}</code></td>
@@ -153,7 +161,8 @@ function inputsTable(s: Skill): string {
       <td>${escHtml(i.description ?? "")}${i.values ? `<br/><small>${escHtml(t("input.values", { v: i.values.join(", ") }))}</small>` : ""}${i.constraints ? (i.constraints.min !== undefined || i.constraints.max !== undefined ? `<br/><small>${escHtml(t("input.range", { min: i.constraints.min ?? "−∞", max: i.constraints.max ?? "+∞" }))}</small>` : "") : ""}</td>
     </tr>
   `;
-  }).join("");
+    })
+    .join("");
   return `
     <h2 id="inputs">${escHtml(t("detail.inputs"))}</h2>
     <table>
@@ -164,9 +173,13 @@ function inputsTable(s: Skill): string {
 }
 
 function outputBlock(s: Skill): string {
+  const schema = s.output.schema
+    ? `<details class="detail__schema"><summary>${escHtml(t("detail.schema"))}</summary><pre><code>${escHtml(JSON.stringify(s.output.schema, null, 2))}</code></pre></details>`
+    : "";
   return `
     <h2 id="output">${escHtml(t("detail.output"))}</h2>
     <p><code>${escHtml(t("output.format", { f: s.output.format }))}</code>${s.output.description ? ` — ${escHtml(s.output.description)}` : ""}</p>
+    ${schema}
   `;
 }
 
@@ -178,23 +191,32 @@ function promptBlock(promptText: string): string {
 
 function extractPromptText(lines: string[]): string {
   // Find the "Prompt" H1 and return everything until the next H1
-  const start = lines.findIndex(l => /^#\s+Prompt\s*$/.test(l));
+  const start = lines.findIndex((l) => /^#\s+Prompt\s*$/.test(l));
   if (start === -1) return "";
   let end = lines.length;
   for (let i = start + 1; i < lines.length; i++) {
-    if (/^#\s+/.test(lines[i]!)) { end = i; break; }
+    if (/^#\s+/.test(lines[i]!)) {
+      end = i;
+      break;
+    }
   }
   // Strip leading/trailing blank lines; the source prompt is
   // already inside a fenced block which we render as <pre><code>.
-  return lines.slice(start + 1, end).join("\n").replace(/^\n+|\n+$/g, "");
+  return lines
+    .slice(start + 1, end)
+    .join("\n")
+    .replace(/^\n+|\n+$/g, "");
 }
 
 function renderH1Section(lines: string[], h1: string): string {
-  const start = lines.findIndex(l => l.trim() === `# ${h1}`);
+  const start = lines.findIndex((l) => l.trim() === `# ${h1}`);
   if (start === -1) return "";
   let end = lines.length;
   for (let i = start + 1; i < lines.length; i++) {
-    if (/^#\s+/.test(lines[i]!)) { end = i; break; }
+    if (/^#\s+/.test(lines[i]!)) {
+      end = i;
+      break;
+    }
   }
   const sectionBody = lines.slice(start + 1, end).join("\n");
   return mdToHtml(sectionBody);
@@ -233,14 +255,20 @@ function mdToHtml(src: string): string {
     }
     if (/^\s*\|/.test(line) && i + 1 < lines.length && /^\s*\|[\s\-:|]+\|\s*$/.test(lines[i + 1]!)) {
       // Table
-      const head = lines[i]!.split("|").slice(1, -1).map(c => c.trim());
+      const head = lines[i]!.split("|")
+        .slice(1, -1)
+        .map((c) => c.trim());
       i += 2;
       const rows: string[][] = [];
       while (i < lines.length && /^\s*\|/.test(lines[i]!)) {
-        rows.push(lines[i]!.split("|").slice(1, -1).map(c => c.trim()));
+        rows.push(
+          lines[i]!.split("|")
+            .slice(1, -1)
+            .map((c) => c.trim())
+        );
         i++;
       }
-      out += `<table><thead><tr>${head.map(h => `<th>${inlineMd(h)}</th>`).join("")}</tr></thead><tbody>${rows.map(r => `<tr>${r.map(c => `<td>${inlineMd(c)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+      out += `<table><thead><tr>${head.map((h) => `<th>${inlineMd(h)}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${inlineMd(c)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
       continue;
     }
     if (/^[-*]\s+/.test(line)) {
@@ -249,7 +277,7 @@ function mdToHtml(src: string): string {
         items.push(lines[i]!.replace(/^[-*]\s+/, ""));
         i++;
       }
-      out += `<ul>${items.map(it => `<li>${inlineMd(it)}</li>`).join("")}</ul>`;
+      out += `<ul>${items.map((it) => `<li>${inlineMd(it)}</li>`).join("")}</ul>`;
       continue;
     }
     if (/^\d+\.\s+/.test(line)) {
@@ -258,7 +286,7 @@ function mdToHtml(src: string): string {
         items.push(lines[i]!.replace(/^\d+\.\s+/, ""));
         i++;
       }
-      out += `<ol>${items.map(it => `<li>${inlineMd(it)}</li>`).join("")}</ol>`;
+      out += `<ol>${items.map((it) => `<li>${inlineMd(it)}</li>`).join("")}</ol>`;
       continue;
     }
     if (line.trim() === "") {
@@ -305,18 +333,33 @@ async function copyAndPulse(btn: HTMLButtonElement, text: string, successLabel: 
     // Fallback: select-and-execCommand
     const ta = document.createElement("textarea");
     ta.value = text;
-    ta.style.position = "fixed"; ta.style.opacity = "0";
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
     document.body.appendChild(ta);
     ta.select();
-    try { document.execCommand("copy"); } finally { document.body.removeChild(ta); }
+    try {
+      document.execCommand("copy");
+    } finally {
+      document.body.removeChild(ta);
+    }
   }
-  const old = btn.textContent;
+  // Clear any previous pulse on this button so rapid clicks don't
+  // stack timers or restore the wrong label.
+  const oldTimer = btn.dataset.pulseTimer;
+  if (oldTimer) clearTimeout(Number(oldTimer));
+  if (!btn.dataset.originalLabel) {
+    btn.dataset.originalLabel = btn.textContent ?? "";
+  }
+  const originalLabel = btn.dataset.originalLabel;
   btn.textContent = successLabel;
   btn.classList.add("btn--pulse");
-  setTimeout(() => {
-    btn.textContent = old;
-    btn.classList.remove("btn--pulse");
-  }, 1500);
+  btn.dataset.pulseTimer = String(
+    setTimeout(() => {
+      btn.textContent = originalLabel;
+      btn.classList.remove("btn--pulse");
+      delete btn.dataset.pulseTimer;
+    }, 1500)
+  );
 }
 
 function downloadSkill(s: Skill): void {
@@ -351,9 +394,10 @@ function sourceBlock(s: Skill): string {
   const shortCommit = commit ? commit.slice(0, 7) : null;
   // commitLinkHtml uses the narrowed `commit` value directly,
   // keeping the type checker happy without an extra non-null `!`.
-  const commitLinkHtml = commit && shortCommit
-    ? `<a class="source-block__commit" href="${escAttr(commitUrl(src))}" rel="noopener noreferrer" target="_blank" title="${escAttr(commit)}">${escHtml(shortCommit)}</a>`
-    : `<span class="source-block__commit">${escHtml(t("detail.noCommit"))}</span>`;
+  const commitLinkHtml =
+    commit && shortCommit
+      ? `<a class="source-block__commit" href="${escAttr(commitUrl(src))}" rel="noopener noreferrer" target="_blank" title="${escAttr(commit)}">${escHtml(shortCommit)}</a>`
+      : `<span class="source-block__commit">${escHtml(t("detail.noCommit"))}</span>`;
   return `
     <div class="source-block">
       <span class="source-block__label">${escHtml(t("detail.source"))}</span>
@@ -416,9 +460,10 @@ function pickRelated(s: Skill, index: SkillIndex, n: number): SkillIndexEntry[] 
 
 function relatedBlock(related: SkillIndexEntry[]): string {
   if (related.length === 0) return "";
-  const cards = related.map(e => {
-    const name = pickZh(e, "name");
-    return `
+  const cards = related
+    .map((e) => {
+      const name = pickZh(e, "name");
+      return `
     <a class="skill-card skill-card--inline" href="#/skill/${escAttr(e.slug)}">
       <div class="skill-card__head">
         <span class="skill-card__slug">${escHtml(e.slug)}</span>
@@ -426,7 +471,8 @@ function relatedBlock(related: SkillIndexEntry[]): string {
       </div>
     </a>
   `;
-  }).join("");
+    })
+    .join("");
   return `
     <section class="related" aria-label="${escAttr(t("aria.related"))}">
       <h2 class="related__title">${escHtml(t("detail.related", { cat: related[0]!.category.replace(/-/g, " ") }))}</h2>
@@ -443,12 +489,13 @@ function relatedBlock(related: SkillIndexEntry[]): string {
 
 export function renderNotFound(root: HTMLElement, slug: string, index: SkillIndex): void {
   const suggestions = suggestSlugs(slug, index.skills, 5);
-  const sugHtml = suggestions.length === 0
-    ? ""
-    : `
+  const sugHtml =
+    suggestions.length === 0
+      ? ""
+      : `
       <div class="notfound__suggest">
         <span class="notfound__suggest-label">${escHtml(t("nf.suggest"))}</span>
-        ${suggestions.map(s => `<a class="notfound__chip" href="#/skill/${escAttr(s.slug)}">${escHtml(s.slug)}</a>`).join(" ")}
+        ${suggestions.map((s) => `<a class="notfound__chip" href="#/skill/${escAttr(s.slug)}">${escHtml(s.slug)}</a>`).join(" ")}
       </div>
     `;
   root.innerHTML = `
@@ -474,14 +521,17 @@ function suggestSlugs(needle: string, haystack: SkillIndexEntry[], n: number): S
   for (const e of haystack) {
     const hay = e.slug.toLowerCase();
     let s = 0;
-    if (hay === lower) s = 100;             // exact
-    else if (hay.startsWith(lower)) s = 50; // prefix
-    else if (hay.includes(lower)) s = 25;   // contains
-    else s = sharedBigrams(lower, hay);     // fuzzy
+    if (hay === lower)
+      s = 100; // exact
+    else if (hay.startsWith(lower))
+      s = 50; // prefix
+    else if (hay.includes(lower))
+      s = 25; // contains
+    else s = sharedBigrams(lower, hay); // fuzzy
     if (s > 0) scored.push({ e, s });
   }
   scored.sort((a, b) => b.s - a.s);
-  return scored.slice(0, n).map(x => x.e);
+  return scored.slice(0, n).map((x) => x.e);
 }
 
 function sharedBigrams(a: string, b: string): number {

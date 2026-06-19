@@ -1,0 +1,36 @@
+# GitHub automatically groups pull requests into these categories
+# when generating release notes for a new release.
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+      - chore
+      - dependencies
+    authors:
+      - dependabot
+      - dependabot[bot]
+  categories:
+    - title: Breaking changes
+      labels:
+        - breaking
+    - title: New features
+      labels:
+        - feature
+        - enhancement
+    - title: Bug fixes
+      labels:
+        - bug
+        - fix
+    - title: External index
+      labels:
+        - new-entry
+        - external-index
+    - title: Documentation
+      labels:
+        - docs
+        - documentation
+    - title: Maintenance
+      labels:
+        - refactor
+        - ci
+        - tests

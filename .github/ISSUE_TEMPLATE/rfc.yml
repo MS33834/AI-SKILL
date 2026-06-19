@@ -1,0 +1,62 @@
+name: RFC
+description: Propose a larger change, new feature, or project-level decision
+title: "[rfc]: "
+labels: ["rfc", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for substantive proposals: new features,
+        architecture changes, process updates, or anything that needs
+        discussion before implementation.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One-paragraph overview of the proposal.
+      placeholder: "Add a public API for external-index contributions so third-party repos can self-register."
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: What problem does this solve? Who benefits?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Detailed proposal
+      description: Explain the change, including API/schema, UX, and data flow.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other approaches and why you rejected them.
+    validations:
+      required: false
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Backwards compatibility, migration path, docs, and maintenance.
+    validations:
+      required: false
+
+  - type: textarea
+    id: open_questions
+    attributes:
+      label: Open questions
+      description: Anything you want feedback on before drafting the implementation.
+    validations:
+      required: false

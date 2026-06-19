@@ -8,13 +8,28 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.css\" \"*.html\" \"*.js\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"src/**/*.css\" \"*.html\" \"*.js\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "data:sync": "python3 ../scripts/validate-skill.py"
   },
   "devDependencies": {
+    "@types/jsdom": "^28.0.3",
+    "eslint": "^10.5.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.8.4",
     "typescript": "^5.4.5",
-    "vite": "^8.0.16"
+    "typescript-eslint": "^8.61.1",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.9"
   },
   "dependencies": {
+    "@fontsource/fraunces": "^5.2.9",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
     "jszip": "^3.10.1"
   }
 }
