@@ -105,13 +105,29 @@ async function route() {
       }
     } else {
       document.title = "AI-SKILL";
-      mainEl.innerHTML = `<div class="empty">${escHtml(t("unknownRoute"))} <a href="#/">${escHtml(t("backToList"))}</a>.</div>`;
+      mainEl.innerHTML = `
+        <div class="empty-state">
+          <svg class="brand-mark" width="32" height="32" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <rect width="16" height="16" rx="2" fill="currentColor" />
+          </svg>
+          <span class="empty-state__title">${escHtml(t("unknownRoute"))}</span>
+          <p class="empty-state__hint"><a href="#/">${escHtml(t("backToList"))}</a></p>
+        </div>
+      `;
     }
     // Scroll to top on route change (unless the user is mid-click)
     window.scrollTo({ top: 0, behavior: "instant" });
   } catch (e) {
     document.title = "Error — AI-SKILL";
-    mainEl.innerHTML = `<div class="empty">${escHtml(t("errorPrefix"))} ${escHtml(String(e))}</div>`;
+    mainEl.innerHTML = `
+      <div class="error-state" role="alert">
+        <svg class="brand-mark" width="32" height="32" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <rect width="16" height="16" rx="2" fill="currentColor" />
+        </svg>
+        <span class="empty-state__title">${escHtml(t("error.loadFailed"))}</span>
+        <p class="empty-state__hint"><code>${escHtml(String(e))}</code></p>
+      </div>
+    `;
     // Production: suppress detailed error logs to prevent information leakage
     // Development: keep console.error for debugging
     if (import.meta.env.DEV) {

@@ -165,10 +165,12 @@ function inputsTable(s: Skill): string {
     .join("");
   return `
     <h2 id="inputs">${escHtml(t("detail.inputs"))}</h2>
-    <table>
-      <thead><tr><th scope="col">${escHtml(t("table.name"))}</th><th scope="col">${escHtml(t("table.type"))}</th><th scope="col">${escHtml(t("table.required"))}</th><th scope="col">${escHtml(t("table.description"))}</th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">${escHtml(t("table.name"))}</th><th scope="col">${escHtml(t("table.type"))}</th><th scope="col">${escHtml(t("table.required"))}</th><th scope="col">${escHtml(t("table.description"))}</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
   `;
 }
 
@@ -268,7 +270,7 @@ function mdToHtml(src: string): string {
         );
         i++;
       }
-      out += `<table><thead><tr>${head.map((h) => `<th>${inlineMd(h)}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${inlineMd(c)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+      out += `<div class="table-wrap"><table><thead><tr>${head.map((h) => `<th>${inlineMd(h)}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${inlineMd(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
       continue;
     }
     if (/^[-*]\s+/.test(line)) {

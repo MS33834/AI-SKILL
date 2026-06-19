@@ -14,9 +14,13 @@ human reviewer can decide whether the skill legitimately needs them
 
 Exit codes:
 
-  0  no issues
-  1  high-severity findings
+  0  no issues (or findings present but not in fail-on mode)
+  1  high-severity findings when --fail-on-high is set
   2  invalid arguments / missing dependencies
+
+By default the scan prints findings for manual review but exits 0 so
+local triage is not blocked. Use --fail-on-high in CI to treat HIGH
+severity findings as failures.
 """
 from __future__ import annotations
 
@@ -216,6 +220,7 @@ def scan_json_file(path: Path) -> list[Finding]:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n", 1)[0])
     ap.add_argument("--strict", action="store_true", help="treat MEDIUM findings as failures")
+    ap.add_argument("--fail-on-high", action="store_true", help="exit non-zero when HIGH severity findings are found")
     ap.add_argument("--quiet", action="store_true", help="only print findings and summary")
     args = ap.parse_args()
 
@@ -237,7 +242,7 @@ def main() -> int:
 
     print(f"\n== security scan: {len(high)} high / {len(medium)} medium / {len(low)} low / {len(md_files)} files ==")
 
-    if high:
+    if args.fail_on_high and high:
         return 1
     if args.strict and medium:
         return 1

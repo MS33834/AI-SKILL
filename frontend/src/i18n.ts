@@ -132,6 +132,18 @@ const STRINGS = {
     en: "No skills match. Try a different search or clear filters.",
     zh: "没有匹配的技能。换个关键词或清空筛选条件。",
   },
+  "empty.noResults": {
+    en: "No results match your search. Try a different keyword or clear the filters.",
+    zh: "没有符合搜索条件的结果。换个关键词或清空筛选条件。",
+  },
+  "empty.noSkills": {
+    en: "No skills available yet.",
+    zh: "暂无可用的技能。",
+  },
+  "error.loadFailed": {
+    en: "Failed to load. Please check your connection and try again.",
+    zh: "加载失败，请检查网络后重试。",
+  },
 
   // ----- detail page -----
   "detail.back": { en: "← back to list", zh: "← 返回列表" },
@@ -241,6 +253,7 @@ const STRINGS = {
 
   // ----- aria / accessibility / misc -----
   "aria.siteStats": { en: "site statistics", zh: "站点统计" },
+  "aria.resultsCount": { en: "{n} results found", zh: "找到 {n} 个结果" },
   "aria.related": { en: "related skills", zh: "相关技能" },
   "aria.copyCode": { en: "Copy code", zh: "复制代码" },
   "aria.langToggle": { en: "Switch language", zh: "切换语言" },

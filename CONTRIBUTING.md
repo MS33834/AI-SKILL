@@ -50,6 +50,28 @@ a sentence of context (renamed? moved? private?).
 Open an issue first. Most entries fit an existing one. New category
 needs a reason.
 
+## Design / UX contributions
+
+We welcome visual, interaction, and design-system contributions. Because
+design changes are hard to review from a diff alone, please:
+
+1. **Open an [RFC issue](../.github/ISSUE_TEMPLATE/rfc.yml)** before large
+   visual or interaction changes.
+2. **Attach screenshots, screen recordings, or Figma links** in the issue or
+   PR description so reviewers can see the intended result.
+3. **CSS changes must pass lint and format** in `frontend/`:
+   `npm run lint && npm run format`.
+4. **Check responsive behavior** between 320 px and 1440 px using DevTools
+   device emulation; major breakpoints are 375, 768, and 1024 px.
+5. **Do not add binary image assets** (PNG/JPG/SVG) directly to the repo
+   unless you are using the provided image API or have explicit maintainer
+   approval.
+6. **Ask before adding new fonts** or font packages; we self-host fonts via
+   `@fontsource` and want to keep the bundle size predictable.
+
+Small fixes (typo, spacing, color contrast) can skip the RFC but should still
+include before/after screenshots.
+
 ## PR hygiene
 
 - **One skill per PR.** Easier to review, easier to revert.
@@ -65,9 +87,11 @@ We want more area owners. If you care about one of these areas, start by
 reviewing PRs in that area and open a discussion:
 
 - **Content** — review `skills/` PRs, enforce generalization and schema rules
-- **Index** — review `external-index/` PRs, keep link checks green
-- **Frontend** — UI/UX, performance, accessibility
+- **Index / Data** — review `external-index/` PRs, keep link checks and metadata green
+- **Frontend** — UI/UX implementation, performance, accessibility
+- **Design / UX** — own the design system, responsive layout, motion, empty states, brand assets
 - **Tooling / Ops** — CI, validation scripts, data sync
+- **Security / QA** — security scan rules, test coverage, broken-link monitoring
 - **Community** — onboarding, upstream relations, release notes
 
 See `GOVERNANCE.md` for the formal appointment process.

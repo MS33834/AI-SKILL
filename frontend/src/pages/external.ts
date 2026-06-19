@@ -44,6 +44,29 @@ type ViewMode = "domain" | "vendor" | "category" | "stars";
 
 const PAGE_SIZE = 60;
 
+function emptyStateHtml(message: string): string {
+  return `
+    <div class="empty-state">
+      <svg class="brand-mark" width="32" height="32" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <rect width="16" height="16" rx="2" fill="currentColor" />
+      </svg>
+      <span class="empty-state__title">${escHtml(message)}</span>
+    </div>
+  `;
+}
+
+function errorStateHtml(message: string, detail: string): string {
+  return `
+    <div class="error-state" role="alert">
+      <svg class="brand-mark" width="32" height="32" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <rect width="16" height="16" rx="2" fill="currentColor" />
+      </svg>
+      <span class="empty-state__title">${escHtml(message)}</span>
+      <p class="empty-state__hint"><code>${escHtml(detail)}</code></p>
+    </div>
+  `;
+}
+
 let cache: IndexData | null = null;
 
 // Shared IntersectionObserver for auto-loading more external repos.
@@ -96,7 +119,7 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
       <h1 class="external__title">${escHtml(t("external.title"))}</h1>
       <p class="external__subtitle" id="ext-subtitle">${escHtml(t("external.subtitle", { n: "…" }))}</p>
 
-      <div class="ext-toolbar">
+      <div class="ext-toolbar" role="search">
         <input type="search" id="ext-search" value="${escAttr(initialQ)}" placeholder="${escAttr(t("external.search.ph"))}" aria-label="${escAttr(t("external.search.ph"))}" />
         <div class="ext-views" role="tablist">
           <button class="ext-view-btn" data-view="domain" role="tab" aria-selected="true">${escHtml(t("external.view.domain"))}</button>
@@ -109,7 +132,7 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
         </select>
       </div>
 
-      <div id="ext-stats" class="ext-stats"></div>
+      <div id="ext-stats" class="ext-stats" aria-live="polite" aria-atomic="true"></div>
       <div id="ext-list" class="external-list" aria-busy="true">
         <div class="ext-loading" role="status" aria-live="polite">${escHtml(t("loading"))}</div>
       </div>
@@ -231,7 +254,7 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
       }
 
       if (filtered.length === 0) {
-        list.innerHTML = `<div class="empty">${escHtml(t("external.empty"))}</div>`;
+        list.innerHTML = emptyStateHtml(t("empty.noResults"));
         loadMoreEl.innerHTML = "";
         return;
       }
@@ -283,7 +306,7 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
     paint(false);
   } catch (e) {
     list.removeAttribute("aria-busy");
-    list.innerHTML = `<div class="empty" role="alert">${escHtml(t("external.errorLoad"))} <code>${escHtml(String(e))}</code></div>`;
+    list.innerHTML = errorStateHtml(t("error.loadFailed"), e instanceof Error ? e.message : String(e));
     if (import.meta.env.DEV) console.error(e);
   }
 }

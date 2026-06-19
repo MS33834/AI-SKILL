@@ -1,0 +1,74 @@
+name: Weekly external index sync
+
+on:
+  schedule:
+    # Every Sunday at 06:00 UTC
+    - cron: "0 6 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r requirements-lock.txt
+
+      - name: Sync GitHub metadata
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/sync-github.py
+
+      - name: Check external links
+        run: python scripts/check-links.py
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: weekly external index sync"
+          title: "chore: weekly external index sync"
+          body: |
+            Automated weekly refresh of the external skill index.
+
+            - Synced `stars`, `license`, `pushed_at`, and `archived` from the GitHub API
+            - Refreshed `external-index/health.json`
+          branch: chore/weekly-external-index-sync
+          delete-branch: true
+
+      - name: Open issue on sync failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const date = new Date().toISOString().slice(0, 10);
+            const title = `Scheduled external index sync failed (${date})`;
+            const body = `The weekly sync workflow failed. Check the [run logs](${context.payload.repository.html_url}/actions/runs/${context.runId}).`;
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              labels: "automation",
+            });
+            if (!issues.some((i) => i.title === title)) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ["automation"],
+              });
+            }

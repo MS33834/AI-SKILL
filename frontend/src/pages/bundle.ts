@@ -19,6 +19,17 @@ import {
   qualityChipHtml,
 } from "../shared";
 
+function emptyStateHtml(message: string): string {
+  return `
+    <div class="empty-state">
+      <svg class="brand-mark" width="32" height="32" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <rect width="16" height="16" rx="2" fill="currentColor" />
+      </svg>
+      <span class="empty-state__title">${escHtml(message)}</span>
+    </div>
+  `;
+}
+
 export async function renderBundle(root: HTMLElement, index: SkillIndex): Promise<void> {
   root.innerHTML = `
     <div class="container-wide">
@@ -55,6 +66,10 @@ export async function renderBundle(root: HTMLElement, index: SkillIndex): Promis
       if (!q) return true;
       return buildSearchBlob(s).includes(q);
     });
+    if (filtered.length === 0) {
+      listEl.innerHTML = emptyStateHtml(t("empty.noResults"));
+      return;
+    }
     // Snapshot which slugs are checked before re-rendering, so a
     // filter that hides then re-shows a row doesn't drop the
     // selection. (W4 from the prosecutor review.)
@@ -133,7 +148,7 @@ export async function renderBundle(root: HTMLElement, index: SkillIndex): Promis
       // in some embedded contexts. (W8)
       listEl.insertAdjacentHTML(
         "beforebegin",
-        `<div class="empty bundle-error" role="alert" style="color: var(--err);">${escHtml(t("bundle.failed", { msg: e instanceof Error ? e.message : String(e) }))}</div>`
+        `<div class="error-state" role="alert"><span class="empty-state__title">${escHtml(t("error.loadFailed"))}</span> <code>${escHtml(e instanceof Error ? e.message : String(e))}</code></div>`
       );
       if (import.meta.env.DEV) {
         console.error(e);

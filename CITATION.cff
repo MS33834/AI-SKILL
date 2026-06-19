@@ -5,5 +5,6 @@ title: "AI-SKILL"
 abstract: "An open-source, community-driven index of AI agent skill repositories. AI-SKILL maintains a Local Vault of ready-to-use SKILL.md files and an External Index of 900+ upstream repositories, helping developers discover, compare, and adopt agent skills across platforms."
 authors:
   - name: "badhope"
+    email: "badhope@users.noreply.github.com"
 repository-code: "https://gitcode.com/badhope/AI-SKILL"
 license: MIT

@@ -37,6 +37,17 @@ interface ExternalIndexData {
 
 let externalIndexCache: ExternalIndexData | null = null;
 
+function emptyStateHtml(message: string): string {
+  return `
+    <div class="empty-state">
+      <svg class="brand-mark" width="32" height="32" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <rect width="16" height="16" rx="2" fill="currentColor" />
+      </svg>
+      <span class="empty-state__title">${escHtml(message)}</span>
+    </div>
+  `;
+}
+
 async function loadExternalIndex(): Promise<ExternalIndexData> {
   if (externalIndexCache) return externalIndexCache;
   const r = await fetch(`${import.meta.env.BASE_URL}external-repos.json`);
@@ -110,7 +121,7 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
     </div>
 
     <div class="container-wide">
-      <div class="filter-bar">
+      <div class="filter-bar" role="search">
         <input type="search" id="filter-q" placeholder="${escAttr(t("filter.search.ph"))}" value="${escAttr(initialQ)}" aria-label="${escAttr(t("filter.search.ph"))}" />
         <select id="filter-cat" aria-label="${escAttr(t("filter.cat.label"))}">
           <option value="">${escHtml(t("filter.cat.all"))}</option>
@@ -128,6 +139,7 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
           <span>${escHtml(t("filter.group"))}</span>
         </label>
       </div>
+      <div id="list-live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
       <div id="cards"></div>
     </div>
   `;
@@ -148,6 +160,7 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
 
   const qInput = root.querySelector<HTMLInputElement>("#filter-q")!;
   const cards = root.querySelector<HTMLDivElement>("#cards")!;
+  const liveEl = root.querySelector<HTMLElement>("#list-live")!;
 
   // Only play the entrance animation on the very first paint. After
   // that, filtering/grouping should update the grid without replaying
@@ -168,8 +181,9 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
     u.searchParams.set("group", grouped ? "1" : "0");
     history.replaceState(null, "", u.toString());
 
+    liveEl.textContent = t("aria.resultsCount", { n: filtered.length });
     if (filtered.length === 0) {
-      cards.innerHTML = `<div class="empty">${escHtml(t("empty.noMatch"))}</div>`;
+      cards.innerHTML = emptyStateHtml(t("empty.noResults"));
       firstPaint = false;
       return;
     }

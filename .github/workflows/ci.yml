@@ -29,7 +29,7 @@ jobs:
         run: python scripts/validate-skill.py --strict
 
       - name: Security scan skills
-        run: python scripts/security-scan.py
+        run: python scripts/security-scan.py --fail-on-high
 
   frontend:
     runs-on: ubuntu-24.04
