@@ -1,23 +1,25 @@
 # AI-SKILL
 
 > An open-source, community-driven index of AI agent skill repositories.
-> MIT licensed. No tracking. No signup. Just markdown and links.
+> Local Vault + External Index. MIT licensed. No tracking. No signup.
+> Just markdown and links.
 
 ## 这是什么
 
-AI-SKILL 是一个开源社区驱动的 AI 技能仓库索引。目标不是做又一个
-awesome-list，而是做一个可搜索、多维度分类、技能级细化的索引，让
-用户快速找到需要的技能仓库。
+AI-SKILL 是双轨并行的 AI 技能索引：
 
-- **928+ 个外部仓库**已索引，覆盖 OpenAI、Anthropic、Hugging Face、
-  LangChain、LlamaIndex 等大厂与社区项目
-- **38 个本地精选 SKILL.md**，可直接丢进 Claude / Codex / Cursor /
-  Continue 或任何读 Markdown 的 agent
-- **多维度分类**：按功能领域（9 大类）、按厂商类型（大厂 / 热门社区 /
-  社区 / 个人）、按子分类（49 类）、按星标分层
-- **技能级索引**：每个仓库卡片列出它提供的具体能力，搜"RAG"就能
-  找到所有支持 RAG 的仓库
-- **前端可搜索**：按名称、厂商、标签、描述、技能搜索，实时筛选
+- **External Index**：928+ 个上游仓库索引，目标是可搜索、多维度分类、
+  技能级细化的发现平台，不是又一个 awesome-list。
+- **Local Vault**：38 个本地精选 `SKILL.md`，可直接丢进 Claude / Codex /
+  Cursor / Continue 或任何读 Markdown 的 agent，一部分原创，一部分从
+  上游仓库通用化而来。
+
+核心能力：
+
+- **多维度分类**：按功能领域（9 大类）、厂商类型（4 类）、子分类（49 类）、星标分层
+- **技能级索引**：每个仓库卡片列出具体能力，搜 "RAG" 就能找到所有支持 RAG 的仓库
+- **前端可搜索**：按名称、厂商、标签、描述、技能实时筛选
+- **Bundle / 安装**：把本地 skill 打包 ZIP 或一键装到 agent 目录
 
 ## License
 
@@ -197,11 +199,12 @@ python scripts/sync-external-index.py   # 重新生成 JSON
 
 ## 贡献
 
-看 `CONTRIBUTING.md`。简短版：
+看 `CONTRIBUTING.md`、`GOVERNANCE.md` 和 `docs/generalization-checklist.md`。简短版：
 
 - 单条 PR
 - 不手动改 `stars` / `license` / `pushed_at`，sync 脚本会自动刷
 - 新增仓库索引请填全 `domain` / `vendor_type` / `skills` 字段
+- 从上游搬运的本地 skill 要经过通用化改造，详见 generalization checklist
 - prompt 改了才升 version 号
 
 ## License

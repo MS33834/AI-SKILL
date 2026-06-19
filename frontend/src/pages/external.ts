@@ -83,7 +83,7 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
   root.innerHTML = `
     <div class="container-wide">
       <h1 class="external__title">${escHtml(t("external.title"))}</h1>
-      <p class="external__subtitle">${escHtml(t("external.subtitle", { n: "928" }))}</p>
+      <p class="external__subtitle" id="ext-subtitle">${escHtml(t("external.subtitle", { n: "…" }))}</p>
 
       <div class="ext-toolbar">
         <input type="search" id="ext-search" value="${escAttr(initialQ)}" placeholder="${escAttr(t("external.search.ph"))}" aria-label="${escAttr(t("external.search.ph"))}" />
@@ -121,6 +121,8 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
 
   try {
     const data = await loadRepos();
+    const subEl = root.querySelector<HTMLParagraphElement>("#ext-subtitle");
+    if (subEl) subEl.textContent = t("external.subtitle", { n: String(data.total) });
     list.removeAttribute("aria-busy");
 
     // Populate vendor filter
@@ -257,7 +259,9 @@ function cardHtml(r: ExternalRepo, zh: boolean): string {
   const tags = r.tags.slice(0, 5).map(tg =>
     `<span class="external-card__tag">#${escHtml(tg)}</span>`
   ).join("");
-  const starsFmt = r.stars >= 1000 ? `${(r.stars / 1000).toFixed(1)}k` : String(r.stars);
+  const starsFmt = r.stars >= 1000
+    ? `${(r.stars / 1000).toFixed(1).replace(/\.0$/, "")}k`
+    : String(r.stars);
   // Skill-level index: list the concrete capabilities the repo
   // provides so users can find a specific skill and know which
   // repo to open. Cap at 8 to keep cards scannable.

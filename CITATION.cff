@@ -1,33 +1,9 @@
 cff-version: 1.2.0
-message: >-
-  If you use this software in academic work, please cite it using the
-  metadata below.
-title: AI-SKILL
-authors:
-  - family-names: badhope
-    given-names: badhope
-    alias: badhope
-identifiers:
-  - type: url
-    value: https://github.com/badhope/AI-SKILL
-license: MIT
+message: "If you use AI-SKILL in your research or tooling, please cite it as below."
 type: software
-url: https://github.com/badhope/AI-SKILL
-repository-code: https://github.com/badhope/AI-SKILL
-keywords:
-  - agent
-  - llm
-  - prompt-engineering
-  - ai-skills
-  - skill-vault
-  - mcp
-  - rag
-  - claude-skills
-  - codex-skills
-  - ai
-abstract: >-
-  A vendor-neutral vault of agent skills. Each skill is a local
-  SKILL.md file under skills/ — frontmatter, prompt, example, and a
-  "When NOT to use" section. Drop into Claude, Codex, Cursor, Continue,
-  or any Markdown-reading agent. The external-index/ directory keeps a
-  discovery list of upstream repos for skills we have not yet mirrored.
+title: "AI-SKILL"
+abstract: "An open-source, community-driven index of AI agent skill repositories. AI-SKILL maintains a Local Vault of ready-to-use SKILL.md files and an External Index of 900+ upstream repositories, helping developers discover, compare, and adopt agent skills across platforms."
+authors:
+  - name: "badhope"
+repository-code: "https://gitcode.com/badhope/AI-SKILL"
+license: MIT

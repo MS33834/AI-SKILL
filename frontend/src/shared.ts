@@ -75,7 +75,12 @@ export function escHtml(s: string): string {
 }
 
 export function escAttr(s: string): string {
-  return escHtml(s);
+  // Attribute values in this project are always quoted with double quotes.
+  // We reuse HTML escapes plus normalize whitespace that can break
+  // parsing when an attribute is written across multiple lines.
+  return escHtml(s)
+    .replace(/\n/g, "&#10;")
+    .replace(/\r/g, "&#13;");
 }
 
 // ============================ YAML dumper ============================
@@ -164,12 +169,12 @@ export function buildSearchBlob(s: SkillIndexEntry): string {
 }
 
 /** Debounce a function call by `ms` milliseconds. */
-export function debounce<T extends (...a: never[]) => void>(fn: T, ms: number): T {
+export function debounce<A extends unknown[]>(fn: (...args: A) => void, ms: number): (...args: A) => void {
   let h: ReturnType<typeof setTimeout> | null = null;
-  return ((...args: never[]) => {
+  return (...args) => {
     if (h) clearTimeout(h);
     h = setTimeout(() => fn(...args), ms);
-  }) as T;
+  };
 }
 
 /** Trigger a browser download for a Blob, cleaning up the object URL. */

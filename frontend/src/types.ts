@@ -64,7 +64,7 @@ export interface Skill {
   // Provenance block. Every skill is expected to have one, but
   // hand-written skills may leave the upstream `commit` as
   // "n/a". Optional in the type so the UI can degrade gracefully.
-  source?: SkillSource;
+  source?: SkillSource | null;
 }
 
 export interface SkillSource {

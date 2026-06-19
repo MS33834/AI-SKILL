@@ -20,6 +20,22 @@ import type { SkillIndex, SkillIndexEntry } from "../types";
 import { t, pickZh } from "../i18n";
 import { categoryLabel, escHtml, escAttr, categoryColor, platformChipsHtml, buildSearchBlob, debounce } from "../shared";
 
+interface ExternalIndexData {
+  repos: unknown[];
+  domains: Record<string, unknown>;
+  total: number;
+}
+
+let externalIndexCache: ExternalIndexData | null = null;
+
+async function loadExternalIndex(): Promise<ExternalIndexData> {
+  if (externalIndexCache) return externalIndexCache;
+  const r = await fetch(`${import.meta.env.BASE_URL}external-repos.json`);
+  if (!r.ok) throw new Error(`fetch external-repos.json: ${r.status}`);
+  externalIndexCache = (await r.json()) as ExternalIndexData;
+  return externalIndexCache;
+}
+
 export async function renderList(
   root: HTMLElement,
   index: SkillIndex,
@@ -33,8 +49,22 @@ export async function renderList(
 
   const totalSkills = index.skills.length;
   const totalCategories = new Set(index.skills.map(s => s.category)).size;
-  const indexedRepos = 928; // external indexed repos count
-  const domains = 9; // functional domain count
+
+  // Load external index stats for the hero / stat bar. If it fails
+  // (network, deployment mismatch), degrade gracefully instead of
+  // breaking the whole page.
+  let indexedRepos = 0;
+  let domains = 0;
+  let externalStatsReady = false;
+  try {
+    const ext = await loadExternalIndex();
+    indexedRepos = ext.total;
+    domains = Object.keys(ext.domains).length;
+    externalStatsReady = true;
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn("failed to load external index stats", e);
+  }
 
   root.innerHTML = `
     <section class="hero">
@@ -47,10 +77,10 @@ export async function renderList(
         ${totalSkills} <em>SKILL.md</em><br/>
         ${escHtml(t("hero.title1"))}
       </h1>
-      <p class="hero__sub">${escHtml(t("hero.sub", { skills: String(totalSkills), repos: "928" }))}</p>
+      <p class="hero__sub">${escHtml(t("hero.sub", { skills: String(totalSkills), repos: externalStatsReady ? String(indexedRepos) : "900+" }))}</p>
       <div class="hero__cta">
-        <a class="btn btn--primary" href="#/external" data-link>${escHtml(t("hero.cta.index"))}</a>
-        <a class="btn" href="#/bundle" data-link>${escHtml(t("nav.bundle"))}</a>
+        <a class="btn btn--primary" href="#/external">${escHtml(t("hero.cta.index"))}</a>
+        <a class="btn" href="#/bundle">${escHtml(t("nav.bundle"))}</a>
         <a class="btn" href="https://github.com/badhope/AI-SKILL" rel="noopener noreferrer" target="_blank">${escHtml(t("hero.cta.gh"))}</a>
       </div>
       <div class="hero__mark-glyph" aria-hidden="true">▮ AI-SKILL</div>
@@ -66,11 +96,11 @@ export async function renderList(
         <span class="stat__label">${escHtml(t("stat.categories.label"))}</span>
       </div>
       <div class="stat" aria-label="${escAttr(t("stat.neutral.label"))}">
-        <span class="stat__num">${indexedRepos}<em>${escHtml(t("stat.neutral.suffix"))}</em></span>
+        <span class="stat__num">${externalStatsReady ? indexedRepos : "—"}<em>${escHtml(t("stat.neutral.suffix"))}</em></span>
         <span class="stat__label">${escHtml(t("stat.neutral.label"))}</span>
       </div>
       <div class="stat" aria-label="${escAttr(t("stat.domains.label"))}">
-        <span class="stat__num">${domains}<em>${escHtml(t("stat.domains.suffix"))}</em></span>
+        <span class="stat__num">${externalStatsReady ? domains : "—"}<em>${escHtml(t("stat.domains.suffix"))}</em></span>
         <span class="stat__label">${escHtml(t("stat.domains.label"))}</span>
       </div>
     </div>
@@ -194,7 +224,7 @@ function cardHtml(s: SkillIndexEntry, i: number): string {
   const name = pickZh(s, "name");
   const desc = pickZh(s, "description");
   return `
-    <a class="skill-card" style="--cat-color: ${escAttr(categoryColor(s.category))}; --i: ${i % 16};" href="#/skill/${escAttr(s.slug)}" data-link>
+    <a class="skill-card" style="--cat-color: ${escAttr(categoryColor(s.category))}; --i: ${i % 16};" href="#/skill/${escAttr(s.slug)}">
       <div class="skill-card__head">
         <span class="skill-card__slug">${escHtml(s.slug)}${s.needs_review ? ` <span class="skill-card__review-dot" title="${escAttr(t("reviewDot.title"))}" aria-label="${escAttr(t("reviewDot.title"))}"></span>` : ""}</span>
         <span class="skill-card__name">${escHtml(name)}</span>

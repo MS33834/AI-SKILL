@@ -1,11 +1,11 @@
 # Contributing
 
-Two ways to help:
+AI-SKILL is dual-track:
 
-1. **Add a local skill** under `skills/<slug>/SKILL.md`. This is the main
-   product. Most PRs should be this.
-2. **Add an external link** to `external-index/skills.yaml`. Discovery
-   only. The skill itself has to be fetched separately.
+1. **Local Vault** — `skills/<slug>/SKILL.md`: ready-to-use skills.
+2. **External Index** — `external-index/skills.yaml`: discovery links to upstream repositories.
+
+See also [`GOVERNANCE.md`](../GOVERNANCE.md) for roles, decision flow, and maintainer criteria.
 
 ## Adding a local skill
 
@@ -15,8 +15,10 @@ cp skills/_TEMPLATE.md skills/<your-slug>/SKILL.md
 python scripts/validate-skill.py skills/<your-slug>/SKILL.md
 ```
 
-If the file is from upstream, also fill in the `source` block (URL,
-commit SHA, license). See `SOURCE.md` for the rules.
+If the file is from upstream:
+
+- Fill in the `source` block (URL, commit SHA, license). See `SOURCE.md`.
+- Follow [`docs/generalization-checklist.md`](../docs/generalization-checklist.md) to remove platform-specific assumptions.
 
 If you had to guess any frontmatter field, set `needs_review: true`
 and explain in the PR body what you guessed. Don't silently ship a guess.
@@ -56,6 +58,19 @@ needs a reason.
   binaries, or somebody else's code without a license.
 - Wait for CI green. `validate-skill.py` should exit 0 before you
   commit; run `check-links.py` if you changed `external-index/skills.yaml`.
+
+## Becoming a maintainer
+
+We want more area owners. If you care about one of these areas, start by
+reviewing PRs in that area and open a discussion:
+
+- **Content** — review `skills/` PRs, enforce generalization and schema rules
+- **Index** — review `external-index/` PRs, keep link checks green
+- **Frontend** — UI/UX, performance, accessibility
+- **Tooling / Ops** — CI, validation scripts, data sync
+- **Community** — onboarding, upstream relations, release notes
+
+See `GOVERNANCE.md` for the formal appointment process.
 
 ## License
 

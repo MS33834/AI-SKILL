@@ -1,0 +1,9 @@
+# Auto-generated lock file for the Python scripts in this repo.
+# Pin exact versions to keep CI reproducible.
+#
+# Regenerate:
+#   pip install -r requirements.txt
+#   pip freeze | grep -E '^(PyYAML|ruamel\.yaml)==' > requirements-lock.txt
+
+PyYAML==6.0.3
+ruamel.yaml==0.19.1

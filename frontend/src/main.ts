@@ -93,7 +93,7 @@ async function route() {
       }
     } else {
       document.title = "AI-SKILL";
-      mainEl.innerHTML = `<div class="empty">${escHtml(t("unknownRoute"))} <a href="#/" data-link>${escHtml(t("backToList"))}</a>.</div>`;
+      mainEl.innerHTML = `<div class="empty">${escHtml(t("unknownRoute"))} <a href="#/">${escHtml(t("backToList"))}</a>.</div>`;
     }
     // Scroll to top on route change (unless the user is mid-click)
     window.scrollTo({ top: 0, behavior: "instant" });

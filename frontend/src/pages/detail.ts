@@ -30,7 +30,7 @@ export async function renderDetail(
   const lead = pickZh(s, "description");
   root.innerHTML = `
     <div class="container-read detail">
-      <a class="back-link" href="#/" data-link>${escHtml(t("detail.back"))}</a>
+      <a class="back-link" href="#/">${escHtml(t("detail.back"))}</a>
       <h1>${escHtml(titleName)}</h1>
       <p class="meta-row">
         <strong>${escHtml(s.slug)}</strong>
@@ -113,7 +113,7 @@ function tocBlock(s: Skill, bodyLines: string[], promptText: string): string {
   return `
     <nav class="toc" aria-label="${escAttr(t("detail.toc"))}">
       <strong>${escHtml(t("detail.toc"))}</strong>
-      <ol>${items.map(i => `<li><a href="#${i.id}" data-link>${escHtml(i.label)}</a></li>`).join("")}</ol>
+      <ol>${items.map(i => `<li><a href="#${i.id}">${escHtml(i.label)}</a></li>`).join("")}</ol>
     </nav>
   `;
 }
@@ -281,10 +281,10 @@ function inlineMd(s: string): string {
   // Escape HTML first to prevent XSS from raw markdown content,
   // then apply inline formatting on the escaped text.
   let out = escHtml(s);
-  // Restore markdown patterns that were mangled by escaping
-  // (escHtml turns ` into &#96; etc., so we match the escaped forms)
+  // escHtml() does NOT escape backticks or asterisks, so we match
+  // the literal characters here. Link brackets are also preserved.
   out = out
-    .replace(/&#96;([^&#]+)&#96;/g, (_, x) => `<code>${x}</code>`)
+    .replace(/`([^`]+)`/g, (_, x) => `<code>${x}</code>`)
     .replace(/\*\*([^*]+)\*\*/g, (_, x) => `<strong>${x}</strong>`)
     .replace(/\*([^*]+)\*/g, (_, x) => `<em>${x}</em>`)
     // Link support: [text](url) — url was escaped by escHtml so &amp; etc. are safe
@@ -419,7 +419,7 @@ function relatedBlock(related: SkillIndexEntry[]): string {
   const cards = related.map(e => {
     const name = pickZh(e, "name");
     return `
-    <a class="skill-card skill-card--inline" href="#/skill/${escAttr(e.slug)}" data-link>
+    <a class="skill-card skill-card--inline" href="#/skill/${escAttr(e.slug)}">
       <div class="skill-card__head">
         <span class="skill-card__slug">${escHtml(e.slug)}</span>
         <span class="skill-card__name">${escHtml(name)}</span>
@@ -448,7 +448,7 @@ export function renderNotFound(root: HTMLElement, slug: string, index: SkillInde
     : `
       <div class="notfound__suggest">
         <span class="notfound__suggest-label">${escHtml(t("nf.suggest"))}</span>
-        ${suggestions.map(s => `<a class="notfound__chip" href="#/skill/${escAttr(s.slug)}" data-link>${escHtml(s.slug)}</a>`).join(" ")}
+        ${suggestions.map(s => `<a class="notfound__chip" href="#/skill/${escAttr(s.slug)}">${escHtml(s.slug)}</a>`).join(" ")}
       </div>
     `;
   root.innerHTML = `
@@ -459,8 +459,8 @@ export function renderNotFound(root: HTMLElement, slug: string, index: SkillInde
       <p class="notfound__sub">${escHtml(t("nf.sub"))}</p>
       ${sugHtml}
       <div class="actions" style="justify-content: center;">
-        <a class="btn btn--primary" href="#/" data-link>${escHtml(t("nf.back"))}</a>
-        <a class="btn" href="#/bundle" data-link>${escHtml(t("nf.bundle"))}</a>
+        <a class="btn btn--primary" href="#/">${escHtml(t("nf.back"))}</a>
+        <a class="btn" href="#/bundle">${escHtml(t("nf.bundle"))}</a>
       </div>
     </div>
   `;

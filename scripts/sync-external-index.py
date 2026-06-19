@@ -47,6 +47,40 @@ VENDOR_TYPE_LABELS: dict[str, dict[str, str]] = {
     "indie":              {"en": "Indie / Personal",      "zh": "个人项目"},
 }
 
+# Known org slugs → human-friendly display names. Anything not listed
+# falls back to the auto-title-case heuristic below.
+VENDOR_DISPLAY_NAMES: dict[str, str] = {
+    "n8n-io": "n8n",
+    "ohmyzsh": "Oh My Zsh",
+    "Significant-Gravitas": "Significant Gravitas",
+    "GoogleCloudPlatform": "Google Cloud",
+    "Azure": "Microsoft Azure",
+    "aws-samples": "AWS Samples",
+    "aws": "AWS",
+    "awslabs": "AWS Labs",
+    "huggingface": "Hugging Face",
+    "openai": "OpenAI",
+    "anthropics": "Anthropic",
+    "langchain-ai": "LangChain",
+    "langchain": "LangChain",
+    "llamaindex": "LlamaIndex",
+    "microsoft": "Microsoft",
+    "google": "Google",
+    "google-deepmind": "Google DeepMind",
+    "meta-llama": "Meta",
+    "facebookresearch": "Meta AI",
+    "pytorch": "PyTorch",
+    "tensorflow": "TensorFlow",
+    "apache": "Apache",
+}
+
+
+def normalize_vendor(slug: str) -> str:
+    """Turn an org slug like 'n8n-io' into a clean display name."""
+    if slug in VENDOR_DISPLAY_NAMES:
+        return VENDOR_DISPLAY_NAMES[slug]
+    return slug.replace("-", " ").replace("_", " ").title()
+
 
 def star_tier(stars: int) -> str:
     """Bucket stars into tiers for filtering."""
@@ -75,8 +109,7 @@ def main() -> int:
         # Extract vendor name from source (org/repo format)
         source = s.get("source") or ""
         vendor = source.split("/")[0] if "/" in source else s.get("title", "")
-        # Normalize: capitalize known orgs
-        vendor = vendor.replace("-", " ").replace("_", " ").title()
+        vendor = normalize_vendor(vendor)
 
         repos.append({
             "slug": s.get("slug", ""),
