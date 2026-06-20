@@ -41,10 +41,19 @@ jobs:
         run: npm run build
         working-directory: frontend
 
+      # upload-pages-artifact respects .gitignore by default; the generated
+      # frontend/public/skills.json and skills/ entries are gitignored,
+      # so they would be silently omitted from the Pages deployment.
+      # Copy dist/ to a temp directory outside the repo before uploading.
+      - name: Stage deployment bundle
+        run: |
+          cp -r frontend/dist /tmp/_site
+          ls -la /tmp/_site
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend/dist
+          path: /tmp/_site
 
       - name: Deploy to GitHub Pages
         id: deployment
