@@ -1,28 +1,28 @@
 ---
 name: Storybook Component Stories
-name_zh:
-description: 'You''re writing or reviewing a **Storybook story** for a'
-description_zh:
+name_zh: Storybook 组件故事
+description: You're writing or reviewing a **Storybook story** for a
+description_zh: 编写或审查 React 组件的 Storybook story
 category: code-assistants
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - database
-source:
+- ai
+- api
+- backend
+- cli
+- database
+source: null
 license: MIT
 author: 'Langfuse (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: storybook
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

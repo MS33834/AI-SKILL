@@ -1,28 +1,28 @@
 ---
 name: CLI Builder
-name_zh:
-description: 'The user wants a **real CLI** they can run by name'
-description_zh:
+name_zh: CLI 构建器
+description: The user wants a **real CLI** they can run by name
+description_zh: 把脚本或 API 封装成可长期使用的命令行工具
 category: terminal-cli
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - database
-source:
+- ai
+- api
+- backend
+- cli
+- database
+source: null
 license: MIT
 author: 'OpenAI (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: cli-builder
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

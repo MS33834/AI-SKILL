@@ -2,27 +2,27 @@
 name: Code Reviewer
 name_zh: 代码审查员
 description: minimum severity to report
-description_zh:
+description_zh: 按指定最低严重级别报告代码审查发现
 category: dev-tools
 tags:
-  - ai
-  - api
-  - database
-  - frontend
-  - llm
-source:
+- ai
+- api
+- database
+- frontend
+- llm
+source: null
 license: MIT
 author: badhope
-version: '1.0.0'
+version: 1.0.0
 needs_review: false
 slug: code-reviewer
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

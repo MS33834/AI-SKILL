@@ -1,28 +1,28 @@
 ---
 name: Code Ownership & Bus Factor
 name_zh: 代码所有权与巴士因子
-description: 'The user said "build me an ownership map", "what'
-description_zh:
+description: The user said "build me an ownership map", "what
+description_zh: 生成项目或模块的负责人地图，识别单点风险
 category: dev-tools
 tags:
-  - ai
-  - database
-  - frontend
-  - git
-  - javascript
-source:
+- ai
+- database
+- frontend
+- git
+- javascript
+source: null
 license: MIT
 author: 'OpenAI (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: ownership-bus-factor
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

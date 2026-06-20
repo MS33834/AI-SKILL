@@ -1,28 +1,28 @@
 ---
 name: promptfoo Redteam Plugin Author
-name_zh:
+name_zh: promptfoo 红队插件编写
 description: How many fail conditions the rubric covers (self-check)
-description_zh:
+description_zh: 使用 promptfoo 编写红队测试插件
 category: safety-alignment
 tags:
-  - ai
-  - api
-  - backend
-  - evaluation
-  - frontend
-source:
+- ai
+- api
+- backend
+- evaluation
+- frontend
+source: null
 license: MIT
 author: 'Promptfoo (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: promptfoo-redteam
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

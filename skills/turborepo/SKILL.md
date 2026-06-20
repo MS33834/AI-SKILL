@@ -1,28 +1,28 @@
 ---
 name: Turborepo Monorepo Authoring
-name_zh:
-description: 'You have a **Turborepo monorepo** and you''re doing one of'
-description_zh:
+name_zh: Turborepo 单体仓库编写
+description: You have a **Turborepo monorepo** and you're doing one of
+description_zh: 在 Turborepo 单体仓库中管理任务、缓存与依赖
 category: code-assistants
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - frontend
-source:
+- ai
+- api
+- backend
+- cli
+- frontend
+source: null
 license: MIT
 author: 'Langfuse (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: turborepo
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

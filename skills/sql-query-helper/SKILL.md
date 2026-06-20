@@ -1,28 +1,28 @@
 ---
 name: SQL Query Helper
-name_zh:
+name_zh: SQL 查询助手
 description: SQL dialect
-description_zh:
+description_zh: 根据方言和场景生成或优化 SQL 查询
 category: text-to-sql
 tags:
-  - ai
-  - cli
-  - database
-  - documentation
-  - llm
-source:
+- ai
+- cli
+- database
+- documentation
+- llm
+source: null
 license: MIT
 author: badhope
-version: '1.0.0'
+version: 1.0.0
 needs_review: false
 slug: sql-query-helper
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

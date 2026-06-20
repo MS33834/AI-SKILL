@@ -1,28 +1,28 @@
 ---
 name: PDF Summarizer
-name_zh:
+name_zh: PDF 摘要生成器
 description: number of bullets in the summary
-description_zh:
+description_zh: 从 PDF 提取关键信息并生成结构化摘要
 category: multimodal
 tags:
-  - ai
-  - api
-  - documentation
-  - frontend
-  - llm
-source:
+- ai
+- api
+- documentation
+- frontend
+- llm
+source: null
 license: MIT
 author: badhope
-version: '1.0.0'
+version: 1.0.0
 needs_review: false
 slug: pdf-summarizer
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

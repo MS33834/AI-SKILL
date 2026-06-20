@@ -1,7 +1,7 @@
 ---
 name: maf-prs-job
 name_zh: maf-prs-job
-description: "Convert an existing Prompt Flow Parallel Run Step (PRS) pipeline submission
+description: 'Convert an existing Prompt Flow Parallel Run Step (PRS) pipeline submission
   into an Azure ML PRS pipeline that runs a Microsoft Agent Framework (MAF) workflow.
   Wraps the MAF workflow into a PRS init()/run() entry script, generates the parallel
   component YAML and conda environment, and rewrites the pipeline submission script.
@@ -16,31 +16,31 @@ description: "Convert an existing Prompt Flow Parallel Run Step (PRS) pipeline s
   MAF workflow, MAF version of flow_component, load MAF workflow as component, wrap
   MAF workflow as flow component, MAF flow component, replace flow_node in pipeline
   with MAF workflow, keep flow_outputs and debug_info ports with MAF, MAF parallel
-  component with connections={}, run MAF workflow as flow_node in AML pipeline, load_component('workflow.py')
-  doesn't work. DO NOT USE FOR: converting the flow itself (use promptflow-to-maf),
+  component with connections={}, run MAF workflow as flow_node in AML pipeline, load_component(''workflow.py'')
+  doesn''t work. DO NOT USE FOR: converting the flow itself (use promptflow-to-maf),
   deploying as online endpoint (use maf-online-endpoint), enabling tracing only (use
-  maf-tracing)."
-description_zh:
+  maf-tracing).'
+description_zh: 将 Prompt Flow PRS 管道迁移到 Azure ML PRS 管道
 category: data-pipelines
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - deployment
-source:
+- ai
+- api
+- backend
+- cli
+- deployment
+source: null
 license: MIT
 author: Team
-version: '0.1.0-draft'
+version: 0.1.0-draft
 needs_review: false
 slug: maf-prs-job
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

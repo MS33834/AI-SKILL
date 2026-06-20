@@ -1,28 +1,28 @@
 ---
 name: Realtime Eval Scaffold
-name_zh:
-description: 'You want to **start a new realtime eval** for an audio or'
-description_zh:
+name_zh: 实时评估脚手架
+description: You want to **start a new realtime eval** for an audio or
+description_zh: 为音频或实时交互场景搭建评估脚手架
 category: evaluation
 tags:
-  - ai
-  - documentation
-  - evaluation
-  - frontend
-  - javascript
-source:
+- ai
+- documentation
+- evaluation
+- frontend
+- javascript
+source: null
 license: MIT
 author: 'OpenAI (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: realtime-eval-bootstrap
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

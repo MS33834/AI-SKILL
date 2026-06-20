@@ -1,28 +1,28 @@
 ---
 name: Embedding Model Training
 name_zh: 嵌入模型训练
-description: 'The user wants to train, fine-tune, or adapt an'
-description_zh:
+description: The user wants to train, fine-tune, or adapt an
+description_zh: 训练、微调或适配 embedding 模型
 category: embeddings
 tags:
-  - ai
-  - backend
-  - documentation
-  - evaluation
-  - frontend
-source:
+- ai
+- backend
+- documentation
+- evaluation
+- frontend
+source: null
 license: Apache-2.0
 author: 'Hugging Face (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: embedding-model-training
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

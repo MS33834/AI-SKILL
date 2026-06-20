@@ -1,28 +1,28 @@
 ---
 name: PNPM Upgrade Package
-name_zh:
-description: 'You''re bumping a dependency in a **pnpm workspace**.'
-description_zh:
+name_zh: PNPM 依赖升级
+description: You're bumping a dependency in a **pnpm workspace**.
+description_zh: 在 pnpm workspace 中安全升级依赖
 category: dev-tools
 tags:
-  - ai
-  - api
-  - cli
-  - deployment
-  - documentation
-source:
+- ai
+- api
+- cli
+- deployment
+- documentation
+source: null
 license: MIT
 author: 'Langfuse (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: pnpm-upgrade-package
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

@@ -1,24 +1,30 @@
 ---
-name: "Doc Co-Authoring Workflow"
+name: Doc Co-Authoring Workflow
 name_zh: 文档共写工作流
 slug: doc-coauthoring
-description: "三阶段结构化文档共写工作流 - Context Gathering / Refinement & Structure / Reader Testing。当用户提到写文档、起草提案、创建 spec 时触发。跳出写完即发的陷阱。"
-description_zh: "三阶段结构化文档共写工作流 - Context Gathering / Refinement & Structure / Reader Testing。当用户提到写文档、起草提案、创建 spec 时触发。跳出写完即发的陷阱。"
+description: 三阶段结构化文档共写工作流 - Context Gathering / Refinement & Structure / Reader Testing。当用户提到写文档、起草提案、创建
+  spec 时触发。跳出写完即发的陷阱。
+description_zh: 三阶段结构化文档共写：收集上下文、打磨结构、读者测试
 category: documentation
-tags: [ai, documentation, frontend, llm, security]
+tags:
+- ai
+- documentation
+- frontend
+- llm
+- security
 source: null
 license: MIT
 author: AI-SKILL
-version: '1.0.0'
+version: 1.0.0
 created: '2026-06-12'
 updated: '2026-06-19'
 needs_review: false
 quality: stable
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

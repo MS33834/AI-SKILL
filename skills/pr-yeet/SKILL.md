@@ -3,21 +3,26 @@ name: Single-Flow PR Yeet
 name_zh: 一次性 PR 推送
 slug: pr-yeet
 description: 在一个线性流程里完成 stage、commit、push、开 PR。仅在用户明确说 yeet 或 ship 时触发。
-description_zh: 在一个线性流程里完成 stage、commit、push、开 PR。仅在用户明确说 yeet 或 ship 时触发。
+description_zh: 一键完成 stage、commit、push 并创建 PR
 category: dev-tools
-tags: [ai, api, frontend, git, llm]
+tags:
+- ai
+- api
+- frontend
+- git
+- llm
 source: null
 license: MIT
 author: AI-SKILL
-version: '1.0.0'
+version: 1.0.0
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 needs_review: false
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

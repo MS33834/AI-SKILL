@@ -9,27 +9,27 @@ description: 'Convert Prompt Flow flow definitions to Microsoft Agent Framework 
   migrate LLM flow. DO NOT USE FOR: writing new MAF workflows from scratch (no source
   flow), deploying MAF workflows (use maf-online-endpoint), enabling tracing (use
   maf-tracing), or general agent-framework Q&A.'
-description_zh:
+description_zh: 将 Prompt Flow 工作流转换为 Microsoft Agent Framework
 category: data-pipelines
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - deployment
+- ai
+- api
+- backend
+- cli
+- deployment
 license: MIT
 author: Team
-version: '2.0.0'
+version: 2.0.0
 needs_review: false
-source:
+source: null
 slug: promptflow-to-maf
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

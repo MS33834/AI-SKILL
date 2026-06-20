@@ -647,14 +647,22 @@ h6 {
     width var(--dur-fast) var(--ease-out),
     opacity var(--dur-fast) var(--ease-out);
 }
-.skill-card:hover {
+.skill-card:hover,
+.skill-card:focus-visible {
   transform: translateY(-2px);
   border-color: var(--border-strong);
   box-shadow: var(--shadow-2);
   text-decoration: none;
   color: var(--ink);
+  outline: none;
 }
-.skill-card:hover::before {
+.skill-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-3);
+}
+.skill-card:hover::before,
+.skill-card:focus-visible::before {
   width: 6px;
   opacity: 1;
 }
@@ -1282,9 +1290,15 @@ h6 {
   height: 4px;
   background: hsl(var(--vendor-hue) 65% 50%);
 }
-.external-card:hover {
+.external-card:hover,
+.external-card:focus-within {
   transform: translateY(-2px);
   border-color: hsl(var(--vendor-hue) 50% 60%);
+}
+.external-card:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-3);
 }
 .external-card__head {
   display: flex;
@@ -2176,12 +2190,18 @@ h6 {
     min-height: 48px;
   }
 
-  /* Remove hover effects that don't work on touch */
-  .skill-card:hover {
+  /* Remove hover/focus lift effects that don't work well on touch */
+  .skill-card:hover,
+  .skill-card:focus-visible {
     transform: none;
   }
-  .external-card:hover {
+  .external-card:hover,
+  .external-card:focus-within {
     transform: none;
+  }
+  .skill-card:focus-visible,
+  .external-card:focus-within {
+    outline: none;
   }
 
   /* Larger chips for easier tapping */

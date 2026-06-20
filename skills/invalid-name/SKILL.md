@@ -2,23 +2,23 @@
 name: Invalid Name Handler
 name_zh: 无效名称处理
 description: Validates and repairs identifier naming conventions in codebases.
-description_zh: 校验并修复代码库中的标识符命名规范。
+description_zh: 检查并修复代码库中不符合规范的标识符命名
 category: dev-tools
 tags:
-  - linting
-  - code-quality
-  - naming
+- linting
+- code-quality
+- naming
 source: null
 needs_review: false
 slug: invalid-name
-version: '1.0.0'
+version: 1.0.0
 created: '2026-06-12'
-updated: '2026-06-17'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

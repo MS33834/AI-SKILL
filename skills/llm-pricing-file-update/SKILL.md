@@ -1,28 +1,28 @@
 ---
 name: LLM Model Pricing File Update
-name_zh:
-description: 'You maintain an internal **per-token LLM pricing data file** —'
-description_zh:
+name_zh: LLM 模型定价文件更新
+description: You maintain an internal **per-token LLM pricing data file** —
+description_zh: 维护内部按 token 计费的 LLM 定价数据文件
 category: finance
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - deployment
-source:
+- ai
+- api
+- backend
+- cli
+- deployment
+source: null
 license: MIT
 author: 'Langfuse (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: llm-pricing-file-update
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

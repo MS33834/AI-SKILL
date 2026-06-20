@@ -1,29 +1,29 @@
 ---
 name: Code Review Workflow
 name_zh: 代码审查工作流
-description: 'Canonical code-review workflow for any PR, branch, diff, or local change.
-  Findings ordered by severity, defer to specialist skills when needed.'
-description_zh:
+description: Canonical code-review workflow for any PR, branch, diff, or local change.
+  Findings ordered by severity, defer to specialist skills when needed.
+description_zh: 对任意 PR、分支或本地变更进行标准化代码审查
 category: dev-tools
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - database
-source:
+- ai
+- api
+- backend
+- cli
+- database
+source: null
 license: MIT
 author: 'Langfuse (downstream pack: badhope)'
-version: '1.0.0'
+version: 1.0.0
 needs_review: false
 slug: code-review
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

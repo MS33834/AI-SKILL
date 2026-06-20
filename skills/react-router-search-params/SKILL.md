@@ -1,25 +1,29 @@
 ---
 name: React Router Search Param State
-name_zh:
+name_zh: React Router 搜索参数状态
 slug: react-router-search-params
-description: 在 React Router 里为 URL 状态变化选 replace 还是 push。包含 useSearchParamState
-  hook 模式和决策表。
-description_zh: 在 React Router 里为 URL 状态变化选 replace 还是 push。包含
-  useSearchParamState hook 模式和决策表。
+description: 在 React Router 里为 URL 状态变化选 replace 还是 push。包含 useSearchParamState hook
+  模式和决策表。
+description_zh: 在 React Router 中管理 URL 搜索参数状态
 category: code-assistants
-tags: [ai, api, backend, cli, frontend]
-source:
+tags:
+- ai
+- api
+- backend
+- cli
+- frontend
+source: null
 license: MIT
 author: AI-SKILL
-version: '1.0.0'
+version: 1.0.0
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 needs_review: false
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request
