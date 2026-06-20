@@ -1,28 +1,28 @@
 ---
 name: Security Review Checklist
 name_zh: 安全审查清单
-description: 'You''re reviewing or designing a change that touches a'
-description_zh:
+description: You're reviewing or designing a change that touches a
+description_zh: 审查或设计涉及安全敏感变更的方案
 category: guardrails
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - database
-source:
+- ai
+- api
+- backend
+- cli
+- database
+source: null
 license: MIT
 author: 'Langfuse (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: security-review
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

@@ -1,28 +1,28 @@
 ---
 name: Skill Authoring Loop
 name_zh: 技能编写迭代流程
-description: 'You''re authoring a **skill** — a self-contained'
-description_zh:
+description: You're authoring a **skill** — a self-contained
+description_zh: 编写自包含、可复用的 AI skill
 category: dev-tools
 tags:
-  - ai
-  - backend
-  - cli
-  - database
-  - documentation
-source:
+- ai
+- backend
+- cli
+- database
+- documentation
+source: null
 license: MIT
 author: 'Anthropic (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: skill-creator
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

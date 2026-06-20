@@ -1,28 +1,28 @@
 ---
 name: Browser ML in JavaScript
-name_zh:
-description: 'The user wants to run an ML model in JavaScript'
-description_zh:
+name_zh: 浏览器端 JavaScript ML
+description: The user wants to run an ML model in JavaScript
+description_zh: 在浏览器或 Node.js 中运行 ML 模型，无需 Python 后端
 category: browser-automation
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - frontend
-source:
+- ai
+- api
+- backend
+- cli
+- frontend
+source: null
 license: Apache-2.0
 author: 'Hugging Face (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: browser-ml-in-js
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

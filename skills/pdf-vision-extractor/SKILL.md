@@ -1,30 +1,30 @@
 ---
 name: PDF Vision Extractor
-name_zh:
+name_zh: PDF 视觉内容提取器
 description: 从扫描版 PDF 抽取发票号、日期、金额等字段，靠 Claude vision。
-description_zh: 从扫描版 PDF 抽取发票号、日期、金额等字段，靠 Claude vision。
+description_zh: 用视觉模型从扫描版 PDF 抽取发票、合同等字段
 category: multimodal
 tags:
-  - ai
-  - documentation
-  - javascript
-  - llm
-  - typescript
-source:
+- ai
+- documentation
+- javascript
+- llm
+- typescript
+source: null
 license: MIT
 author: badhope
-version: '0.1.0'
+version: 0.1.0
 platforms:
-  - claude
+- claude
 needs_review: false
 slug: pdf-vision-extractor
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

@@ -1,28 +1,28 @@
 ---
 name: Repository Threat Model
 name_zh: 仓库威胁建模
-description: 'The user said "threat model this", "what could go'
-description_zh:
+description: The user said "threat model this", "what could go
+description_zh: 对系统或功能进行威胁建模分析
 category: guardrails
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - database
-source:
+- ai
+- api
+- backend
+- cli
+- database
+source: null
 license: MIT
 author: 'OpenAI (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: threat-modeling
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

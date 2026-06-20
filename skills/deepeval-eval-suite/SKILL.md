@@ -1,28 +1,28 @@
 ---
 name: deepeval Pytest Eval Suite
-name_zh:
+name_zh: deepeval Pytest 评估套件
 description: Targeted fix to attempt next round
-description_zh:
+description_zh: 用 deepeval + Pytest 编写和运行 LLM 评估套件
 category: evaluation
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - evaluation
-source:
+- ai
+- api
+- backend
+- cli
+- evaluation
+source: null
 license: Apache-2.0
 author: 'Confident AI (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: deepeval-eval-suite
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

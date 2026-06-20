@@ -1,28 +1,28 @@
 ---
 name: MCP Server Builder
-name_zh:
-description: 'You''re building an **MCP server** that lets an LLM call into some'
-description_zh:
+name_zh: MCP 服务器构建器
+description: You're building an **MCP server** that lets an LLM call into some
+description_zh: 构建让 LLM 调用外部能力的 MCP server
 category: mcp-protocol
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - database
-source:
+- ai
+- api
+- backend
+- cli
+- database
+source: null
 license: MIT
 author: 'Anthropic (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: mcp-builder
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

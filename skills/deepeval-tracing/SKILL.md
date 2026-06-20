@@ -1,28 +1,28 @@
 ---
 name: deepeval SDK Tracing
-name_zh:
+name_zh: deepeval SDK 追踪
 description: Confirmation that traces are arriving in Confident AI''s
-description_zh:
+description_zh: 配置和验证 deepeval 追踪数据是否正确上报
 category: observability
 tags:
-  - ai
-  - api
-  - backend
-  - database
-  - deployment
-source:
+- ai
+- api
+- backend
+- database
+- deployment
+source: null
 license: Apache-2.0
 author: 'Confident AI (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: deepeval-tracing
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

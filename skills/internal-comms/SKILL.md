@@ -1,28 +1,28 @@
 ---
 name: Internal Comms Authoring
 name_zh: 内部沟通文档写作
-description: 'You''re drafting a **piece of internal communication** —'
-description_zh:
+description: You're drafting a **piece of internal communication** —
+description_zh: 起草内部沟通文档，如备忘录、周报、变更通知
 category: documentation
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - deployment
-source:
+- ai
+- api
+- backend
+- cli
+- deployment
+source: null
 license: MIT
 author: 'Anthropic (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: internal-comms
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

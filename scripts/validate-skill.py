@@ -413,6 +413,7 @@ def write_index(entries: list[dict[str, Any]]) -> None:
             "name": fm.get("name"),
             "name_zh": fm.get("name_zh"),
             "description": fm.get("description", ""),
+            "description_zh": fm.get("description_zh"),
             "category": fm.get("category"),
             "tags": fm.get("tags", []),
             "platforms": fm.get("platforms", []),

@@ -1,28 +1,28 @@
 ---
 name: Secure Code by Language
 name_zh: 按语言的安全编码指南
-description: 'The user said "write this securely", "do a security'
-description_zh:
+description: The user said "write this securely", "do a security
+description_zh: 按语言安全地编写或审查代码
 category: guardrails
 tags:
-  - ai
-  - api
-  - backend
-  - cli
-  - database
-source:
+- ai
+- api
+- backend
+- cli
+- database
+source: null
 license: MIT
 author: 'OpenAI (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: secure-code-by-language
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

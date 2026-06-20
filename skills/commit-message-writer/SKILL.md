@@ -2,27 +2,27 @@
 name: Commit Message Writer
 name_zh: 提交信息写手
 description: max subject line length
-description_zh:
+description_zh: 根据变更生成符合规范的 commit message
 category: dev-tools
 tags:
-  - ai
-  - api
-  - backend
-  - deployment
-  - documentation
-source:
+- ai
+- api
+- backend
+- deployment
+- documentation
+source: null
 license: MIT
 author: badhope
-version: '1.0.0'
+version: 1.0.0
 needs_review: false
 slug: commit-message-writer
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

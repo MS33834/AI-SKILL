@@ -1,28 +1,28 @@
 ---
 name: ClickHouse Best Practices
-name_zh:
-description: 'You''re reviewing or designing something that touches'
-description_zh:
+name_zh: ClickHouse 最佳实践
+description: You're reviewing or designing something that touches
+description_zh: 审查或设计 ClickHouse 表结构与查询的最佳实践
 category: text-to-sql
 tags:
-  - ai
-  - cli
-  - database
-  - documentation
-  - evaluation
-source:
+- ai
+- cli
+- database
+- documentation
+- evaluation
+source: null
 license: Apache-2.0
 author: 'ClickHouse Inc + Langfuse (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: clickhouse-best-practices
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request

@@ -1,28 +1,28 @@
 ---
 name: Frontend Visual Design Taste
 name_zh: 前端视觉设计品味
-description: 'The user is building something where the quality'
-description_zh:
+description: The user is building something where the quality
+description_zh: 为前端项目提供视觉设计与实现建议
 category: code-assistants
 tags:
-  - ai
-  - api
-  - backend
-  - database
-  - docker
-source:
+- ai
+- api
+- backend
+- database
+- docker
+source: null
 license: MIT
 author: 'Letta (downstream pack: badhope)'
-version: '0.1.0'
+version: 0.1.0
 needs_review: false
 slug: frontend-visual-design
 created: '2026-06-12'
-updated: '2026-06-12'
+updated: '2026-06-19'
 inputs:
-  - name: request
-    type: string
-    required: true
-    description: User request or task description
+- name: request
+  type: string
+  required: true
+  description: User request or task description
 output:
   format: markdown
   description: Generated content based on the user request
