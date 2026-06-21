@@ -31,7 +31,7 @@
 | C2  | 把现有 `needs_review: true` 的技能清零    | 高     | Content                | 已完成 | 38 个本地 skill 全部 `needs_review: false`（模板除外）             |
 | C3  | 首批 10 个 skill 标记为 `quality: stable` | 高     | Content + Security/QA  | 已完成 | 通过 `validate-skill.py --strict` + `security-scan.py` 无 HIGH/MED |
 | C4  | 从上游仓库再通用化 20 个 skill            | 中     | Content                | 待认领 | 每个都有完整 frontmatter、example、When NOT to use                 |
-| C5  | 完善中文翻译（name_zh / description_zh）  | 中     | Docs / i18n            | 待认领 | 80% 本地 skill 有中文名和中文描述                                  |
+| C5  | 完善中文翻译（name_zh / description_zh）  | 中     | Docs / i18n            | 已完成 | 100% 本地 skill 有中文名和中文描述                                 |
 | C6  | 撰写 skill 编写最佳实践指南               | 低     | Content + Docs         | 已完成 | docs/skill-writing-guide.md 合并                                   |
 
 ### 2.2 索引 / Index
@@ -41,7 +41,7 @@
 | I1  | 外部索引支持自动加载 / 虚拟滚动                              | 高     | Frontend               | 已完成 | 首屏 60 条，滚动加载，无卡顿                               |
 | I2  | 索引元数据定时刷新（stars / license / pushed_at / archived） | 高     | Index / Data + Tooling | 已完成 | `.github/workflows/scheduled-sync.yml` 每周运行并自动提 PR |
 | I3  | 死链自动检测与告警                                           | 高     | Index / Data + Tooling | 已完成 | 每周 `check-links.py` 跑一遍，失败自动开 issue             |
-| I4  | 外部仓库 `skills` 字段补全与质量校验                         | 中     | Index / Data           | 待认领 | 80% 仓库有非空 `skills` 列表；CI 校验非空                  |
+| I4  | 外部仓库 `skills` 字段补全与质量校验                         | 中     | Index / Data           | 已完成 | 100% 仓库有非空 `skills` 列表；已移除未使用的 `subgroup` 字段 |
 | I5  | 分类体系review（49 个子分类是否够用）                        | 中     | Content + Index        | 待认领 | 开 RFC issue 收集反馈，必要时拆分/合并                     |
 | I6  | 外部索引搜索支持拼写建议                                     | 低     | Frontend               | 待认领 | 搜索无结果时给出 "Did you mean"                            |
 
@@ -59,7 +59,7 @@
 | F8  | 响应式再打磨（移动端 320px–768px） | 高     | Design / UX + Frontend    | 已完成 | 主要页面在 DevTools 各尺寸无横向滚动、不重叠                    |
 | F9  | 暗色模式对比度与焦点状态审计       | 中     | Design / UX + Security/QA | 已完成 | 焦点环可见；对比度待后续设计系统迭代                            |
 | F10 | 空状态 / 错误状态插画与文案        | 中     | Design / UX + Docs        | 已完成 | 404、无结果、加载失败统一使用 `.empty-state` / `.error-state`   |
-| F11 | 性能审计与优化（Lighthouse 90+）   | 中     | Frontend                  | 待认领 | Lighthouse Performance / Accessibility / Best Practices 均 ≥ 90 |
+| F11 | 性能审计与优化（Lighthouse 90+）   | 中     | Frontend                  | 进行中 | 外部索引 JSON 压缩 30%+；已加 github.com / gitcode.com preconnect |
 | F12 | PWA 离线缓存（可选）               | 低     | Frontend                  | 待认领 | 可安装、离线能浏览已访问过的技能                                |
 
 ### 2.4 自动化 / Automation

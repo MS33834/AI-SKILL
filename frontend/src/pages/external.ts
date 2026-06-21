@@ -30,7 +30,6 @@ interface ExternalRepo {
   license: string;
   archived: boolean;
   pushed_at: string;
-  subgroup: string;
 }
 
 interface IndexData {

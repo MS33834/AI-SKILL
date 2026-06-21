@@ -130,7 +130,6 @@ def main() -> int:
             "license": s.get("license", ""),
             "archived": bool(s.get("archived")),
             "pushed_at": s.get("pushed_at") or "",
-            "subgroup": s.get("subgroup") or "",
         })
 
     # Sort by stars descending (most popular first)
@@ -144,8 +143,10 @@ def main() -> int:
     }
 
     OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
+    # Minified JSON keeps the runtime payload small; the YAML remains
+    # the human-readable source of truth.
     OUTPUT_JSON.write_text(
-        json.dumps(output, ensure_ascii=False, indent=2),
+        json.dumps(output, ensure_ascii=False, separators=(",", ":")),
         encoding="utf-8",
     )
     print(f"  wrote {OUTPUT_JSON.relative_to(REPO)} ({len(repos)} repos)")
