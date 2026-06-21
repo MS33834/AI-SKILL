@@ -107,6 +107,21 @@ const STRINGS = {
   },
   "hero.cta.index": { en: "Browse skill index", zh: "浏览技能索引" },
   "hero.cta.bundle": { en: "Build a bundle", zh: "制作合集" },
+  "hero.cta.guide": { en: "Getting started", zh: "上手指南" },
+
+  "featured.title": { en: "Featured", zh: "精选推荐" },
+  "featured.local": { en: "Start here — local skills", zh: "从这里开始 — 本地技能" },
+  "featured.localHint": {
+    en: "Copy-ready prompts you can drop into any agent.",
+    zh: "可直接复制进任意 agent 的提示词。",
+  },
+  "featured.repos": { en: "Trending repositories", zh: "热门仓库" },
+  "featured.reposHint": {
+    en: "High-impact upstream projects indexed by the community.",
+    zh: "社区索引的高影响力上游项目。",
+  },
+  "featured.view": { en: "View skill", zh: "查看技能" },
+  "featured.visit": { en: "Visit repo", zh: "访问仓库" },
 
   "stat.total.label": { en: "SKILL.md", zh: "SKILL.md" },
   "stat.categories.label": { en: "Categories", zh: "分类" },

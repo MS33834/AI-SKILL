@@ -24,12 +24,143 @@ import {
   escHtml,
   escAttr,
   categoryColor,
+  categoryHue,
   platformChipsHtml,
   qualityChipHtml,
   buildSearchBlob,
   debounce,
   iconSvg,
 } from "../shared";
+
+// Curated highlights for first-time visitors. Local slugs are resolved
+// against the current index; external repos link straight to GitHub.
+interface FeaturedRepo {
+  slug?: string;
+  repo: string;
+  title: string;
+  description: string;
+  href: string;
+}
+
+const FEATURED_LOCAL_SLUGS = ["code-review", "api-design-review", "rag-retrieval-eval", "mcp-builder"];
+
+const FEATURED_REPOS: FeaturedRepo[] = [
+  {
+    repo: "langchain-ai/langchain",
+    title: "LangChain",
+    description: "The most widely adopted framework for building agents and chains.",
+    href: "https://github.com/langchain-ai/langchain",
+  },
+  {
+    repo: "run-llama/llama_index",
+    title: "LlamaIndex",
+    description: "Data framework for building LLM apps over your own data.",
+    href: "https://github.com/run-llama/llama_index",
+  },
+  {
+    repo: "Significant-Gravitas/AutoGPT",
+    title: "AutoGPT",
+    description: "Autonomous tool-using agent that plans and executes tasks.",
+    href: "https://github.com/Significant-Gravitas/AutoGPT",
+  },
+  {
+    repo: "ollama/ollama",
+    title: "Ollama",
+    description: "Run Llama, DeepSeek, and other models locally.",
+    href: "https://github.com/ollama/ollama",
+  },
+  {
+    repo: "vllm-project/vllm",
+    title: "vLLM",
+    description: "High-throughput LLM inference engine for production serving.",
+    href: "https://github.com/vllm-project/vllm",
+  },
+  {
+    repo: "langgenius/dify",
+    title: "Dify",
+    description: "Open-source LLM app platform for building AI workflows.",
+    href: "https://github.com/langgenius/dify",
+  },
+  {
+    repo: "open-webui/open-webui",
+    title: "Open WebUI",
+    description: "Self-hosted AI chat interface that works with many backends.",
+    href: "https://github.com/open-webui/open-webui",
+  },
+  {
+    repo: "n8n-io/n8n",
+    title: "n8n",
+    description: "Workflow automation with AI-native nodes and integrations.",
+    href: "https://github.com/n8n-io/n8n",
+  },
+  {
+    repo: "modelcontextprotocol/servers",
+    title: "MCP Servers",
+    description: "Official reference servers for the Model Context Protocol.",
+    href: "https://github.com/modelcontextprotocol/servers",
+  },
+  {
+    repo: "anthropics/anthropic-cookbook",
+    title: "Claude Cookbook",
+    description: "Official patterns for tool use, RAG, and structured output.",
+    href: "https://github.com/anthropics/anthropic-cookbook",
+  },
+];
+
+function featuredHtml(index: SkillIndex): string {
+  const localSkills = FEATURED_LOCAL_SLUGS.map((slug) => index.skills.find((s) => s.slug === slug)).filter(
+    Boolean
+  ) as SkillIndexEntry[];
+
+  const localCards = localSkills
+    .map((s) => {
+      const name = pickZh(s, "name");
+      const desc = pickZh(s, "description");
+      return `
+        <a class="featured-card featured-card--local" href="#/skill/${escAttr(s.slug)}" style="--cat-hue: ${categoryHue(s.category)};">
+          <span class="featured-card__type">${escHtml(categoryLabel(s.category))}</span>
+          <h3 class="featured-card__title">${escHtml(name)}</h3>
+          <p class="featured-card__desc">${escHtml(desc)}</p>
+          <span class="featured-card__cta">${escHtml(t("featured.view"))} ${iconSvg("arrowRight", 14)}</span>
+        </a>
+      `;
+    })
+    .join("");
+
+  const repoCards = FEATURED_REPOS.map(
+    (r) => `
+      <a class="featured-card featured-card--repo" href="${escAttr(r.href)}" target="_blank" rel="noopener">
+        <span class="featured-card__type">${escHtml(r.repo)}</span>
+        <h3 class="featured-card__title">${escHtml(r.title)}</h3>
+        <p class="featured-card__desc">${escHtml(r.description)}</p>
+        <span class="featured-card__cta">${escHtml(t("featured.visit"))} ${iconSvg("arrowRight", 14)}</span>
+      </a>
+    `
+  ).join("");
+
+  return `
+    <section class="featured" aria-labelledby="featured-title">
+      <div class="container-wide">
+        <header class="featured__head">
+          <h2 id="featured-title" class="featured__title">${escHtml(t("featured.title"))}</h2>
+          <p class="featured__lead">${escHtml(t("hero.sub", { skills: String(index.skills.length), repos: "900+" }))}</p>
+        </header>
+
+        <div class="featured__group">
+          <h3 class="featured__subhead">${escHtml(t("featured.local"))}</h3>
+          <p class="featured__hint">${escHtml(t("featured.localHint"))}</p>
+          <div class="featured__grid">${localCards}</div>
+        </div>
+
+        <div class="featured__group">
+          <h3 class="featured__subhead">${escHtml(t("featured.repos"))}</h3>
+          <p class="featured__hint">${escHtml(t("featured.reposHint"))}</p>
+          <div class="featured__grid">${repoCards}</div>
+        </div>
+      </div>
+    </section>
+  `;
+}
 
 interface ExternalIndexData {
   repos: unknown[];
@@ -99,6 +230,7 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
       <div class="hero__cta">
         <a class="btn btn--primary" href="#/external">${escHtml(t("hero.cta.index"))} ${iconSvg("arrowRight", 16)}</a>
         <a class="btn" href="#/bundle">${escHtml(t("hero.cta.bundle"))} ${iconSvg("arrowRight", 16)}</a>
+        <a class="btn btn--ghost" href="https://github.com/MS33834/AI-SKILL/blob/main/docs/getting-started.md" target="_blank" rel="noopener">${escHtml(t("hero.cta.guide"))} ${iconSvg("arrowRight", 16)}</a>
       </div>
       <div class="hero__mark-glyph" aria-hidden="true">${brandMarkSvg()} <span>AI-SKILL</span></div>
     </section>
@@ -121,6 +253,8 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
         <span class="stat__label">${escHtml(t("stat.domains.label"))}</span>
       </div>
     </div>
+
+    ${featuredHtml(index)}
 
     <div class="container-wide">
       <div class="filter-bar" role="search">

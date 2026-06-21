@@ -187,9 +187,14 @@ export function stableHue(s: string): number {
   return h % 360;
 }
 
+/** Category hue number for inline CSS custom properties. */
+export function categoryHue(cat: string): number {
+  return stableHue(cat);
+}
+
 /** Category color string for inline CSS. */
 export function categoryColor(cat: string): string {
-  return `hsl(${stableHue(cat)} 60% 52%)`;
+  return `hsl(${categoryHue(cat)} 60% 52%)`;
 }
 
 /** Build platform chips HTML for a skill card / detail page. */
