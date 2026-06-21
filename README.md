@@ -28,6 +28,8 @@ AI-SKILL 是双轨并行的 AI 技能索引：
 
 ## 怎么用
 
+快速上手请看 [`docs/quickstart.md`](docs/quickstart.md)。下面是大纲：
+
 ### 浏览仓库索引（主要功能）
 
 打开 [AI-SKILL Pages](https://badhope.gitcode.host/AI-SKILL/#/external)，

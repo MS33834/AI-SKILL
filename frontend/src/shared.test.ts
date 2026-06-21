@@ -11,6 +11,8 @@ import {
   qualityChipHtml,
   dumpFrontmatter,
   skillToMarkdown,
+  levenshtein,
+  closestString,
 } from "./shared";
 import { setLocale } from "./i18n";
 import type { SkillIndexEntry, Skill } from "./types";
@@ -259,5 +261,39 @@ describe("skillToMarkdown", () => {
     const md = skillToMarkdown(baseSkill);
     expect(md.startsWith("---\n")).toBe(true);
     expect(md).toContain("# Prompt\nHello");
+  });
+});
+
+describe("levenshtein", () => {
+  it("returns 0 for identical strings", () => {
+    expect(levenshtein("rag", "rag")).toBe(0);
+  });
+
+  it("returns the length difference when one string is empty", () => {
+    expect(levenshtein("", "abc")).toBe(3);
+    expect(levenshtein("abc", "")).toBe(3);
+  });
+
+  it("counts insertions, deletions and substitutions", () => {
+    expect(levenshtein("kitten", "sitting")).toBe(3);
+    expect(levenshtein("langchain", "langchian")).toBe(2);
+  });
+});
+
+describe("closestString", () => {
+  it("suggests the closest candidate", () => {
+    expect(closestString("langchian", ["langchain", "ollama", "n8n"])).toBe("langchain");
+  });
+
+  it("is case-insensitive", () => {
+    expect(closestString("LANGCHIAN", ["LangChain", "Ollama"])).toBe("LangChain");
+  });
+
+  it("returns null when no candidate is close enough", () => {
+    expect(closestString("xyz123", ["langchain", "ollama"])).toBeNull();
+  });
+
+  it("deduplicates candidates", () => {
+    expect(closestString("langchian", ["langchain", "langchain", "LangChain"])).toBe("langchain");
   });
 });

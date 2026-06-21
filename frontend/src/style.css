@@ -1763,6 +1763,29 @@ h6 {
   color: var(--accent-ink);
 }
 
+.did-you-mean {
+  text-align: center;
+  margin-top: var(--s-4);
+  color: var(--ink-mute);
+  font-size: var(--t-base);
+}
+.did-you-mean .btn--link {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.did-you-mean .btn--link:hover,
+.did-you-mean .btn--link:focus-visible {
+  color: var(--accent-ink);
+}
+
 /* ============================ not-found ============================ */
 
 .notfound {

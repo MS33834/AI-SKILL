@@ -9,7 +9,7 @@
 // external-index/skills.yaml by scripts/sync-external-index.py.
 
 import { t, getLocale } from "../i18n";
-import { escHtml, escAttr, stableHue, debounce, categoryLabel, iconSvg } from "../shared";
+import { escHtml, escAttr, stableHue, debounce, categoryLabel, iconSvg, closestString } from "../shared";
 
 interface ExternalRepo {
   slug: string;
@@ -172,6 +172,25 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
 
   try {
     const data = await loadRepos();
+
+    // Build a dictionary of searchable tokens for spell-check suggestions.
+    // We index tags, skills, titles, categories and vendor/repo names so a
+    // typo like "langchian" can be corrected to "langchain".
+    const searchCandidates = new Set<string>();
+    for (const r of data.repos) {
+      const add = (s: string | undefined | null) => {
+        const v = s?.trim();
+        if (v && v.length >= 2 && v.length <= 40) searchCandidates.add(v);
+      };
+      add(r.title);
+      add(r.title_zh);
+      add(r.vendor);
+      add(r.repo);
+      add(r.category);
+      for (const tag of r.tags ?? []) add(tag);
+      for (const skill of r.skills ?? []) add(skill);
+    }
+
     const subEl = root.querySelector<HTMLParagraphElement>("#ext-subtitle");
     if (subEl) subEl.textContent = t("external.subtitle", { n: String(data.total) });
     list.removeAttribute("aria-busy");
@@ -253,8 +272,22 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
       }
 
       if (filtered.length === 0) {
-        list.innerHTML = emptyStateHtml(t("empty.noResults"));
+        const suggestion = q ? closestString(q, searchCandidates) : null;
+        const suggestionEl = suggestion
+          ? `<p class="did-you-mean">${escHtml(t("external.didYouMean"))} <button type="button" class="btn btn--link" id="ext-suggest" data-suggest="${escAttr(suggestion)}">${escHtml(suggestion)}</button></p>`
+          : "";
+        list.innerHTML = emptyStateHtml(t("empty.noResults")) + suggestionEl;
         loadMoreEl.innerHTML = "";
+        const suggestBtn = list.querySelector<HTMLButtonElement>("#ext-suggest");
+        if (suggestBtn) {
+          suggestBtn.addEventListener("click", () => {
+            const word = suggestBtn.dataset.suggest ?? "";
+            searchInput.value = word;
+            visibleCount = PAGE_SIZE;
+            paint();
+            searchInput.focus();
+          });
+        }
         return;
       }
       const rendered = groupAndRender(filtered, currentView, data, zh, visibleCount);

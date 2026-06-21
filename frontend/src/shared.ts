@@ -94,7 +94,7 @@ export const CATEGORY_LABELS: Record<string, { en: string; zh: string }> = {
 export function categoryLabel(cat: string): string {
   const m = CATEGORY_LABELS[cat];
   if (m) return getLocale() === "zh" ? m.zh : m.en;
-  return cat.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  return cat.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase());
 }
 
 // ============================ HTML escaping ============================
@@ -248,4 +248,60 @@ export function triggerBlobDownload(blob: Blob, filename: string): void {
 export function skillToMarkdown(s: Skill): string {
   if (s.rawMarkdown && s.rawMarkdown.length > 0) return s.rawMarkdown;
   return dumpFrontmatter(s) + "\n" + s.body;
+}
+
+/** Levenshtein edit distance between two strings. */
+export function levenshtein(a: string, b: string): number {
+  if (a === b) return 0;
+  if (a.length === 0) return b.length;
+  if (b.length === 0) return a.length;
+
+  // Ensure the shorter string is the column dimension to keep O(n*m) memory
+  // bounded by the shorter side.
+  const [s, t] = a.length < b.length ? [a, b] : [b, a];
+  const m = s.length;
+  const n = t.length;
+  let prev = Array.from({ length: m + 1 }, (_, i) => i);
+  let curr = new Array(m + 1);
+
+  for (let i = 1; i <= n; i++) {
+    curr[0] = i;
+    for (let j = 1; j <= m; j++) {
+      const cost = t[i - 1] === s[j - 1] ? 0 : 1;
+      curr[j] = Math.min((curr[j - 1] ?? 0) + 1, (prev[j] ?? 0) + 1, (prev[j - 1] ?? 0) + cost);
+    }
+    [prev, curr] = [curr, prev];
+  }
+
+  return prev[m] ?? 0;
+}
+
+/**
+ * Find the closest string in `candidates` to `query` using Levenshtein
+ * distance. Returns `null` when the best match is worse than a per-length
+ * threshold, so very different queries don't suggest nonsense.
+ */
+export function closestString(query: string, candidates: Iterable<string>): string | null {
+  const q = query.trim().toLowerCase();
+  if (!q) return null;
+
+  let best: string | null = null;
+  let bestDist = Infinity;
+  const seen = new Set<string>();
+
+  for (const raw of candidates) {
+    const c = raw.trim().toLowerCase();
+    if (!c || c === q || seen.has(c)) continue;
+    seen.add(c);
+    const dist = levenshtein(q, c);
+    if (dist < bestDist) {
+      bestDist = dist;
+      best = raw.trim();
+    }
+  }
+
+  // Threshold: short queries must be nearly identical; longer queries can
+  // tolerate a few edits. Cap at 4 to avoid wild suggestions.
+  const threshold = q.length <= 3 ? 1 : q.length <= 6 ? 2 : q.length <= 10 ? 3 : 4;
+  return best && bestDist <= threshold ? best : null;
 }

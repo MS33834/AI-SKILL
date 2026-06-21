@@ -314,6 +314,7 @@ const STRINGS = {
   "external.pushedAt": { en: "Updated", zh: "更新于" },
   "external.results": { en: "{n} repositories", zh: "{n} 个仓库" },
   "external.loadMore": { en: "Load more", zh: "加载更多" },
+  "external.didYouMean": { en: "Did you mean:", zh: "你是不是想搜：" },
 
   // ----- footer brand / glyphs (no translation, but kept here for symmetry) -----
   "brand.glyph": { en: "▮ AI-SKILL", zh: "▮ AI-SKILL" },
