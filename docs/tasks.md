@@ -30,7 +30,7 @@
 | C1  | 建立 skill 复审流程                       | 高     | Content + Project Lead | 已完成 | GOVERNANCE 里写明 stable 准入流程；首批 5 个 skill 通过复审        |
 | C2  | 把现有 `needs_review: true` 的技能清零    | 高     | Content                | 已完成 | 38 个本地 skill 全部 `needs_review: false`（模板除外）             |
 | C3  | 首批 10 个 skill 标记为 `quality: stable` | 高     | Content + Security/QA  | 已完成 | 通过 `validate-skill.py --strict` + `security-scan.py` 无 HIGH/MED |
-| C4  | 从上游仓库再通用化 20 个 skill            | 中     | Content                | 待认领 | 每个都有完整 frontmatter、example、When NOT to use                 |
+| C4  | 从上游仓库再通用化 20 个 skill            | 中     | Content                | 已完成 | 已新增 23 个 vendor-neutral skill；本地 skill 总数 61             |
 | C5  | 完善中文翻译（name_zh / description_zh）  | 中     | Docs / i18n            | 已完成 | 100% 本地 skill 有中文名和中文描述                                 |
 | C6  | 撰写 skill 编写最佳实践指南               | 低     | Content + Docs         | 已完成 | docs/skill-writing-guide.md 合并                                   |
 
@@ -101,7 +101,7 @@
 | D1  | 设计系统文档（颜色、字体、间距、组件） | 高     | Design / UX            | 已完成 | docs/design-system.md，与 style.css 对齐                   |
 | D2  | 品牌标识与 favicon                     | 中     | Design / UX            | 已完成 | 提供 SVG favicon 与 header inline brand mark               |
 | D3  | 空状态 / 错误页视觉统一                | 中     | Design / UX + Frontend | 已完成 | 404、empty、error 使用统一 `.empty-state` / `.error-state` |
-| D4  | 卡片 hover / focus 动效精调            | 中     | Design / UX + Frontend | 待认领 | 动效不卡顿、不闪烁、偏好减少动画时禁用                     |
+| D4  | 卡片 hover / focus 动效精调            | 中     | Design / UX + Frontend | 已完成 | 外部卡片增加 hover 阴影/顶部条加粗；链接与 skill pill 微浮起；CSS 变量统一 |
 | D5  | 中文排版优化（行高、字重、标点）       | 中     | Design / UX + Docs     | 已完成 | `:lang(zh)` 调整行高与标题字重，提升中文阅读舒适度         |
 | D6  | 图标系统（统一使用 SVG 或 icon font）  | 低     | Design / UX + Frontend | 已完成 | `iconSvg()` 替代纯文本箭头，currentColor 适配深浅模式      |
 

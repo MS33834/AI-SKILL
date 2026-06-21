@@ -4,6 +4,69 @@
 # skills/<slug>/SKILL.md and re-run validate-skill.py.
 
 skills:
+  - slug: accessibility-audit
+    name: Accessibility Audit
+    name_zh: 可访问性审计
+    description: Audit a UI or component for accessibility issues and fixes.
+    description_zh: 审计 UI 或组件的可访问性问题并给出修复方案。
+    category: dev-tools
+    tags:
+      - a11y
+      - accessibility
+      - wcag
+      - frontend
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/accessibility-audit/SKILL.md
+  - slug: api-design-review
+    name: API Design Review
+    name_zh: API 设计评审
+    description: Review an API design against consistency, versioning, auth, and
+      error-handling best practices.
+    description_zh: 按一致性、版本控制、认证和错误处理最佳实践评审 API 设计。
+    category: dev-tools
+    tags:
+      - api
+      - design
+      - review
+      - rest
+      - graphql
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/api-design-review/SKILL.md
+  - slug: api-versioning
+    name: API Versioning
+    name_zh: API 版本控制
+    description: Design a versioning and deprecation strategy for an API.
+    description_zh: 为 API 设计版本控制和弃用策略。
+    category: dev-tools
+    tags:
+      - api
+      - versioning
+      - backward-compatibility
+      - design
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/api-versioning/SKILL.md
+  - slug: backup-recovery-checklist
+    name: Backup Recovery Checklist
+    name_zh: 备份恢复清单
+    description: Create a backup and recovery checklist for a datastore or 
+      service.
+    description_zh: 为数据存储或服务创建备份与恢复清单。
+    category: dev-tools
+    tags:
+      - backup
+      - recovery
+      - disaster-recovery
+      - reliability
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/backup-recovery-checklist/SKILL.md
   - slug: browser-ml-in-js
     name: Browser ML in JavaScript
     name_zh: 浏览器端 JavaScript ML
@@ -52,6 +115,22 @@ skills:
     needs_review: false
     quality: stable
     path: skills/clickhouse-best-practices/SKILL.md
+  - slug: code-performance-review
+    name: Code Performance Review
+    name_zh: 代码性能评审
+    description: Review code for performance bottlenecks and suggest measured 
+      optimizations.
+    description_zh: 评审代码性能瓶颈并提出可测量的优化建议。
+    category: dev-tools
+    tags:
+      - performance
+      - profiling
+      - optimization
+      - review
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/code-performance-review/SKILL.md
   - slug: code-review
     name: Code Review Workflow
     name_zh: 代码审查工作流
@@ -102,6 +181,38 @@ skills:
     needs_review: false
     quality: stable
     path: skills/commit-message-writer/SKILL.md
+  - slug: data-migration-plan
+    name: Data Migration Plan
+    name_zh: 数据迁移方案
+    description: Plan a safe data migration between schemas, formats, or 
+      systems.
+    description_zh: 规划schema、格式或系统之间的安全数据迁移。
+    category: dev-tools
+    tags:
+      - migration
+      - database
+      - data
+      - planning
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/data-migration-plan/SKILL.md
+  - slug: database-index-review
+    name: Database Index Review
+    name_zh: 数据库索引评审
+    description: Review a query or schema for missing, redundant, or misused 
+      indexes.
+    description_zh: 评审查询或 schema 中缺失、冗余或误用的索引。
+    category: dev-tools
+    tags:
+      - database
+      - index
+      - performance
+      - sql
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/database-index-review/SKILL.md
   - slug: deepeval-eval-suite
     name: deepeval Pytest Eval Suite
     name_zh: deepeval Pytest 评估套件
@@ -150,6 +261,36 @@ skills:
     needs_review: false
     quality: stable
     path: skills/deepeval-tracing/SKILL.md
+  - slug: dependency-update
+    name: Dependency Update
+    name_zh: 依赖升级
+    description: Plan and execute a low-risk dependency update for a project.
+    description_zh: 为项目规划和执行低风险的依赖升级。
+    category: dev-tools
+    tags:
+      - dependencies
+      - upgrade
+      - security
+      - semver
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/dependency-update/SKILL.md
+  - slug: dependency-vulnerability-response
+    name: Dependency Vulnerability Response
+    name_zh: 依赖漏洞响应
+    description: Respond to a reported CVE in a project dependency.
+    description_zh: 响应项目依赖中报告的 CVE。
+    category: guardrails
+    tags:
+      - security
+      - vulnerability
+      - dependencies
+      - cve
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/dependency-vulnerability-response/SKILL.md
   - slug: doc-coauthoring
     name: Doc Co-Authoring Workflow
     name_zh: 文档共写工作流
@@ -167,6 +308,21 @@ skills:
     needs_review: false
     quality: stable
     path: skills/doc-coauthoring/SKILL.md
+  - slug: documentation-structure
+    name: Documentation Structure
+    name_zh: 文档结构
+    description: Design a documentation outline for a project or feature.
+    description_zh: 为项目或功能设计文档大纲。
+    category: documentation
+    tags:
+      - docs
+      - structure
+      - readme
+      - onboarding
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/documentation-structure/SKILL.md
   - slug: embedding-model-training
     name: Embedding Model Training
     name_zh: 嵌入模型训练
@@ -183,6 +339,53 @@ skills:
     needs_review: false
     quality: stable
     path: skills/embedding-model-training/SKILL.md
+  - slug: error-handling-guide
+    name: Error Handling Guide
+    name_zh: 错误处理指南
+    description: Draft a language-agnostic error-handling strategy for a module 
+      or service.
+    description_zh: 为模块或服务起草一份与语言无关的错误处理策略。
+    category: dev-tools
+    tags:
+      - errors
+      - exceptions
+      - reliability
+      - logging
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/error-handling-guide/SKILL.md
+  - slug: eval-suite-bootstrap
+    name: Eval Suite Bootstrap
+    name_zh: 评估套件启动
+    description: Bootstrap a minimal evaluation suite for an LLM-powered 
+      feature.
+    description_zh: 为 LLM 功能启动最小可运行的评估套件。
+    category: evaluation
+    tags:
+      - evals
+      - llm
+      - testing
+      - benchmark
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/eval-suite-bootstrap/SKILL.md
+  - slug: feature-flag-strategy
+    name: Feature Flag Strategy
+    name_zh: 功能开关策略
+    description: Design a feature-flag rollout strategy for a new feature.
+    description_zh: 为新功能设计功能开关发布策略。
+    category: dev-tools
+    tags:
+      - feature-flags
+      - release
+      - testing
+      - rollback
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/feature-flag-strategy/SKILL.md
   - slug: frontend-large-feature-architecture
     name: Frontend Large-Feature Architecture
     name_zh: 前端大型功能架构
@@ -231,6 +434,21 @@ skills:
     needs_review: false
     quality: stable
     path: skills/goal-definition/SKILL.md
+  - slug: incident-postmortem
+    name: Incident Postmortem
+    name_zh: 事故复盘
+    description: Draft a blameless postmortem from an incident timeline.
+    description_zh: 从事故时间线起草一份无责复盘报告。
+    category: dev-tools
+    tags:
+      - incident
+      - postmortem
+      - sre
+      - reliability
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/incident-postmortem/SKILL.md
   - slug: internal-comms
     name: Internal Comms Authoring
     name_zh: 内部沟通文档写作
@@ -278,6 +496,22 @@ skills:
     needs_review: false
     quality: stable
     path: skills/llm-pricing-file-update/SKILL.md
+  - slug: logging-best-practices
+    name: Logging Best Practices
+    name_zh: 日志最佳实践
+    description: Define a structured logging convention for a service or 
+      library.
+    description_zh: 为服务或库定义结构化日志规范。
+    category: dev-tools
+    tags:
+      - logging
+      - observability
+      - structured
+      - debugging
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/logging-best-practices/SKILL.md
   - slug: maf-prs-job
     name: maf-prs-job
     name_zh: maf-prs-job
@@ -330,6 +564,52 @@ skills:
     needs_review: false
     quality: stable
     path: skills/mcp-builder/SKILL.md
+  - slug: microservice-boundary-review
+    name: Microservice Boundary Review
+    name_zh: 微服务边界评审
+    description: Evaluate whether a proposed service boundary is coherent and 
+      low-coupling.
+    description_zh: 评估提议的服务边界是否内聚且低耦合。
+    category: dev-tools
+    tags:
+      - microservices
+      - architecture
+      - bounded-context
+      - design
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/microservice-boundary-review/SKILL.md
+  - slug: monitoring-setup
+    name: Monitoring Setup
+    name_zh: 监控搭建
+    description: Define metrics, dashboards, and alerts for a service.
+    description_zh: 为服务定义指标、仪表盘和告警。
+    category: dev-tools
+    tags:
+      - monitoring
+      - observability
+      - metrics
+      - alerts
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/monitoring-setup/SKILL.md
+  - slug: onboarding-checklist
+    name: Onboarding Checklist
+    name_zh: 入职清单
+    description: Build a role-based onboarding checklist for a new team member.
+    description_zh: 为新团队成员创建按角色分类的入职清单。
+    category: documentation
+    tags:
+      - onboarding
+      - checklist
+      - team
+      - docs
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/onboarding-checklist/SKILL.md
   - slug: ownership-bus-factor
     name: Code Ownership & Bus Factor
     name_zh: 代码所有权与巴士因子
@@ -411,6 +691,22 @@ skills:
     needs_review: false
     quality: stable
     path: skills/pr-yeet/SKILL.md
+  - slug: prompt-injection-guardrails
+    name: Prompt Injection Guardrails
+    name_zh: 提示注入防护
+    description: Add guardrails against direct and indirect prompt injection for
+      an LLM app.
+    description_zh: 为 LLM 应用添加直接和间接提示注入防护。
+    category: guardrails
+    tags:
+      - prompt-injection
+      - security
+      - llm
+      - guardrails
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/prompt-injection-guardrails/SKILL.md
   - slug: promptflow-to-maf
     name: promptflow-to-maf
     name_zh: promptflow-to-maf
@@ -466,6 +762,21 @@ skills:
     needs_review: false
     quality: stable
     path: skills/promptfoo-redteam/SKILL.md
+  - slug: rag-retrieval-eval
+    name: RAG Retrieval Eval
+    name_zh: RAG 检索评估
+    description: Design an evaluation for a RAG retrieval component.
+    description_zh: 为 RAG 检索组件设计评估方案。
+    category: rag-retrieval
+    tags:
+      - rag
+      - retrieval
+      - evaluation
+      - llm
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/rag-retrieval-eval/SKILL.md
   - slug: react-router-search-params
     name: React Router Search Param State
     name_zh: React Router 搜索参数状态
@@ -499,6 +810,36 @@ skills:
     needs_review: false
     quality: stable
     path: skills/realtime-eval-bootstrap/SKILL.md
+  - slug: refactoring-strategy
+    name: Refactoring Strategy
+    name_zh: 重构策略
+    description: Plan a safe refactoring for a tangled module or legacy service.
+    description_zh: 为纠缠的模块或遗留服务规划安全重构。
+    category: dev-tools
+    tags:
+      - refactoring
+      - legacy
+      - strategy
+      - testing
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/refactoring-strategy/SKILL.md
+  - slug: schema-evolution
+    name: Schema Evolution
+    name_zh: Schema 演进
+    description: Plan a backward-compatible schema change for events or APIs.
+    description_zh: 为事件或 API 规划向后兼容的 schema 变更。
+    category: dev-tools
+    tags:
+      - schema
+      - evolution
+      - backward-compatibility
+      - data
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/schema-evolution/SKILL.md
   - slug: secure-code-by-language
     name: Secure Code by Language
     name_zh: 按语言的安全编码指南
@@ -595,6 +936,21 @@ skills:
     needs_review: false
     quality: stable
     path: skills/test-generator/SKILL.md
+  - slug: test-planning
+    name: Test Planning
+    name_zh: 测试规划
+    description: Design a test plan for a feature or release.
+    description_zh: 为功能或发布设计测试方案。
+    category: dev-tools
+    tags:
+      - testing
+      - qa
+      - plan
+      - coverage
+    platforms: []
+    needs_review: false
+    quality: stable
+    path: skills/test-planning/SKILL.md
   - slug: threat-modeling
     name: Repository Threat Model
     name_zh: 仓库威胁建模

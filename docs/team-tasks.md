@@ -65,11 +65,11 @@
 - 跑通第一个外部贡献者 PR（O3）
 - 外部索引 `skills` 字段补全 ≥ 80%（I4） ✅ 已达 100%
 - 分类体系 review 完成并发布结论（I5）
-- 通用化 20 个 skill 完成 50%（C4）
+- 通用化 20 个 skill（C4） ✅ 已完成 23 个
 
 ### Milestone 3：体验与质量提升（第 5–6 周）
 - Lighthouse Performance / Accessibility / Best Practices 均 ≥ 90（F11）
-- 卡片动效精调完成（D4）
+- 卡片动效精调完成（D4） ✅
 - 中文翻译覆盖 ≥ 80% 本地 skill（C5）
 - 上游仓库作者认领机制落地（O4）
 
