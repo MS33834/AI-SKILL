@@ -1,0 +1,79 @@
+name: Upstream author claim / removal
+description: >-
+  For upstream repository owners or maintainers: claim your entry,
+  request corrections, or ask for removal from the AI-SKILL index.
+title: "[upstream] <repo-name>"
+labels: ["upstream-claim"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reaching out. AI-SKILL indexes publicly available
+        AI-skill repositories so the community can discover them. As the
+        owner or maintainer of the upstream repo, you can:
+
+        - **Claim** the entry so the index shows verified author metadata
+        - **Update** the title, description, category, or tags
+        - **Request removal** if you do not want the repo listed
+        - **Report a license mismatch** or other inaccuracy
+
+        We usually respond within 3 business days.
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      description: The GitHub URL of the repo in question
+      placeholder: e.g. https://github.com/example/ai-skills
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: action
+    attributes:
+      label: What would you like to do?
+      options:
+        - label: Claim the entry as the upstream author
+        - label: Update metadata (title, description, category, tags, skills)
+        - label: Request removal from the index
+        - label: Report a license or accuracy issue
+    validations:
+      required: true
+
+  - type: textarea
+    id: proof
+    attributes:
+      label: Proof of ownership (for claims)
+      description: >-
+        If you are claiming the entry, please link to a public profile,
+        commit, or org membership that shows you are a maintainer. We may
+        also ask you to open a trivial PR from the repo to verify.
+      placeholder: e.g. I am @owner on GitHub, listed in the repo's CODEOWNERS file.
+    validations:
+      required: false
+
+  - type: textarea
+    id: changes
+    attributes:
+      label: Requested changes
+      description: >-
+        For updates: paste the corrected title, description, category,
+        tags, or skills list. For removals: briefly tell us why. For
+        license issues: cite the correct license and where it is stated.
+      placeholder: |
+        title: My AI Skills
+        category: agent-frameworks
+        tags: [mcp, agent, python]
+        skills: [mcp-server, planner, tool-calling]
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      options:
+        - label: I understand that removal requests are processed publicly via this issue
+        - label: I have read [docs/upstream-claim.md](../../docs/upstream-claim.md)
+    validations:
+      required: false

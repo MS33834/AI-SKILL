@@ -68,10 +68,10 @@
 - 通用化 20 个 skill（C4） ✅ 已完成 23 个
 
 ### Milestone 3：体验与质量提升（第 5–6 周）
-- Lighthouse Performance / Accessibility / Best Practices 均 ≥ 90（F11）
+- Lighthouse Performance / Accessibility / Best Practices 均 ≥ 90（F11） ✅ 已实施字体 preload / JSON 压缩 / preconnect / 移除外部字体
 - 卡片动效精调完成（D4） ✅
-- 中文翻译覆盖 ≥ 80% 本地 skill（C5）
-- 上游仓库作者认领机制落地（O4）
+- 中文翻译覆盖 ≥ 80% 本地 skill（C5） ✅
+- 上游仓库作者认领机制落地（O4） ✅
 
 ### Milestone 4：增强功能与运营（第 7–8 周）
 - 搜索拼写建议（I6）

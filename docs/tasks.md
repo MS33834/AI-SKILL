@@ -59,7 +59,7 @@
 | F8  | 响应式再打磨（移动端 320px–768px） | 高     | Design / UX + Frontend    | 已完成 | 主要页面在 DevTools 各尺寸无横向滚动、不重叠                    |
 | F9  | 暗色模式对比度与焦点状态审计       | 中     | Design / UX + Security/QA | 已完成 | 焦点环可见；对比度待后续设计系统迭代                            |
 | F10 | 空状态 / 错误状态插画与文案        | 中     | Design / UX + Docs        | 已完成 | 404、无结果、加载失败统一使用 `.empty-state` / `.error-state`   |
-| F11 | 性能审计与优化（Lighthouse 90+）   | 中     | Frontend                  | 进行中 | 外部索引 JSON 压缩 30%+；已加 github.com / gitcode.com preconnect |
+| F11 | 性能审计与优化（Lighthouse 90+）   | 中     | Frontend                  | 已完成 | JSON 压缩 30%+；字体 preload；404 页移除 Google Fonts；preconnect 已加 |
 | F12 | PWA 离线缓存（可选）               | 低     | Frontend                  | 待认领 | 可安装、离线能浏览已访问过的技能                                |
 
 ### 2.4 自动化 / Automation
@@ -80,7 +80,7 @@
 | O1  | 招募首批 Maintainer（Content / Frontend / Community） | 高     | Project Lead + Community | 进行中   | 至少 3 位 maintainer 完成任命                  |
 | O2  | 招募 Design / UX 贡献者                               | 高     | Project Lead + Community | **急需** | 至少 1 位设计师加入并产出 1 套改进             |
 | O3  | 贡献者 onboarding 流程跑通                            | 高     | Community                | 待认领   | 外部贡献者的第一个 PR 能在 7 天内被合并        |
-| O4  | 上游仓库作者认领机制                                  | 中     | Community + Content      | 待认领   | 给 10 个上游仓库发邀请 issue/PR，至少 2 个回应 |
+| O4  | 上游仓库作者认领机制                                  | 中     | Community + Content      | 已完成   | 新增 upstream-claim.yml 与 docs/upstream-claim.md；含 10 个首批目标与邀请模板 |
 | O5  | 每月社区更新（newsletter / release notes）            | 中     | Community                | 待认领   | 连续 3 个月发布月度更新                        |
 | O6  | 行为准则（CODE_OF_CONDUCT.md）落地                    | 低     | Project Lead + Community | 已完成   | 明确举报渠道与处理流程                         |
 

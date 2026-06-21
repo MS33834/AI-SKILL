@@ -1,5 +1,48 @@
-import { defineConfig } from "vite";
+import { defineConfig, Plugin } from "vite";
 import { resolve } from "path";
+
+/**
+ * Inject `<link rel="preload">` hints for the most critical font files.
+ *
+ * Browsers discover fonts late (after CSS is parsed), so preloading the
+ * body-text fonts (Inter 400/500 for Latin + Latin-ext) improves first
+ * render metrics and reduces layout shifts.
+ */
+function fontPreloadPlugin(): Plugin {
+  const priorityPatterns = [
+    /^inter-latin-400-normal-.+\.woff2$/,
+    /^inter-latin-500-normal-.+\.woff2$/,
+    /^inter-latin-ext-400-normal-.+\.woff2$/,
+    /^inter-latin-ext-500-normal-.+\.woff2$/,
+  ];
+
+  return {
+    name: "ai-skill:font-preload",
+    apply: "build",
+    transformIndexHtml(html, ctx) {
+      const bundle = ctx.bundle;
+      if (!bundle) return html;
+
+      const links: string[] = [];
+      for (const fileName of Object.keys(bundle)) {
+        const name = fileName.split("/").pop() || "";
+        if (priorityPatterns.some((re) => re.test(name))) {
+          links.push(
+            `<link rel="preload" href="./${fileName}" as="font" type="font/woff2" crossorigin>`
+          );
+        }
+      }
+
+      if (!links.length) return html;
+      // Insert early in <head> so browsers discover preloads before the
+      // CSS that references the fonts.
+      const headOpen = html.indexOf("<head>");
+      if (headOpen === -1) return html;
+      const insertAt = headOpen + "<head>".length;
+      return html.slice(0, insertAt) + "\n" + links.join("\n") + "\n" + html.slice(insertAt);
+    },
+  };
+}
 
 // Optimized Vite config:
 //  - emit a flat `dist/` with code splitting for better caching
@@ -12,6 +55,7 @@ import { resolve } from "path";
 //    GH Pages deep-link fallback (see public/404.html's
 //    redirect script for the full story).
 export default defineConfig({
+  plugins: [fontPreloadPlugin()],
   base: "./",
   build: {
     outDir: "dist",
