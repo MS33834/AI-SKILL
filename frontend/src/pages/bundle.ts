@@ -41,10 +41,10 @@ export async function renderBundle(root: HTMLElement, index: SkillIndex): Promis
         <input type="search" id="b-q" placeholder="${escAttr(t("bundle.filter.ph"))}" aria-label="${escAttr(t("bundle.filter.ph"))}" />
       </div>
       <ul class="bundle-list" id="b-list"></ul>
-      <div class="actions" style="display: flex; gap: var(--s-2); align-items: center; flex-wrap: wrap;">
-        <button class="btn" id="b-select-all" type="button">${escHtml(t("bundle.selectAll"))}</button>
+      <div class="bundle-actions">
+        <button class="btn" id="b-select-all" type="button">${escHtml(t("bundle.selectAllVisible"))}</button>
         <button class="btn" id="b-clear" type="button">${escHtml(t("bundle.clear"))}</button>
-        <span class="meta-line" style="margin: 0;">
+        <span class="meta-line">
           <span>${escHtml(t("bundle.selected"))} <strong id="b-count">0</strong></span>
         </span>
         <button class="btn btn--primary" id="b-download" type="button" disabled>${escHtml(t("bundle.download"))}</button>

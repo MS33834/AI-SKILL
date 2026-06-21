@@ -191,6 +191,7 @@ const STRINGS = {
   },
   "bundle.filter.ph": { en: "Filter skills…", zh: "筛选技能…" },
   "bundle.selectAll": { en: "Select all", zh: "全选" },
+  "bundle.selectAllVisible": { en: "Select all visible", zh: "全选可见" },
   "bundle.clear": { en: "Clear", zh: "清空" },
   "bundle.selected": { en: "Selected:", zh: "已选：" },
   "bundle.download": { en: "Download .zip", zh: "下载 .zip" },

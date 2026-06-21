@@ -860,7 +860,7 @@ h6 {
   padding: 1px 8px;
   border-radius: 999px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   /* No more text-transform: lowercase. Claude / Codex / Cursor /
      Continue are proper nouns and reading them as "claude" looked
@@ -1609,12 +1609,10 @@ h6 {
   border: 1px solid var(--border);
   border-radius: var(--radius-1);
   color: var(--ink-soft);
-  /* Always slightly visible. Going from 0 → 1 on hover was bad
-     discoverability (touch / keyboard users never see the button).
-     Now we sit at ~0.4 by default, full opacity on hover or
-     focus-visible. The background also gives a hint that the
-     corner is interactive. */
-  opacity: 0.45;
+  /* Always visible enough to be discoverable, but subdued until
+     hovered or focused. 0.45 failed WCAG contrast for some
+     backgrounds, so we keep a minimum of 0.7. */
+  opacity: 0.7;
   transition:
     opacity var(--dur-fast) var(--ease-out),
     color var(--dur-fast) var(--ease-out),
@@ -1915,6 +1913,27 @@ h6 {
   accent-color: var(--accent);
 }
 
+/* Sticky action bar on the bundle page: stays at the bottom while
+   scrolling a long skill list, so the user always sees the download
+   button and selected count without scrolling back to the top. */
+.bundle-actions {
+  position: sticky;
+  bottom: var(--s-3);
+  display: flex;
+  gap: var(--s-2);
+  align-items: center;
+  flex-wrap: wrap;
+  padding: var(--s-3) var(--s-4);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-1);
+  z-index: 10;
+}
+.bundle-actions .meta-line {
+  margin: 0;
+}
+
 /* ============================ chinese typography ============================ */
 
 /* Improve readability when the document language is Chinese. These
@@ -2140,6 +2159,16 @@ h6 {
   }
   .bundle-list__slug {
     font-size: var(--t-xs);
+  }
+
+  /* Mobile: hide decorative hero glyph that can overlap long titles */
+  .hero__mark-glyph {
+    display: none;
+  }
+
+  /* Mobile: slightly larger chip text for readability */
+  .chip {
+    font-size: 12px;
   }
 
   /* Mobile: reduce spacing */
