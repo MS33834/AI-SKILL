@@ -7,18 +7,20 @@
  * - Cleans up outdated caches on activate.
  */
 
-const CACHE_VERSION = "v1";
+const CACHE_VERSION = "v2";
 const SHELL_CACHE = `ai-skill-shell-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `ai-skill-runtime-${CACHE_VERSION}`;
 
+// Use relative URLs so the precache works when the site is hosted as a
+// project page (e.g. /<repo>/) instead of at the domain root.
 const SHELL_URLS = [
-  "/",
-  "/index.html",
-  "/404.html",
-  "/manifest.webmanifest",
-  "/favicon.svg",
-  "/skills.json",
-  "/external-repos.json",
+  "./",
+  "./index.html",
+  "./404.html",
+  "./manifest.webmanifest",
+  "./favicon.svg",
+  "./skills.json",
+  "./external-repos.json",
 ];
 
 self.addEventListener("install", (event) => {

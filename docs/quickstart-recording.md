@@ -79,7 +79,7 @@ ffmpeg -i input.mov -vf "fps=10,scale=1280:-1:flags=lanczos,split[s0][s1];[s0]pa
 
 ## 验收标准
 
-- [ ] 至少 4 张 GIF 覆盖首页、搜索、skill 详情、Bundle 下载
-- [ ] 单张 GIF 不超过 2 MB
-- [ ] quickstart.md 中所有占位图已替换为真实素材
-- [ ] 在 GitHub / GitCode Release 中可同时使用这些素材作为 feature showcase
+- [x] 至少 4 张 GIF 覆盖首页、搜索、skill 详情、Bundle 下载
+- [x] 单张 GIF 不超过 2 MB
+- [x] quickstart.md 中所有占位图已替换为真实素材
+- [x] 在 GitHub / GitCode Release 中可同时使用这些素材作为 feature showcase

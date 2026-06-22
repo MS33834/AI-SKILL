@@ -1,14 +1,14 @@
 {
-  "broken": 2,
+  "broken": 0,
   "by_group": {
     "client_error": 0,
     "error": 0,
-    "ok": 926,
+    "ok": 928,
     "redirect": 0,
-    "server_error": 2
+    "server_error": 0
   },
-  "checked_at": "2026-06-21T05:05:04+00:00",
-  "elapsed_s": 121.49,
+  "checked_at": "2026-06-22T07:56:46+00:00",
+  "elapsed_s": 125.18,
   "results": {
     "acados": {
       "code": 206,
@@ -3449,9 +3449,9 @@
       "url": "https://github.com/ohmyzsh/ohmyzsh"
     },
     "ollama": {
-      "code": 500,
-      "group": "server_error",
-      "status": "server_error 500",
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
       "url": "https://github.com/ollama/ollama"
     },
     "omniquant": {
@@ -4925,9 +4925,9 @@
       "url": "https://github.com/yl4579/StyleTTS2"
     },
     "surreal-vector": {
-      "code": 500,
-      "group": "server_error",
-      "status": "server_error 500",
+      "code": 206,
+      "group": "ok",
+      "status": "ok",
       "url": "https://github.com/surrealdb/surrealdb"
     },
     "surya": {

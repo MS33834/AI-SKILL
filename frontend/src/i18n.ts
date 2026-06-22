@@ -102,8 +102,8 @@ const STRINGS = {
   "eyebrow.version": { en: "v2.0.0", zh: "v2.0.0" },
   "hero.title1": { en: "curated skills, indexed repos.", zh: "精选技能 + 仓库索引。" },
   "hero.sub": {
-    en: "A community-driven index of AI agent skills and repositories. Browse {skills} hand-written SKILL.md files, or explore {repos}+ indexed repositories from OpenAI, Anthropic, Hugging Face, LangChain and more. MIT licensed. No tracking. No signup.",
-    zh: "社区驱动的 AI 智能体技能与仓库索引。浏览 {skills} 个手写 SKILL.md，或探索 {repos}+ 个已索引仓库（来自 OpenAI、Anthropic、Hugging Face、LangChain 等）。MIT 协议。无追踪、无注册。",
+    en: "An open-source index of AI agent skills and repositories, led by an internal core team and open for community participation. Browse {skills} hand-written SKILL.md files, or explore {repos}+ indexed repositories from OpenAI, Anthropic, Hugging Face, LangChain and more. MIT licensed. No tracking. No signup.",
+    zh: "由内部核心团队主导、社区开放参与的 AI 智能体技能与仓库索引。浏览 {skills} 个手写 SKILL.md，或探索 {repos}+ 个已索引仓库（来自 OpenAI、Anthropic、Hugging Face、LangChain 等）。MIT 协议。无追踪、无注册。",
   },
   "hero.cta.index": { en: "Browse skill index", zh: "浏览技能索引" },
   "hero.cta.bundle": { en: "Build a bundle", zh: "制作合集" },
@@ -117,8 +117,8 @@ const STRINGS = {
   },
   "featured.repos": { en: "Trending repositories", zh: "热门仓库" },
   "featured.reposHint": {
-    en: "High-impact upstream projects indexed by the community.",
-    zh: "社区索引的高影响力上游项目。",
+    en: "High-impact upstream projects indexed by the AI-SKILL team.",
+    zh: "AI-SKILL 团队索引的高影响力上游项目。",
   },
   "featured.view": { en: "View skill", zh: "查看技能" },
   "featured.visit": { en: "Visit repo", zh: "访问仓库" },
@@ -338,8 +338,8 @@ const STRINGS = {
   //       language) -----
   "meta.title": { en: "AI-SKILL · open-source skill index", zh: "AI-SKILL · 开源技能索引" },
   "meta.description": {
-    en: "An open-source, community-driven index of 928+ AI agent skill repositories. Search by skill, domain, vendor type, or stars and jump straight to the source. MIT licensed.",
-    zh: "一个开源社区驱动的 AI 智能体技能仓库索引，收录 928+ 个仓库。按技能、领域、厂商类型、星标搜索，直达源头。MIT 协议。",
+    en: "An open-source index of 928+ AI agent skill repositories, led by an internal core team and open for community participation. Search by skill, domain, vendor type, or stars and jump straight to the source. MIT licensed.",
+    zh: "一个由内部核心团队主导、社区开放参与的开源 AI 智能体技能仓库索引，收录 928+ 个仓库。按技能、领域、厂商类型、星标搜索，直达源头。MIT 协议。",
   },
   "meta.ogTitle": { en: "AI-SKILL · open-source skill index", zh: "AI-SKILL · 开源技能索引" },
   "meta.ogDescription": {
