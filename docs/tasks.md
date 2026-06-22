@@ -42,8 +42,8 @@
 | I2  | 索引元数据定时刷新（stars / license / pushed_at / archived） | 高     | Index / Data + Tooling | 已完成 | `.github/workflows/scheduled-sync.yml` 每周运行并自动提 PR |
 | I3  | 死链自动检测与告警                                           | 高     | Index / Data + Tooling | 已完成 | 每周 `check-links.py` 跑一遍，失败自动开 issue             |
 | I4  | 外部仓库 `skills` 字段补全与质量校验                         | 中     | Index / Data           | 已完成 | 100% 仓库有非空 `skills` 列表；已移除未使用的 `subgroup` 字段 |
-| I5  | 分类体系review（49 个子分类是否够用）                        | 中     | Content + Index        | 待认领 | 开 RFC issue 收集反馈，必要时拆分/合并                     |
-| I6  | 外部索引搜索支持拼写建议                                     | 低     | Frontend               | 待认领 | 搜索无结果时给出 "Did you mean"                            |
+| I5  | 分类体系review（49 个子分类是否够用）                        | 中     | Content + Index        | 进行中 | RFC 草案已写入 docs/rfc/classification-review.md；待提交 issue 收集反馈 |
+| I6  | 外部索引搜索支持拼写建议                                     | 低     | Frontend               | 已完成 | 搜索无结果时给出 "Did you mean"；基于 Levenshtein 距离      |
 
 ### 2.3 前端 / Frontend
 
@@ -60,7 +60,7 @@
 | F9  | 暗色模式对比度与焦点状态审计       | 中     | Design / UX + Security/QA | 已完成 | 焦点环可见；对比度待后续设计系统迭代                            |
 | F10 | 空状态 / 错误状态插画与文案        | 中     | Design / UX + Docs        | 已完成 | 404、无结果、加载失败统一使用 `.empty-state` / `.error-state`   |
 | F11 | 性能审计与优化（Lighthouse 90+）   | 中     | Frontend                  | 已完成 | JSON 压缩 30%+；字体 preload；404 页移除 Google Fonts；preconnect 已加 |
-| F12 | PWA 离线缓存（可选）               | 低     | Frontend                  | 待认领 | 可安装、离线能浏览已访问过的技能                                |
+| F12 | PWA 离线缓存（可选）               | 低     | Frontend                  | 已完成 | manifest + Service Worker；离线可浏览已缓存外壳与静态资源      |
 
 ### 2.4 自动化 / Automation
 
@@ -81,7 +81,7 @@
 | O2  | 招募 Design / UX 贡献者                               | 高     | Project Lead + Community | **急需** | 至少 1 位设计师加入并产出 1 套改进             |
 | O3  | 贡献者 onboarding 流程跑通                            | 高     | Community                | 待认领   | 外部贡献者的第一个 PR 能在 7 天内被合并        |
 | O4  | 上游仓库作者认领机制                                  | 中     | Community + Content      | 已完成   | 新增 upstream-claim.yml 与 docs/upstream-claim.md；含 10 个首批目标与邀请模板 |
-| O5  | 每月社区更新（newsletter / release notes）            | 中     | Community                | 待认领   | 连续 3 个月发布月度更新                        |
+| O5  | 每月社区更新（newsletter / release notes）            | 中     | Community                | 进行中   | docs/monthly-update.md + 模板 + issue 模板已建立；需连续 3 个月发布 |
 | O6  | 行为准则（CODE_OF_CONDUCT.md）落地                    | 低     | Project Lead + Community | 已完成   | 明确举报渠道与处理流程                         |
 
 ### 2.6 质量 / Quality
@@ -113,7 +113,7 @@
 | T2  | README 补充质量与自动化说明             | 中     | Docs                      | 已完成 | README 增加“质量与自动化”章节                       |
 | T3  | 贡献者指南更新（加入 Design / UX 路径） | 中     | Community + Docs          | 已完成 | CONTRIBUTING.md 里写明设计稿如何提交                |
 | T4  | 错误提示与 aria 标签全量 review         | 中     | Docs / i18n + Security/QA | 已完成 | 列表/外部索引搜索带 `aria-live`，错误提示已中英双语 |
-| T5  | 视频/动图快速上手指南                   | 低     | Docs / Community          | 待认领 | README 或 docs/quickstart.md 嵌入 GIF/截图          |
+| T5  | 视频/动图快速上手指南                   | 低     | Docs / Community          | 进行中 | docs/quickstart.md 已创建；待嵌入 GIF/截图与录制说明 |
 
 ---
 

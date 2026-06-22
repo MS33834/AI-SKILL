@@ -1,0 +1,60 @@
+name: Quarterly skill review
+description: Track the quarterly review of stable skills and any demotion decisions
+labels: ["quarterly-review", "content", "quality"]
+body:
+  - type: input
+    id: quarter
+    attributes:
+      label: Quarter
+      description: e.g. 2026Q3
+      placeholder: "2026Q3"
+    validations:
+      required: true
+
+  - type: input
+    id: reviewer
+    attributes:
+      label: Reviewer
+      description: Maintainer running the review
+      placeholder: "@username"
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Paste the output of `python scripts/quarterly-review.py`
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: skills-to-fix
+    attributes:
+      label: Skills to fix
+      description: List skills that can be repaired instead of demoted
+      placeholder: |
+        - [ ] `code-review` — missing `# When NOT to use` section
+        - [ ] `cli-builder` — stale (updated > 90 days ago)
+    validations:
+      required: false
+
+  - type: textarea
+    id: skills-to-demote
+    attributes:
+      label: Skills to demote
+      description: List skills proposed for demotion from stable
+      placeholder: |
+        - `doc-coauthoring` -> beta (outdated examples)
+        - `browser-ml-in-js` -> experimental (unmaintained)
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Any additional context or decisions made during the review
+    validations:
+      required: false

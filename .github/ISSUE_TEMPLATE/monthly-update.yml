@@ -1,0 +1,75 @@
+name: Monthly community update
+description: Track and publish the monthly AI-SKILL community update / newsletter
+labels: ["monthly-update", "community", "docs"]
+body:
+  - type: input
+    id: month
+    attributes:
+      label: Month
+      description: e.g. 2026-07
+      placeholder: "2026-07"
+    validations:
+      required: true
+
+  - type: input
+    id: author
+    attributes:
+      label: Author
+      description: Maintainer responsible for the update
+      placeholder: "@username"
+    validations:
+      required: true
+
+  - type: textarea
+    id: highlights
+    attributes:
+      label: Highlights
+      description: 3-5 bullet points summarizing the month
+    validations:
+      required: true
+
+  - type: textarea
+    id: new-skills
+    attributes:
+      label: New / upgraded skills
+      description: List new skills and quality upgrades this month
+      placeholder: |
+        New:
+        - `slug` — description
+
+        Upgraded:
+        - `slug` beta -> stable
+    validations:
+      required: false
+
+  - type: textarea
+    id: index-changes
+    attributes:
+      label: Index changes
+      description: External repo count, featured additions, dead links fixed
+    validations:
+      required: false
+
+  - type: textarea
+    id: community
+    attributes:
+      label: Community
+      description: New contributors, maintainers, closed issues, RFCs
+    validations:
+      required: false
+
+  - type: textarea
+    id: quality
+    attributes:
+      label: Quality & security
+      description: validate-skill.py and security-scan.py results
+    validations:
+      required: false
+
+  - type: textarea
+    id: next-month
+    attributes:
+      label: Next month plan
+      description: Top priorities for the next month
+    validations:
+      required: true

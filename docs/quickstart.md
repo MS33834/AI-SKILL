@@ -91,3 +91,7 @@ URL 加 `?lang=zh` 也能强制切中文，方便分享。
 - 想了解项目全貌，读 [`docs/getting-started.md`](./getting-started.md)
 - 想贡献 skill，看 [`CONTRIBUTING.md`](../CONTRIBUTING.md)
 - 想给上游仓库作者认领自己的仓库，看 [`docs/upstream-claim.md`](./upstream-claim.md)
+
+## 维护说明
+
+本页示意图目前为 AI 生成占位图。如需替换为真实 GIF / 截图，请参考 [`docs/quickstart-recording.md`](./quickstart-recording.md) 与 [`scripts/capture-screenshots.py`](../scripts/capture-screenshots.py)。
