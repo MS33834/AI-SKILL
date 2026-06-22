@@ -143,6 +143,7 @@ const STRINGS = {
   "filter.plat.cursor": { en: "Cursor", zh: "Cursor" },
   "filter.plat.continue": { en: "Continue", zh: "Continue" },
   "filter.group": { en: "group", zh: "分组" },
+  "filter.clear": { en: "Clear filters", zh: "清空筛选" },
   "empty.noMatch": {
     en: "No skills match. Try a different search or clear filters.",
     zh: "没有匹配的技能。换个关键词或清空筛选条件。",
@@ -164,6 +165,8 @@ const STRINGS = {
   "detail.back": { en: "back to list", zh: "返回列表" },
   "detail.bilingual": { en: "中文", zh: "中文" },
   "detail.bilingualEn": { en: "English", zh: "English" },
+  "detail.bilingual.toggleToEn": { en: "Show original English", zh: "查看英文原文" },
+  "detail.bilingual.toggleToZh": { en: "Show Chinese content", zh: "查看中文内容" },
   "detail.source": { en: "source", zh: "来源" },
   "detail.origin": { en: "origin", zh: "来源" },
   "detail.noCommit": { en: "no commit", zh: "无 commit" },
@@ -179,6 +182,7 @@ const STRINGS = {
   "detail.prompt": { en: "Prompt", zh: "Prompt" },
   "detail.copy": { en: "Copy prompt", zh: "复制 Prompt" },
   "detail.copied": { en: "Copied", zh: "已复制" },
+  "detail.copyFailed": { en: "Copy failed", zh: "复制失败" },
   "detail.download": { en: "Download .md", zh: "下载 .md" },
   "detail.copyCode": { en: "Copy", zh: "复制" },
   "detail.related": { en: "More from {cat}", zh: "同分类更多" },
@@ -197,6 +201,10 @@ const STRINGS = {
   "bundle.download": { en: "Download .zip", zh: "下载 .zip" },
   "bundle.building": { en: "Building…", zh: "打包中…" },
   "bundle.failed": { en: "Bundle failed: {msg}", zh: "打包失败：{msg}" },
+  "bundle.partialFailed": {
+    en: "Some skills failed to download but the rest have been bundled: {slugs}",
+    zh: "部分技能下载失败，其余技能已打包：{slugs}",
+  },
 
   // ----- 404 / not found -----
   "nf.code": { en: "404 · skill not found", zh: "404 · 找不到该技能" },

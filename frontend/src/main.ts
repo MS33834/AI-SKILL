@@ -24,6 +24,19 @@ import "@fontsource/jetbrains-mono/500.css";
 import "@fontsource/fraunces/500.css";
 import "@fontsource/fraunces/700.css";
 
+// Start fetching the two JSON payloads as early as possible.
+// index.html already emits <link rel="preload"> for them, so
+// these fetch() calls will reuse the in-flight network requests.
+function prefetchJSON(url: string) {
+  if (typeof fetch === "function") {
+    fetch(url).catch(() => {
+      // ignored
+    });
+  }
+}
+prefetchJSON(`${import.meta.env.BASE_URL}skills.json`);
+prefetchJSON(`${import.meta.env.BASE_URL}external-repos.json`);
+
 const main = () => document.querySelector<HTMLElement>("#main")!;
 let cachedIndex: SkillIndex | null = null;
 const skillCache = new Map<string, Skill>();
@@ -53,6 +66,29 @@ async function loadSkill(slug: string): Promise<Skill | null> {
   const s = (await r.json()) as Skill;
   skillCache.set(slug, s);
   return s;
+}
+
+// Move focus into the new page content after a route change.
+// Prefer the page's own h1 so screen-reader users hear the page
+// title; otherwise fall back to the main container.
+function focusMainContent(mainEl: HTMLElement) {
+  const h1 = mainEl.querySelector("h1");
+  const target = h1 ?? mainEl;
+  if (target.getAttribute("tabindex") !== "-1") {
+    target.setAttribute("tabindex", "-1");
+  }
+  (target as HTMLElement).focus({ preventScroll: true });
+}
+
+// Announce the current page title via a persistent aria-live region.
+function announceRoute(title?: string) {
+  const announcer = document.getElementById("route-announcer");
+  if (!announcer) return;
+  // Clear first so consecutive routes with the same title still get announced.
+  announcer.textContent = "";
+  requestAnimationFrame(() => {
+    announcer.textContent = title ?? document.title;
+  });
 }
 
 async function route() {
@@ -117,6 +153,8 @@ async function route() {
     }
     // Scroll to top on route change (unless the user is mid-click)
     window.scrollTo({ top: 0, behavior: "instant" });
+    focusMainContent(mainEl);
+    announceRoute();
   } catch (e) {
     document.title = "Error — AI-SKILL";
     mainEl.innerHTML = `
@@ -133,6 +171,8 @@ async function route() {
     if (import.meta.env.DEV) {
       console.error(e);
     }
+    focusMainContent(mainEl);
+    announceRoute();
   }
 }
 

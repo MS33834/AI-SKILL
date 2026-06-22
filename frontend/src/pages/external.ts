@@ -120,11 +120,11 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
 
       <div class="ext-toolbar" role="search">
         <input type="search" id="ext-search" value="${escAttr(initialQ)}" placeholder="${escAttr(t("external.search.ph"))}" aria-label="${escAttr(t("external.search.ph"))}" />
-        <div class="ext-views" role="tablist">
-          <button class="ext-view-btn" data-view="domain" role="tab" aria-selected="true">${escHtml(t("external.view.domain"))}</button>
-          <button class="ext-view-btn" data-view="vendor" role="tab">${escHtml(t("external.view.vendor"))}</button>
-          <button class="ext-view-btn" data-view="category" role="tab">${escHtml(t("external.view.category"))}</button>
-          <button class="ext-view-btn" data-view="stars" role="tab">${escHtml(t("external.view.stars"))}</button>
+        <div class="ext-views" role="group" aria-label="View by">
+          <button class="ext-view-btn" data-view="domain" aria-pressed="true">${escHtml(t("external.view.domain"))}</button>
+          <button class="ext-view-btn" data-view="vendor">${escHtml(t("external.view.vendor"))}</button>
+          <button class="ext-view-btn" data-view="category">${escHtml(t("external.view.category"))}</button>
+          <button class="ext-view-btn" data-view="stars">${escHtml(t("external.view.stars"))}</button>
         </div>
         <select id="ext-vendor-filter" aria-label="${escAttr(t("external.filter.vendor"))}">
           <option value="">${escHtml(t("external.filter.all"))}</option>
@@ -153,10 +153,10 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
   let autoLoadEnabled = false;
   let sentinel: HTMLElement | null = null;
 
-  // Sync the active tab with the URL state
+  // Sync the active button with the URL state
   viewBtns.forEach((btn) => {
     const active = btn.dataset.view === currentView;
-    btn.setAttribute("aria-selected", active ? "true" : "false");
+    btn.setAttribute("aria-pressed", active ? "true" : "false");
   });
 
   // Auto-load is only enabled after the user has scrolled once. This
@@ -326,9 +326,9 @@ export async function renderExternal(root: HTMLElement): Promise<void> {
     viewBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
         viewBtns.forEach((b) => {
-          b.setAttribute("aria-selected", "false");
+          b.setAttribute("aria-pressed", "false");
         });
-        btn.setAttribute("aria-selected", "true");
+        btn.setAttribute("aria-pressed", "true");
         currentView = btn.dataset.view as ViewMode;
         visibleCount = PAGE_SIZE;
         paint();

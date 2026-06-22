@@ -28,6 +28,8 @@
   --s-8: 64px;
   --s-9: 96px;
 
+  --topbar-height: 56px;
+
   --t-xs: 12px;
   --t-sm: 13px;
   --t-base: 15px;
@@ -225,6 +227,7 @@ h6 {
   position: sticky;
   top: 0;
   z-index: 10;
+  min-height: var(--topbar-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -623,6 +626,9 @@ h6 {
 }
 .filter-bar input[type="search"] {
   flex: 1 1 240px;
+}
+.filter-bar__clear {
+  white-space: nowrap;
 }
 
 .group-toggle {
@@ -1214,7 +1220,7 @@ h6 {
   gap: var(--s-3);
   margin: 0 0 var(--s-4);
   position: sticky;
-  top: 48px;
+  top: var(--topbar-height);
   z-index: 9;
   background: var(--bg);
   padding: var(--s-2) 0;
@@ -1255,12 +1261,12 @@ h6 {
     background 0.15s,
     color 0.15s;
 }
-.ext-view-btn[aria-selected="true"] {
+.ext-view-btn[aria-pressed="true"] {
   background: var(--bg);
   color: var(--ink);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
-.ext-view-btn:hover:not([aria-selected="true"]) {
+.ext-view-btn:hover:not([aria-pressed="true"]) {
   color: var(--ink);
 }
 .ext-toolbar #ext-vendor-filter {
@@ -1947,6 +1953,7 @@ h6 {
   align-items: center;
   flex-wrap: wrap;
   padding: var(--s-3) var(--s-4);
+  padding-bottom: env(safe-area-inset-bottom);
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius-2);
@@ -2207,6 +2214,9 @@ h6 {
 
 /* Very small screens (≤560px) */
 @media (max-width: 560px) {
+  :root {
+    --topbar-height: 72px;
+  }
   .topbar {
     flex-wrap: wrap;
     gap: var(--s-2) var(--s-3);
@@ -2276,6 +2286,7 @@ h6 {
   }
   .filter-bar input[type="search"],
   .filter-bar select,
+  .filter-bar__clear,
   .group-toggle {
     width: 100%;
   }
@@ -2389,18 +2400,10 @@ h6 {
     min-height: 48px;
   }
 
-  /* Remove hover/focus lift effects that don't work well on touch */
+  /* Remove hover lift effects that don't trigger meaningfully on touch */
   .skill-card:hover,
-  .skill-card:focus-visible {
+  .external-card:hover {
     transform: none;
-  }
-  .external-card:hover,
-  .external-card:focus-within {
-    transform: none;
-  }
-  .skill-card:focus-visible,
-  .external-card:focus-within {
-    outline: none;
   }
 
   /* Larger chips for easier tapping */

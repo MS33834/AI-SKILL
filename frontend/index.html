@@ -21,6 +21,8 @@
     <title data-i18n="meta.title">AI-SKILL · open-source skill index</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="preload" href="./skills.json" as="fetch" type="application/json" />
+    <link rel="preload" href="./external-repos.json" as="fetch" type="application/json" />
     <script>
       // Register the service worker for offline support.
       if ("serviceWorker" in navigator) {
@@ -41,6 +43,7 @@
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+    <div id="route-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
     <header class="topbar">
       <a class="topbar__brand" href="#/">
         <svg

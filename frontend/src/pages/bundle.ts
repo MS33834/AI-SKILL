@@ -45,7 +45,7 @@ export async function renderBundle(root: HTMLElement, index: SkillIndex): Promis
         <button class="btn" id="b-select-all" type="button">${escHtml(t("bundle.selectAllVisible"))}</button>
         <button class="btn" id="b-clear" type="button">${escHtml(t("bundle.clear"))}</button>
         <span class="meta-line">
-          <span>${escHtml(t("bundle.selected"))} <strong id="b-count">0</strong></span>
+          <span>${escHtml(t("bundle.selected"))} <strong id="b-count" aria-live="polite" aria-atomic="true">0</strong></span>
         </span>
         <button class="btn btn--primary" id="b-download" type="button" disabled>${escHtml(t("bundle.download"))}</button>
       </div>
@@ -59,8 +59,26 @@ export async function renderBundle(root: HTMLElement, index: SkillIndex): Promis
   const selAllBtn = root.querySelector<HTMLButtonElement>("#b-select-all")!;
   const clearBtn = root.querySelector<HTMLButtonElement>("#b-clear")!;
 
+  // Make a slug safe to use inside an HTML id/for attribute.
+  function legalId(slug: string): string {
+    return slug.replace(/[^a-zA-Z0-9]/g, "-");
+  }
+
+  // Restore focus after a full list re-render.
+  function restoreFocus(activeId: string | null) {
+    if (!activeId) return;
+    if (activeId === qInput.id) {
+      qInput.focus();
+      return;
+    }
+    const el = document.getElementById(activeId);
+    if (el) el.focus();
+  }
+
   // Build a checkbox list, preserving filter + checked state
   function paint() {
+    const activeId = document.activeElement?.id ?? null;
+
     const q = qInput.value.trim().toLowerCase();
     const filtered = index.skills.filter((s) => {
       if (!q) return true;
@@ -68,6 +86,7 @@ export async function renderBundle(root: HTMLElement, index: SkillIndex): Promis
     });
     if (filtered.length === 0) {
       listEl.innerHTML = emptyStateHtml(t("empty.noResults"));
+      restoreFocus(activeId);
       return;
     }
     // Snapshot which slugs are checked before re-rendering, so a
@@ -78,17 +97,21 @@ export async function renderBundle(root: HTMLElement, index: SkillIndex): Promis
     );
     listEl.innerHTML = filtered
       .map(
-        (s) => `
+        (s) => {
+          const idSlug = legalId(s.slug);
+          return `
       <li>
-        <input type="checkbox" data-slug="${escAttr(s.slug)}" id="chk-${escAttr(s.slug)}"${stillChecked.has(s.slug) ? " checked" : ""} />
-        <label for="chk-${escAttr(s.slug)}" class="bundle-list__slug">${escHtml(s.slug)}</label>
+        <input type="checkbox" data-slug="${escAttr(s.slug)}" id="chk-${idSlug}"${stillChecked.has(s.slug) ? " checked" : ""} />
+        <label for="chk-${idSlug}" class="bundle-list__slug">${escHtml(s.slug)}</label>
         <span class="bundle-list__cat">${escHtml(categoryLabel(s.category))}</span>
         <span class="bundle-list__chips">${platformChipsHtml(s.platforms)}${qualityChipHtml(s.quality)}</span>
         ${s.needs_review ? `<span class="skill-card__review-dot" title="${escAttr(t("reviewDot.title"))}"></span>` : ""}
       </li>
-    `
+    `;
+        }
       )
       .join("");
+    restoreFocus(activeId);
   }
   // Bind the change listener once on listEl — re-binding inside
   // paint() was leaking a handler per keystroke. (B1)
@@ -124,21 +147,59 @@ export async function renderBundle(root: HTMLElement, index: SkillIndex): Promis
     dlBtn.setAttribute("disabled", "true");
     try {
       const zip = new JSZip();
-      // Parallel fetch all selected skills
-      const results = await Promise.all(
-        slugs.map(async (slug) => {
-          const r = await fetch(`${import.meta.env.BASE_URL}skills/${encodeURIComponent(slug)}.json`);
-          if (!r.ok) throw new Error(`fetch ${slug}: ${r.status}`);
-          const s = (await r.json()) as Skill;
-          return { slug, md: skillToMarkdown(s) };
-        })
-      );
+      const CONCURRENCY = 6;
+      const results: { slug: string; md: string }[] = [];
+      const failures: { slug: string; error: string }[] = [];
+
+      for (let i = 0; i < slugs.length; i += CONCURRENCY) {
+        const batch = slugs.slice(i, i + CONCURRENCY);
+        const batchResults = await Promise.all(
+          batch.map(async (slug) => {
+            try {
+              const r = await fetch(`${import.meta.env.BASE_URL}skills/${encodeURIComponent(slug)}.json`);
+              if (!r.ok) throw new Error(`fetch ${slug}: ${r.status}`);
+              const s = (await r.json()) as Skill;
+              return { ok: true as const, slug, md: skillToMarkdown(s) };
+            } catch (e) {
+              return { ok: false as const, slug, error: e instanceof Error ? e.message : String(e) };
+            }
+          })
+        );
+        for (const item of batchResults) {
+          if (item.ok) {
+            results.push({ slug: item.slug, md: item.md });
+          } else {
+            failures.push({ slug: item.slug, error: item.error });
+            if (import.meta.env.DEV) {
+              console.error(`Failed to download skill ${item.slug}: ${item.error}`);
+            }
+          }
+        }
+      }
+
+      if (results.length === 0) {
+        throw new Error(failures.map((f) => `${f.slug}: ${f.error}`).join("; "));
+      }
+
       for (const { slug, md } of results) {
         zip.file(`${slug}/SKILL.md`, md);
       }
       const blob = await zip.generateAsync({ type: "blob" });
       const stamp = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-      triggerBlobDownload(blob, `ai-skill-${slugs.length}-${stamp}.zip`);
+      triggerBlobDownload(blob, `ai-skill-${results.length}-${stamp}.zip`);
+
+      if (failures.length > 0) {
+        const prevErr = listEl.parentElement?.querySelector(".bundle-error");
+        if (prevErr) prevErr.remove();
+        const failedSlugs = failures.map((f) => f.slug).join(", ");
+        listEl.insertAdjacentHTML(
+          "beforebegin",
+          `<div class="error-state" role="alert"><span class="empty-state__title">${escHtml(t("bundle.partialFailed", { slugs: failedSlugs }))}</span></div>`
+        );
+        if (import.meta.env.DEV) {
+          console.error("Bundle partial failures:", failures);
+        }
+      }
     } catch (e) {
       // Clear any previous error message before inserting a new one
       const prevErr = listEl.parentElement?.querySelector(".bundle-error");

@@ -77,6 +77,14 @@ export async function renderDetail(root: HTMLElement, s: Skill, index: SkillInde
     });
   }
   root.querySelector<HTMLButtonElement>("#dl-md")!.addEventListener("click", () => downloadSkill(s));
+  // Bilingual details summary swaps to indicate what clicking will reveal.
+  const bilingualDetails = root.querySelector<HTMLDetailsElement>("#bilingual-details");
+  if (bilingualDetails) {
+    bilingualDetails.addEventListener("toggle", () => {
+      const key = bilingualDetails.open ? "detail.bilingual.toggleToEn" : "detail.bilingual.toggleToZh";
+      bilingualDetails.querySelector("summary")!.textContent = t(key);
+    });
+  }
   // Body sections that come AFTER the frontmatter schema.
   // The H1 string we slice on is the canonical English one —
   // the visible label is the localized one above.
@@ -137,9 +145,10 @@ function hasH1Section(lines: string[], h1: string): boolean {
 function zhBlock(s: Skill): string {
   if (!s.name_zh && !s.description_zh) return "";
   const open = getLocale() === "zh";
+  const summaryKey = open ? "detail.bilingual.toggleToEn" : "detail.bilingual.toggleToZh";
   return `
-    <details class="detail__zh"${open ? " open" : ""}>
-      <summary>${escHtml(t("detail.bilingual"))}</summary>
+    <details class="detail__zh" id="bilingual-details"${open ? " open" : ""}>
+      <summary>${escHtml(t(summaryKey))}</summary>
       ${s.name_zh ? `<p><strong>${escHtml(s.name_zh)}</strong></p>` : ""}
       ${s.description_zh ? `<p>${escHtml(s.description_zh)}</p>` : ""}
     </details>
@@ -331,8 +340,10 @@ function inlineMd(s: string): string {
 }
 
 async function copyAndPulse(btn: HTMLButtonElement, text: string, successLabel: string): Promise<void> {
+  let ok = false;
   try {
     await navigator.clipboard.writeText(text);
+    ok = true;
   } catch {
     // Fallback: select-and-execCommand
     const ta = document.createElement("textarea");
@@ -342,7 +353,9 @@ async function copyAndPulse(btn: HTMLButtonElement, text: string, successLabel: 
     document.body.appendChild(ta);
     ta.select();
     try {
-      document.execCommand("copy");
+      ok = document.execCommand("copy");
+    } catch {
+      ok = false;
     } finally {
       document.body.removeChild(ta);
     }
@@ -355,14 +368,14 @@ async function copyAndPulse(btn: HTMLButtonElement, text: string, successLabel: 
     btn.dataset.originalLabel = btn.textContent ?? "";
   }
   const originalLabel = btn.dataset.originalLabel;
-  btn.textContent = successLabel;
+  btn.textContent = ok ? successLabel : t("detail.copyFailed");
   btn.classList.add("btn--pulse");
   btn.dataset.pulseTimer = String(
     setTimeout(() => {
       btn.textContent = originalLabel;
       btn.classList.remove("btn--pulse");
       delete btn.dataset.pulseTimer;
-    }, 1500)
+    }, ok ? 1500 : 2000)
   );
 }
 

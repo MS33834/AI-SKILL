@@ -189,6 +189,43 @@ async function loadExternalIndex(): Promise<ExternalIndexData> {
   return externalIndexCache;
 }
 
+function cardHtml(s: SkillIndexEntry, i: number, animate: boolean): string {
+  const platChips = platformChipsHtml(s.platforms);
+  const qualityChip = qualityChipHtml(s.quality);
+  // The --i custom property drives the stagger animation defined
+  // in style.css. Inline style is the only way to set a custom
+  // property from a string template without a CSS per-card rule.
+  const name = pickZh(s, "name");
+  const desc = pickZh(s, "description");
+  const enterClass = animate ? " skill-card--enter" : "";
+  return `
+    <a class="skill-card${enterClass}" style="--cat-color: ${escAttr(categoryColor(s.category))}; --i: ${Math.min(i, 15)};" href="#/skill/${escAttr(s.slug)}">
+      <div class="skill-card__head">
+        <span class="skill-card__slug">${escHtml(s.slug)}${s.needs_review ? ` <span class="skill-card__review-dot" title="${escAttr(t("reviewDot.title"))}" aria-label="${escAttr(t("reviewDot.title"))}"></span>` : ""}</span>
+        <span class="skill-card__name">${escHtml(name)}</span>
+      </div>
+      <p class="skill-card__desc">${escHtml(desc)}</p>
+      <div class="skill-card__meta">
+        <span>${escHtml(categoryLabel(s.category))}</span>
+        ${platChips}
+        ${qualityChip}
+        <span>${(s.tags ?? []).slice(0, 4).map(escHtml).join(" · ")}</span>
+      </div>
+    </a>
+  `;
+}
+
+// Reuse a single template to turn the static card HTML string into a real
+// element. The element is then moved into a DocumentFragment in `paint` so
+// the live DOM is updated in one batch. Lazy creation keeps the module safe
+// in non-browser contexts (tests, SSR).
+let cardTemplate: HTMLTemplateElement | null = null;
+function cardEl(s: SkillIndexEntry, i: number, animate: boolean): HTMLElement {
+  if (!cardTemplate) cardTemplate = document.createElement("template");
+  cardTemplate.innerHTML = cardHtml(s, i, animate).trim();
+  return cardTemplate.content.firstElementChild as HTMLElement;
+}
+
 export async function renderList(root: HTMLElement, index: SkillIndex): Promise<void> {
   // Initial filter state from URL
   const url = new URL(window.location.href);
@@ -259,6 +296,7 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
     <div class="container-wide">
       <div class="filter-bar" role="search">
         <input type="search" id="filter-q" placeholder="${escAttr(t("filter.search.ph"))}" value="${escAttr(initialQ)}" aria-label="${escAttr(t("filter.search.ph"))}" />
+        <button type="button" id="filter-clear" class="btn btn--ghost filter-bar__clear" hidden>${escHtml(t("filter.clear"))}</button>
         <select id="filter-cat" aria-label="${escAttr(t("filter.cat.label"))}">
           <option value="">${escHtml(t("filter.cat.all"))}</option>
         </select>
@@ -295,8 +333,14 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
   const groupCb = root.querySelector<HTMLInputElement>("#filter-group")!;
 
   const qInput = root.querySelector<HTMLInputElement>("#filter-q")!;
+  const clearBtn = root.querySelector<HTMLButtonElement>("#filter-clear")!;
   const cards = root.querySelector<HTMLDivElement>("#cards")!;
   const liveEl = root.querySelector<HTMLElement>("#list-live")!;
+
+  function updateClearButton() {
+    const hasFilters = qInput.value.trim() !== "" || catSel.value !== "" || platSel.value !== "";
+    clearBtn.hidden = !hasFilters;
+  }
 
   // Only play the entrance animation on the very first paint. After
   // that, filtering/grouping should update the grid without replaying
@@ -311,11 +355,16 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
     const filtered = index.skills.filter((s) => match(s, q, cat, plat));
     // Update URL (no reload) so links share state
     const u = new URL(window.location.href);
-    u.searchParams.set("q", q);
-    u.searchParams.set("category", cat);
-    u.searchParams.set("platform", plat);
+    if (q) u.searchParams.set("q", q);
+    else u.searchParams.delete("q");
+    if (cat) u.searchParams.set("category", cat);
+    else u.searchParams.delete("category");
+    if (plat) u.searchParams.set("platform", plat);
+    else u.searchParams.delete("platform");
     u.searchParams.set("group", grouped ? "1" : "0");
     history.replaceState(null, "", u.toString());
+
+    updateClearButton();
 
     liveEl.textContent = t("aria.resultsCount", { n: filtered.length });
     if (filtered.length === 0) {
@@ -323,6 +372,10 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
       firstPaint = false;
       return;
     }
+
+    // Batch all card insertions through a DocumentFragment to avoid
+    // repeated reflows while still preserving the existing card HTML.
+    const fragment = document.createDocumentFragment();
     if (grouped && !cat) {
       // Group by category, ordered by descending count.
       const byCat = new Map<string, SkillIndexEntry[]>();
@@ -333,25 +386,34 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
       }
       const order = Array.from(byCat.entries()).sort((a, b) => b[1].length - a[1].length);
       let i = 0;
-      cards.innerHTML = order
-        .map(
-          ([c, list]) => `
-        <section class="cat-group">
-          <header class="cat-group__head">
-            <h2 class="cat-group__title">${escHtml(categoryLabel(c))}</h2>
-            <span class="cat-group__count">${escHtml(t(list.length === 1 ? "categoryCount.one" : "categoryCount.other", { n: list.length }))}</span>
-          </header>
-          <div class="cards">
-            ${list.map((s) => cardHtml(s, i++, firstPaint)).join("")}
-          </div>
-        </section>
-      `
-        )
-        .join("");
+      for (const [c, list] of order) {
+        const section = document.createElement("section");
+        section.className = "cat-group";
+        const head = document.createElement("header");
+        head.className = "cat-group__head";
+        head.innerHTML = `
+          <h2 class="cat-group__title">${escHtml(categoryLabel(c))}</h2>
+          <span class="cat-group__count">${escHtml(t(list.length === 1 ? "categoryCount.one" : "categoryCount.other", { n: list.length }))}</span>
+        `;
+        const grid = document.createElement("div");
+        grid.className = "cards";
+        for (const s of list) {
+          grid.appendChild(cardEl(s, i++, firstPaint));
+        }
+        section.appendChild(head);
+        section.appendChild(grid);
+        fragment.appendChild(section);
+      }
     } else {
+      const grid = document.createElement("div");
+      grid.className = "cards";
       let i = 0;
-      cards.innerHTML = `<div class="cards">${filtered.map((s) => cardHtml(s, i++, firstPaint)).join("")}</div>`;
+      for (const s of filtered) {
+        grid.appendChild(cardEl(s, i++, firstPaint));
+      }
+      fragment.appendChild(grid);
     }
+    cards.replaceChildren(fragment);
     firstPaint = false;
   }
 
@@ -359,9 +421,29 @@ export async function renderList(root: HTMLElement, index: SkillIndex): Promise<
   catSel.addEventListener("change", paint);
   platSel.addEventListener("change", paint);
   groupCb.addEventListener("change", paint);
+  clearBtn.addEventListener("click", () => {
+    qInput.value = "";
+    catSel.value = "";
+    platSel.value = "";
+    paint();
+    qInput.focus();
+  });
 
   paint();
   qInput.focus();
+}
+
+// Cache lowercased search blobs so filtering never re-assembles the same
+// string on every keystroke. The index is static after load, so a WeakMap
+// keeps the cache tied to the entry lifecycle.
+const searchBlobCache = new WeakMap<SkillIndexEntry, string>();
+function getSearchBlob(s: SkillIndexEntry): string {
+  let blob = searchBlobCache.get(s);
+  if (blob === undefined) {
+    blob = buildSearchBlob(s);
+    searchBlobCache.set(s, blob);
+  }
+  return blob;
 }
 
 function match(s: SkillIndexEntry, q: string, cat: string, plat: string): boolean {
@@ -377,33 +459,9 @@ function match(s: SkillIndexEntry, q: string, cat: string, plat: string): boolea
   if (q) {
     // Search the localized blob too — so a Chinese query like
     // "浏览器" still finds browser-ml-in-js via its name_zh.
-    if (!buildSearchBlob(s).includes(q)) return false;
+    if (!getSearchBlob(s).includes(q)) return false;
   }
   return true;
 }
 
-function cardHtml(s: SkillIndexEntry, i: number, animate: boolean): string {
-  const platChips = platformChipsHtml(s.platforms);
-  const qualityChip = qualityChipHtml(s.quality);
-  // The --i custom property drives the stagger animation defined
-  // in style.css. Inline style is the only way to set a custom
-  // property from a string template without a CSS per-card rule.
-  const name = pickZh(s, "name");
-  const desc = pickZh(s, "description");
-  const enterClass = animate ? " skill-card--enter" : "";
-  return `
-    <a class="skill-card${enterClass}" style="--cat-color: ${escAttr(categoryColor(s.category))}; --i: ${Math.min(i, 15)};" href="#/skill/${escAttr(s.slug)}">
-      <div class="skill-card__head">
-        <span class="skill-card__slug">${escHtml(s.slug)}${s.needs_review ? ` <span class="skill-card__review-dot" title="${escAttr(t("reviewDot.title"))}" aria-label="${escAttr(t("reviewDot.title"))}"></span>` : ""}</span>
-        <span class="skill-card__name">${escHtml(name)}</span>
-      </div>
-      <p class="skill-card__desc">${escHtml(desc)}</p>
-      <div class="skill-card__meta">
-        <span>${escHtml(categoryLabel(s.category))}</span>
-        ${platChips}
-        ${qualityChip}
-        <span>${(s.tags ?? []).slice(0, 4).map(escHtml).join(" · ")}</span>
-      </div>
-    </a>
-  `;
-}
+
