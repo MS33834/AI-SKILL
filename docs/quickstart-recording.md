@@ -58,7 +58,14 @@ ffmpeg -i input.mov -vf "fps=10,scale=1280:-1:flags=lanczos,split[s0][s1];[s0]pa
 
 ## 替换占位图
 
-生成真实素材后，修改 [`docs/quickstart.md`](quickstart.md) 中的图片链接：
+生成真实素材后，修改 [`docs/quickstart.md`](quickstart.md) 中的图片链接。当前已生成的素材：
+
+| 场景 | 文件 |
+| ---- | ---- |
+| 首页 Hero / Featured / 统计条 | `docs/assets/quickstart/homepage.gif` |
+| 外部索引搜索 `rag` | `docs/assets/quickstart/search-rag.gif` |
+| `code-review` skill 详情 | `docs/assets/quickstart/skill-detail.gif` |
+| Bundle 下载 | `docs/assets/quickstart/bundle-download.gif` |
 
 ```markdown
 ![homepage-hero](../assets/quickstart/homepage.gif)

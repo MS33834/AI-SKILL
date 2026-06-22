@@ -14,8 +14,7 @@
 - **Featured 精选**：4 个本地常用 skill + 10 个高影响力上游仓库
 - **统计条**：本地 skill 数、分类数、索引仓库数、领域数
 
-> 动图占位：首页滚动展示 Hero → Featured → 统计条
-> `![homepage-hero](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Minimal+modern+web+homepage+hero+for+AI+skill+index%2C+warm+orange+accent%2C+clean+typography%2C+search+bar%2C+featured+cards+grid%2C+light+background%2C+professional+UI+screenshot&image_size=landscape_16_9)`
+![homepage-hero](../assets/quickstart/homepage.gif)
 
 ---
 
@@ -28,8 +27,7 @@
 3. **卡片展开**：每张卡列出该仓库提供的具体技能，直接判断是不是你要的
 4. **直达源头**：点卡片上的 "在 GitHub 上查看" 跳转上游仓库
 
-> 动图占位：在 Index 页搜索 `rag`，切换 By Category 视角，点一张卡片跳转
-> `![search-index](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Search+results+page+for+AI+skill+repository+index%2C+search+bar+with+rag+query%2C+category+grouped+cards%2C+tag+chips%2C+stars+and+license+meta%2C+modern+UI+screenshot&image_size=landscape_16_9)`
+![search-rag](../assets/quickstart/search-rag.gif)
 
 小提示：如果输错词，页面会提示 **"你是不是想搜：xxx"**，点击即可自动纠正。
 
@@ -43,8 +41,7 @@
 - 顶部有 **复制按钮**，可直接复制整份提示词
 - 底部有 **输入输出 schema**，告诉你这个 skill 需要什么、返回什么
 
-> 动图占位：点开 `code-review` skill，滚动阅读，点击复制按钮
-> `![skill-detail](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Skill+detail+page+UI+showing+markdown+prompt+content%2C+code+review+skill%2C+copy+button%2C+input+output+schema+section%2C+clean+readable+typography%2C+light+background&image_size=landscape_16_9)`
+![skill-detail](../assets/quickstart/skill-detail.gif)
 
 ---
 
@@ -73,8 +70,7 @@ python scripts/install-skill.py code-review --target /path/to/skills
 2. 勾选你需要的 skill
 3. 点 **Download ZIP** 下载
 
-> 动图占位：Bundle 页面勾选 3 个 skill，点下载
-> `![bundle-download](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Bundle+page+UI+with+checkbox+list+of+skills%2C+sticky+download+bar%2C+selected+count%2C+modern+minimal+design%2C+light+background%2C+professional+screenshot&image_size=landscape_16_9)`
+![bundle-download](../assets/quickstart/bundle-download.gif)
 
 ---
 
@@ -94,4 +90,4 @@ URL 加 `?lang=zh` 也能强制切中文，方便分享。
 
 ## 维护说明
 
-本页示意图目前为 AI 生成占位图。如需替换为真实 GIF / 截图，请参考 [`docs/quickstart-recording.md`](./quickstart-recording.md) 与 [`scripts/capture-screenshots.py`](../scripts/capture-screenshots.py)。
+本页 GIF 素材已替换为真实生成的 UI 示意动图（源文件见 [`docs/assets/quickstart/`](../assets/quickstart/)）。如需重新生成或录制真实浏览器操作，请参考 [`docs/quickstart-recording.md`](./quickstart-recording.md) 与 [`scripts/capture-screenshots.py`](../scripts/capture-screenshots.py)。

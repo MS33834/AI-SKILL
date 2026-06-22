@@ -42,7 +42,7 @@
 | I2  | 索引元数据定时刷新（stars / license / pushed_at / archived） | 高     | Index / Data + Tooling | 已完成 | `.github/workflows/scheduled-sync.yml` 每周运行并自动提 PR |
 | I3  | 死链自动检测与告警                                           | 高     | Index / Data + Tooling | 已完成 | 每周 `check-links.py` 跑一遍，失败自动开 issue             |
 | I4  | 外部仓库 `skills` 字段补全与质量校验                         | 中     | Index / Data           | 已完成 | 100% 仓库有非空 `skills` 列表；已移除未使用的 `subgroup` 字段 |
-| I5  | 分类体系review（49 个子分类是否够用）                        | 中     | Content + Index        | 进行中 | RFC 草案已写入 docs/rfc/classification-review.md；待提交 issue 收集反馈 |
+| I5  | 分类体系review（49 个子分类是否够用）                        | 中     | Content + Index        | 已完成 | 已合并 4 个低活跃分类（customer-support→applications、legal→applications、video-generation→multimodal、case-studies→awesome-lists），分类数从 49 降至 45；脚本 `scripts/merge-categories.py` 已更新并同步 `frontend/public/external-repos.json` |
 | I6  | 外部索引搜索支持拼写建议                                     | 低     | Frontend               | 已完成 | 搜索无结果时给出 "Did you mean"；基于 Levenshtein 距离      |
 
 ### 2.3 前端 / Frontend
@@ -113,7 +113,7 @@
 | T2  | README 补充质量与自动化说明             | 中     | Docs                      | 已完成 | README 增加“质量与自动化”章节                       |
 | T3  | 贡献者指南更新（加入 Design / UX 路径） | 中     | Community + Docs          | 已完成 | CONTRIBUTING.md 里写明设计稿如何提交                |
 | T4  | 错误提示与 aria 标签全量 review         | 中     | Docs / i18n + Security/QA | 已完成 | 列表/外部索引搜索带 `aria-live`，错误提示已中英双语 |
-| T5  | 视频/动图快速上手指南                   | 低     | Docs / Community          | 进行中 | docs/quickstart.md 已创建；待嵌入 GIF/截图与录制说明 |
+| T5  | 视频/动图快速上手指南                   | 低     | Docs / Community          | 已完成 | docs/quickstart.md 已嵌入 4 张真实生成 GIF（首页、搜索、skill 详情、Bundle 下载），源文件位于 docs/assets/quickstart/；更新 docs/quickstart-recording.md |
 
 ---
 

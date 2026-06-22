@@ -186,12 +186,6 @@ categories:
   description: Stable Diffusion front-ends, diffusion model code, image editing.
   description_zh: Stable Diffusion 前端、扩散模型代码、图像编辑。
   order: 31
-- slug: video-generation
-  name: Video Generation
-  name_zh: 视频生成
-  description: Text-to-video, video editing, animation models.
-  description_zh: 文生视频、视频编辑、动画模型。
-  order: 32
 - slug: audio-speech
   name: Audio & Speech
   name_zh: 音频与语音
@@ -234,12 +228,6 @@ categories:
   description: Natural-language to SQL, data analysts, BI agents.
   description_zh: 自然语言转 SQL、数据分析师、BI agent。
   order: 39
-- slug: customer-support
-  name: Customer Support & CX
-  name_zh: 客服与客户体验
-  description: Support copilots, ticket triage, voice bots, knowledge-base assistants.
-  description_zh: 客服 copilot、工单分诊、语音机器人、知识库助手。
-  order: 40
 - slug: education
   name: Education & Tutoring
   name_zh: 教育与辅导
@@ -264,12 +252,6 @@ categories:
   description: Quant copilots, financial RAG, trading agents, risk models.
   description_zh: 量化 copilot、金融 RAG、交易 agent、风险模型。
   order: 44
-- slug: legal
-  name: Legal & Compliance
-  name_zh: 法律与合规
-  description: Contract analysis, legal RAG, compliance copilots.
-  description_zh: 合同分析、法律 RAG、合规 copilot。
-  order: 45
 - slug: translation
   name: Translation & Multilingual
   name_zh: 翻译与多语种
@@ -288,12 +270,6 @@ categories:
   description: Curated awesome-* lists that index the AI/ML ecosystem.
   description_zh: 索引 AI/ML 生态的 awesome-* 列表。
   order: 48
-- slug: case-studies
-  name: Case Studies & Reports
-  name_zh: 案例研究与报告
-  description: Production case studies, post-mortems, and industry reports.
-  description_zh: 生产案例、复盘、行业报告。
-  order: 49
 skills:
 - slug: anthropic-cookbook
   title: Claude Cookbook
@@ -4110,7 +4086,7 @@ skills:
   title_zh: HunyuanVideo
   source: Tencent-Hunyuan/HunyuanVideo
   source_url: https://github.com/Tencent-Hunyuan/HunyuanVideo
-  category: video-generation
+  category: multimodal
   tags:
   - hunyuan-video
   - tencent
@@ -4692,7 +4668,7 @@ skills:
   title_zh: 构建有效 Agent（Anthropic）
   source: anthropic.com
   source_url: https://www.anthropic.com/research/building-effective-agents
-  category: case-studies
+  category: awesome-lists
   tags:
   - anthropic
   - essay
@@ -4718,7 +4694,7 @@ skills:
   title_zh: 构建 Agent 实战指南（OpenAI）
   source: openai.com
   source_url: https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf
-  category: case-studies
+  category: awesome-lists
   tags:
   - openai
   - guide
@@ -4744,7 +4720,7 @@ skills:
   title_zh: Agent Development Kit 文档（Google）
   source: google/adk-docs
   source_url: https://google.github.io/adk-docs/
-  category: case-studies
+  category: awesome-lists
   tags:
   - google
   - whitepaper
@@ -4771,7 +4747,7 @@ skills:
   title_zh: 注释版 Transformer
   source: harvard.edu
   source_url: http://nlp.seas.harvard.edu/annotated-transformer/
-  category: case-studies
+  category: awesome-lists
   tags:
   - paper
   - transformer
@@ -4797,7 +4773,7 @@ skills:
   title_zh: RAG 架构（LlamaIndex）
   source: llamaindex.ai
   source_url: https://docs.llamaindex.ai/en/latest/optimizing/production_rag.html
-  category: case-studies
+  category: awesome-lists
   tags:
   - llamaindex
   - rag
@@ -4822,7 +4798,7 @@ skills:
   title_zh: Vellum LLM 排行榜
   source: vellum.ai
   source_url: https://www.vellum.ai/llm-leaderboard
-  category: case-studies
+  category: awesome-lists
   tags:
   - leaderboard
   - benchmark
@@ -4849,7 +4825,7 @@ skills:
   title_zh: Context Engineering 实战（Anthropic）
   source: anthropic.com
   source_url: https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
-  category: case-studies
+  category: awesome-lists
   tags:
   - anthropic
   - context-engineering
@@ -4874,7 +4850,7 @@ skills:
   title_zh: Agents 课程（Hugging Face）
   source: huggingface.co
   source_url: https://github.com/huggingface/agents-course
-  category: case-studies
+  category: awesome-lists
   tags:
   - huggingface
   - course
@@ -4900,7 +4876,7 @@ skills:
   title_zh: OWASP LLM 应用 Top 10
   source: owasp.org
   source_url: https://owasp.org/www-project-top-10-for-large-language-model-applications/
-  category: case-studies
+  category: awesome-lists
   tags:
   - owasp
   - security
@@ -4927,7 +4903,7 @@ skills:
   title_zh: Cursor 工程博客
   source: cursor.com
   source_url: https://cursor.com/blog
-  category: case-studies
+  category: awesome-lists
   tags:
   - cursor
   - engineering-blog
@@ -4954,7 +4930,7 @@ skills:
   title_zh: 2025 年 AI 工程盘点（Raschka）
   source: sebastianraschka.com
   source_url: https://magazine.sebastianraschka.com/p/state-of-llms-2025
-  category: case-studies
+  category: awesome-lists
   tags:
   - raschka
   - summary
@@ -4981,7 +4957,7 @@ skills:
   title_zh: DistilBERT（论文）
   source: nlp.seas.harvard.edu
   source_url: https://arxiv.org/abs/1910.01108
-  category: case-studies
+  category: awesome-lists
   tags:
   - distillation
   - bert
@@ -5007,7 +4983,7 @@ skills:
   title_zh: RAG 综述（论文）
   source: arxiv.org
   source_url: https://arxiv.org/abs/2312.10997
-  category: case-studies
+  category: awesome-lists
   tags:
   - rag
   - survey
@@ -5033,7 +5009,7 @@ skills:
   title_zh: Self-Consistency（论文）
   source: arxiv.org
   source_url: https://arxiv.org/abs/2203.11171
-  category: case-studies
+  category: awesome-lists
   tags:
   - paper
   - inference
@@ -5059,7 +5035,7 @@ skills:
   title_zh: Toolformer（论文）
   source: arxiv.org
   source_url: https://arxiv.org/abs/2302.04761
-  category: case-studies
+  category: awesome-lists
   tags:
   - tool-use
   - paper
@@ -5085,7 +5061,7 @@ skills:
   title_zh: DeepSeek-R1 发布说明
   source: api-docs.deepseek.com
   source_url: https://api-docs.deepseek.com/news/news250120
-  category: case-studies
+  category: awesome-lists
   tags:
   - deepseek
   - reasoning
@@ -5110,7 +5086,7 @@ skills:
   title_zh: 2025 AI 现状（Vellum）
   source: vellum.ai
   source_url: https://www.vellum.ai/state-of-ai-2025
-  category: case-studies
+  category: awesome-lists
   tags:
   - vellum
   - state-of-ai
@@ -5314,7 +5290,7 @@ skills:
   title_zh: LLM 推理手册（BentoML）
   source: bentoml.com
   source_url: https://www.bentoml.com/llm/
-  category: case-studies
+  category: awesome-lists
   tags:
   - handbook
   - inference
@@ -18618,7 +18594,7 @@ skills:
   title_zh: Runway
   source: runwayml/runway
   source_url: https://github.com/runwayml/runway
-  category: video-generation
+  category: multimodal
   tags:
   - runway
   - gen
@@ -18642,7 +18618,7 @@ skills:
   title_zh: Open-Sora
   source: hpcaitech/Open-Sora
   source_url: https://github.com/hpcaitech/Open-Sora
-  category: video-generation
+  category: multimodal
   tags:
   - opensora
   - hpc
@@ -18665,7 +18641,7 @@ skills:
   title_zh: VideoCrafter
   source: VideoCrafter/VideoCrafter
   source_url: https://github.com/VideoCrafter/VideoCrafter
-  category: video-generation
+  category: multimodal
   tags:
   - video-crafter
   - t2v
@@ -18688,7 +18664,7 @@ skills:
   title_zh: ModelScopeT2V
   source: modelscope/modelscope
   source_url: https://github.com/modelscope/modelscope
-  category: video-generation
+  category: multimodal
   tags:
   - modelscope
   - t2v
@@ -18711,7 +18687,7 @@ skills:
   title_zh: Show-1
   source: showlab/Show-1
   source_url: https://github.com/showlab/Show-1
-  category: video-generation
+  category: multimodal
   tags:
   - show-1
   - t2v
@@ -20935,7 +20911,7 @@ skills:
   title_zh: Vonage
   source: Vonage/vonage-python-sdk
   source_url: https://github.com/Vonage/vonage-python-sdk
-  category: customer-support
+  category: applications
   tags:
   - vonage
   - contact
@@ -20955,7 +20931,7 @@ skills:
   title_zh: Plivo
   source: plivo/plivo-python
   source_url: https://github.com/plivo/plivo-python
-  category: customer-support
+  category: applications
   tags:
   - plivo
   - voice
@@ -20976,7 +20952,7 @@ skills:
   title_zh: Vocode
   source: vocodedev/vocode-python
   source_url: https://github.com/vocodedev/vocode-python
-  category: customer-support
+  category: applications
   tags:
   - vocode
   - voice
@@ -22283,7 +22259,7 @@ skills:
   title_zh: LegalBench
   source: HazyResearch/legalbench
   source_url: https://github.com/HazyResearch/legalbench
-  category: legal
+  category: applications
   tags:
   - legalbench
   - benchmark
@@ -22303,7 +22279,7 @@ skills:
   title_zh: CaseHold
   source: reglab/casehold
   source_url: https://github.com/reglab/casehold
-  category: legal
+  category: applications
   tags:
   - casehold
   - legal
@@ -22323,7 +22299,7 @@ skills:
   title_zh: 法律 LLM
   source: open-compass/LawBench
   source_url: https://github.com/open-compass/LawBench
-  category: legal
+  category: applications
   tags:
   - law-llm
   - legal
@@ -22344,7 +22320,7 @@ skills:
   title_zh: CourtListener
   source: freelawproject/courtlistener
   source_url: https://github.com/freelawproject/courtlistener
-  category: legal
+  category: applications
   tags:
   - courtlistener
   - legal
