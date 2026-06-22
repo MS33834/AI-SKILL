@@ -371,11 +371,14 @@ async function copyAndPulse(btn: HTMLButtonElement, text: string, successLabel: 
   btn.textContent = ok ? successLabel : t("detail.copyFailed");
   btn.classList.add("btn--pulse");
   btn.dataset.pulseTimer = String(
-    setTimeout(() => {
-      btn.textContent = originalLabel;
-      btn.classList.remove("btn--pulse");
-      delete btn.dataset.pulseTimer;
-    }, ok ? 1500 : 2000)
+    setTimeout(
+      () => {
+        btn.textContent = originalLabel;
+        btn.classList.remove("btn--pulse");
+        delete btn.dataset.pulseTimer;
+      },
+      ok ? 1500 : 2000
+    )
   );
 }
 

@@ -96,10 +96,9 @@ export async function renderBundle(root: HTMLElement, index: SkillIndex): Promis
       Array.from(listEl.querySelectorAll<HTMLInputElement>("input[type=checkbox]:checked")).map((c) => c.dataset.slug!)
     );
     listEl.innerHTML = filtered
-      .map(
-        (s) => {
-          const idSlug = legalId(s.slug);
-          return `
+      .map((s) => {
+        const idSlug = legalId(s.slug);
+        return `
       <li>
         <input type="checkbox" data-slug="${escAttr(s.slug)}" id="chk-${idSlug}"${stillChecked.has(s.slug) ? " checked" : ""} />
         <label for="chk-${idSlug}" class="bundle-list__slug">${escHtml(s.slug)}</label>
@@ -108,8 +107,7 @@ export async function renderBundle(root: HTMLElement, index: SkillIndex): Promis
         ${s.needs_review ? `<span class="skill-card__review-dot" title="${escAttr(t("reviewDot.title"))}"></span>` : ""}
       </li>
     `;
-        }
-      )
+      })
       .join("");
     restoreFocus(activeId);
   }

@@ -463,5 +463,3 @@ function match(s: SkillIndexEntry, q: string, cat: string, plat: string): boolea
   }
   return true;
 }
-
-
