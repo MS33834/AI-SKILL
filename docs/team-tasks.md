@@ -1,6 +1,7 @@
 # AI-SKILL 开发团队分工与执行计划
 
 > 基于 [`docs/tasks.md`](tasks.md) 中所有未完成任务制定的团队分工与里程碑计划。
+> 所有任务由内部核心团队直接执行；社区贡献者开放参与，但不作为交付依赖。
 
 ---
 
@@ -25,9 +26,9 @@
 
 | 任务编号 | 任务内容 | 负责角色 | 协助角色 | 目标时间 |
 |---------|---------|---------|---------|---------|
-| O1 | 招募首批 Maintainer（Content / Frontend / Community） | 产品经理 | 内容运营 | 2 周内 |
-| O2 | 招募 Design / UX 贡献者 | 设计师 / UX | 产品经理 | 2 周内 |
-| O3 | 贡献者 onboarding 流程跑通 | 内容运营 | 产品经理、技术负责人 | 3 周内 |
+| O1 | 任命首批内部 Maintainer（Content / Frontend / Community） | 产品经理 | 内容运营 | 2 周内 |
+| O2 | Design / UX 内部负责人任命并产出设计规范 | 设计师 / UX | 产品经理 | 2 周内 |
+| O3 | 贡献者 onboarding 流程跑通（内部模拟一次完整 PR） | 内容运营 | 产品经理、技术负责人 | 3 周内 |
 
 ### 2.2 中优先级（第一轮迭代）
 
@@ -48,21 +49,22 @@
 | I6 | 外部索引搜索支持拼写建议 | 前端工程师 | 后端 / 数据 | 6 周内 |
 | F12 | PWA 离线缓存（可选） | 前端工程师 | DevOps / 运维 | 6 周内 |
 | Q4 | 季度 skill 复审机制 | 测试 / QA | 内容运营 | 持续进行 |
-| O5 | 每月社区更新（newsletter / release notes） | 产品经理 | 内容运营 | 持续进行 |
+| O5 | 每月发布项目更新（newsletter / release notes） | 产品经理 | 内容运营 | 持续进行 |
 | T5 | 视频/动图快速上手指南 | 内容运营 | 设计师 / UX | 6 周内 |
 
 ---
 
 ## 3. 里程碑规划
 
-### Milestone 1：团队组建（第 1–2 周）
-- 完成首批 Maintainer 招募（O1）
-- 完成 Design / UX 贡献者招募（O2）
+### Milestone 1：内部团队组建（第 1–2 周）
+- 完成首批内部 Maintainer 任命（O1）
+- 完成 Design / UX 内部负责人任命并确认设计规范（O2）
 - 更新 [`GOVERNANCE.md`](../GOVERNANCE.md) maintainer 名单
 - 更新 [`.github/CODEOWNERS`](../.github/CODEOWNERS)
+- 新增 [`docs/core-team.md`](core-team.md) 明确内部主导原则
 
 ### Milestone 2：流程与数据基础（第 3–4 周）
-- 跑通第一个外部贡献者 PR（O3）
+- 跑通一次内部贡献者 onboarding PR（O3）
 - 外部索引 `skills` 字段补全 ≥ 80%（I4） ✅ 已达 100%
 - 分类体系 review 完成并发布结论（I5）
 - 通用化 20 个 skill（C4） ✅ 已完成 23 个
@@ -77,7 +79,7 @@
 - 搜索拼写建议（I6）
 - PWA 离线缓存（F12）
 - 视频/动图上手指南（T5）
-- 建立季度复审机制（Q4）与每月社区更新（O5）
+- 建立季度复审机制（Q4）与每月项目更新（O5）
 
 ---
 

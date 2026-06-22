@@ -24,19 +24,21 @@ Current Project Lead: **badhope**.
 
 ### Maintainers
 
-Maintainers review PRs, enforce standards, and can merge changes.
+Maintainers review PRs, enforce standards, and can merge changes. The project is driven by the internal core team documented in [`docs/core-team.md`](docs/core-team.md); community contributors are welcome but not required for delivery.
 
-| Area              | Responsibilities                                                                    | Status |
-| ----------------- | ----------------------------------------------------------------------------------- | ------ |
-| **Content**       | Review `skills/` PRs, enforce vendor-neutrality and schema rules                    | vacant |
-| **Index / Data**  | Review `external-index/skills.yaml` additions, run link checks, keep metadata fresh | vacant |
-| **Frontend**      | Review UI changes, keep build and typecheck green                                   | vacant |
-| **Design / UX**   | Own the design system, responsive layout, motion, empty states, brand assets        | vacant |
-| **Tooling / Ops** | Maintain CI, validation scripts, and data sync workflows                            | vacant |
-| **Security / QA** | Maintain security scan rules, test coverage, and broken-link monitoring             | vacant |
-| **Community**     | Onboard contributors, manage upstream relations, publish updates                    | vacant |
+| Area              | Internal Owner | Responsibilities                                                                    |
+| ----------------- | -------------- | ----------------------------------------------------------------------------------- |
+| **Content**       | `core-content` | Review `skills/` PRs, enforce vendor-neutrality and schema rules                    |
+| **Index / Data**  | `core-data`    | Review `external-index/skills.yaml` additions, run link checks, keep metadata fresh |
+| **Frontend**      | `core-frontend`| Review UI changes, keep build and typecheck green                                   |
+| **Design / UX**   | `core-design`  | Own the design system, responsive layout, motion, empty states, brand assets        |
+| **Tooling / Ops** | `core-ops`     | Maintain CI, validation scripts, and data sync workflows                            |
+| **Security / QA** | `core-qa`      | Maintain security scan rules, test coverage, and broken-link monitoring             |
+| **Community**     | `core-content` | Onboard contributors, manage upstream relations, publish updates                    |
 
-To become a maintainer, a contributor must:
+Internal maintainers are appointed directly by the Project Lead. External contributors may become maintainers through the standard path below, but the project does not block milestones on external recruitment.
+
+To become a maintainer as an external contributor, a person must:
 
 1. Have at least 3 merged PRs that meaningfully improve the project (docs, skills, code, or ops).
 2. Demonstrate good judgment in reviews and discussions.

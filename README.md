@@ -209,7 +209,7 @@ python scripts/sync-external-index.py   # 重新生成 JSON
 
 ## 贡献
 
-看 `CONTRIBUTING.md`、`GOVERNANCE.md` 和 `docs/generalization-checklist.md`。简短版：
+项目由内部核心团队主导，分工见 [`docs/core-team.md`](docs/core-team.md)。外部贡献者请看 `CONTRIBUTING.md`、`GOVERNANCE.md` 和 `docs/generalization-checklist.md`。简短版：
 
 - 单条 PR
 - 不手动改 `stars` / `license` / `pushed_at`，sync 脚本会自动刷

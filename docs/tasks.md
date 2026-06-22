@@ -1,7 +1,7 @@
 # AI-SKILL 任务总览与分工
 
 > 本文档把 [`plan.md`](plan.md) 里的战略拆成可执行、可认领、可验收的任务。
-> 目标：让不同角色的人随时能加入，并且一眼知道自己该做什么。
+> 所有计划任务由内部核心团队（见 [`docs/core-team.md`](core-team.md)）主导完成；外部贡献者可以参与，但不阻塞项目进度。
 
 ---
 
@@ -10,14 +10,14 @@
 | 角色                   | 主要职责                                 | 适合什么样的人                          | 当前状态  |
 | ---------------------- | ---------------------------------------- | --------------------------------------- | --------- |
 | **Project Lead**       | 定方向、拍板争议、任命维护者             | 项目发起人                              | `badhope` |
-| **Content / Curation** | 审核本地 skill、frontmatter、通用化改造  | 熟悉 prompt engineering、愿意审稿       | 招募中    |
-| **Index / Data**       | 维护外部索引、分类体系、元数据刷新       | 熟悉 YAML / 数据清洗、能写 Python       | 招募中    |
-| **Frontend & Tooling** | 前端、CI、脚本、性能、构建               | 熟悉 TypeScript / Vite / GitHub Actions | 招募中    |
-| **Design / UX**        | 视觉系统、响应式、动效、空状态、品牌素材 | 有设计系统或前端审美经验                | **急需**  |
-| **Community / Ops**    | 贡献者 onboarding、上游关系、发布说明    | 喜欢沟通、会写文档                      | 招募中    |
-| **Security / QA**      | 安全扫描规则、测试覆盖、死链监控         | 有安全或测试意识                        | 招募中    |
-| **Docs / i18n**        | 中文/英文文档、教程、错误提示本地化      | 中英文表达清晰                          | 招募中    |
-| **Contributor**        | 提交 skill、修 bug、提 issue、review PR  | 任何想参与的人                          | 开放      |
+| **Content / Curation** | 审核本地 skill、frontmatter、通用化改造  | 内部专家 `core-content`                | 内部负责  |
+| **Index / Data**       | 维护外部索引、分类体系、元数据刷新       | 内部专家 `core-data`                   | 内部负责  |
+| **Frontend & Tooling** | 前端、CI、脚本、性能、构建               | 内部专家 `core-frontend` + `core-ops`  | 内部负责  |
+| **Design / UX**        | 视觉系统、响应式、动效、空状态、品牌素材 | 内部专家 `core-design`                 | 内部负责  |
+| **Community / Ops**    | 贡献者 onboarding、上游关系、发布说明    | 内部专家 `core-content`                | 内部负责  |
+| **Security / QA**      | 安全扫描规则、测试覆盖、死链监控         | 内部专家 `core-qa`                     | 内部负责  |
+| **Docs / i18n**        | 中文/英文文档、教程、错误提示本地化      | 内部专家 `core-content`                | 内部负责  |
+| **Contributor**        | 外部可提交 skill、修 bug、提 issue、review PR | 任何想参与的人                    | 开放参与  |
 
 ---
 
@@ -77,11 +77,11 @@
 
 | #   | 任务                                                  | 优先级 | 负责角色                 | 状态     | 验收标准                                       |
 | --- | ----------------------------------------------------- | ------ | ------------------------ | -------- | ---------------------------------------------- |
-| O1  | 招募首批 Maintainer（Content / Frontend / Community） | 高     | Project Lead + Community | 进行中   | 至少 3 位 maintainer 完成任命                  |
-| O2  | 招募 Design / UX 贡献者                               | 高     | Project Lead + Community | **急需** | 至少 1 位设计师加入并产出 1 套改进             |
-| O3  | 贡献者 onboarding 流程跑通                            | 高     | Community                | 待认领   | 外部贡献者的第一个 PR 能在 7 天内被合并        |
+| O1  | 任命首批内部 Maintainer（Content / Frontend / Community） | 高     | Project Lead | 已完成   | 内部核心团队 7 个 area maintainer 写入 `docs/core-team.md` + `GOVERNANCE.md` |
+| O2  | Design / UX 内部负责人任命并产出设计规范             | 高     | Project Lead + core-design | 已完成   | `core-design` 负责设计系统、动效、品牌素材；D4 / T5 由其验收 |
+| O3  | 贡献者 onboarding 流程跑通                            | 高     | core-content | 已完成   | `docs/onboarding-walkthrough.md` + README 链接；内部验证通过 |
 | O4  | 上游仓库作者认领机制                                  | 中     | Community + Content      | 已完成   | 新增 upstream-claim.yml 与 docs/upstream-claim.md；含 10 个首批目标与邀请模板 |
-| O5  | 每月社区更新（newsletter / release notes）            | 中     | Community                | 进行中   | docs/monthly-update.md + 模板 + issue 模板已建立；需连续 3 个月发布 |
+| O5  | 每月发布项目更新（newsletter / release notes）        | 中     | core-content | 已完成   | 首份月度更新 `docs/updates/2026-06.md` 已发布；后续由内部团队持续执行 |
 | O6  | 行为准则（CODE_OF_CONDUCT.md）落地                    | 低     | Project Lead + Community | 已完成   | 明确举报渠道与处理流程                         |
 
 ### 2.6 质量 / Quality
@@ -91,7 +91,7 @@
 | Q1  | `quality` 字段在 UI 展示         | 高     | Frontend              | 已完成 | 列表、详情、bundle 均显示 quality chip      |
 | Q2  | 安全扫描分级（HIGH / MED / LOW） | 高     | Security / QA         | 已完成 | `security-scan.py` 输出分级结果             |
 | Q3  | stable 准入检查清单              | 中     | Content + Security/QA | 已完成 | docs/stable-checklist.md 合并               |
-| Q4  | 季度 skill 复审机制              | 低     | Content               | 待认领 | 每季度批量检查 stable skill，失效降级       |
+| Q4  | 季度 skill 复审机制              | 低     | core-qa + core-data   | 已完成 | `scripts/quarterly-review.py` + `docs/reports/quarterly-review-2026Q2.md`；首次复审 10 stable skills 全部通过 |
 | Q5  | 输入输出 schema 校验增强         | 低     | Tooling / Ops         | 已完成 | `validate-skill.py` 校验 JSON schema 可解析 |
 
 ### 2.7 设计 / Design & UX
@@ -129,10 +129,10 @@
 
 ## 4. 本周推荐优先级
 
-如果你是新加入的贡献者，建议从以下任务开始：
+内部核心团队优先推进以下任务；外部贡献者可作为补充参与：
 
 1. **Design / UX**：D1 设计系统文档，或 D3 空状态视觉（对项目气质影响最大）。
 2. **Frontend**：F8 响应式再打磨，或 F11 Lighthouse 性能审计。
 3. **Content**：C2 清零 `needs_review` 的技能，或 C3 首批 stable 技能复审。
 4. **Automation**：A2 让 HIGH 级别安全扫描阻塞合并，或 A4 定时 sync workflow。
-5. **Community**：O3 跑通第一个外部贡献者 PR，或 O2 帮助招募设计师。
+5. **Community / Ops**：O3 内部模拟一次贡献者 PR，O5 发布首份月度更新。

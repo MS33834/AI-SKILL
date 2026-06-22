@@ -1,3 +1,14 @@
 # CODEOWNERS
+#
+# 所有 PR 由 Project Lead / 内部核心团队终审。
+# 详细角色分工见 docs/core-team.md。
+#
+# Area -> Internal expert mapping (reviews routed through @badhope):
+#   skills/            : core-content
+#   external-index/    : core-data
+#   frontend/          : core-frontend + core-design
+#   scripts/           : core-ops + core-data + core-qa
+#   .github/workflows/ : core-ops
+#   docs/              : core-content + core-design
 
 *       @badhope
