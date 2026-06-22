@@ -8,6 +8,25 @@ where it makes sense.
 
 ## [Unreleased]
 
+### Added
+
+- **Quickstart media assets.** Generated 4 UI demonstration GIFs for
+  [`docs/quickstart.md`](docs/quickstart.md) covering homepage, external
+  index search, skill detail, and bundle download.
+- **Category merge automation.** Added [`scripts/merge-categories.py`](scripts/merge-categories.py)
+  to apply conservative category merges while preserving YAML formatting.
+
+### Changed
+
+- **Project positioning clarified:** internal core team leads all
+  deliveries; community participation is welcome but not a dependency.
+  Updated [`README.md`](README.md), [`README.zh.md`](README.zh.md),
+  [`CONTRIBUTING.md`](CONTRIBUTING.md), and [`docs/plan.md`](docs/plan.md).
+- **External index category count reduced from 49 to 45** by merging
+  low-activity categories: `customer-support` → `applications`,
+  `legal` → `applications`, `video-generation` → `multimodal`,
+  `case-studies` → `awesome-lists`.
+
 ### Removed
 
 - Cleaned up deprecated scripts and workflows that no longer match the

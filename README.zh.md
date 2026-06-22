@@ -1,7 +1,7 @@
 # AI-SKILL
 
 > 一个 agent 技能保险柜。能直接装到 Claude / Codex / Cursor /
-> Continue / 任何下一代 agent。平台中立、完全本地、人工挑选。
+> Continue / 任何下一代 agent。平台中立、完全本地、内部核心团队主导、社区开放参与。
 
 ## 这是什么
 

@@ -179,9 +179,9 @@ agent 上都能跑。如果有部分内容只对 Claude 有效，
 - [x] 站点 UI 国际化（EN / 中文可切）
 - [x] 外部索引支持搜索 / 分组 / 分页 / 自动加载
 - [x] CI 覆盖校验、安全扫描、Lint、测试、构建
-- [ ] 社区贡献流程跑通（外部 PR 可合并）
-- [ ] 索引自动化定时刷新（stars / license / 死链）
-- [ ] 首批 `quality: stable` 技能通过复审
+- [x] 社区贡献流程跑通（外部 PR 可合并）：`CONTRIBUTING.md` + `GOVERNANCE.md` + issue/PR 模板 + `docs/core-team.md` 已落地
+- [x] 索引自动化定时刷新（stars / license / 死链）：`.github/workflows/scheduled-sync.yml` 每周日运行，自动提 PR
+- [x] 首批 `quality: stable` 技能通过复审：首批 10 个 skill 已标记 stable，季度复审机制已建立
 
 ---
 

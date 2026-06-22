@@ -18,6 +18,8 @@ AI-SKILL is dual-track:
 
 See also [`GOVERNANCE.md`](../GOVERNANCE.md) for roles, decision flow, and maintainer criteria.
 
+> 项目由内部核心团队主导维护，社区贡献者开放参与；外部 PR 不会阻塞项目进度，但需通过 maintainer review 与 CI 门禁后合并。
+
 ## Adding a local skill
 
 ```bash

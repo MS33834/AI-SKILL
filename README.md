@@ -1,6 +1,7 @@
 # AI-SKILL
 
-> An open-source, community-driven index of AI agent skill repositories.
+> An open-source index of AI agent skill repositories.
+> Led by an internal core team, open for community participation.
 > Local Vault + External Index. MIT licensed. No tracking. No signup.
 > Just markdown and links.
 
@@ -10,20 +11,20 @@ AI-SKILL 是双轨并行的 AI 技能索引：
 
 - **External Index**：928+ 个上游仓库索引，目标是可搜索、多维度分类、
   技能级细化的发现平台，不是又一个 awesome-list。
-- **Local Vault**：38 个本地精选 `SKILL.md`，可直接丢进 Claude / Codex /
+- **Local Vault**：61 个本地精选 `SKILL.md`，可直接丢进 Claude / Codex /
   Cursor / Continue 或任何读 Markdown 的 agent，一部分原创，一部分从
   上游仓库通用化而来。
 
 核心能力：
 
-- **多维度分类**：按功能领域（9 大类）、厂商类型（4 类）、子分类（49 类）、星标分层
+- **多维度分类**：按功能领域（9 大领域）、厂商类型（4 类）、子分类（45 类）、星标分层
 - **技能级索引**：每个仓库卡片列出具体能力，搜 "RAG" 就能找到所有支持 RAG 的仓库
 - **前端可搜索**：按名称、厂商、标签、描述、技能实时筛选
 - **Bundle / 安装**：把本地 skill 打包 ZIP 或一键装到 agent 目录
 
 ## License
 
-**MIT**。不做商业化，只做社区化、开源化。所有本地技能均为 MIT
+**MIT**。内部核心团队主导维护，社区开放参与。所有本地技能均为 MIT
 协议；外部仓库的协议看各自卡片上的 `license` 字段。
 
 ## 怎么用
@@ -40,7 +41,7 @@ AI-SKILL 是双轨并行的 AI 技能索引：
 2. **切换视角**：四个 tab 切换分组方式
    - **By Domain** — 按功能领域（基础设施 / 智能体 / RAG / 评估安全 / 开发工具 / 应用 / 多模态 / 内容文档 / 研究训练）
    - **By Vendor Type** — 按厂商类型（大厂官方 / 热门社区 / 社区 / 个人项目）
-   - **By Category** — 按 49 个子分类
+   - **By Category** — 按 45 个子分类
    - **By Stars** — 按星标分层（100k+ / 50k+ / 10k+ / 1k+ / <1k）
 3. **厂商筛选**：下拉框筛选特定厂商类型
 4. **查看技能**：每张卡片列出该仓库提供的具体技能（如 `tool use`、
@@ -49,7 +50,7 @@ AI-SKILL 是双轨并行的 AI 技能索引：
 
 ### 浏览本地精选技能
 
-打开 [首页](https://badhope.gitcode.host/AI-SKILL)，看 38 个本地
+打开 [首页](https://badhope.gitcode.host/AI-SKILL)，看 61 个本地
 `SKILL.md` 文件。这些是自己制作或从大厂抓取并通用化的技能，
 clone 下来就能用。
 
@@ -109,27 +110,14 @@ python scripts/bundle-skill.py --all -o skills-v1.zip
 | Community | 一般社区项目 |
 | Indie / Personal | 个人项目 |
 
-### 49 个子分类（Category）
+### 45 个子分类（Category）
 
-详见 `external-index/skills.yaml` 的 `categories` 段，涵盖
-`official-cookbooks`、`prompt-libraries`、`agent-frameworks`、
-`rag-retrieval`、`vector-databases`、`embeddings`、`evaluation`、
-`benchmarks`、`tool-use`、`mcp-protocol`、`llm-serving`、
-`fine-tuning`、`distributed-training`、`quantization`、
-`model-merging`、`guardrails`、`safety-alignment`、
-`privacy-federated`、`observability`、`memory`、`knowledge-graphs`、
-`synthetic-data`、`data-pipelines`、`dev-tools`、`code-llms`、
-`code-assistants`、`terminal-cli`、`browser-automation`、
-`computer-use`、`multimodal`、`image-generation`、`video-generation`、
-`audio-tts`、`speech-recognition`、`translation`、`chat-ui`、
-`workflow-orchestration`、`data-analysis`、`document-processing`、
-`knowledge-management`、`education`、`research-papers`、
-`awesome-lists`、`tutorials`、`templates-starters`、`case-studies` 等。
+当前分类体系由内部核心团队维护，最近一次 review 将低活跃分类合并到相邻分类，数量从 49 优化到 45。完整列表见 [`external-index/skills.yaml`](external-index/skills.yaml) 的 `categories` 段，例如 `official-cookbooks`、`agent-frameworks`、`rag-retrieval`、`vector-databases`、`evaluation`、`mcp-protocol`、`llm-serving`、`multimodal`、`applications`、`awesome-lists` 等。
 
 ## 目录结构
 
 ```
-skills/                  本地精选技能（38 个 SKILL.md）
+skills/                  本地精选技能（61 个 SKILL.md）
 external-index/          外部仓库索引源数据（skills.yaml，928 条）
   └─ skills.yaml         ← 索引的 source of truth
 frontend/                静态站点源码（TypeScript + Vite）
@@ -156,7 +144,7 @@ docs/                    设计文档
   title_zh: 我的仓库
   source: user/repo
   source_url: https://github.com/user/repo
-  category: agent-frameworks      # 49 个子分类之一
+  category: agent-frameworks      # 45 个子分类之一
   domain: agents                  # 9 大领域之一
   vendor_type: community          # big-corp / popular-community / community / indie
   tags: [agent, planning, memory]
