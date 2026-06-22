@@ -1,8 +1,6 @@
 ---
 name: Security Review Checklist
-name_zh: 安全审查清单
-description: You're reviewing or designing a change that touches a
-description_zh: 审查或设计涉及安全敏感变更的方案
+description: You're reviewing or designing a change that touches a security-sensitive area.
 category: guardrails
 tags:
 - ai
@@ -19,10 +17,18 @@ slug: security-review
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: change_type
   type: string
   required: true
-  description: User request or task description
+  description: Change type - review/design-plan/new-integration/new-procedure
+- name: trigger_surfaces
+  type: array
+  required: true
+  description: Security surfaces touched - user-supplied-url/new-outbound-http/new-integration/new-procedure/secrets/redirect-following/file-upload
+- name: repo_helpers_root
+  type: string
+  required: false
+  description: Path to project security helpers
 output:
   format: markdown
   description: Generated content based on the user request
@@ -304,3 +310,28 @@ Defer to:
   - code-review
   - backend-dev-guidelines
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **No file:line references**: Finding without specific location.
+  - how to detect: developers can't find the issue to fix
+  - how to fix: always cite file:line for every finding
+
+- **Save-time only validation**: Missing use-time DNS rebinding check.
+  - how to detect: URL validated at save but rebinds to private IP at use
+  - how to fix: check IP at use-time, not just at save-time
+
+- **Citing reference without reading**: Applying rules from memory incorrectly.
+  - how to detect: misapplied or incomplete security controls
+  - how to fix: read the reference file before citing it
+
+- **Missing negative tests as findings**: Security issues without regression tests.
+  - how to detect: same vulnerability reappears after fix
+  - how to fix: add negative tests for every security finding
+
+- **Treating "we'll fix later" as acceptable**: Deferring validation to future change.
+  - how to detect: follow-up never happens, vulnerability persists
+  - how to fix: validation belongs in the same change, not a future one

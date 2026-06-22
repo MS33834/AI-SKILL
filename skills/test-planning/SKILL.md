@@ -1,10 +1,8 @@
 ---
 slug: test-planning
 name: Test Planning
-name_zh: 测试规划
 version: 0.1.0
 description: Design a test plan for a feature or release.
-description_zh: 为功能或发布设计测试方案。
 category: dev-tools
 tags: ['testing', 'qa', 'plan', 'coverage']
 inputs:
@@ -87,3 +85,28 @@ Out: chargeback flow.
 - Zero P0/P1 bugs open
 - Webhook retry tested with simulated 5xx
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Happy path only tests**: Tests that only verify the happy path miss edge case bugs.
+  - how to detect: bugs found in production are from obvious edge cases
+  - how to fix: require negative and edge case tests for every feature
+
+- **Test data not reset between runs**: Tests that share state cause flaky tests.
+  - how to detect: tests pass sometimes, fail other times with no code changes
+  - how to fix: use fresh fixtures per test, clean up in teardown
+
+- **Coverage as a metric**: High coverage doesn't mean good tests.
+  - how to detect: coverage is 90% but bugs still slip through
+  - how to fix: focus on test quality and mutation testing, not just coverage numbers
+
+- **Integration tests that mock everything**: Mocking all dependencies defeats the purpose of integration tests.
+  - how to detect: integration tests pass but production fails
+  - how to fix: test with real dependencies where possible, use testcontainers
+
+- **No regression test for bugs found in prod**: Bug fixes without tests allow the bug to return.
+  - how to detect: same bug reported multiple times
+  - how to fix: add a test for every bug fix before closing the ticket

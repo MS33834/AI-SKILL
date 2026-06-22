@@ -1,8 +1,6 @@
 ---
 name: deepeval SDK Tracing
-name_zh: deepeval SDK 追踪
-description: Confirmation that traces are arriving in Confident AI''s
-description_zh: 配置和验证 deepeval 追踪数据是否正确上报
+description: Confirmation that traces are arriving in Confident AI's
 category: observability
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: deepeval-tracing
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: framework
   type: string
   required: true
-  description: User request or task description
+  description: AI framework - langgraph/langchain/crewai/custom/etc
+- name: model_provider
+  type: string
+  required: true
+  description: LLM provider - openai/anthropic/google/bedrock/azure/etc
+- name: vector_db
+  type: string
+  required: false
+  description: Vector database if using retrieval (pinecone/qdrant/weaviate/chroma/milvus/pgvector)
+- name: confident_api_key
+  type: string
+  required: true
+  description: Confident AI API key or deepeval login
 output:
   format: markdown
   description: Generated content based on the user request
@@ -189,3 +199,28 @@ Instrumented:
   src/agents/customer_support.py:151 @observe(type="tool")
 Next: run the eval-suite skill to attach metrics.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Integration not initialized**: Framework patch not called at startup.
+  - how to detect: traces show up but with wrong span types
+  - how to fix: call patch_*() during app initialization
+
+- **Missing @observe decorators**: LLM calls not decorated but expected to appear.
+  - how to detect: some LLM calls missing from trace
+  - how to fix: ensure all LLM calls have @observe(type="llm")
+
+- **Credentials not in CI**: deepeval login works locally but not in CI.
+  - how to detect: traces work locally, fail in CI
+  - how to fix: export CONFIDENT_API_KEY env var in CI
+
+- **PII in span metadata**: Raw user data sent to Confident AI.
+  - how to detect: security audit finds sensitive data
+  - how to fix: redact before decorating functions
+
+- **Framework not detected correctly**: Wrong integration chosen.
+  - how to detect: traces show generic spans instead of framework-specific ones
+  - how to fix: verify framework detection, use custom if unsure

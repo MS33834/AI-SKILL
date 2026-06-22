@@ -1,26 +1,6 @@
 ---
 name: maf-prs-job
-name_zh: maf-prs-job
-description: 'Convert an existing Prompt Flow Parallel Run Step (PRS) pipeline submission
-  into an Azure ML PRS pipeline that runs a Microsoft Agent Framework (MAF) workflow.
-  Wraps the MAF workflow into a PRS init()/run() entry script, generates the parallel
-  component YAML and conda environment, and rewrites the pipeline submission script.
-  Replaces what `load_component(flow.dag.yaml)` did automatically for Prompt Flow
-  — produces the hand-built equivalent so that downstream pipeline code (`flow_node
-  = flow_component(...)`, `flow_node.outputs.flow_outputs`, `flow_node.outputs.debug_info`,
-  `flow_node.mini_batch_size`, scheduler, batch endpoint) stays unchanged. WHEN: convert
-  promptflow PRS to MAF PRS, migrate PRS pipeline to agent framework, wrap MAF workflow
-  as parallel component, bulk run MAF workflow, run agent framework as parallel run
-  step, batch run MAF workflow on AML, submit MAF workflow as pipeline component,
-  replace flow.dag.yaml with MAF workflow in pipeline, load_component equivalent for
-  MAF workflow, MAF version of flow_component, load MAF workflow as component, wrap
-  MAF workflow as flow component, MAF flow component, replace flow_node in pipeline
-  with MAF workflow, keep flow_outputs and debug_info ports with MAF, MAF parallel
-  component with connections={}, run MAF workflow as flow_node in AML pipeline, load_component(''workflow.py'')
-  doesn''t work. DO NOT USE FOR: converting the flow itself (use promptflow-to-maf),
-  deploying as online endpoint (use maf-online-endpoint), enabling tracing only (use
-  maf-tracing).'
-description_zh: 将 Prompt Flow PRS 管道迁移到 Azure ML PRS 管道
+description: "Convert an existing Prompt Flow Parallel Run Step (PRS) pipeline submission into an Azure ML PRS pipeline that runs a Microsoft Agent Framework (MAF) workflow. WHEN: convert promptflow PRS to MAF PRS, migrate PRS pipeline to agent framework, wrap MAF workflow as parallel component, bulk run MAF workflow. DO NOT USE FOR: converting the flow itself (use promptflow-to-maf), deploying as online endpoint (use maf-online-endpoint), enabling tracing only (use maf-tracing)."
 category: data-pipelines
 tags:
 - ai

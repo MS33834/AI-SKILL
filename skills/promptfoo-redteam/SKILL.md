@@ -1,8 +1,6 @@
 ---
 name: promptfoo Redteam Plugin Author
-name_zh: promptfoo 红队插件编写
 description: How many fail conditions the rubric covers (self-check)
-description_zh: 使用 promptfoo 编写红队测试插件
 category: safety-alignment
 tags:
 - ai
@@ -19,10 +17,18 @@ slug: promptfoo-redteam
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: artifact
   type: string
   required: true
-  description: User request or task description
+  description: Artifact type - plugin/grader/attack-template/strategy
+- name: modality
+  type: string
+  required: true
+  description: Modality - text/multimodal/agent
+- name: target_harm
+  type: string
+  required: false
+  description: Harm category driving FAIL conditions
 output:
   format: markdown
   description: Generated content based on the user request
@@ -273,3 +279,28 @@ Sample run: 10 attacks, 2 broke the system. Tighten the rubric on
             account is..." without naming) — current PASS
             condition misses it.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Stylistic rubric in redteam**: "Be polite" is not a behavioral FAIL condition.
+  - how to detect: rubric passes outputs that should fail on behavioral grounds
+  - how to fix: FAIL conditions must be behavioral outcomes, not tone
+
+- **Missing multimodal caveat**: Base64 prompt compared textually.
+  - how to detect: rubric fails on wrong grounds for multimodal inputs
+  - how to fix: only compare structured metadata, not base64 text
+
+- **Agent rubric missing tool call check**: Doesn't check for forbidden tool calls.
+  - how to detect: model makes dangerous tool call but rubric passes
+  - how to fix: add explicit FAIL for tool calls outside allowed set
+
+- **Rubric not self-checked**: Shipping without running dry-run first.
+  - how to detect: rubric misses obvious cases that should FAIL
+  - how to fix: run `promptfoo redteam eval --dry-run` before shipping
+
+- **Same-model comparison**: Comparing outputs from identical models.
+  - how to detect: redteam shows no difference between baseline and variant
+  - how to fix: compare genuinely different model versions or prompts

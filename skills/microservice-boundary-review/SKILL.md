@@ -1,10 +1,8 @@
 ---
 slug: microservice-boundary-review
 name: Microservice Boundary Review
-name_zh: 微服务边界评审
 version: 0.1.0
 description: Evaluate whether a proposed service boundary is coherent and low-coupling.
-description_zh: 评估提议的服务边界是否内聚且低耦合。
 category: dev-tools
 tags: ['microservices', 'architecture', 'bounded-context', 'design']
 inputs:
@@ -93,3 +91,28 @@ Keep, but split template management from delivery if scale differs.
 - Use async events for order/billing triggers.
 - Keep template CRUD synchronous for authoring UX.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Distributed monolith**: Services that are too fine-grained and must be deployed together.
+  - how to detect: services always deployed in coordination, can't ship independently
+  - how to fix: merge related services, reduce coupling
+
+- **Shared databases**: Services that bypass APIs and directly read each other's data.
+  - how to detect: schema changes in one service break another
+  - how to fix: enforce API contracts, use database per service
+
+- **Sync calls across service boundaries**: Using synchronous HTTP between services creates tight coupling.
+  - how to detect: one service downtime cascades to others
+  - how to fix: use async messaging for non-critical paths
+
+- **God services**: Services that do too much and become a maintenance bottleneck.
+  - how to detect: one team owns most of the codebase
+  - how to fix: extract coherent bounded contexts into separate services
+
+- **No data ownership clarity**: Unclear which service owns which data leads to conflicts.
+  - how to detect: duplicate data, conflicting updates, coordination overhead
+  - how to fix: define clear ownership, use event sourcing for shared data

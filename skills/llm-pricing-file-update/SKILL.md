@@ -1,8 +1,6 @@
 ---
 name: LLM Model Pricing File Update
-name_zh: LLM 模型定价文件更新
 description: You maintain an internal **per-token LLM pricing data file** —
-description_zh: 维护内部按 token 计费的 LLM 定价数据文件
 category: finance
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: llm-pricing-file-update
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: pricing_file
   type: string
   required: true
-  description: User request or task description
+  description: Absolute path to the JSON price file
+- name: action
+  type: string
+  required: true
+  description: Action type - add (new model) or update (existing)
+- name: model_spec
+  type: object
+  required: true
+  description: Model data including id, prefixes, provider, tokenizer, tiers, source URL
+- name: types_file
+  type: string
+  required: false
+  description: Path to TS module listing selectable models
 output:
   format: markdown
   description: Generated content based on the user request
@@ -305,3 +315,28 @@ Downstream consumers that may need a refresh:
   - budget alert thresholds (manual config)
   - customer-facing changelog (1-line entry: "+gpt-4.1-turbo")
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Regex without anchors**: `matchPattern` without `^` and `$` matches unintended models.
+  - how to detect: wrong model gets attributed to the wrong pricing tier
+  - how to fix: always anchor patterns, test against accept and reject lists
+
+- **Invented prices without source URL**: Using made-up numbers because official pricing isn't published yet.
+  - how to detect: prices don't match actual billing
+  - how to fix: require official source URL, defer entry if not available
+
+- **Tokenizer mismatch**: Using wrong tokenizer for a model silently miscounts tokens.
+  - how to detect: token counts don't match provider dashboard
+  - how to fix: verify tokenizer name against provider docs
+
+- **Updating file without updating types**: TypeScript types drift from pricing file.
+  - how to detect: type error in CI, or new model not available in selector
+  - how to fix: update both in the same PR
+
+- **Silent fallback to zero cost**: Model not matching any pattern gets $0 cost.
+  - how to detect: cost dashboard shows $0 for what should be expensive calls
+  - how to fix: add a catch-all reject in testing, alert if accept list has gaps

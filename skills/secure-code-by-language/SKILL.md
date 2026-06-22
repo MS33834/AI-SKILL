@@ -1,8 +1,6 @@
 ---
 name: Secure Code by Language
-name_zh: 按语言的安全编码指南
-description: The user said "write this securely", "do a security
-description_zh: 按语言安全地编写或审查代码
+description: The user said "write this securely", "do a security review", or similar.
 category: guardrails
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: secure-code-by-language
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: languages
+  type: array
+  required: true
+  description: List of programming languages in the project
+- name: frameworks
+  type: array
+  required: false
+  description: Major frameworks in the project
+- name: mode
   type: string
   required: true
-  description: User request or task description
+  description: Application mode - proactive/passive-detect/full-report
+- name: report_path
+  type: string
+  required: false
+  description: Path for full report when mode=full-report
 output:
   format: markdown
   description: Generated content based on the user request
@@ -318,11 +328,35 @@ Next.js pages without sanitization
 - **Fix**: Render markdown via a sanitizing
   pipeline (DOMPurify, rehype-sanitize)
   before passing to `dangerouslySetInnerHTML`.
-```
-
 The full report is at
 `security_best_practices_report.md`. The
 references loaded were
 `typescript-nextjs-frontend-security.md`,
 `python-fastapi-backend-security.md`, and
 `javascript-general-web-frontend-security.md`.
+```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Mode A without language reference**: Proactive mode with no reference files loaded.
+  - how to detect: decisions applied don't match actual best practices
+  - how to fix: ensure language references are loaded before applying decisions
+
+- **Passive-detect derailing work**: Flagging too many findings and blocking the user's task.
+  - how to detect: user frustrated because review keeps derailing their work
+  - how to fix: limit to critical/high only, flag inline and let user decide
+
+- **Override without documentation**: Bypassing rules without recording the exception.
+  - how to detect: same override applied multiple times without context
+  - how to fix: document override in project SECURITY.md
+
+- **Report without impact statements**: Finding lists technical issue without business impact.
+  - how to detect: developers don't prioritize fixes because impact is unclear
+  - how to fix: always include one-sentence impact statement per finding
+
+- **Wrong language reference loaded**: Applying Python rules to TypeScript code.
+  - how to detect: suggestions don't match the actual language/framework
+  - how to fix: verify language before loading references

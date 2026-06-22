@@ -1,8 +1,6 @@
 ---
 name: Browser ML in JavaScript
-name_zh: 浏览器端 JavaScript ML
 description: The user wants to run an ML model in JavaScript
-description_zh: 在浏览器或 Node.js 中运行 ML 模型，无需 Python 后端
 category: browser-automation
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: browser-ml-in-js
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: task
   type: string
   required: true
-  description: User request or task description
+  description: ML task - sentiment-analysis/text-classification/token-classification/translation/feature-extraction/fill-mask/question-answering/image-classification
+- name: runtime
+  type: string
+  required: true
+  description: Runtime - browser/node/bun/deno/worker
+- name: model_id
+  type: string
+  required: false
+  description: Specific model id to use
+- name: device
+  type: string
+  required: false
+  description: Device - auto/webgpu/wasm/cpu/cuda/dml
 output:
   format: markdown
   description: Generated content based on the user request

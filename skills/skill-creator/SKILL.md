@@ -1,8 +1,6 @@
 ---
 name: Skill Authoring Loop
-name_zh: 技能编写迭代流程
-description: You're authoring a **skill** — a self-contained
-description_zh: 编写自包含、可复用的 AI skill
+description: You're authoring a **skill** — a self-contained, reusable AI-powered automation unit.
 category: dev-tools
 tags:
 - ai

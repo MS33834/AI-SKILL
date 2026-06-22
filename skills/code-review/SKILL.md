@@ -1,9 +1,7 @@
 ---
 name: Code Review Workflow
-name_zh: 代码审查工作流
 description: Canonical code-review workflow for any PR, branch, diff, or local change.
   Findings ordered by severity, defer to specialist skills when needed.
-description_zh: 对任意 PR、分支或本地变更进行标准化代码审查
 category: dev-tools
 tags:
 - ai
@@ -20,10 +18,18 @@ slug: code-review
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: change_scope
   type: string
   required: true
-  description: User request or task description
+  description: PR number/URL/branch/diff path/"local"
+- name: areas_touched
+  type: array
+  required: false
+  description: Areas touched - frontend/backend/security/database/ci/docs/infra/mobile/none
+- name: severity_threshold
+  type: string
+  required: false
+  description: Lowest severity to report - critical/high/medium/low (default medium)
 output:
   format: markdown
   description: Generated content based on the user request

@@ -1,10 +1,8 @@
 ---
 slug: refactoring-strategy
 name: Refactoring Strategy
-name_zh: 重构策略
 version: 0.1.0
 description: Plan a safe refactoring for a tangled module or legacy service.
-description_zh: 为纠缠的模块或遗留服务规划安全重构。
 category: dev-tools
 tags: ['refactoring', 'legacy', 'strategy', 'testing']
 inputs:
@@ -83,3 +81,28 @@ Separate persistence from business logic and add characterization tests.
 4. Move SQL into repository implementations.
 5. Remove circular imports by inverting a dependency.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Big-bang rewrite**: Replacing the entire module at once means no rollback option.
+  - how to detect: refactoring PR touches hundreds of files with no intermediate state
+  - how to fix: refactor incrementally, each step should be shippable
+
+- **Refactoring under active feature work**: Making structural changes while adding features causes merge conflicts and bugs.
+  - how to detect: PRs keep conflicting, bugs introduced in unrelated areas
+  - how to fix: freeze feature work during refactoring, merge refactor first
+
+- **No characterization tests**: Changing code without tests means no way to know if behavior changed.
+  - how to detect: after refactor, users report unexpected behavior changes
+  - how to fix: write characterization tests before making any changes
+
+- **Assuming old code is wrong**: Legacy code often has workarounds for real edge cases.
+  - how to detect: "simplified" code fails on edge cases that worked before
+  - how to fix: investigate why code is complex before simplifying
+
+- **Refactoring without stopping to fix tests**: Tests that were fragile become more fragile.
+  - how to detect: tests pass but flakily, or test logic mirrors the messy code
+  - how to fix: improve test quality as part of refactoring

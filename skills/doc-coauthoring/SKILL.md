@@ -1,10 +1,7 @@
 ---
 name: Doc Co-Authoring Workflow
-name_zh: 文档共写工作流
 slug: doc-coauthoring
-description: 三阶段结构化文档共写工作流 - Context Gathering / Refinement & Structure / Reader Testing。当用户提到写文档、起草提案、创建
-  spec 时触发。跳出写完即发的陷阱。
-description_zh: 三阶段结构化文档共写：收集上下文、打磨结构、读者测试
+description: A three-stage structured document co-authoring workflow - Context Gathering / Refinement & Structure / Reader Testing. Triggered when user mentions writing docs, drafting proposals, or creating specs. Avoid the write-and-forget trap.
 category: documentation
 tags:
 - ai
@@ -21,10 +18,18 @@ updated: '2026-06-19'
 needs_review: false
 quality: stable
 inputs:
-- name: request
+- name: doc_type
   type: string
   required: true
-  description: User request or task description
+  description: Document type - RFC/design-doc/PRD/decision-record/runbook/tutorial/FAQ
+- name: audience
+  type: string
+  required: true
+  description: Target audience for the document
+- name: current_stage
+  type: string
+  required: false
+  description: Current workflow stage - gather/refine/test (default gather)
 output:
   format: markdown
   description: Generated content based on the user request
@@ -316,3 +321,28 @@ Section template (for stage 2):
 Next action: wait for the user's answers; do NOT
 start drafting the doc.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Skipping Context Gathering**: Starting to draft before understanding the actual question.
+  - how to detect: doc doesn't address what the user actually needed
+  - how to fix: always complete stage 1 before drafting
+
+- **Writing for yourself, not the audience**: Depth and context that doesn't match the reader.
+  - how to detect: exec finds it too technical; engineer finds it too shallow
+  - how to fix: match vocabulary and assumptions to the stated audience
+
+- **Skipping Reader Testing**: Assuming the doc is clear without verifying.
+  - how to detect: readers have questions that the doc should have answered
+  - how to fix: run reader test with fresh session, not the chat history
+
+- **Not capturing non-goals**: Doc that tries to cover everything.
+  - how to detect: doc is too broad, lacks focus
+  - how to fix: explicitly state what's NOT in scope
+
+- **Shipping without user approval**: Sending doc to audience before user signs off.
+  - how to detect: user says "that's not what I meant"
+  - how to fix: get explicit approval before distribution

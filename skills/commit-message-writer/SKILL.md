@@ -1,8 +1,6 @@
 ---
 name: Commit Message Writer
-name_zh: 提交信息写手
-description: max subject line length
-description_zh: 根据变更生成符合规范的 commit message
+description: Generate commit messages following Conventional Commits spec, including subject/body/breaking-change footer.
 category: dev-tools
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: commit-message-writer
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: diff
   type: string
   required: true
-  description: User request or task description
+  description: The git diff to generate a commit message for
+- name: scope_hint
+  type: string
+  required: false
+  description: Override for auto-detected scope
+- name: breaking
+  type: boolean
+  required: false
+  description: Set true if diff includes API breaks
+- name: max_subject
+  type: integer
+  required: false
+  description: Max subject line length (default 72)
 output:
   format: markdown
   description: Generated content based on the user request
@@ -123,3 +133,28 @@ deep links can resume after a session timeout. The value is stashed in
 the session and consumed by the next navigation. Defaults to None,
 preserving the previous behaviour.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Subject line is a diff**: "Added fix to bug where login didn't redirect" instead of what the code does.
+  - how to detect: commit history is unreadable
+  - how to fix: subject should describe the change, not the process
+
+- **No body when body needed**: Complex changes without explanation of why.
+  - how to detect: future developers can't understand intent
+  - how to fix: add context when the why isn't obvious from the diff
+
+- **Scope too broad**: `feat: everything` makes commit history useless.
+  - how to detect: commits touch many unrelated files
+  - how to fix: one logical change per commit
+
+- **Breaking change not marked**: API changes that break consumers without BREAKING CHANGE footer.
+  - how to detect: CI fails after merge because consumers aren't warned
+  - how to fix: always add BREAKING CHANGE footer when changing APIs
+
+- **Max subject exceeded**: Commit messages that wrap in `git log --oneline`.
+  - how to detect: `git log` output is hard to scan
+  - how to fix: enforce 72-char limit, shorter is better

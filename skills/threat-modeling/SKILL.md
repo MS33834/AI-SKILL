@@ -1,8 +1,6 @@
 ---
 name: Repository Threat Model
-name_zh: 仓库威胁建模
-description: The user said "threat model this", "what could go
-description_zh: 对系统或功能进行威胁建模分析
+description: Perform threat modeling analysis for a system or feature.
 category: guardrails
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: threat-modeling
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: repo_path
   type: string
   required: true
-  description: User request or task description
+  description: Path to the repository to analyze
+- name: in_scope_paths
+  type: array
+  required: false
+  description: Limit scope to specific paths
+- name: deployment_model
+  type: string
+  required: false
+  description: How the system runs - unknown/saas/self-hosted/hybrid
+- name: existing_assets
+  type: string
+  required: false
+  description: Known crown-jewel assets to short-circuit asking
 output:
   format: markdown
   description: Generated content based on the user request
@@ -379,3 +389,29 @@ This skill is invoked by
 `security-review` when the change introduces a
 new external surface; pair the two skills
 together.
+```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Claims without file citations**: Threat model without evidence from codebase.
+  - how to detect: model lists components that don't actually exist
+  - how to fix: cite file:line for every component claim
+
+- **Too many threats**: 50-item checklist with no prioritization.
+  - how to detect: threat model is overwhelming and no one reads it
+  - how to fix: limit to 5-10 high-quality threats, justify each
+
+- **Assumptions never validated**: Model built on unconfirmed assumptions.
+  - how to detect: model is wrong because assumption was wrong
+  - how to fix: validate assumptions with user before finalizing
+
+- **Generic STRIDE without repo evidence**: Checklist applied without checking actual code.
+  - how to detect: threats don't match actual codebase
+  - how to fix: ground every threat in file evidence
+
+- **Inflated attacker capabilities**: Listing threats that aren't realistic.
+  - how to detect: threats require capabilities attacker doesn't have
+  - how to fix: explicitly state attacker capabilities and non-capabilities

@@ -1,8 +1,6 @@
 ---
 name: MCP Server Builder
-name_zh: MCP 服务器构建器
 description: You're building an **MCP server** that lets an LLM call into some
-description_zh: 构建让 LLM 调用外部能力的 MCP server
 category: mcp-protocol
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: mcp-builder
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: target_service
   type: string
   required: true
-  description: User request or task description
+  description: The service the MCP server wraps + one-line purpose
+- name: language
+  type: string
+  required: true
+  description: Implementation language - python (FastMCP) or typescript (MCP SDK)
+- name: transport
+  type: string
+  required: true
+  description: Transport type - streamable-http (default) or stdio
+- name: deployment_target
+  type: string
+  required: false
+  description: Deployment target - mcpb/remote/local
 output:
   format: markdown
   description: Generated content based on the user request
@@ -384,3 +394,28 @@ Open questions:
   - rate-limit handling is conservative (1 retry, no
     retry-after parsing) — revisit when traffic picks up
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Guessing endpoints without research**: Building MCP server without understanding actual API.
+  - how to detect: server has 50 endpoints but only 5 are actually usable
+  - how to fix: research the API first, start with verified endpoints only
+
+- **Missing annotations**: Tool hints not set causes clients to make unsafe assumptions.
+  - how to detect: clients can't warn about dangerous calls, can't cache properly
+  - how to fix: set all four annotations explicitly for every tool
+
+- **No outputSchema**: Returning unstructured text instead of structured data.
+  - how to detect: LLM has to parse text to extract structured info
+  - how to fix: always define outputSchema and use structuredContent
+
+- **Eval without read-only questions**: Testing with write operations that modify state.
+  - how to detect: eval creates test data that pollutes the system
+  - how to fix: use only read-only questions in eval set
+
+- **Transport mismatch**: Using stdio in production when streamable-http is needed.
+  - how to detect: clients can't connect in production environment
+  - how to fix: match transport to deployment target

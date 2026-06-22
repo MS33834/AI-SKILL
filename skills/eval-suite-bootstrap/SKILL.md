@@ -1,10 +1,8 @@
 ---
 slug: eval-suite-bootstrap
 name: Eval Suite Bootstrap
-name_zh: 评估套件启动
 version: 0.1.0
 description: Bootstrap a minimal evaluation suite for an LLM-powered feature.
-description_zh: 为 LLM 功能启动最小可运行的评估套件。
 category: evaluation
 tags: ['evals', 'llm', 'testing', 'benchmark']
 inputs:
@@ -82,3 +80,28 @@ criteria: 'accurate, empathetic, does not promise refunds'
 ## CI
 Run on every prompt change; fail if accuracy < 85% or safety violations > 0.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Evals too easy**: Test cases that all pass immediately don't catch regressions.
+  - how to detect: eval suite passes on day one with no model improvements
+  - how to fix: include hard edge cases, not just happy path examples
+
+- **Noisy LLM-as-judge**: LLM judges with vague rubrics give inconsistent scores.
+  - how to detect: same output gets different scores on different runs
+  - how to fix: use deterministic assertions where possible, keep LLM judge rubrics specific
+
+- **Test data leakage**: Training data that overlaps with evaluation examples.
+  - how to detect: model performs unusually well on eval but fails in production
+  - how to fix: keep eval data separate, regularly refresh eval data
+
+- **Evals not blocking releases**: CI passes but evals aren't enforced as gates.
+  - how to detect: bad model versions reach production
+  - how to fix: make evals required in CI pipeline, block on threshold breaches
+
+- **Metrics not aligned with user experience**: Optimizing for automated metrics that don't reflect actual quality.
+  - how to detect: high accuracy scores but users complain
+  - how to fix: include human evaluation, track user feedback alongside metrics

@@ -1,6 +1,5 @@
 ---
 name: promptflow-to-maf
-name_zh: promptflow-to-maf
 description: 'Convert Prompt Flow flow definitions to Microsoft Agent Framework (MAF)
   workflows. Parses flow.dag.yaml, maps nodes to Executors, and generates runnable
   Python code using agent-framework 1.0.x. WHEN: convert promptflow, migrate promptflow,
@@ -9,7 +8,6 @@ description: 'Convert Prompt Flow flow definitions to Microsoft Agent Framework 
   migrate LLM flow. DO NOT USE FOR: writing new MAF workflows from scratch (no source
   flow), deploying MAF workflows (use maf-online-endpoint), enabling tracing (use
   maf-tracing), or general agent-framework Q&A.'
-description_zh: 将 Prompt Flow 工作流转换为 Microsoft Agent Framework
 category: data-pipelines
 tags:
 - ai

@@ -1,8 +1,6 @@
 ---
 name: promptfoo Eval Suite Author
-name_zh: promptfoo 评估套件编写
-description: Confirmation of the suite path, the assertion mix, and the
-description_zh: 使用 promptfoo 编写和运行评估套件
+description: Confirmation of the suite path, the assertion mix, and the outputs produced by an eval run.
 category: evaluation
 tags:
 - ai
@@ -19,10 +17,26 @@ slug: promptfoo-evals
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: target
   type: string
   required: true
-  description: User request or task description
+  description: Eval target - prompt template/HTTP endpoint/agent/RAG pipeline/chatbot
+- name: suite_layout
+  type: string
+  required: false
+  description: Suite folder layout (default evals/<suite-name>/)
+- name: provider_count
+  type: integer
+  required: true
+  description: Number of providers - 1 for regression, 2 for comparison (max 3)
+- name: assertion_style
+  type: string
+  required: true
+  description: Assertion style - mixed/deterministic/model-graded
+- name: dataset
+  type: string
+  required: false
+  description: Dataset type - inline/csv/jsonl
 output:
   format: markdown
   description: Generated content based on the user request
@@ -219,3 +233,28 @@ Failing assertions:
 Next: tighten the system prompt to require "Order ID:" prefix
       on refund responses; add is-json trim transform.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Too many providers**: Comparing 10+ models makes output unreadable.
+  - how to detect: eval results are overwhelming and hard to act on
+  - how to fix: limit to 2-3 providers max, use separate runs for more
+
+- **No assertions on critical outputs**: Only checking that output exists.
+  - how to detect: bad outputs pass because nothing validates them
+  - how to fix: add specific assertions for the most important outputs
+
+- **Same-model comparison**: Comparing outputs from the same model as different "variants".
+  - how to detect: comparison shows no difference between "different" prompts
+  - how to fix: compare genuinely different models or prompts
+
+- **Inline data without testing edge cases**: Happy path only in test cases.
+  - how to detect: eval passes but real users hit edge cases that fail
+  - how to fix: include edge cases and failure modes in test data
+
+- **Eval suite never updated**: Same tests from day one as behavior changes.
+  - how to detect: eval scores stay high but user satisfaction drops
+  - how to fix: refresh test cases periodically based on production issues

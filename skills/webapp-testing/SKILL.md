@@ -1,9 +1,7 @@
 ---
 name: Webapp Testing Harness
-name_zh: Web 应用测试工具
 slug: webapp-testing
-description: 用 Playwright 和 Python 对本地 Web 应用做端到端测试。带服务器生命周期 helper、DOM 侦察行动模式、截图捕获。
-description_zh: 用 Playwright 对本地 Web 应用做端到端测试
+description: Run end-to-end tests on a local web app using Playwright and Python.
 category: browser-automation
 tags:
 - ai
@@ -19,10 +17,22 @@ created: '2026-06-12'
 updated: '2026-06-19'
 needs_review: false
 inputs:
-- name: request
+- name: target_url
   type: string
   required: true
-  description: User request or task description
+  description: Target URL - http://localhost:PORT or file://...
+- name: servers
+  type: array
+  required: false
+  description: List of servers to start - {command, port}
+- name: headless
+  type: boolean
+  required: false
+  description: Run browser headless (default true)
+- name: selectors
+  type: array
+  required: false
+  description: Pre-known selectors (empty = reconnaissance mode)
 output:
   format: markdown
   description: Generated content based on the user request
@@ -256,3 +266,28 @@ Sequence:
   11. close browser
   12. helper: server torn down (exit 0)
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Not waiting for networkidle**: Inspecting DOM before SPA has rendered.
+  - how to detect: selectors work locally but fail in CI with different timing
+  - how to fix: always wait for networkidle before inspecting
+
+- **Using wait_for_timeout**: Flaky tests that break on slow machines.
+  - how to detect: tests pass locally but fail in CI
+  - how to fix: use wait_for_selector or wait_for_load_state
+
+- **Clicking invisible buttons**: Clicking elements before they're actionable.
+  - how to detect: tests pass locally but fail under load
+  - how to fix: wait for elements to be visible and enabled
+
+- **No screenshots on failure**: Debugging CI failures without failure artifacts.
+  - how to detect: test fails in CI but you can't see why
+  - how to fix: capture screenshot and HTML dump on any error
+
+- **Targeting wrong URL in CI**: Testing localhost that doesn't exist in CI environment.
+  - how to detect: tests pass locally, fail in CI
+  - how to fix: use with_server helper to start the right server

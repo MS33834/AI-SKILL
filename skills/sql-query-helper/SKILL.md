@@ -1,8 +1,6 @@
 ---
 name: SQL Query Helper
-name_zh: SQL 查询助手
-description: SQL dialect
-description_zh: 根据方言和场景生成或优化 SQL 查询
+description: Generate or optimize SQL queries based on dialect and scenario.
 category: text-to-sql
 tags:
 - ai
@@ -19,10 +17,18 @@ slug: sql-query-helper
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: question
   type: string
   required: true
-  description: User request or task description
+  description: The question to answer with SQL
+- name: schema
+  type: string
+  required: true
+  description: Database schema (CREATE TABLE statements)
+- name: dialect
+  type: string
+  required: false
+  description: SQL dialect - postgres/mysql/auto (default auto)
 output:
   format: markdown
   description: Generated content based on the user request
@@ -121,3 +127,29 @@ LIMIT 10;
 
 **Tables touched:** `customers`, `orders`
 **Cost note:** Full scan of `orders` for 2024. If the table is > 10M rows, add an index on `(customer_id, created_at)`.
+```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **SELECT * in production**: Retrieving all columns when only a few are needed.
+  - how to detect: unnecessary data transfer, network latency
+  - how to fix: always name specific columns needed
+
+- **No schema provided**: Writing queries without understanding the actual schema.
+  - how to detect: query references tables/columns that don't exist
+  - how to fix: require schema as mandatory input
+
+- **Missing index hints**: Queries that will be slow on large tables.
+  - how to detect: query runs fine on small test data, slow in production
+  - how to fix: add cost note and suggest index when full table scan detected
+
+- **Dialect mismatch**: Writing PostgreSQL syntax for MySQL or vice versa.
+  - how to detect: query fails when deployed to different database
+  - how to fix: always specify dialect explicitly
+
+- **No sanity check on 10M-row table**: Assuming query will be fast.
+  - how to detect: query times out in production
+  - how to fix: always run sanity check, warn if full table scan likely

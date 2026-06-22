@@ -61,7 +61,7 @@ REQUIRED_FIELDS = (
     "created", "updated",
 )
 OPTIONAL_FIELDS = (
-    "name_zh", "description_zh", "platforms", "source",
+    "platforms", "source",
     "needs_review", "tags_zh", "quality",
 )
 ALLOWED_OUTPUT_FORMATS = {"markdown", "json", "text", "code"}
@@ -411,9 +411,7 @@ def write_index(entries: list[dict[str, Any]]) -> None:
         skills_out.append({
             "slug": fm.get("slug"),
             "name": fm.get("name"),
-            "name_zh": fm.get("name_zh"),
             "description": fm.get("description", ""),
-            "description_zh": fm.get("description_zh"),
             "category": fm.get("category"),
             "tags": fm.get("tags", []),
             "platforms": fm.get("platforms", []),
@@ -456,13 +454,7 @@ def write_frontend_bundle(targets: list[Path], passed: list[dict[str, Any]]) -> 
         slim.append({
             "slug": fm.get("slug"),
             "name": fm.get("name"),
-            "name_zh": fm.get("name_zh"),
             "description": fm.get("description", ""),
-            # description_zh on the index lets the list page
-            # render cards fully translated when the user has
-            # toggled to Chinese. None for skills that lack it;
-            # the JS falls back to en in that case.
-            "description_zh": fm.get("description_zh") or None,
             "category": fm.get("category"),
             "tags": fm.get("tags", []),
             "platforms": fm.get("platforms", []),

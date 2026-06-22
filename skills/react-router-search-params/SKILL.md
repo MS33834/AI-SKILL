@@ -1,10 +1,7 @@
 ---
 name: React Router Search Param State
-name_zh: React Router 搜索参数状态
 slug: react-router-search-params
-description: 在 React Router 里为 URL 状态变化选 replace 还是 push。包含 useSearchParamState hook
-  模式和决策表。
-description_zh: 在 React Router 中管理 URL 搜索参数状态
+description: Manage URL search parameters in React Router.
 category: code-assistants
 tags:
 - ai
@@ -20,10 +17,22 @@ created: '2026-06-12'
 updated: '2026-06-19'
 needs_review: false
 inputs:
-- name: request
+- name: change_type
   type: string
   required: true
-  description: User request or task description
+  description: Change type - in-page-state/navigable-step/normalize-after-save
+- name: router_api
+  type: string
+  required: true
+  description: Router API - useSearchParamState/setSearchParams/navigate
+- name: param_count
+  type: string
+  required: true
+  description: Parameter count - single (hook) or multiple (setSearchParams)
+- name: validation
+  type: string
+  required: false
+  description: Validation type - zod/manual/none (default zod)
 output:
   format: markdown
   description: Generated content based on the user request
@@ -292,3 +301,28 @@ Gotchas:
   - the hook uses replace internally — do not wrap it
     in setSearchParams
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Pushing in-page state**: Filter changes adding to browser history.
+  - how to detect: back button undoes filter changes user made
+  - how to fix: use `replace: true` for in-page state
+
+- **Using '' to clear params**: Empty string throws invariant error.
+  - how to detect: app crashes when trying to clear a param
+  - how to fix: use `null` to clear params, not empty string
+
+- **Confusing hash vs search params**: Hash changes not sent to server.
+  - how to detect: server-side rendering doesn't reflect hash state
+  - how to fix: use search params for server-visible state, hash for in-page anchors
+
+- **Wizard step uses replace**: Back button doesn't work for wizard navigation.
+  - how to detect: users can't go back to previous wizard steps
+  - how to fix: don't pass `replace: true` for wizard steps
+
+- **No validation on params**: Invalid URL values cause runtime errors.
+  - how to detect: app crashes on direct URL manipulation
+  - how to fix: always use Zod schema for URL param validation

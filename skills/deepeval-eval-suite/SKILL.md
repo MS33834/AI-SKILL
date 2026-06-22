@@ -1,8 +1,6 @@
 ---
 name: deepeval Pytest Eval Suite
-name_zh: deepeval Pytest 评估套件
 description: Targeted fix to attempt next round
-description_zh: 用 deepeval + Pytest 编写和运行 LLM 评估套件
 category: evaluation
 tags:
 - ai
@@ -19,10 +17,30 @@ slug: deepeval-eval-suite
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: use_case
   type: string
   required: true
-  description: User request or task description
+  description: Use case type - chatbot/multi-turn-agent/agent/RAG/single-turn
+- name: dataset_source
+  type: string
+  required: true
+  description: Dataset source - existing (reuse) or generate (create new)
+- name: eval_model
+  type: string
+  required: true
+  description: The judge model for scoring (separate from app model)
+- name: tracing
+  type: boolean
+  required: true
+  description: Whether to capture traces during eval
+- name: confident_ai
+  type: boolean
+  required: true
+  description: Whether to push results to Confident AI dashboards
+- name: iteration_rounds
+  type: integer
+  required: false
+  description: Number of failure-fix-rerun cycles (default 5, max 10)
 output:
   format: markdown
   description: Generated content based on the user request
@@ -209,3 +227,28 @@ Change: add explicit refund-policy tool to agent prompt; rerun
 Run 3/3: 15/15 (100%)
 Report: https://app.confident-ai.com/evals/runs/abc123
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Same model for app and judge**: Using the same model for generation and evaluation means the judge can't catch failures.
+  - how to detect: eval passes but user-facing quality is low
+  - how to fix: use a stronger or different model as judge
+
+- **Metrics defined inline**: Defining metrics inside test files makes them hard to reuse.
+  - how to detect: duplicate metric definitions across test files
+  - how to fix: put metrics in a separate metrics.py module
+
+- **Iterations without tracking changes**: Rerunning evals without documenting what changed.
+  - how to detect: don't know why eval improved or degraded
+  - how to fix: log the specific change made each round
+
+- **Dataset not refreshed**: Using stale eval data that no longer reflects production queries.
+  - how to detect: eval scores are high but users report different issues
+  - how to fix: regularly refresh eval dataset, use production query samples
+
+- **Eval without tracing**: Running evals without tracing makes it hard to debug failures.
+  - how to detect: test fails but trace shows nothing useful
+  - how to fix: enable tracing from the start

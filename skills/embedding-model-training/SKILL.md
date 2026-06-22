@@ -1,8 +1,6 @@
 ---
 name: Embedding Model Training
-name_zh: 嵌入模型训练
 description: The user wants to train, fine-tune, or adapt an
-description_zh: 训练、微调或适配 embedding 模型
 category: embeddings
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: embedding-model-training
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: encoder_type
   type: string
   required: true
-  description: User request or task description
+  description: Encoder type - bi-encoder/cross-encoder/sparse-encoder
+- name: use_case
+  type: string
+  required: true
+  description: Use case - retrieval/similarity/clustering/classification/paraphrase/dedup/reranking/pair-classification/learned-sparse-retrieval
+- name: data_shape
+  type: string
+  required: true
+  description: Data shape - pairs/triples/labeled-similarity/classification-labels
+- name: training_scale
+  type: string
+  required: true
+  description: Training scale - laptop/single-gpu/multi-gpu/hf-jobs
 output:
   format: markdown
   description: Generated content based on the user request

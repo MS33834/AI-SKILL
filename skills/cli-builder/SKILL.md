@@ -1,8 +1,6 @@
 ---
 name: CLI Builder
-name_zh: CLI 构建器
 description: The user wants a **real CLI** they can run by name
-description_zh: 把脚本或 API 封装成可长期使用的命令行工具
 category: terminal-cli
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: cli-builder
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: tool_name
   type: string
   required: true
-  description: User request or task description
+  description: The binary name to install (e.g. ci-logs, slack-cli)
+- name: source_material
+  type: string
+  required: true
+  description: What to build against - OpenAPI spec, SDK, curl examples, script, web app
+- name: first_jobs
+  type: array
+  required: true
+  description: First commands the CLI must support
+- name: output_format
+  type: string
+  required: false
+  description: Output format - json (default) / text / both
 output:
   format: markdown
   description: Generated content based on the user request
@@ -286,3 +296,28 @@ cursor pagination, --dry-run, --format text.
   88410     passed   2026-06-10T14:18Z    2m04s
   ...
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Auth keys in command line**: Keys appear in `ps` output and shell history.
+  - how to detect: security audit finds API keys in logs
+  - how to fix: always use env vars or config files for auth
+
+- **Output format changes between versions**: CLI output format shifts and breaks scripts.
+  - how to detect: downstream scripts break after CLI update
+  - how to fix: make JSON the default, version the output schema
+
+- **No error output to stderr**: Errors printed to stdout break pipe chains.
+  - how to detect: `cli command | jq` fails because error message goes to jq
+  - how to fix: errors must go to stderr with non-zero exit
+
+- **Missing --dry-run**: Write commands run without confirmation.
+  - how to detect: accidental resource deletion or modification
+  - how to fix: implement --dry-run for all write operations
+
+- **No --version flag**: Users can't tell which version they have.
+  - how to detect: debugging issues without knowing the version
+  - how to fix: implement --version, make it consistent across commands

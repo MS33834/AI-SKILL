@@ -1,8 +1,6 @@
 ---
 name: deepeval OTel Trace Export
-name_zh: DeepEval OpenTelemetry
 description: Suggested follow-up actions
-description_zh: 将 deepeval 与 OpenTelemetry 结合进行可观测评估
 category: observability
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: deepeval-otel
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: otel_endpoint
   type: string
   required: true
-  description: User request or task description
+  description: OTLP endpoint URL (US or EU based on API key prefix)
+- name: confident_api_key
+  type: string
+  required: true
+  description: Confident AI API key (header value, not query param)
+- name: ai_components
+  type: array
+  required: true
+  description: AI components - agent/llm/retriever/tool
+- name: app_language
+  type: string
+  required: true
+  description: App language - python/typescript/go
 output:
   format: markdown
   description: Generated content based on the user request
@@ -203,3 +213,28 @@ Next:
   - Create a metric (e.g. Answer Relevancy) and attach this trace
   - Link future traces in this session via session_id
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **gRPC instead of HTTP**: Confident AI accepts HTTP only, not gRPC.
+  - how to detect: traces never appear in Observatory
+  - how to fix: use OTLP/HTTP exporter, not gRPC
+
+- **Wrong region endpoint**: US vs EU endpoint mismatch.
+  - how to detect: HTTP 401/403 errors in exporter logs
+  - how to fix: match endpoint to API key prefix (us- or eu-)
+
+- **Non-AI spans polluting Observatory**: Mixing web server spans with AI spans.
+  - how to detect: Observatory shows unrelated database or HTTP spans
+  - how to fix: use dedicated TracerProvider or span filter for AI spans
+
+- **PII in span attributes**: Sending raw user data to Confident AI.
+  - how to detect: security audit finds sensitive data in Observatory
+  - how to fix: redact PII and secrets before setting span attributes
+
+- **No trace confirmation**: Deploying without verifying traces arrived.
+  - how to detect: Observatory is empty after deployment
+  - how to fix: run a test trace and confirm it appears before deploying

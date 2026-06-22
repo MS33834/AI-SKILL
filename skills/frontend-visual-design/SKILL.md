@@ -1,8 +1,6 @@
 ---
 name: Frontend Visual Design Taste
-name_zh: 前端视觉设计品味
 description: The user is building something where the quality
-description_zh: 为前端项目提供视觉设计与实现建议
 category: code-assistants
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: frontend-visual-design
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: artifact_type
   type: string
   required: true
-  description: User request or task description
+  description: Type of artifact - landing-page/marketing/app-shell/demo/prototype/game-ui/dashboard
+- name: thesis
+  type: string
+  required: true
+  description: Visual thesis - mood + material + energy in one sentence
+- name: audience
+  type: string
+  required: false
+  description: Target audience
+- name: motion_budget
+  type: string
+  required: false
+  description: Motion level - none/restrained/expressive
 output:
   format: markdown
   description: Generated content based on the user request
@@ -362,6 +372,31 @@ Engineering credibility over marketing gloss.
 - ✗ modal-on-first-visit
 - ✗ animation on every scroll
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Spec doesn't match thesis**: Design decisions contradict the stated visual direction.
+  - how to detect: final design doesn't feel like the described mood/material/energy
+  - how to fix: review against thesis before declaring done
+
+- **Too many defaults**: Shipping every component because no one said no.
+  - how to detect: page feels cluttered, 10+ components when 3 would suffice
+  - how to fix: ruthless reduction, one idea per section
+
+- **Imitation without understanding**: Copying a reference site's look without knowing why it works.
+  - how to detect: design feels derivative or awkward
+  - how to fix: analyze what makes the reference work, then apply principles
+
+- **Motion for its own sake**: Adding animation because it looks cool, not because it communicates.
+  - how to detect: users report distraction or confusion
+  - how to fix: every motion should answer "what does this tell the user?"
+
+- **Accessibility ignored**: High contrast, keyboard navigation, screen readers not considered.
+  - how to detect: accessibility audit fails
+  - how to fix: test with accessibility tools early, not as afterthought
 
 The agent then builds the page to match. If
 the user pushes back on a default ("but I want

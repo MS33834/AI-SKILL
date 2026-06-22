@@ -1,10 +1,8 @@
 ---
 slug: feature-flag-strategy
 name: Feature Flag Strategy
-name_zh: 功能开关策略
 version: 0.1.0
 description: Design a feature-flag rollout strategy for a new feature.
-description_zh: 为新功能设计功能开关发布策略。
 category: dev-tools
 tags: ['feature-flags', 'release', 'testing', 'rollback']
 inputs:
@@ -85,3 +83,28 @@ audiences: 'internal employees, 5% beta users, all users'
 ## Cleanup
 Remove flag and old checkout code 2 weeks after GA.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Flag never cleaned up**: Feature flags accumulate and create technical debt.
+  - how to detect: dozens of old flags still in code, no one knows what they do
+  - how to fix: set a cleanup date when creating the flag, automate removal
+
+- **Flag name collisions**: Same flag name used in different services means they interfere with each other.
+  - how to detect: changing flag in one service affects another
+  - how to fix: use namespaced flag names like `checkout_v2_enabled`
+
+- **Kill switch too slow**: Rollback via flag takes too long under load.
+  - how to detect: incident escalates while waiting for flag change to propagate
+  - how to fix: have circuit breakers that auto-trigger, test kill switch latency
+
+- **Targeting rules too complex**: Flag rules so complicated that it's unclear who has the feature.
+  - how to detect: unexpected users get the feature, or expected users don't
+  - how to fix: keep targeting simple, document rules clearly
+
+- **Flag checked on hot path**: Reading flag on every request without caching causes latency spikes.
+  - how to detect: p99 latency increases when flag is toggled
+  - how to fix: cache flag values, refresh on intervals not on every request

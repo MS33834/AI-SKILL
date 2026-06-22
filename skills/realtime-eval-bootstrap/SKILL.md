@@ -1,8 +1,6 @@
 ---
 name: Realtime Eval Scaffold
-name_zh: 实时评估脚手架
-description: You want to **start a new realtime eval** for an audio or
-description_zh: 为音频或实时交互场景搭建评估脚手架
+description: You want to **start a new realtime eval** for an audio or realtime interaction scenario.
 category: evaluation
 tags:
 - ai
@@ -19,10 +17,34 @@ slug: realtime-eval-bootstrap
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: eval_name
   type: string
   required: true
-  description: User request or task description
+  description: Eval folder name in kebab-case
+- name: goal
+  type: string
+  required: true
+  description: One or two sentences describing the scenario
+- name: harness
+  type: string
+  required: false
+  description: Harness type - crawl/walk/run
+- name: system_prompt
+  type: string
+  required: false
+  description: Path or inline text for system prompt
+- name: tools
+  type: string
+  required: false
+  description: Path or inline tool definitions (OpenAI function-calling format)
+- name: data
+  type: string
+  required: false
+  description: Path to existing CSV/JSONL data
+- name: graders
+  type: array
+  required: false
+  description: List of grader ids to apply
 output:
   format: markdown
   description: Generated content based on the user request
@@ -294,3 +316,28 @@ Graders applied:
 
 Blockers: none
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Skipping smoke eval**: Running full eval without checking if wiring works.
+  - how to detect: full eval fails with wiring errors that smoke would have caught
+  - how to fix: always run smoke eval first
+
+- **Single starter simulation**: One test case hides the distribution of behaviors.
+  - how to detect: eval passes on single case but fails on real distribution
+  - how to fix: minimum two cases, cover happy path and edge cases
+
+- **Duplicating harness scripts**: Copying instead of linking causes maintenance nightmares.
+  - how to detect: harness updates don't propagate to eval folders
+  - how to fix: always symlink to shared harness code
+
+- **Generic placeholder data**: Fake data that doesn't reflect real user scenarios.
+  - how to detect: eval passes but real usage fails
+  - how to fix: use plausible real examples from user context
+
+- **Late-row failures missed**: Smoke passes but full eval fails on later rows.
+  - how to detect: eval worked yesterday but fails today
+  - how to fix: always run full eval after smoke passes

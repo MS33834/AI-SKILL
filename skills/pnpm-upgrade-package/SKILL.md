@@ -1,8 +1,6 @@
 ---
 name: PNPM Upgrade Package
-name_zh: PNPM 依赖升级
 description: You're bumping a dependency in a **pnpm workspace**.
-description_zh: 在 pnpm workspace 中安全升级依赖
 category: dev-tools
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: pnpm-upgrade-package
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: package
   type: string
   required: true
-  description: User request or task description
+  description: Package name to upgrade
+- name: target_version
+  type: string
+  required: false
+  description: Target version (if omitted, ask; never assume latest)
+- name: workspace_filter
+  type: string
+  required: false
+  description: Scopes the upgrade to specific workspace
+- name: release_age_window_days
+  type: integer
+  required: false
+  description: Override minimumReleaseAge from pnpm-workspace.yaml
 output:
   format: markdown
   description: Generated content based on the user request
@@ -276,3 +286,28 @@ Lockfile diff: 6 lines
 
 Dedupe outcome: clean
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Skipping the test run**: Upgrading without running tests means broken builds reach CI.
+  - how to detect: CI fails after upgrade PR merges
+  - how to fix: run tests locally before pushing
+
+- **Accepting dedupe churn as free refactoring**: Unrelated package moves obscure the real change.
+  - how to detect: PR diff has many unrelated package moves
+  - how to fix: inspect dedupe diff, revert unrelated changes
+
+- **Upgrading parent when child range already covers it**: Unnecessary parent bump adds risk.
+  - how to detect: parent version didn't need to change
+  - how to fix: resolve lockfile first, only bump parent if needed
+
+- **Ignoring release age**: Adding brand-new packages that might have undetected issues.
+  - how to detect: upgrade breaks in production, CVE discovered shortly after
+  - how to fix: check release age window, defer very new packages
+
+- **Not checking peer dependencies**: New version has incompatible peer deps.
+  - how to detect: app fails at runtime with peer dep errors
+  - how to fix: check peer dependencies before upgrading

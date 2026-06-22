@@ -1,10 +1,8 @@
 ---
 slug: dependency-update
 name: Dependency Update
-name_zh: 依赖升级
 version: 0.1.0
 description: Plan and execute a low-risk dependency update for a project.
-description_zh: 为项目规划和执行低风险的依赖升级。
 category: dev-tools
 tags: ['dependencies', 'upgrade', 'security', 'semver']
 inputs:
@@ -90,3 +88,28 @@ npm install eslint@9 --save-dev
 npx @eslint/migrate-config .eslintrc.js
 ```
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Major version bumps without reading changelog**: Skipping changelog review means missing breaking changes that will fail silently.
+  - how to detect: tests fail after dependency update in production
+  - how to fix: always read changelog and migration guide before major version bumps
+
+- **Lockfile conflicts in monorepos**: Updating dependencies in one package breaks the shared lockfile for others.
+  - how to detect: CI fails with lockfile conflicts, different packages get different versions
+  - how to fix: use workspace-aware update commands, test all affected packages
+
+- **Transitive dependency CVEs ignored**: Updating a direct dependency doesn't fix CVEs in transitive dependencies.
+  - how to detect: security scan still reports CVEs after update
+  - how to fix: use `npm audit` and check transitive dependency tree, update where possible or use overrides
+
+- **Update grouping causes cascade failures**: Updating multiple packages at once makes it impossible to identify which one broke.
+  - how to detect: after update, multiple tests fail with no clear cause
+  - how to fix: update packages one at a time or in small groups, validate between each
+
+- **DevDeps promoted to dependencies**: Updating a dev-only dependency and saving it as a regular dependency bloats production builds.
+  - how to detect: production bundle size increases unexpectedly
+  - how to fix: use `--save-dev` for development-only dependencies

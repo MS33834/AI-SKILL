@@ -1,8 +1,6 @@
 ---
 name: Goal Definition
-name_zh: 目标定义
 description: The user said "I want to…" or "let's set a goal" or
-description_zh: 把模糊意图转化为可衡量、可执行的目标
 category: prompt-libraries
 tags:
 - ai
@@ -19,10 +17,18 @@ slug: goal-definition
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: intent
   type: string
   required: true
-  description: User request or task description
+  description: The fuzzy thing the user wants to accomplish
+- name: artifact_scope
+  type: string
+  required: false
+  description: Which repo, system, or surface the goal targets
+- name: budget
+  type: string
+  required: false
+  description: Token or time budget if explicitly asked
 output:
   format: markdown
   description: Generated content based on the user request
@@ -276,3 +282,28 @@ Two ways to sharpen it — pick one:
 
 Which is it — diagnose, or fix?
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Goal is an activity**: "Investigate", "explore", "analyze" are not goals.
+  - how to detect: goal doesn't define what success looks like
+  - how to fix: ask "what will be different when we're done?"
+
+- **Metric that can't be measured**: Goals without a way to verify completion.
+  - how to detect: no way to know if goal was achieved
+  - how to fix: define how you'll measure success upfront
+
+- **In scope too large**: Goal covers too much to be achievable.
+  - how to detect: goal remains "in progress" indefinitely
+  - how to fix: split into smaller, time-boxed goals
+
+- **Confusing output format**: REWRITE vs GOAL not clearly communicated.
+  - how to detect: user doesn't understand why they're being asked to choose
+  - how to fix: explain the format simply before presenting options
+
+- **Budget not enforced**: Time/token budget mentioned but not tracked.
+  - how to detect: work exceeds budget without anyone noticing
+  - how to fix: set explicit stop conditions for asking vs. grinding

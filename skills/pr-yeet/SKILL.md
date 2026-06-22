@@ -1,9 +1,7 @@
 ---
 name: Single-Flow PR Yeet
-name_zh: 一次性 PR 推送
 slug: pr-yeet
-description: 在一个线性流程里完成 stage、commit、push、开 PR。仅在用户明确说 yeet 或 ship 时触发。
-description_zh: 一键完成 stage、commit、push 并创建 PR
+description: Complete stage, commit, push, and PR creation in one linear flow. Only triggers when user explicitly says yeet or ship.
 category: dev-tools
 tags:
 - ai
@@ -19,10 +17,22 @@ created: '2026-06-12'
 updated: '2026-06-19'
 needs_review: false
 inputs:
-- name: request
+- name: description
   type: string
   required: true
-  description: User request or task description
+  description: Single string used for branch, commit, and PR title
+- name: draft
+  type: boolean
+  required: false
+  description: Open PR as draft (default false)
+- name: base_branch
+  type: string
+  required: false
+  description: Target branch (default repo default)
+- name: body_overrides
+  type: array
+  required: false
+  description: Extra sections to append to PR body
 output:
   format: markdown
   description: Generated content based on the user request
@@ -320,3 +330,29 @@ https://github.com/owner/repo/pull/1234
 
 The agent prints the URL and stops. No
 follow-up summary.
+```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Blindly adding untracked files**: `git add .` adds unintended files like .env or node_modules.
+  - how to detect: PR includes unrelated files
+  - how to fix: use `git add -u` and inspect staged diff first
+
+- **Force-pushing without confirmation**: Force-push can destroy teammate's work.
+  - how to detect: teammate's commits are lost
+  - how to fix: always confirm before force-push, prefer merge over rebase
+
+- **PR title from description that is too long**: Title exceeds 72 characters and wraps.
+  - how to detect: git log --oneline shows wrapped titles
+  - how to fix: truncate description to fit limit before using
+
+- **Bypassing pre-commit hooks**: Using --no-verify to skip checks that caught real issues.
+  - how to detect: CI fails on the commit, issues that hooks would have caught appear later
+  - how to fix: fix the issue, don't skip the hook
+
+- **Opening PR without base branch check**: Assuming the default branch is correct.
+  - how to detect: PR targets wrong branch, review delayed
+  - how to fix: confirm base branch before creating PR

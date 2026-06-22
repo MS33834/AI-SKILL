@@ -1,8 +1,6 @@
 ---
 name: Unit Test Generator
-name_zh: 单元测试生成器
-description: whether to add edge case tests (None, empty, overflow)
-description_zh: 为代码生成包含边界情况的测试用例
+description: Generate unit tests with edge cases for code.
 category: dev-tools
 tags:
 - ai
@@ -117,3 +115,28 @@ def test_divide_raises_value_error_on_zero_divisor():
 def test_divide_returns_zero_when_numerator_is_zero():
     assert divide(0.0, 5.0) == 0.0
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Testing private functions**: Private functions are implementation details that can change.
+  - how to detect: tests break when refactoring without behavior change
+  - how to fix: test public interface only, if you need to test privates, refactor
+
+- **Mocking everything**: Mocks that don't reflect reality give false confidence.
+  - how to detect: tests pass but production fails
+  - how to fix: prefer real fakes over mocks where possible
+
+- **Assertion-less tests**: Tests that don't actually verify anything.
+  - how to detect: tests pass but bugs still occur
+  - how to fix: assert specific values, not just "result is truthy"
+
+- **Testing implementation, not behavior**: Tests that break on every refactor.
+  - how to detect: tests fail even though behavior is preserved
+  - how to fix: test what the code does, not how it does it
+
+- **One assertion per test rule taken too far**: Splitting tests to the point of absurdity.
+  - how to detect: dozens of tiny tests for simple functions
+  - how to fix: use judgment; related assertions can stay together

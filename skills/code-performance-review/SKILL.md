@@ -1,10 +1,8 @@
 ---
 slug: code-performance-review
 name: Code Performance Review
-name_zh: 代码性能评审
 version: 0.1.0
 description: Review code for performance bottlenecks and suggest measured optimizations.
-description_zh: 评审代码性能瓶颈并提出可测量的优化建议。
 category: dev-tools
 tags: ['performance', 'profiling', 'optimization', 'review']
 inputs:
@@ -98,3 +96,28 @@ return [x for x, c in counts.items() if c > 1]
 ## Measurement
 Profile with `timeit` on a 1M-item list; target <100ms.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Premature optimization**: Optimizing non-hot paths wastes time and adds complexity.
+  - how to detect: profiling shows optimized code isn't in top 10% of time spent
+  - how to fix: profile first, then optimize only the hot paths
+
+- **Algorithmic complexity ignored**: Using O(n²) algorithms when O(n log n) or O(n) exists.
+  - how to detect: latency increases super-linearly with input size
+  - how to fix: analyze Big-O before coding, use built-in optimized functions
+
+- **No measurement before/after**: Optimizing without baseline measurements means you don't know if you've improved.
+  - how to detect: no benchmark results in PR description
+  - how to fix: establish baseline with profiling tools before making changes
+
+- **Memory leaks from caching**: Caching without eviction policies causes unbounded memory growth.
+  - how to detect: memory usage grows over time without bound
+  - how to fix: set max size or TTL on all caches
+
+- **I/O not batched**: Making N individual calls instead of batch operations.
+  - how to detect: many sequential network calls in traces
+  - how to fix: batch requests where the API supports it

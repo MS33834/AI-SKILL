@@ -1,8 +1,6 @@
 ---
 name: ClickHouse Best Practices
-name_zh: ClickHouse 最佳实践
 description: You're reviewing or designing something that touches
-description_zh: 审查或设计 ClickHouse 表结构与查询的最佳实践
 category: text-to-sql
 tags:
 - ai
@@ -19,10 +17,18 @@ slug: clickhouse-best-practices
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: review_type
   type: string
   required: true
-  description: User request or task description
+  description: Review type - schema/query/insert/debug-slow-query
+- name: target_action
+  type: string
+  required: true
+  description: The thing under review (CREATE TABLE, SELECT, etc.)
+- name: rules_root
+  type: string
+  required: false
+  description: Path to rules/ dir for project-specific overrides
 output:
   format: markdown
   description: Generated content based on the user request

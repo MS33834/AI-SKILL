@@ -1,10 +1,8 @@
 ---
 slug: logging-best-practices
 name: Logging Best Practices
-name_zh: 日志最佳实践
 version: 0.1.0
 description: Define a structured logging convention for a service or library.
-description_zh: 为服务或库定义结构化日志规范。
 category: dev-tools
 tags: ['logging', 'observability', 'structured', 'debugging']
 inputs:
@@ -99,3 +97,28 @@ sensitive_fields: [password, ssn, token, cvv]
 ## Redaction
 Mask values for keys matching `*password*`, `*token*`, `*ssn*`, `*cvv*`; replace with `[REDACTED]`.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Logging sensitive data**: Accidentally logging passwords, tokens, or PII.
+  - how to detect: security audit finds sensitive data in logs
+  - how to fix: use redaction rules, scan logs before production
+
+- **Log level confusion**: Using ERROR for expected cases or DEBUG for critical path.
+  - how to detect: logs are either too noisy or missing important events
+  - how to fix: document level definitions clearly, review logs in staging
+
+- **No trace ID propagation**: Logs from the same request have different IDs across services.
+  - how to detect: tracing a request across services is impossible
+  - how to fix: propagate trace_id through all services, use correlation IDs
+
+- **String interpolation in logs**: `log.info("user " + user.name)` creates string even when level is disabled.
+  - how to detect: high CPU usage from log statement evaluation
+  - how to fix: use lazy evaluation or parameterized logging
+
+- **Logging in hot paths without sampling**: Every request logs, creating performance issues.
+  - how to detect: latency spikes correlate with logging volume
+  - how to fix: sample debug logs, use counters instead of detailed logs for high-frequency events

@@ -1,10 +1,8 @@
 ---
 slug: backup-recovery-checklist
 name: Backup Recovery Checklist
-name_zh: 备份恢复清单
 version: 0.1.0
 description: Create a backup and recovery checklist for a datastore or service.
-description_zh: 为数据存储或服务创建备份与恢复清单。
 category: dev-tools
 tags: ['backup', 'recovery', 'disaster-recovery', 'reliability']
 inputs:
@@ -86,3 +84,28 @@ rto_rpo: 'RTO 1h, RPO 15min'
 ## Testing
 Run restore drill monthly in staging.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Backups never tested**: Restore procedure works in theory but fails when you need it.
+  - how to detect: restore drill fails or takes longer than RTO
+  - how to fix: test restore quarterly, measure actual RTO
+
+- **No off-site copies**: Backups in the same datacenter as the primary fail in a site outage.
+  - how to detect: site failure means both primary and backups are unavailable
+  - how to fix: replicate backups to a separate geographic region
+
+- **Retention too short**: Backups expire before you discover a problem.
+  - how to detect: data corruption noticed after backups are gone
+  - how to fix: match retention to maximum time to detect data issues
+
+- **Encryption keys not backed up**: Backup encryption keys lost means backups are inaccessible.
+  - how to detect: backup restore fails because key is missing
+  - how to fix: store encryption keys separately from backups, test with key rotation
+
+- **Backup monitoring only on success**: Backup failures go unnoticed because only successes generate alerts.
+  - how to detect: backups failing silently, no one notices until restore needed
+  - how to fix: alert on backup failures, monitor backup freshness

@@ -1,8 +1,6 @@
 ---
 name: Internal Comms Authoring
-name_zh: 内部沟通文档写作
 description: You're drafting a **piece of internal communication** —
-description_zh: 起草内部沟通文档，如备忘录、周报、变更通知
 category: documentation
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: internal-comms
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: comm_type
   type: string
   required: true
-  description: User request or task description
+  description: Communication type - 3p-update/status-report/leadership-update/project-update/incident-report/faq-answer/company-newsletter
+- name: audience
+  type: string
+  required: true
+  description: Target audience - team/leadership/company/cross-team/customers/external
+- name: period
+  type: string
+  required: false
+  description: Time window for the communication
+- name: raw_inputs
+  type: array
+  required: false
+  description: Source material for drafting
 output:
   format: markdown
   description: Generated content based on the user request
@@ -328,3 +338,28 @@ window returned >5s responses. No data loss.
 - The customer's specific error code (jargon for
   the audience)
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Wrong audience level**: Technical detail for executives or platitudes for engineers.
+  - how to detect: audience says "this doesn't apply to me"
+  - how to fix: match vocabulary and depth to the stated audience
+
+- **Status reports that bury the lede**: Good news first means bad news is missed.
+  - how to detect: critical blockers get no attention because they're at the end
+  - how to fix: lead with what matters, use AP format (action, period)
+
+- **Too frequent or too rare**: Weekly reports when nothing changed, monthly when urgency builds.
+  - how to detect: readers stop paying attention
+  - how to fix: match frequency to actual cadence of meaningful change
+
+- **Jargon without translation**: Acronyms and internal terms that mean nothing to the audience.
+  - how to detect: questions asking what terms mean
+  - how to fix: define terms or replace with plain language
+
+- **No clear ask**: Communication that doesn't say what the writer wants.
+  - how to detect: readers don't know what to do with the information
+  - how to fix: end with explicit next steps or decisions needed

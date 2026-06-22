@@ -1,10 +1,8 @@
 ---
 slug: incident-postmortem
 name: Incident Postmortem
-name_zh: 事故复盘
 version: 0.1.0
 description: Draft a blameless postmortem from an incident timeline.
-description_zh: 从事故时间线起草一份无责复盘报告。
 category: dev-tools
 tags: ['incident', 'postmortem', 'sre', 'reliability']
 inputs:
@@ -84,3 +82,29 @@ The new release added a required config that was missing in production. The serv
 - [P0] Add config validation at startup with a clear fatal log (owner: platform, due: 2026-06-28)
 - [P1] Add canary deploy gate on checkout error rate (owner: sre, due: 2026-07-05)
 ```
+```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Blaming individuals**: Postmortems that focus on who failed rather than what failed.
+  - how to detect: action items say "engineer should have" instead of "system should"
+  - how to fix: focus on systemic causes, not human error
+
+- **Root cause too shallow**: Stopping at the immediate cause without understanding why.
+  - how to detect: same incident recurs with slightly different trigger
+  - how to fix: apply 5 Whys, dig into contributing factors
+
+- **No concrete action items**: "Improve monitoring" or "be more careful" aren't actionable.
+  - how to detect: action items never get done
+  - how to fix: make action items specific with owners and due dates
+
+- **Timeline reconstruction fails**: Logs deleted or gaps make it impossible to reconstruct what happened.
+  - how to detect: timeline has gaps during the incident window
+  - how to fix: ensure logs are preserved, use structured logging with trace IDs
+
+- **Lessons learned forgotten**: Action items completed but no one remembers why.
+  - how to detect: similar incidents happen again because lessons weren't shared
+  - how to fix: share postmortems broadly, review previous incidents before major changes

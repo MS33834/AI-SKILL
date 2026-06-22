@@ -1,10 +1,8 @@
 ---
 slug: error-handling-guide
 name: Error Handling Guide
-name_zh: 错误处理指南
 version: 0.1.0
 description: Draft a language-agnostic error-handling strategy for a module or service.
-description_zh: 为模块或服务起草一份与语言无关的错误处理策略。
 category: dev-tools
 tags: ['errors', 'exceptions', 'reliability', 'logging']
 inputs:
@@ -97,3 +95,28 @@ Use tenacity with `@retry(stop=stop_after_attempt(3), wait=wait_exponential_jitt
 ## Caller Contract
 Return `{ ok: false, error_code, retryable }`. Never leak stack traces.
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Catching too broadly**: Catching `Exception` or `Throwable` hides bugs and makes debugging harder.
+  - how to detect: errors that should crash are silently swallowed
+  - how to fix: catch specific exceptions, let unexpected ones propagate
+
+- **Retry without idempotency**: Retrying operations that aren't idempotent causes duplicate effects (e.g., double charges).
+  - how to detect: duplicate records, double charges, or other side effects after retries
+  - how to fix: make operations idempotent or track retry keys to prevent duplicates
+
+- **Exposing internal errors to clients**: Leaking stack traces, database errors, or internal paths to clients is a security risk.
+  - how to detect: error responses contain internal paths, SQL errors, or stack traces
+  - how to fix: log internal details, return generic error codes to clients
+
+- **No timeout on external calls**: External service calls without timeouts can hang indefinitely and exhaust resources.
+  - how to detect: requests hang, thread pools exhausted
+  - how to fix: always set sensible timeouts on all external calls
+
+- **Error codes not documented**: Defining error codes but not documenting them means clients guess at meanings.
+  - how to detect: clients report confusion about error codes, contact support for explanation
+  - how to fix: document all error codes with causes and recommended actions

@@ -1,8 +1,6 @@
 ---
 name: Turborepo Monorepo Authoring
-name_zh: Turborepo 单体仓库编写
-description: You have a **Turborepo monorepo** and you're doing one of
-description_zh: 在 Turborepo 单体仓库中管理任务、缓存与依赖
+description: Manage tasks, caching, and dependencies in a Turborepo monorepo.
 category: code-assistants
 tags:
 - ai
@@ -19,10 +17,18 @@ slug: turborepo
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: task
   type: string
   required: true
-  description: User request or task description
+  description: One of the 10 tasks - configure/debug/run-changed/filter/env/CI/watch/create-package/repo-structure/boundaries
+- name: package_filter
+  type: string
+  required: false
+  description: --filter value for selecting specific packages
+- name: base_branch
+  type: string
+  required: false
+  description: Base branch for --affected (default repo default)
 output:
   format: markdown
   description: Generated content based on the user request

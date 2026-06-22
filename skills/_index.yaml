@@ -6,9 +6,7 @@
 skills:
   - slug: accessibility-audit
     name: Accessibility Audit
-    name_zh: 可访问性审计
     description: Audit a UI or component for accessibility issues and fixes.
-    description_zh: 审计 UI 或组件的可访问性问题并给出修复方案。
     category: dev-tools
     tags:
       - a11y
@@ -21,10 +19,8 @@ skills:
     path: skills/accessibility-audit/SKILL.md
   - slug: api-design-review
     name: API Design Review
-    name_zh: API 设计评审
     description: Review an API design against consistency, versioning, auth, and
       error-handling best practices.
-    description_zh: 按一致性、版本控制、认证和错误处理最佳实践评审 API 设计。
     category: dev-tools
     tags:
       - api
@@ -38,9 +34,7 @@ skills:
     path: skills/api-design-review/SKILL.md
   - slug: api-versioning
     name: API Versioning
-    name_zh: API 版本控制
     description: Design a versioning and deprecation strategy for an API.
-    description_zh: 为 API 设计版本控制和弃用策略。
     category: dev-tools
     tags:
       - api
@@ -53,10 +47,8 @@ skills:
     path: skills/api-versioning/SKILL.md
   - slug: backup-recovery-checklist
     name: Backup Recovery Checklist
-    name_zh: 备份恢复清单
     description: Create a backup and recovery checklist for a datastore or 
       service.
-    description_zh: 为数据存储或服务创建备份与恢复清单。
     category: dev-tools
     tags:
       - backup
@@ -69,9 +61,7 @@ skills:
     path: skills/backup-recovery-checklist/SKILL.md
   - slug: browser-ml-in-js
     name: Browser ML in JavaScript
-    name_zh: 浏览器端 JavaScript ML
     description: The user wants to run an ML model in JavaScript
-    description_zh: 在浏览器或 Node.js 中运行 ML 模型，无需 Python 后端
     category: browser-automation
     tags:
       - ai
@@ -85,9 +75,7 @@ skills:
     path: skills/browser-ml-in-js/SKILL.md
   - slug: cli-builder
     name: CLI Builder
-    name_zh: CLI 构建器
     description: The user wants a **real CLI** they can run by name
-    description_zh: 把脚本或 API 封装成可长期使用的命令行工具
     category: terminal-cli
     tags:
       - ai
@@ -101,9 +89,7 @@ skills:
     path: skills/cli-builder/SKILL.md
   - slug: clickhouse-best-practices
     name: ClickHouse Best Practices
-    name_zh: ClickHouse 最佳实践
     description: You're reviewing or designing something that touches
-    description_zh: 审查或设计 ClickHouse 表结构与查询的最佳实践
     category: text-to-sql
     tags:
       - ai
@@ -117,10 +103,8 @@ skills:
     path: skills/clickhouse-best-practices/SKILL.md
   - slug: code-performance-review
     name: Code Performance Review
-    name_zh: 代码性能评审
     description: Review code for performance bottlenecks and suggest measured 
       optimizations.
-    description_zh: 评审代码性能瓶颈并提出可测量的优化建议。
     category: dev-tools
     tags:
       - performance
@@ -133,11 +117,9 @@ skills:
     path: skills/code-performance-review/SKILL.md
   - slug: code-review
     name: Code Review Workflow
-    name_zh: 代码审查工作流
     description: Canonical code-review workflow for any PR, branch, diff, or 
       local change. Findings ordered by severity, defer to specialist skills 
       when needed.
-    description_zh: 对任意 PR、分支或本地变更进行标准化代码审查
     category: dev-tools
     tags:
       - ai
@@ -151,9 +133,7 @@ skills:
     path: skills/code-review/SKILL.md
   - slug: code-reviewer
     name: Code Reviewer
-    name_zh: 代码审查员
     description: minimum severity to report
-    description_zh: 按指定最低严重级别报告代码审查发现
     category: dev-tools
     tags:
       - ai
@@ -167,9 +147,8 @@ skills:
     path: skills/code-reviewer/SKILL.md
   - slug: commit-message-writer
     name: Commit Message Writer
-    name_zh: 提交信息写手
-    description: max subject line length
-    description_zh: 根据变更生成符合规范的 commit message
+    description: Generate commit messages following Conventional Commits spec, 
+      including subject/body/breaking-change footer.
     category: dev-tools
     tags:
       - ai
@@ -183,10 +162,8 @@ skills:
     path: skills/commit-message-writer/SKILL.md
   - slug: data-migration-plan
     name: Data Migration Plan
-    name_zh: 数据迁移方案
     description: Plan a safe data migration between schemas, formats, or 
       systems.
-    description_zh: 规划schema、格式或系统之间的安全数据迁移。
     category: dev-tools
     tags:
       - migration
@@ -199,10 +176,8 @@ skills:
     path: skills/data-migration-plan/SKILL.md
   - slug: database-index-review
     name: Database Index Review
-    name_zh: 数据库索引评审
     description: Review a query or schema for missing, redundant, or misused 
       indexes.
-    description_zh: 评审查询或 schema 中缺失、冗余或误用的索引。
     category: dev-tools
     tags:
       - database
@@ -215,9 +190,7 @@ skills:
     path: skills/database-index-review/SKILL.md
   - slug: deepeval-eval-suite
     name: deepeval Pytest Eval Suite
-    name_zh: deepeval Pytest 评估套件
     description: Targeted fix to attempt next round
-    description_zh: 用 deepeval + Pytest 编写和运行 LLM 评估套件
     category: evaluation
     tags:
       - ai
@@ -231,9 +204,7 @@ skills:
     path: skills/deepeval-eval-suite/SKILL.md
   - slug: deepeval-otel
     name: deepeval OTel Trace Export
-    name_zh: DeepEval OpenTelemetry
     description: Suggested follow-up actions
-    description_zh: 将 deepeval 与 OpenTelemetry 结合进行可观测评估
     category: observability
     tags:
       - ai
@@ -247,9 +218,7 @@ skills:
     path: skills/deepeval-otel/SKILL.md
   - slug: deepeval-tracing
     name: deepeval SDK Tracing
-    name_zh: deepeval SDK 追踪
-    description: Confirmation that traces are arriving in Confident AI''s
-    description_zh: 配置和验证 deepeval 追踪数据是否正确上报
+    description: Confirmation that traces are arriving in Confident AI's
     category: observability
     tags:
       - ai
@@ -263,9 +232,7 @@ skills:
     path: skills/deepeval-tracing/SKILL.md
   - slug: dependency-update
     name: Dependency Update
-    name_zh: 依赖升级
     description: Plan and execute a low-risk dependency update for a project.
-    description_zh: 为项目规划和执行低风险的依赖升级。
     category: dev-tools
     tags:
       - dependencies
@@ -278,9 +245,7 @@ skills:
     path: skills/dependency-update/SKILL.md
   - slug: dependency-vulnerability-response
     name: Dependency Vulnerability Response
-    name_zh: 依赖漏洞响应
     description: Respond to a reported CVE in a project dependency.
-    description_zh: 响应项目依赖中报告的 CVE。
     category: guardrails
     tags:
       - security
@@ -293,10 +258,10 @@ skills:
     path: skills/dependency-vulnerability-response/SKILL.md
   - slug: doc-coauthoring
     name: Doc Co-Authoring Workflow
-    name_zh: 文档共写工作流
-    description: 三阶段结构化文档共写工作流 - Context Gathering / Refinement & Structure / 
-      Reader Testing。当用户提到写文档、起草提案、创建 spec 时触发。跳出写完即发的陷阱。
-    description_zh: 三阶段结构化文档共写：收集上下文、打磨结构、读者测试
+    description: A three-stage structured document co-authoring workflow - 
+      Context Gathering / Refinement & Structure / Reader Testing. Triggered 
+      when user mentions writing docs, drafting proposals, or creating specs. 
+      Avoid the write-and-forget trap.
     category: documentation
     tags:
       - ai
@@ -310,9 +275,7 @@ skills:
     path: skills/doc-coauthoring/SKILL.md
   - slug: documentation-structure
     name: Documentation Structure
-    name_zh: 文档结构
     description: Design a documentation outline for a project or feature.
-    description_zh: 为项目或功能设计文档大纲。
     category: documentation
     tags:
       - docs
@@ -325,9 +288,7 @@ skills:
     path: skills/documentation-structure/SKILL.md
   - slug: embedding-model-training
     name: Embedding Model Training
-    name_zh: 嵌入模型训练
     description: The user wants to train, fine-tune, or adapt an
-    description_zh: 训练、微调或适配 embedding 模型
     category: embeddings
     tags:
       - ai
@@ -341,10 +302,8 @@ skills:
     path: skills/embedding-model-training/SKILL.md
   - slug: error-handling-guide
     name: Error Handling Guide
-    name_zh: 错误处理指南
     description: Draft a language-agnostic error-handling strategy for a module 
       or service.
-    description_zh: 为模块或服务起草一份与语言无关的错误处理策略。
     category: dev-tools
     tags:
       - errors
@@ -357,10 +316,8 @@ skills:
     path: skills/error-handling-guide/SKILL.md
   - slug: eval-suite-bootstrap
     name: Eval Suite Bootstrap
-    name_zh: 评估套件启动
     description: Bootstrap a minimal evaluation suite for an LLM-powered 
       feature.
-    description_zh: 为 LLM 功能启动最小可运行的评估套件。
     category: evaluation
     tags:
       - evals
@@ -373,9 +330,7 @@ skills:
     path: skills/eval-suite-bootstrap/SKILL.md
   - slug: feature-flag-strategy
     name: Feature Flag Strategy
-    name_zh: 功能开关策略
     description: Design a feature-flag rollout strategy for a new feature.
-    description_zh: 为新功能设计功能开关发布策略。
     category: dev-tools
     tags:
       - feature-flags
@@ -388,9 +343,7 @@ skills:
     path: skills/feature-flag-strategy/SKILL.md
   - slug: frontend-large-feature-architecture
     name: Frontend Large-Feature Architecture
-    name_zh: 前端大型功能架构
     description: You're about to build a **non-trivial frontend feature** —
-    description_zh: 为非平凡前端功能制定可扩展的架构方案
     category: code-assistants
     tags:
       - ai
@@ -404,9 +357,7 @@ skills:
     path: skills/frontend-large-feature-architecture/SKILL.md
   - slug: frontend-visual-design
     name: Frontend Visual Design Taste
-    name_zh: 前端视觉设计品味
     description: The user is building something where the quality
-    description_zh: 为前端项目提供视觉设计与实现建议
     category: code-assistants
     tags:
       - ai
@@ -420,9 +371,7 @@ skills:
     path: skills/frontend-visual-design/SKILL.md
   - slug: goal-definition
     name: Goal Definition
-    name_zh: 目标定义
     description: The user said "I want to…" or "let's set a goal" or
-    description_zh: 把模糊意图转化为可衡量、可执行的目标
     category: prompt-libraries
     tags:
       - ai
@@ -436,9 +385,7 @@ skills:
     path: skills/goal-definition/SKILL.md
   - slug: incident-postmortem
     name: Incident Postmortem
-    name_zh: 事故复盘
     description: Draft a blameless postmortem from an incident timeline.
-    description_zh: 从事故时间线起草一份无责复盘报告。
     category: dev-tools
     tags:
       - incident
@@ -451,9 +398,7 @@ skills:
     path: skills/incident-postmortem/SKILL.md
   - slug: internal-comms
     name: Internal Comms Authoring
-    name_zh: 内部沟通文档写作
     description: You're drafting a **piece of internal communication** —
-    description_zh: 起草内部沟通文档，如备忘录、周报、变更通知
     category: documentation
     tags:
       - ai
@@ -467,10 +412,8 @@ skills:
     path: skills/internal-comms/SKILL.md
   - slug: invalid-name
     name: Invalid Name Handler
-    name_zh: 无效名称处理
     description: Validates and repairs identifier naming conventions in 
       codebases.
-    description_zh: 检查并修复代码库中不符合规范的标识符命名
     category: dev-tools
     tags:
       - linting
@@ -482,9 +425,7 @@ skills:
     path: skills/invalid-name/SKILL.md
   - slug: llm-pricing-file-update
     name: LLM Model Pricing File Update
-    name_zh: LLM 模型定价文件更新
     description: You maintain an internal **per-token LLM pricing data file** —
-    description_zh: 维护内部按 token 计费的 LLM 定价数据文件
     category: finance
     tags:
       - ai
@@ -498,10 +439,8 @@ skills:
     path: skills/llm-pricing-file-update/SKILL.md
   - slug: logging-best-practices
     name: Logging Best Practices
-    name_zh: 日志最佳实践
     description: Define a structured logging convention for a service or 
       library.
-    description_zh: 为服务或库定义结构化日志规范。
     category: dev-tools
     tags:
       - logging
@@ -514,28 +453,12 @@ skills:
     path: skills/logging-best-practices/SKILL.md
   - slug: maf-prs-job
     name: maf-prs-job
-    name_zh: maf-prs-job
-    description: "Convert an existing Prompt Flow Parallel Run Step (PRS) pipeline
+    description: 'Convert an existing Prompt Flow Parallel Run Step (PRS) pipeline
       submission into an Azure ML PRS pipeline that runs a Microsoft Agent Framework
-      (MAF) workflow. Wraps the MAF workflow into a PRS init()/run() entry script,
-      generates the parallel component YAML and conda environment, and rewrites the
-      pipeline submission script. Replaces what `load_component(flow.dag.yaml)` did
-      automatically for Prompt Flow — produces the hand-built equivalent so that downstream
-      pipeline code (`flow_node = flow_component(...)`, `flow_node.outputs.flow_outputs`,
-      `flow_node.outputs.debug_info`, `flow_node.mini_batch_size`, scheduler, batch
-      endpoint) stays unchanged. WHEN: convert promptflow PRS to MAF PRS, migrate
-      PRS pipeline to agent framework, wrap MAF workflow as parallel component, bulk
-      run MAF workflow, run agent framework as parallel run step, batch run MAF workflow
-      on AML, submit MAF workflow as pipeline component, replace flow.dag.yaml with
-      MAF workflow in pipeline, load_component equivalent for MAF workflow, MAF version
-      of flow_component, load MAF workflow as component, wrap MAF workflow as flow
-      component, MAF flow component, replace flow_node in pipeline with MAF workflow,
-      keep flow_outputs and debug_info ports with MAF, MAF parallel component with
-      connections={}, run MAF workflow as flow_node in AML pipeline, load_component('workflow.py')
-      doesn't work. DO NOT USE FOR: converting the flow itself (use promptflow-to-maf),
-      deploying as online endpoint (use maf-online-endpoint), enabling tracing only
-      (use maf-tracing)."
-    description_zh: 将 Prompt Flow PRS 管道迁移到 Azure ML PRS 管道
+      (MAF) workflow. WHEN: convert promptflow PRS to MAF PRS, migrate PRS pipeline
+      to agent framework, wrap MAF workflow as parallel component, bulk run MAF workflow.
+      DO NOT USE FOR: converting the flow itself (use promptflow-to-maf), deploying
+      as online endpoint (use maf-online-endpoint), enabling tracing only (use maf-tracing).'
     category: data-pipelines
     tags:
       - ai
@@ -549,10 +472,8 @@ skills:
     path: skills/maf-prs-job/SKILL.md
   - slug: mcp-builder
     name: MCP Server Builder
-    name_zh: MCP 服务器构建器
     description: You're building an **MCP server** that lets an LLM call into 
       some
-    description_zh: 构建让 LLM 调用外部能力的 MCP server
     category: mcp-protocol
     tags:
       - ai
@@ -566,10 +487,8 @@ skills:
     path: skills/mcp-builder/SKILL.md
   - slug: microservice-boundary-review
     name: Microservice Boundary Review
-    name_zh: 微服务边界评审
     description: Evaluate whether a proposed service boundary is coherent and 
       low-coupling.
-    description_zh: 评估提议的服务边界是否内聚且低耦合。
     category: dev-tools
     tags:
       - microservices
@@ -582,9 +501,7 @@ skills:
     path: skills/microservice-boundary-review/SKILL.md
   - slug: monitoring-setup
     name: Monitoring Setup
-    name_zh: 监控搭建
     description: Define metrics, dashboards, and alerts for a service.
-    description_zh: 为服务定义指标、仪表盘和告警。
     category: dev-tools
     tags:
       - monitoring
@@ -597,9 +514,7 @@ skills:
     path: skills/monitoring-setup/SKILL.md
   - slug: onboarding-checklist
     name: Onboarding Checklist
-    name_zh: 入职清单
     description: Build a role-based onboarding checklist for a new team member.
-    description_zh: 为新团队成员创建按角色分类的入职清单。
     category: documentation
     tags:
       - onboarding
@@ -612,9 +527,7 @@ skills:
     path: skills/onboarding-checklist/SKILL.md
   - slug: ownership-bus-factor
     name: Code Ownership & Bus Factor
-    name_zh: 代码所有权与巴士因子
     description: The user said "build me an ownership map", "what
-    description_zh: 生成项目或模块的负责人地图，识别单点风险
     category: dev-tools
     tags:
       - ai
@@ -628,9 +541,7 @@ skills:
     path: skills/ownership-bus-factor/SKILL.md
   - slug: pdf-summarizer
     name: PDF Summarizer
-    name_zh: PDF 摘要生成器
     description: number of bullets in the summary
-    description_zh: 从 PDF 提取关键信息并生成结构化摘要
     category: multimodal
     tags:
       - ai
@@ -644,9 +555,8 @@ skills:
     path: skills/pdf-summarizer/SKILL.md
   - slug: pdf-vision-extractor
     name: PDF Vision Extractor
-    name_zh: PDF 视觉内容提取器
-    description: 从扫描版 PDF 抽取发票号、日期、金额等字段，靠 Claude vision。
-    description_zh: 用视觉模型从扫描版 PDF 抽取发票、合同等字段
+    description: Extract invoice numbers, dates, amounts and other fields from 
+      scanned PDFs using Claude vision.
     category: multimodal
     tags:
       - ai
@@ -661,9 +571,7 @@ skills:
     path: skills/pdf-vision-extractor/SKILL.md
   - slug: pnpm-upgrade-package
     name: PNPM Upgrade Package
-    name_zh: PNPM 依赖升级
     description: You're bumping a dependency in a **pnpm workspace**.
-    description_zh: 在 pnpm workspace 中安全升级依赖
     category: dev-tools
     tags:
       - ai
@@ -677,9 +585,8 @@ skills:
     path: skills/pnpm-upgrade-package/SKILL.md
   - slug: pr-yeet
     name: Single-Flow PR Yeet
-    name_zh: 一次性 PR 推送
-    description: 在一个线性流程里完成 stage、commit、push、开 PR。仅在用户明确说 yeet 或 ship 时触发。
-    description_zh: 一键完成 stage、commit、push 并创建 PR
+    description: Complete stage, commit, push, and PR creation in one linear 
+      flow. Only triggers when user explicitly says yeet or ship.
     category: dev-tools
     tags:
       - ai
@@ -693,10 +600,8 @@ skills:
     path: skills/pr-yeet/SKILL.md
   - slug: prompt-injection-guardrails
     name: Prompt Injection Guardrails
-    name_zh: 提示注入防护
     description: Add guardrails against direct and indirect prompt injection for
       an LLM app.
-    description_zh: 为 LLM 应用添加直接和间接提示注入防护。
     category: guardrails
     tags:
       - prompt-injection
@@ -709,7 +614,6 @@ skills:
     path: skills/prompt-injection-guardrails/SKILL.md
   - slug: promptflow-to-maf
     name: promptflow-to-maf
-    name_zh: promptflow-to-maf
     description: 'Convert Prompt Flow flow definitions to Microsoft Agent Framework
       (MAF) workflows. Parses flow.dag.yaml, maps nodes to Executors, and generates
       runnable Python code using agent-framework 1.0.x. WHEN: convert promptflow,
@@ -718,7 +622,6 @@ skills:
       convert DAG flow to workflow, migrate LLM flow. DO NOT USE FOR: writing new
       MAF workflows from scratch (no source flow), deploying MAF workflows (use maf-online-endpoint),
       enabling tracing (use maf-tracing), or general agent-framework Q&A.'
-    description_zh: 将 Prompt Flow 工作流转换为 Microsoft Agent Framework
     category: data-pipelines
     tags:
       - ai
@@ -732,9 +635,8 @@ skills:
     path: skills/promptflow-to-maf/SKILL.md
   - slug: promptfoo-evals
     name: promptfoo Eval Suite Author
-    name_zh: promptfoo 评估套件编写
-    description: Confirmation of the suite path, the assertion mix, and the
-    description_zh: 使用 promptfoo 编写和运行评估套件
+    description: Confirmation of the suite path, the assertion mix, and the 
+      outputs produced by an eval run.
     category: evaluation
     tags:
       - ai
@@ -748,9 +650,7 @@ skills:
     path: skills/promptfoo-evals/SKILL.md
   - slug: promptfoo-redteam
     name: promptfoo Redteam Plugin Author
-    name_zh: promptfoo 红队插件编写
     description: How many fail conditions the rubric covers (self-check)
-    description_zh: 使用 promptfoo 编写红队测试插件
     category: safety-alignment
     tags:
       - ai
@@ -764,9 +664,7 @@ skills:
     path: skills/promptfoo-redteam/SKILL.md
   - slug: rag-retrieval-eval
     name: RAG Retrieval Eval
-    name_zh: RAG 检索评估
     description: Design an evaluation for a RAG retrieval component.
-    description_zh: 为 RAG 检索组件设计评估方案。
     category: rag-retrieval
     tags:
       - rag
@@ -779,10 +677,7 @@ skills:
     path: skills/rag-retrieval-eval/SKILL.md
   - slug: react-router-search-params
     name: React Router Search Param State
-    name_zh: React Router 搜索参数状态
-    description: 在 React Router 里为 URL 状态变化选 replace 还是 push。包含 
-      useSearchParamState hook 模式和决策表。
-    description_zh: 在 React Router 中管理 URL 搜索参数状态
+    description: Manage URL search parameters in React Router.
     category: code-assistants
     tags:
       - ai
@@ -796,9 +691,8 @@ skills:
     path: skills/react-router-search-params/SKILL.md
   - slug: realtime-eval-bootstrap
     name: Realtime Eval Scaffold
-    name_zh: 实时评估脚手架
-    description: You want to **start a new realtime eval** for an audio or
-    description_zh: 为音频或实时交互场景搭建评估脚手架
+    description: You want to **start a new realtime eval** for an audio or 
+      realtime interaction scenario.
     category: evaluation
     tags:
       - ai
@@ -812,9 +706,7 @@ skills:
     path: skills/realtime-eval-bootstrap/SKILL.md
   - slug: refactoring-strategy
     name: Refactoring Strategy
-    name_zh: 重构策略
     description: Plan a safe refactoring for a tangled module or legacy service.
-    description_zh: 为纠缠的模块或遗留服务规划安全重构。
     category: dev-tools
     tags:
       - refactoring
@@ -827,9 +719,7 @@ skills:
     path: skills/refactoring-strategy/SKILL.md
   - slug: schema-evolution
     name: Schema Evolution
-    name_zh: Schema 演进
     description: Plan a backward-compatible schema change for events or APIs.
-    description_zh: 为事件或 API 规划向后兼容的 schema 变更。
     category: dev-tools
     tags:
       - schema
@@ -842,9 +732,8 @@ skills:
     path: skills/schema-evolution/SKILL.md
   - slug: secure-code-by-language
     name: Secure Code by Language
-    name_zh: 按语言的安全编码指南
-    description: The user said "write this securely", "do a security
-    description_zh: 按语言安全地编写或审查代码
+    description: The user said "write this securely", "do a security review", or
+      similar.
     category: guardrails
     tags:
       - ai
@@ -858,9 +747,8 @@ skills:
     path: skills/secure-code-by-language/SKILL.md
   - slug: security-review
     name: Security Review Checklist
-    name_zh: 安全审查清单
-    description: You're reviewing or designing a change that touches a
-    description_zh: 审查或设计涉及安全敏感变更的方案
+    description: You're reviewing or designing a change that touches a 
+      security-sensitive area.
     category: guardrails
     tags:
       - ai
@@ -874,9 +762,8 @@ skills:
     path: skills/security-review/SKILL.md
   - slug: skill-creator
     name: Skill Authoring Loop
-    name_zh: 技能编写迭代流程
-    description: You're authoring a **skill** — a self-contained
-    description_zh: 编写自包含、可复用的 AI skill
+    description: You're authoring a **skill** — a self-contained, reusable 
+      AI-powered automation unit.
     category: dev-tools
     tags:
       - ai
@@ -890,9 +777,7 @@ skills:
     path: skills/skill-creator/SKILL.md
   - slug: sql-query-helper
     name: SQL Query Helper
-    name_zh: SQL 查询助手
-    description: SQL dialect
-    description_zh: 根据方言和场景生成或优化 SQL 查询
+    description: Generate or optimize SQL queries based on dialect and scenario.
     category: text-to-sql
     tags:
       - ai
@@ -906,9 +791,8 @@ skills:
     path: skills/sql-query-helper/SKILL.md
   - slug: storybook
     name: Storybook Component Stories
-    name_zh: Storybook 组件故事
-    description: You're writing or reviewing a **Storybook story** for a
-    description_zh: 编写或审查 React 组件的 Storybook story
+    description: You're writing or reviewing a **Storybook story** for a React 
+      component.
     category: code-assistants
     tags:
       - ai
@@ -922,9 +806,7 @@ skills:
     path: skills/storybook/SKILL.md
   - slug: test-generator
     name: Unit Test Generator
-    name_zh: 单元测试生成器
-    description: whether to add edge case tests (None, empty, overflow)
-    description_zh: 为代码生成包含边界情况的测试用例
+    description: Generate unit tests with edge cases for code.
     category: dev-tools
     tags:
       - ai
@@ -938,9 +820,7 @@ skills:
     path: skills/test-generator/SKILL.md
   - slug: test-planning
     name: Test Planning
-    name_zh: 测试规划
     description: Design a test plan for a feature or release.
-    description_zh: 为功能或发布设计测试方案。
     category: dev-tools
     tags:
       - testing
@@ -953,9 +833,7 @@ skills:
     path: skills/test-planning/SKILL.md
   - slug: threat-modeling
     name: Repository Threat Model
-    name_zh: 仓库威胁建模
-    description: The user said "threat model this", "what could go
-    description_zh: 对系统或功能进行威胁建模分析
+    description: Perform threat modeling analysis for a system or feature.
     category: guardrails
     tags:
       - ai
@@ -969,9 +847,8 @@ skills:
     path: skills/threat-modeling/SKILL.md
   - slug: turborepo
     name: Turborepo Monorepo Authoring
-    name_zh: Turborepo 单体仓库编写
-    description: You have a **Turborepo monorepo** and you're doing one of
-    description_zh: 在 Turborepo 单体仓库中管理任务、缓存与依赖
+    description: Manage tasks, caching, and dependencies in a Turborepo 
+      monorepo.
     category: code-assistants
     tags:
       - ai
@@ -985,10 +862,8 @@ skills:
     path: skills/turborepo/SKILL.md
   - slug: webapp-testing
     name: Webapp Testing Harness
-    name_zh: Web 应用测试工具
-    description: 用 Playwright 和 Python 对本地 Web 应用做端到端测试。带服务器生命周期 helper、DOM 
-      侦察行动模式、截图捕获。
-    description_zh: 用 Playwright 对本地 Web 应用做端到端测试
+    description: Run end-to-end tests on a local web app using Playwright and 
+      Python.
     category: browser-automation
     tags:
       - ai

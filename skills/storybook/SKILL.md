@@ -1,8 +1,6 @@
 ---
 name: Storybook Component Stories
-name_zh: Storybook 组件故事
-description: You're writing or reviewing a **Storybook story** for a
-description_zh: 编写或审查 React 组件的 Storybook story
+description: You're writing or reviewing a **Storybook story** for a React component.
 category: code-assistants
 tags:
 - ai
@@ -19,10 +17,18 @@ slug: storybook
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: component_path
   type: string
   required: true
-  description: User request or task description
+  description: Path to the React component file
+- name: component_name
+  type: string
+  required: true
+  description: Component name
+- name: review_mode
+  type: string
+  required: false
+  description: Mode - write (default) or review
 output:
   format: markdown
   description: Generated content based on the user request
@@ -293,3 +299,28 @@ Stories (6):
   - AsLink
   - AllSizes   (size × variant matrix, no play)
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Story for non-presentational component**: Stories that need MSW or complex setup.
+  - how to detect: stories need context providers, not self-contained
+  - how to fix: refactor to extract presentational sub-component first
+
+- **Large inline fixtures**: Test data that's too complex for the story.
+  - how to detect: fixture objects are deeply nested and hard to understand
+  - how to fix: use small, focused fixtures, share via helper functions
+
+- **Play function compensating for setup**: Complex setup in play function instead of refactoring.
+  - how to detect: play function does setupContext() and seedDatabase()
+  - how to fix: refactor component to be more presentational
+
+- **Test1 story names**: Story named after test, not state.
+  - how to detect: scanning story list doesn't tell you what you're looking at
+  - how to fix: name stories by state (Loading, Error, Disabled) not Test1
+
+- **Variant story with play function**: Behavioral test masquerading as design showcase.
+  - how to detect: variant story has interaction test when it should just show design
+  - how to fix: variant stories are for design showcase, use Playwright for interactions

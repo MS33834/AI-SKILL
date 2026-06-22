@@ -1,8 +1,6 @@
 ---
 name: PDF Summarizer
-name_zh: PDF 摘要生成器
 description: number of bullets in the summary
-description_zh: 从 PDF 提取关键信息并生成结构化摘要
 category: multimodal
 tags:
 - ai
@@ -19,10 +17,18 @@ slug: pdf-summarizer
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: pdf_path
   type: string
   required: true
-  description: User request or task description
+  description: Local path to the PDF file
+- name: audience
+  type: string
+  required: false
+  description: Target audience - exec/PM/technical (default PM)
+- name: length
+  type: integer
+  required: false
+  description: Number of bullets in summary (default 5)
 output:
   format: markdown
   description: Generated content based on the user request
@@ -98,3 +104,28 @@ length: 4
 
 **What's missing:** cohort retention numbers, customer concentration, full P&L
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Scanned image PDFs**: PDFs that are scanned images have no extractable text.
+  - how to detect: skill says "no extractable text" or produces gibberish
+  - how to fix: use OCR first, or use a vision-capable model
+
+- **Invented citations**: LLM makes up numbers, dates, or citations that aren't in the PDF.
+  - how to detect: citations in summary don't match actual PDF content
+  - how to fix: verify claims against PDF, use lower temperature
+
+- **Ignoring missing context**: Summarizing without acknowledging what wasn't covered.
+  - how to detect: summary implies complete coverage when it isn't
+  - how to fix: always include "What's missing" section
+
+- **Language mismatch**: PDF in a language the model doesn't read.
+  - how to detect: summary is generic or says "I couldn't read this"
+  - how to fix: check PDF language first, refuse gracefully
+
+- **Over-summary**: Summarizing so much that the summary becomes useless.
+  - how to detect: bullets are longer than 25 words, lose the compression benefit
+  - how to fix: enforce the 25-word bullet limit strictly

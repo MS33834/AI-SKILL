@@ -1,8 +1,6 @@
 ---
 name: Code Reviewer
-name_zh: 代码审查员
 description: minimum severity to report
-description_zh: 按指定最低严重级别报告代码审查发现
 category: dev-tools
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: code-reviewer
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: diff
   type: string
   required: true
-  description: User request or task description
+  description: The code diff to review
+- name: language
+  type: string
+  required: false
+  description: Programming language (auto-detected if not provided)
+- name: focus
+  type: string
+  required: false
+  description: Review focus - all/bugs/security/style/performance (default all)
+- name: severity_threshold
+  type: string
+  required: false
+  description: Minimum severity to report - blocker/suggestion/nit (default medium)
 output:
   format: markdown
   description: Generated content based on the user request
@@ -109,3 +119,28 @@ severity_threshold: medium
 
 **Nits:** skipped (severity_threshold = medium)
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **No line references**: "There may be a bug somewhere" is not a finding.
+  - how to detect: findings are vague and hard to act on
+  - how to fix: always cite specific file:line references
+
+- **Rubber stamping**: Saying "LGTM" without actually reviewing.
+  - how to detect: same issues appear in multiple PRs
+  - how to fix: actually review, or say you didn't have time
+
+- **Focusing on style over substance**: Reporting whitespace issues when there are real bugs.
+  - how to detect: blockers missed, but nitpicks are plentiful
+  - how to fix: focus on correctness, security, then style
+
+- **Not considering the full diff**: Reviewing one file when the real issue is in another.
+  - how to detect: bug is in a file you didn't review
+  - how to fix: understand the full context of the change
+
+- **Forcing your preferences**: Treating opinion as fact.
+  - how to detect: author pushes back on suggestions as opinion
+  - how to fix: label opinions as such, distinguish from best practices

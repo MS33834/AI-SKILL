@@ -1,10 +1,8 @@
 ---
 slug: documentation-structure
 name: Documentation Structure
-name_zh: 文档结构
 version: 0.1.0
 description: Design a documentation outline for a project or feature.
-description_zh: 为项目或功能设计文档大纲。
 category: documentation
 tags: ['docs', 'structure', 'readme', 'onboarding']
 inputs:
@@ -81,3 +79,28 @@ audiences: [users, contributors]
 ## Cross-links
 README quickstart → examples → API reference
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Docs that contradict code**: Documentation that says one thing, code does another.
+  - how to detect: users report confusion when code doesn't match docs
+  - how to fix: docs are generated from code where possible, or enforced by CI
+
+- **README that assumes expertise**: "See the docs" doesn't help when someone needs to get started.
+  - how to detect: new users ask basic questions answered elsewhere in docs
+  - how to fix: README should be self-contained for the 5-minute getting-started experience
+
+- **Out-of-date examples**: Examples that worked last year no longer work.
+  - how to detect: users report examples failing, issue tracker fills with "docs outdated"
+  - how to fix: test examples in CI, mark stale sections clearly
+
+- **No search or findability**: Users can't find the docs they need.
+  - how to detect: users ask questions answered in docs but they couldn't find
+  - how to fix: add search, cross-link related content, use consistent terminology
+
+- **Documentation for imaginary users**: Writing docs for a hypothetical expert instead of actual users.
+  - how to detect: docs are either too basic or too advanced for real users
+  - how to fix: base docs structure on actual user feedback and support tickets

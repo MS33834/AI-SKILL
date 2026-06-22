@@ -2,273 +2,183 @@ version: 1
 categories:
 - slug: official-cookbooks
   name: Official Cookbooks
-  name_zh: 官方 Cookbook
   description: Pattern books published by model vendors themselves.
-  description_zh: 模型厂商自己发布的范式合集。
   order: 1
 - slug: prompt-libraries
   name: Prompt Libraries
-  name_zh: Prompt 库
   description: Curated collections of high-quality prompts, system messages, and role templates.
-  description_zh: 高质量 prompt、system message、role template 的精选集。
   order: 2
 - slug: agent-frameworks
   name: Agent Frameworks
-  name_zh: Agent 框架
   description: Frameworks for building autonomous, multi-step LLM agents.
-  description_zh: 用于构建多步自主 LLM agent 的框架。
   order: 3
 - slug: rag-retrieval
   name: RAG & Retrieval
-  name_zh: RAG 与检索
   description: Vector stores, retrievers, chunking, embedding pipelines for retrieval-augmented generation.
-  description_zh: 向量库、retriever、chunking、embedding 管道——RAG 全栈。
   order: 4
 - slug: vector-databases
   name: Vector Databases
-  name_zh: 向量数据库
   description: Purpose-built vector stores and ANN search engines.
-  description_zh: 专用向量库与 ANN 搜索引擎。
   order: 5
 - slug: embeddings
   name: Embedding Models
-  name_zh: Embedding 模型
   description: Open-weight embedding models, sentence encoders, multilingual encoders.
-  description_zh: 开源 embedding 模型、句编码器、多语种编码器。
   order: 6
 - slug: evaluation
   name: Evaluation
-  name_zh: 评估
   description: Benchmarks, eval harnesses, LLM-as-judge, A/B testing for LLM apps.
-  description_zh: 基准、eval harness、LLM-as-judge、A/B 测试。
   order: 7
 - slug: benchmarks
   name: Benchmarks
-  name_zh: 基准测试
   description: Academic and industry benchmarks for LLM, agents, and reasoning.
-  description_zh: LLM、agent、reasoning 的学术与工业基准。
   order: 8
 - slug: tool-use
   name: Tool Use & Function Calling
-  name_zh: 工具调用与 Function Calling
   description: Tool registries, function-calling routers, agent runtimes.
-  description_zh: tool registry、function-calling router、agent runtime。
   order: 9
 - slug: mcp-protocol
   name: MCP Protocol
-  name_zh: MCP 协议
   description: Model Context Protocol servers, clients, gateways, registries.
-  description_zh: Model Context Protocol server、client、gateway、registry。
   order: 10
 - slug: llm-serving
   name: LLM Serving
-  name_zh: LLM 推理服务
   description: Inference engines and serving runtimes for production LLM workloads.
-  description_zh: 面向生产的 LLM 推理引擎与 serving runtime。
   order: 11
 - slug: fine-tuning
   name: Fine-Tuning
-  name_zh: 微调
   description: Supervised fine-tuning, preference optimization, RLHF, parameter-efficient methods.
-  description_zh: SFT、preference optimization、RLHF、参数高效方法。
   order: 12
 - slug: distributed-training
   name: Distributed Training
-  name_zh: 分布式训练
   description: 'Multi-GPU and multi-node training frameworks: FSDP, DeepSpeed, Megatron.'
-  description_zh: 多 GPU / 多节点训练框架：FSDP、DeepSpeed、Megatron。
   order: 13
 - slug: quantization
   name: Quantization & Compression
-  name_zh: 量化与压缩
   description: INT8/INT4/FP8 quantization, weight compression, distillation.
-  description_zh: INT8/INT4/FP8 量化、权重压缩、蒸馏。
   order: 14
 - slug: model-merging
   name: Model Merging & MoE
-  name_zh: 模型融合与 MoE
   description: Model merging, mixture-of-experts, sparse models.
-  description_zh: 模型融合、MoE、稀疏模型。
   order: 15
 - slug: guardrails
   name: Guardrails & Safety
-  name_zh: 护栏与安全
   description: Output filters, content moderation, jailbreak detection, PII redaction.
-  description_zh: 输出过滤、内容审核、越狱检测、PII 脱敏。
   order: 16
 - slug: safety-alignment
   name: Alignment & RLHF
-  name_zh: 对齐与 RLHF
   description: RLHF, DPO, constitutional AI, reward modeling.
-  description_zh: RLHF、DPO、Constitutional AI、reward modeling。
   order: 17
 - slug: privacy-federated
   name: Privacy & Federated Learning
-  name_zh: 隐私与联邦学习
   description: Differential privacy, federated learning, secure aggregation.
-  description_zh: 差分隐私、联邦学习、安全聚合。
   order: 18
 - slug: observability
   name: Observability & Tracing
-  name_zh: 可观测性与追踪
   description: LLM tracing, token analytics, cost monitoring, prompt registries.
-  description_zh: LLM 追踪、token 分析、成本监控、prompt registry。
   order: 19
 - slug: memory
   name: Memory & Context
-  name_zh: 记忆与上下文
   description: Long-term memory, context compression, RAG over user history.
-  description_zh: 长期记忆、上下文压缩、用户历史 RAG。
   order: 20
 - slug: knowledge-graphs
   name: Knowledge Graphs & Reasoning
-  name_zh: 知识图谱与推理
   description: Graph RAG, symbolic reasoning, ontology-driven LLM apps.
-  description_zh: Graph RAG、符号推理、本体驱动的 LLM 应用。
   order: 21
 - slug: synthetic-data
   name: Synthetic Data
-  name_zh: 合成数据
   description: Self-instruct, evol-instruct, distillation, preference data generation.
-  description_zh: self-instruct、evol-instruct、蒸馏、偏好数据生成。
   order: 22
 - slug: data-pipelines
   name: Data Pipelines & ETL
-  name_zh: 数据管道与 ETL
   description: Dataset loaders, web crawlers, document ETL, docling-style tools.
-  description_zh: 数据集加载、爬虫、文档 ETL、docling 类工具。
   order: 23
 - slug: dev-tools
   name: AI Dev Tools
-  name_zh: AI 开发工具
   description: AI-augmented IDEs, coding agents, CLI dev tools, dev SDKs.
-  description_zh: AI 增强 IDE、编程 agent、CLI 开发工具、开发 SDK。
   order: 24
 - slug: code-llms
   name: Code LLMs
-  name_zh: 代码大模型
   description: Open-weight code models, code completion, code reasoning.
-  description_zh: 开源代码模型、代码补全、代码推理。
   order: 25
 - slug: code-assistants
   name: Code Assistants & IDE
-  name_zh: 代码助手与 IDE
   description: Coding copilots, AI-native editors, dev shells.
-  description_zh: 代码 copilot、AI 原生编辑器、开发 shell。
   order: 26
 - slug: terminal-cli
   name: Terminal & CLI
-  name_zh: 终端与 CLI
   description: LLM-powered terminal shells, command-line copilots, REPLs.
-  description_zh: LLM 增强的终端 shell、命令行 copilot、REPL。
   order: 27
 - slug: browser-automation
   name: Browser Automation
-  name_zh: 浏览器自动化
   description: LLM-driven browser agents, headless web automation, scraping.
-  description_zh: LLM 驱动的浏览器 agent、无头 web 自动化、爬虫。
   order: 28
 - slug: computer-use
   name: Computer Use & GUI Agents
-  name_zh: Computer Use 与 GUI Agent
   description: OS-level agents that drive a real desktop via screen + input.
-  description_zh: 通过屏幕+输入操控真实桌面的 OS 级 agent。
   order: 29
 - slug: multimodal
   name: Multimodal & Generative
-  name_zh: 多模态与生成
   description: Vision-language models, image/audio/video generation, speech recognition.
-  description_zh: 视觉-语言模型、图像/音频/视频生成、语音识别。
   order: 30
 - slug: image-generation
   name: Image Generation
-  name_zh: 图像生成
   description: Stable Diffusion front-ends, diffusion model code, image editing.
-  description_zh: Stable Diffusion 前端、扩散模型代码、图像编辑。
   order: 31
 - slug: audio-speech
   name: Audio & Speech
-  name_zh: 音频与语音
   description: ASR, TTS, voice cloning, music generation, audio LLMs.
-  description_zh: ASR、TTS、声音克隆、音乐生成、音频 LLM。
   order: 33
 - slug: robotics-embodied
   name: Robotics & Embodied AI
-  name_zh: 机器人与具身智能
   description: Robot foundation models, sim-to-real, manipulation policies.
-  description_zh: 机器人基础模型、sim-to-real、操作策略。
   order: 34
 - slug: reasoning-models
   name: Reasoning Models
-  name_zh: 推理模型
   description: Chain-of-thought, o1-style, self-consistency, search-augmented reasoning.
-  description_zh: 思维链、o1 风格、自洽、搜索增强推理。
   order: 35
 - slug: applications
   name: AI Applications
-  name_zh: AI 应用
   description: 'End-user apps: chat UIs, low-code platforms, agent studios, workflow tools.'
-  description_zh: 终端用户应用：聊天 UI、低代码平台、agent studio、工作流工具。
   order: 36
 - slug: chat-uikits
   name: Chat UI Kits & Frontends
-  name_zh: Chat UI 套件与前端
   description: Self-hostable chat frontends, headless chat APIs, embeddable widgets.
-  description_zh: 可自托管的 chat 前端、无头 chat API、可嵌入 widget。
   order: 37
 - slug: documentation
   name: Documentation & Docs RAG
-  name_zh: 文档与 Docs RAG
   description: Doc crawlers, docs-as-code, doc Q&A, documentation agents.
-  description_zh: 文档爬虫、docs-as-code、文档问答、文档 agent。
   order: 38
 - slug: text-to-sql
   name: Text-to-SQL & Data Agents
-  name_zh: Text-to-SQL 与数据 Agent
   description: Natural-language to SQL, data analysts, BI agents.
-  description_zh: 自然语言转 SQL、数据分析师、BI agent。
   order: 39
 - slug: education
   name: Education & Tutoring
-  name_zh: 教育与辅导
   description: Tutoring agents, course copilots, paper-reading assistants.
-  description_zh: 辅导 agent、课程 copilot、读论文助手。
   order: 41
 - slug: scientific-ml
   name: Scientific ML & Research
-  name_zh: 科学机器学习与研究
   description: AlphaFold-style models, materials science, climate ML, protein design.
-  description_zh: AlphaFold 类模型、材料科学、气候 ML、蛋白质设计。
   order: 42
 - slug: medical-bio
   name: Medical & Bio
-  name_zh: 医疗与生物
   description: Clinical NLP, drug discovery, medical imaging, EHR agents.
-  description_zh: 临床 NLP、药物发现、医学影像、EHR agent。
   order: 43
 - slug: finance
   name: Finance & Trading
-  name_zh: 金融与交易
   description: Quant copilots, financial RAG, trading agents, risk models.
-  description_zh: 量化 copilot、金融 RAG、交易 agent、风险模型。
   order: 44
 - slug: translation
   name: Translation & Multilingual
-  name_zh: 翻译与多语种
   description: Neural MT, simultaneous translation, multilingual LLM apps.
-  description_zh: 神经机器翻译、同声传译、多语种 LLM 应用。
   order: 46
 - slug: gpu-kernels
   name: GPU Kernels & Compilers
-  name_zh: GPU 算子与编译器
   description: Custom CUDA/Triton kernels, kernel autotuning, model compilers.
-  description_zh: CUDA/Triton 自定义算子、算子自动调优、模型编译器。
   order: 47
 - slug: awesome-lists
   name: Awesome Lists
-  name_zh: Awesome 列表
   description: Curated awesome-* lists that index the AI/ML ecosystem.
-  description_zh: 索引 AI/ML 生态的 awesome-* 列表。
   order: 48
 skills:
 - slug: anthropic-cookbook

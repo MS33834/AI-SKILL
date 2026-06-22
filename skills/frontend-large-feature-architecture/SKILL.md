@@ -1,8 +1,6 @@
 ---
 name: Frontend Large-Feature Architecture
-name_zh: 前端大型功能架构
 description: You're about to build a **non-trivial frontend feature** —
-description_zh: 为非平凡前端功能制定可扩展的架构方案
 category: code-assistants
 tags:
 - ai
@@ -19,10 +17,22 @@ slug: frontend-large-feature-architecture
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: feature
   type: string
   required: true
-  description: User request or task description
+  description: One-sentence feature description
+- name: framework
+  type: string
+  required: false
+  description: UI framework (default react)
+- name: state_libraries
+  type: array
+  required: false
+  description: State libraries already in use (default react-query + zustand)
+- name: data_scale
+  type: string
+  required: false
+  description: Data scale - small/medium/large/huge
 output:
   format: markdown
   description: Generated content based on the user request
@@ -311,3 +321,28 @@ Edge cases:
   - concurrent pin/unpin → debounce 250ms; refetch
     list on settle
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **State in wrong location**: Filters in local state instead of URL.
+  - how to detect: users can't share or bookmark filtered views
+  - how to fix: filters go in URL, UI ephemera in local state
+
+- **Controller doing too much**: Page component with data fetching, state, and UI.
+  - how to detect: controller exceeds 300 lines
+  - how to fix: split by sub-feature, not by component type
+
+- **Virtualizing wrong axis**: Virtualizing rows when columns are the problem.
+  - how to detect: performance issues persist despite virtualization
+  - how to fix: identify the actual bottleneck before virtualizing
+
+- **Skipping edge cases**: Empty states, error states, loading states not planned.
+  - how to detect: bugs reported for obvious edge cases
+  - how to fix: enumerate edge cases in planning phase
+
+- **All-in-one mega component**: Feature that becomes a 1000-line unmaintainable mess.
+  - how to detect: component is too large to reason about
+  - how to fix: split early, controller + presentational pattern

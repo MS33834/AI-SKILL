@@ -1,8 +1,6 @@
 ---
 name: Code Ownership & Bus Factor
-name_zh: 代码所有权与巴士因子
 description: The user said "build me an ownership map", "what
-description_zh: 生成项目或模块的负责人地图，识别单点风险
 category: dev-tools
 tags:
 - ai
@@ -19,10 +17,26 @@ slug: ownership-bus-factor
 created: '2026-06-12'
 updated: '2026-06-19'
 inputs:
-- name: request
+- name: repo_path
   type: string
   required: true
-  description: User request or task description
+  description: Local path to the repository to analyze
+- name: since
+  type: string
+  required: false
+  description: Commit history start date (default 1 year ago)
+- name: until
+  type: string
+  required: false
+  description: Commit history end date (default today)
+- name: sensitivity_rules
+  type: string
+  required: false
+  description: Path to custom sensitivity CSV
+- name: out_dir
+  type: string
+  required: false
+  description: Output directory (default ./ownership-map-out)
 output:
   format: markdown
   description: Generated content based on the user request
@@ -416,3 +430,29 @@ The report cites specific files and
 community ids. The agent can be re-run with
 different sensitivity rules or a different
 window to compare snapshots.
+```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Co-change false positives**: Generated code and lint fixes inflate co-change scores.
+  - how to detect: unrelated files appear coupled
+  - how to fix: filter out generated files and re-runs from analysis
+
+- **Wrong time window**: Year-old data doesn't reflect current ownership.
+  - how to detect: analysis shows people who left as still owning files
+  - how to fix: use recent time window, validate against current team roster
+
+- **Ignoring sensitivity rules**: Treating all code equally when some needs special handling.
+  - how to detect: security-critical code not flagged as sensitive
+  - how to fix: configure sensitivity rules to match actual crown jewels
+
+- **Louvain community without context**: Community detection finds groups but not why they're grouped.
+  - how to detect: community doesn't match intuitive module boundaries
+  - how to fix: use Q3 to understand what actually changed together
+
+- **Bus factor = 1 is not always risk**: Sole ownership is only risky if the owner is actually a single point of failure.
+  - how to detect: flagged files have no actual availability risk
+  - how to fix: cross-reference with on-call rotation and backup owners

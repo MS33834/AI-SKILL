@@ -1,10 +1,8 @@
 ---
 slug: monitoring-setup
 name: Monitoring Setup
-name_zh: 监控搭建
 version: 0.1.0
 description: Define metrics, dashboards, and alerts for a service.
-description_zh: 为服务定义指标、仪表盘和告警。
 category: dev-tools
 tags: ['monitoring', 'observability', 'metrics', 'alerts']
 inputs:
@@ -81,3 +79,28 @@ slos: '99.9% delivery within 30s, <0.1% error rate'
 - TICKET: p99 latency > 20s for 10 minutes
 - PAGE: queue depth > 10k for 5 minutes
 ```
+
+## Footguns
+
+These are the bugs that bite every new user.
+Check them before shipping:
+
+- **Alert fatigue from too many alerts**: Too many alerts cause responders to ignore them.
+  - how to detect: alert volume is high but page rate is low
+  - how to fix: use composite alerts, only page on actionable events
+
+- **Symptom vs cause confusion**: Alerting on cause (database slow) instead of symptom (user-facing errors).
+  - how to detect: on-call fixes the database but users are still affected
+  - how to fix: alert on SLIs/SLOs, not infrastructure metrics alone
+
+- **No runbook for alerts**: Alert fires but no one knows what to do.
+  - how to detect: mean time to resolve increases during incidents
+  - how to fix: link runbooks to every alert, update them after incidents
+
+- **Static thresholds that drift**: Thresholds set once become outdated as traffic patterns change.
+  - how to detect: alerts fire during normal peak traffic
+  - how to fix: use dynamic thresholds or traffic-aware alerting
+
+- **Missing dependency monitoring**: Service is healthy but its dependency is failing slowly.
+  - how to detect: service alert fires but root cause is upstream
+  - how to fix: monitor key dependencies separately
